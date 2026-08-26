@@ -26,5 +26,15 @@ filled with estimates.
 
 ## E2 — bidirectional fixed sum
 
-Status: training. Final Dice and HD95 will be added only after epoch 300 and
-the complete Synapse test pass.
+Status: complete (seed 42, 300 epochs, exit status 0).
+
+- Mean Dice: 0.786080 (78.6080%)
+- Mean HD95: 26.1111
+- Wall-clock duration: 14 h 30 min 11 s
+- Mean training time per epoch: 164.48 s
+- Peak sampled device memory: 10,747 MiB
+- Relative to E1: Dice -1.4408 percentage points; HD95 +1.4975
+- Decision: Red — audit lost transposed/vertical coverage before E3/E4
+
+The complete report, per-organ comparison, manifests, and logs are stored in
+[`runs/e2_synapse_seed42/`](runs/e2_synapse_seed42/).
