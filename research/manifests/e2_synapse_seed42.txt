@@ -1,0 +1,16 @@
+experiment=E2_bidirectional_fixed_sum
+scan_paths=forward_row_major(direction_0),backward_reverse_row_major(direction_2)
+fusion=fixed_sum(weights_1.0_1.0)
+seed=42
+epochs=300
+batch_size=32
+input_size=224x224
+val_interval=100
+amp=False
+num_workers=0
+pretrained=vmamba_small_e238_ema.pth
+source_branch=experiment/e2-bidirectional-fixed-sum
+source_commit=4ef87e068c084a16e0cd4f1fe669bfc08530c423
+source_modified_for_run=no
+tmux_session=vmunet_e2_sum
+start_utc=2026-08-26T02:50:38Z
