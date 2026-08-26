@@ -165,7 +165,7 @@ datasets/**
 !data/.gitkeep
 !datasets/.gitkeep
 workspace/
-runs/
+/runs/
 results/**
 checkpoints/
 outputs/
