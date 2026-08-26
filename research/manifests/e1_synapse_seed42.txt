@@ -1,0 +1,11 @@
+experiment=vmunet_synapse_baseline
+seed=42
+epochs=300
+batch_size=32
+val_interval=100
+amp=False
+num_workers=0
+runtime_override=batch_size=32,work_dir=<run directory>
+source_modified_for_run=no
+tmux_session=vmunet_baseline
+start_utc=2026-08-24T21:55:05Z
