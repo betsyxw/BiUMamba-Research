@@ -1,0 +1,18 @@
+{
+  "variant": "E2_modify_2_grouped_2d",
+  "status": "PASS",
+  "input_shape": [1, 1, 64, 64],
+  "output_shape": [1, 9, 64, 64],
+  "loss": 2.361687183380127,
+  "block_count": 15,
+  "gradient_check": {
+    "direction_0_first_half_horizontal": "non-zero in all 15 blocks",
+    "direction_1_second_half_vertical": "non-zero in all 15 blocks",
+    "direction_2_first_half_horizontal": "non-zero in all 15 blocks",
+    "direction_3_second_half_vertical": "non-zero in all 15 blocks",
+    "all_inactive_half_channel_slices": "exactly zero"
+  },
+  "peak_allocated_mib": 259.52880859375,
+  "peak_reserved_mib": 268.0
+}
+
