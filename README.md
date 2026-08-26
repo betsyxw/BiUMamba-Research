@@ -12,9 +12,9 @@ Private research repository for the master's project:
 Current experimental status:
 
 - E1: original four-direction VM-UNet baseline — completed.
-- E2: forward/backward bidirectional scan with fixed sum — training.
-- E3: planned global static learnable fusion, after a sum/average equivalence test.
-- E4: planned input-dependent adaptive fusion gate.
+- E2: forward/reverse row-major scan with fixed sum — completed; below E1.
+- E2b: coverage-safe horizontal/vertical bidirectional design — audit required.
+- E3/E4: static learnable and adaptive fusion — paused until the coverage audit.
 - Datasets: Synapse first, ACDC second; FractalDB pre-training pilot follows the directional ablation.
 
 Datasets, pretrained weights, checkpoints, NIfTI outputs and credentials are
@@ -35,9 +35,9 @@ environment lock and verified results.
 ### 実験の進捗
 
 - **E1：Original** — VM-UNetのオリジナル4方向スキャンによるベースライン。完了。
-- **E2：Bidirectional + Fixed Sum** — Forward/Backwardの双方向スキャンを固定加算で融合。現在学習中。
-- **E3：Bidirectional + Static Learnable Fusion** — SumとAverageの数学的等価性を確認した後、静的な学習可能融合として検証予定。
-- **E4：Bidirectional + Adaptive Gate** — 入力依存の適応的融合ゲートとして検証予定。
+- **E2：Bidirectional + Fixed Sum** — Row-majorのForward/Reverseを固定加算で融合。完了したがE1を下回った。
+- **E2b：Coverage-safe Bidirectional Scan** — 水平・垂直方向の被覆を保持する設計を監査・検討する。
+- **E3/E4** — 静的学習可能融合とAdaptive Gateは、走査範囲の監査完了後に実施する。
 
 ### 実験計画
 
@@ -51,6 +51,7 @@ environment lock and verified results.
 - E1 VM-UNet Synapse baseline：Mean Dice 約80.05%、Mean HD95 約24.61。
 - 最良checkpoint：Epoch 286付近。
 - 300 epochsの総学習時間：RTX 4090で約15〜16時間。
+- E2 two-path fixed sum：Mean Dice 約78.61%、Mean HD95 約26.11。E1より低いため、転置・垂直方向の被覆を失った影響を次に検証する。
 
 実験設計、実行環境、設定値および確認済みの結果は[`research/`](research/)にまとめています。
 
