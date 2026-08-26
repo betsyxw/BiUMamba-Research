@@ -1,0 +1,22 @@
+{
+  "variant": "E2_modify_1_alternating_axis",
+  "status": "PASS",
+  "input_shape": [1, 1, 64, 64],
+  "output_shape": [1, 9, 64, 64],
+  "loss": 2.3616890907287598,
+  "block_count": 15,
+  "axis_schedule": [
+    "horizontal", "vertical", "horizontal", "vertical", "horizontal",
+    "vertical", "horizontal", "vertical", "horizontal", "vertical",
+    "horizontal", "vertical", "horizontal", "vertical", "horizontal"
+  ],
+  "aggregate_direction_gradient_l1": [
+    0.03508511796826497,
+    0.05079907953040674,
+    0.03514987613016274,
+    0.03829085279721767
+  ],
+  "peak_allocated_mib": 267.6708984375,
+  "peak_reserved_mib": 276.0
+}
+
