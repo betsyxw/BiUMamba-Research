@@ -1,5 +1,9 @@
 # BiUMamba Research
 
+[English](#english) | [日本語](#日本語)
+
+## English
+
 Private research repository for the master's project:
 
 > **BiUMamba: Bidirectional Selective Scan with Adaptive Fusion and
@@ -16,6 +20,45 @@ Current experimental status:
 Datasets, pretrained weights, checkpoints, NIfTI outputs and credentials are
 intentionally excluded. See [`research/`](research/) for the experiment design,
 environment lock and verified results.
+
+## 日本語
+
+本リポジトリは、修士研究として取り組む以下の研究課題のための非公開リポジトリです。
+
+> **BiUMamba：医用画像セグメンテーションのための、適応的融合を備えた双方向選択的スキャンと自然画像を使用しない事前学習**
+
+本研究では、Vision Mambaを基盤とする医用画像セグメンテーションモデルに対して、次の二つの研究課題を検証します。
+
+1. 従来の走査方法を双方向スキャンへ拡張し、入力に応じて情報を統合するAdaptive Fusion Gateを導入することで、臓器の形状や長距離依存関係をより効果的に表現できるか。
+2. ImageNetなどの自然画像を用いず、FractalDBによる事前学習が医用画像セグメンテーションに有効な初期表現を提供できるか。
+
+### 実験の進捗
+
+- **E1：Original** — VM-UNetのオリジナル4方向スキャンによるベースライン。完了。
+- **E2：Bidirectional + Fixed Sum** — Forward/Backwardの双方向スキャンを固定加算で融合。現在学習中。
+- **E3：Bidirectional + Static Learnable Fusion** — SumとAverageの数学的等価性を確認した後、静的な学習可能融合として検証予定。
+- **E4：Bidirectional + Adaptive Gate** — 入力依存の適応的融合ゲートとして検証予定。
+
+### 実験計画
+
+- 最初にSynapseデータセットを用いてE1〜E4を単一seedで比較し、提案手法の有効性を予備評価します。
+- 改善傾向が確認できた場合、3 seedsおよびACDCデータセットへ実験を拡張します。
+- その後、Scratch、ImageNet、FractalDBの事前学習条件を比較し、FractalDBの有効性を検証します。
+- 主な評価指標はDice、HD95、NSDです。
+
+### 現在確認済みの結果
+
+- E1 VM-UNet Synapse baseline：Mean Dice 約80.05%、Mean HD95 約24.61。
+- 最良checkpoint：Epoch 286付近。
+- 300 epochsの総学習時間：RTX 4090で約15〜16時間。
+
+実験設計、実行環境、設定値および確認済みの結果は[`research/`](research/)にまとめています。
+
+再配布条件と容量の問題を考慮し、データセット、事前学習済み重み、checkpoint、NIfTI形式の出力、および認証情報は本リポジトリに含めていません。
+
+### オリジナル実装について
+
+本研究はVM-UNetの公式実装を基盤としています。再現性とライセンス表記を維持するため、以下にオリジナルの英語READMEおよびApache-2.0ライセンスを保持しています。
 
 ## Upstream attribution
 
