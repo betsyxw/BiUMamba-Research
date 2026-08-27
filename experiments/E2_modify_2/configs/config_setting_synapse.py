@@ -1,3 +1,6 @@
+# Author: xuwen
+# Project: BiUMamba Research
+
 from pickle import FALSE
 from torchvision import transforms
 from datasets.dataset import *
