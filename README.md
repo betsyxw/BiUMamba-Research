@@ -14,8 +14,9 @@ Current experimental status:
 - E1: original four-direction VM-UNet baseline — completed.
 - E2: forward/reverse row-major scan with fixed sum — completed; below E1.
 - E2_modify_1: alternating-axis bidirectional scan — 50-epoch screening completed.
-- E2_modify_2: channel-grouped 2D bidirectional scan — 50-epoch screening completed and selected for the first 300-epoch validation, which is currently running.
-- E3/E4: static learnable and adaptive fusion — pending the converged E2_modify_2 result and its Dice/HD95 decision gate.
+- E2_modify_2: channel-grouped 2D bidirectional scan — 300-epoch validation completed; it recovered E2's lost accuracy and passed the Strong Green decision gate.
+- E3: static learnable fusion on E2_modify_2 — smoke test passed and 50-epoch screening is in progress.
+- E4: input-adaptive fusion on the same coverage-preserving structure — pending the E3 screening result.
 - Datasets: Synapse first, ACDC second; FractalDB pre-training pilot follows the directional ablation.
 
 ### Training story and current evidence
@@ -44,6 +45,32 @@ whether the boundary outliers persist after convergence. E1/E2 (300 epochs)
 and E2_modify_1/E2_modify_2 (50 epochs) are not treated as directly comparable
 final results.
 
+### Converged 300-epoch comparison
+
+The official comparison uses the archived checkpoint selected by each training
+run. For E2_modify_2, the training script selected Epoch 297 by minimum training
+loss; the resulting checkpoint achieved `80.2540%` Mean Dice and `21.9206`
+Mean HD95.
+
+| Experiment | Scan and fusion design | Checkpoint epoch | Mean Dice ↑ | Mean HD95 ↓ | Training time | Mean epoch time | Peak GPU memory |
+|---|---|---:|---:|---:|---:|---:|---:|
+| E1 | Original VM-UNet four-direction SS2D + fixed sum | 286 | 80.0488% | 24.6136 | 14 h 49 m | 177.86 s | 14,665 MiB |
+| E2 | Row-major forward/backward + fixed sum | 299 | 78.6080% | 26.1111 | 13 h 42 m | 164.48 s | **10,747 MiB** |
+| **E2_modify_2** | **Channel-grouped horizontal/vertical bidirectional scan + fixed sum** | **297** | **80.2540%** | **21.9206** | **13 h 05 m** | **157.06 s** | 11,016 MiB |
+
+Compared with E1, E2_modify_2 improved Dice by `0.2052` percentage points,
+reduced HD95 by `2.6931` (`10.94%`), reduced training time by `11.69%`, and
+reduced peak GPU memory by `24.88%`. Compared with E2, it recovered `1.6460`
+Dice points and reduced HD95 by `4.1906`. This supports the interpretation that
+E2 failed mainly because it removed vertical coverage, while the grouped-2D
+design preserves two-dimensional context at lower cost than the original
+four-direction implementation. These are single-seed results and are not yet a
+statistical superiority claim.
+
+The complete archive report, overall and per-organ CSV comparisons, and
+structured manifest are available in
+[`research/runs/e2_modify_2_synapse_seed42/`](research/runs/e2_modify_2_synapse_seed42/).
+
 Datasets, pretrained weights, checkpoints, NIfTI outputs and credentials are
 intentionally excluded. See [`research/`](research/) for the experiment design,
 environment lock and verified results.
@@ -64,8 +91,9 @@ environment lock and verified results.
 - **E1：Original** — VM-UNetのオリジナル4方向スキャンによるベースライン。完了。
 - **E2：Bidirectional + Fixed Sum** — Row-majorのForward/Reverseを固定加算で融合。完了したがE1を下回った。
 - **E2_modify_1** — 水平・垂直軸をブロックごとに交互に用いる双方向走査。50 epochのスクリーニング完了。
-- **E2_modify_2** — 各ブロック内でチャネルを水平・垂直グループに分ける二次元双方向走査。50 epochのスクリーニング完了。最初の300 epoch検証候補として選択し、現在実行中。
-- **E3/E4** — 静的学習可能融合とAdaptive Gateは、E2_modify_2の収束結果とDice/HD95の判定後に実施する。
+- **E2_modify_2** — 各ブロック内でチャネルを水平・垂直グループに分ける二次元双方向走査。300 epoch検証が完了し、E2で失われた精度を回復してStrong Green判定を満たした。
+- **E3** — E2_modify_2を基盤とする静的学習可能融合。Smoke testに合格し、50 epochスクリーニングを実行中。
+- **E4** — 同じ二次元被覆を維持した入力依存Adaptive Gate。E3スクリーニング結果の確認後に実施する。
 
 ### 学習過程で得られた知見
 
@@ -90,6 +118,30 @@ Diceが改善し、最終lossが低く、平均epoch時間も約20.16%短縮し�
 検証しています。300 epochのE1/E2と50 epochのスクリーニング結果は、
 最終性能として直接比較しません。
 
+### 300 epoch収束結果の比較
+
+正式比較には、各学習で保存されたcheckpointのテスト結果を使用します。
+E2_modify_2では、学習lossが最小となったEpoch 297が選択され、Mean Dice
+`80.2540%`、Mean HD95 `21.9206`を達成しました。
+
+| 実験 | 走査・融合設計 | Checkpoint epoch | Mean Dice ↑ | Mean HD95 ↓ | 学習時間 | 平均epoch時間 | Peak GPU memory |
+|---|---|---:|---:|---:|---:|---:|---:|
+| E1 | オリジナルVM-UNet 4方向SS2D＋固定加算 | 286 | 80.0488% | 24.6136 | 14時間49分 | 177.86秒 | 14,665 MiB |
+| E2 | Row-major Forward/Backward＋固定加算 | 299 | 78.6080% | 26.1111 | 13時間42分 | 164.48秒 | **10,747 MiB** |
+| **E2_modify_2** | **チャネル分割型水平・垂直双方向走査＋固定加算** | **297** | **80.2540%** | **21.9206** | **13時間05分** | **157.06秒** | 11,016 MiB |
+
+E1と比較すると、E2_modify_2はDiceを`0.2052`ポイント改善し、HD95を
+`2.6931`（`10.94%`）低減しました。また、学習時間を`11.69%`、Peak GPU
+memoryを`24.88%`削減しました。E2と比較すると、Diceを`1.6460`ポイント
+回復し、HD95を`4.1906`改善しました。この結果は、E2の性能低下が主に
+垂直方向の被覆を削除したことに起因し、E2_modify_2が低コストで二次元
+コンテキストを維持できる可能性を支持します。ただし、現段階では単一seed
+の結果であり、統計的な優越性を主張するものではありません。
+
+完全なアーカイブレポート、全体・臓器別比較CSVおよびManifestは
+[`research/runs/e2_modify_2_synapse_seed42/`](research/runs/e2_modify_2_synapse_seed42/)
+に保存しています。
+
 ### 実験計画
 
 - 最初にSynapseデータセットを用いてE1〜E4を単一seedで比較し、提案手法の有効性を予備評価します。
@@ -103,6 +155,7 @@ Diceが改善し、最終lossが低く、平均epoch時間も約20.16%短縮し�
 - 最良checkpoint：Epoch 286付近。
 - 300 epochsの総学習時間：RTX 4090で約15〜16時間。
 - E2 two-path fixed sum：Mean Dice 約78.61%、Mean HD95 約26.11。E1より低いため、転置・垂直方向の被覆を失った影響を次に検証する。
+- E2_modify_2 grouped-2D fixed sum：Mean Dice 80.2540%、Mean HD95 21.9206。E1よりDiceが0.2052ポイント高く、HD95、学習時間およびPeak GPU memoryも改善した。
 
 実験設計、実行環境、設定値および確認済みの結果は[`research/`](research/)にまとめています。
 
