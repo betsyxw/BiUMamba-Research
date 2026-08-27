@@ -2,6 +2,14 @@
 
 [English](#english) | [日本語](#日本語)
 
+**Research author and repository maintainer:** xuwen  
+**GitHub:** [@betsyxw](https://github.com/betsyxw)
+
+Research-specific designs, experiment implementations, ablation records,
+evaluation reports, and reproducibility documentation in this repository are
+maintained by **xuwen**. The original VM-UNet/VMamba code remains attributed to
+its upstream authors under the retained license. See [`AUTHORS.md`](AUTHORS.md).
+
 ## English
 
 Private research repository for the master's project:
@@ -76,6 +84,15 @@ intentionally excluded. See [`research/`](research/) for the experiment design,
 environment lock and verified results.
 
 ## 日本語
+
+**研究者・リポジトリ管理者：** xuwen  
+**GitHub：** [@betsyxw](https://github.com/betsyxw)
+
+本リポジトリに含まれる研究固有の設計、実験実装、アブレーション記録、
+評価レポートおよび再現性資料は、**xuwen**が管理しています。基盤となる
+VM-UNet/VMambaのオリジナルコードの著作権およびクレジットは、保持されて
+いるライセンスに従い原著者に帰属します。詳細は[`AUTHORS.md`](AUTHORS.md)
+を参照してください。
 
 本リポジトリは、修士研究として取り組む以下の研究課題のための非公開リポジトリです。
 
