@@ -60,8 +60,13 @@ design notes, smoke-test programs, and compact test results. It does not
 contain datasets, patient images, NIfTI outputs, checkpoints, pretrained
 weights, archives, SSH keys, tokens, or authentication information.
 
-No full training run has been started for either variant. E2_modify_1 is the
-recommended first screening candidate because it changes fewer components and
-provides the clearest test of whether E2 degraded because vertical coverage
-was removed.
+E2_modify_1 subsequently completed a 50-epoch Synapse screening run with exit
+code 0. It reached mean Dice `0.725396` and mean HD95 `35.579682`, using a
+sampled peak of `10,396 MiB` GPU memory. These are early-screening metrics, not
+a converged comparison with the 300-epoch E1/E2 results. The complete report,
+metrics, manifest, and text logs are stored under
+`experiments/E2_modify_1/results/screen50_seed42/`.
 
+E2_modify_2 has not yet undergone the matched 50-epoch screening run. The next
+decision point is a controlled E2_modify_1 versus E2_modify_2 comparison using
+identical training settings before selecting either variant for 300 epochs.
