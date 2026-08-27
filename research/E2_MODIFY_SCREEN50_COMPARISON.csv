@@ -1,0 +1,6 @@
+metric,e2_modify_1,e2_modify_2,difference_modify2_minus_modify1,preferred
+mean_dice,0.7253960617,0.7507370608,0.0253409991,E2_modify_2
+mean_hd95,35.5796821781,40.4159146076,4.8362324295,E2_modify_1
+final_training_loss,0.1478,0.1307,-0.0171,E2_modify_2
+mean_epoch_seconds,213.81,170.71,-43.10,E2_modify_2
+peak_gpu_memory_mib,10396,11016,620,E2_modify_1
