@@ -74,5 +74,6 @@ mean epoch time of `170.71 s` and sampled peak memory of `11,016 MiB`.
 Compared with E2_modify_1, E2_modify_2 improved Dice by 2.5341 percentage
 points and reduced mean epoch time by 20.16%, but worsened HD95 by 4.8362. The
 full matched comparison is recorded in `research/E2_MODIFY_SCREEN50_COMPARISON.md`.
-E2_modify_2 is recommended as the first 300-epoch candidate, with HD95 treated
-as an explicit risk. No 300-epoch run has been started.
+E2_modify_2 was selected as the first 300-epoch candidate, with HD95 treated
+as an explicit risk. A fresh 300-epoch run has now been started. No final
+300-epoch metric is available yet.
