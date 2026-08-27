@@ -13,9 +13,36 @@ Current experimental status:
 
 - E1: original four-direction VM-UNet baseline — completed.
 - E2: forward/reverse row-major scan with fixed sum — completed; below E1.
-- E2b: coverage-safe horizontal/vertical bidirectional design — audit required.
-- E3/E4: static learnable and adaptive fusion — paused until the coverage audit.
+- E2_modify_1: alternating-axis bidirectional scan — 50-epoch screening completed.
+- E2_modify_2: channel-grouped 2D bidirectional scan — 50-epoch screening completed and selected for the first 300-epoch validation, which is currently running.
+- E3/E4: static learnable and adaptive fusion — pending the converged E2_modify_2 result and its Dice/HD95 decision gate.
 - Datasets: Synapse first, ACDC second; FractalDB pre-training pilot follows the directional ablation.
+
+### Training story and current evidence
+
+E2 reduced the original four SS2D directions to row-major forward/reverse scans.
+It reduced mean epoch time and peak memory, but Dice decreased from `80.05%` to
+`78.61%` and HD95 worsened from `24.61` to `26.11`. This negative control
+suggested that bidirectionality alone was insufficient because the transposed
+vertical scan pair had been removed.
+
+Two coverage-recovery variants were therefore implemented and tested under a
+matched 50-epoch Synapse screening protocol (seed 42, batch size 32, 224x224
+input, and the same initialization and optimization settings):
+
+| Variant | Design | Mean Dice | Mean HD95 | Final loss | Mean epoch time | Peak memory |
+|---|---|---:|---:|---:|---:|---:|
+| E2_modify_1 | Alternating horizontal/vertical bidirectional blocks | 72.54% | **35.58** | 0.1478 | 213.81 s | **10,396 MiB** |
+| E2_modify_2 | Channel-grouped horizontal/vertical bidirectional scan in every block | **75.07%** | 40.42 | **0.1307** | **170.71 s** | 11,016 MiB |
+
+E2_modify_2 was selected for the first full 300-epoch validation because it
+improved Dice by `2.53` percentage points, improved Dice in seven of eight
+organs, reduced final loss, and trained about `20.16%` faster per epoch than
+E2_modify_1. Its HD95 was `4.84` worse, so this is a provisional selection—not
+evidence that the method is already superior. The 300-epoch run will determine
+whether the boundary outliers persist after convergence. E1/E2 (300 epochs)
+and E2_modify_1/E2_modify_2 (50 epochs) are not treated as directly comparable
+final results.
 
 Datasets, pretrained weights, checkpoints, NIfTI outputs and credentials are
 intentionally excluded. See [`research/`](research/) for the experiment design,
@@ -36,8 +63,32 @@ environment lock and verified results.
 
 - **E1：Original** — VM-UNetのオリジナル4方向スキャンによるベースライン。完了。
 - **E2：Bidirectional + Fixed Sum** — Row-majorのForward/Reverseを固定加算で融合。完了したがE1を下回った。
-- **E2b：Coverage-safe Bidirectional Scan** — 水平・垂直方向の被覆を保持する設計を監査・検討する。
-- **E3/E4** — 静的学習可能融合とAdaptive Gateは、走査範囲の監査完了後に実施する。
+- **E2_modify_1** — 水平・垂直軸をブロックごとに交互に用いる双方向走査。50 epochのスクリーニング完了。
+- **E2_modify_2** — 各ブロック内でチャネルを水平・垂直グループに分ける二次元双方向走査。50 epochのスクリーニング完了。最初の300 epoch検証候補として選択し、現在実行中。
+- **E3/E4** — 静的学習可能融合とAdaptive Gateは、E2_modify_2の収束結果とDice/HD95の判定後に実施する。
+
+### 学習過程で得られた知見
+
+E2では、4方向SS2DをRow-majorのForward/Reverseの2方向へ削減しました。
+その結果、計算時間とGPUメモリは減少しましたが、Diceは80.05%から
+78.61%へ低下し、HD95は24.61から26.11へ悪化しました。この負の結果は、
+双方向性だけでは十分ではなく、転置された垂直方向の被覆を削除した影響を
+示唆しています。
+
+そこで、二次元被覆を回復する二つの方式を、同一条件の50 epoch
+スクリーニングで比較しました。
+
+| Variant | 走査設計 | Mean Dice | Mean HD95 | Final loss | 平均epoch時間 | Peak memory |
+|---|---|---:|---:|---:|---:|---:|
+| E2_modify_1 | ブロックごとに水平・垂直の双方向走査を交互に使用 | 72.54% | **35.58** | 0.1478 | 213.81 s | **10,396 MiB** |
+| E2_modify_2 | 各ブロック内で水平・垂直のチャネルグループを使用 | **75.07%** | 40.42 | **0.1307** | **170.71 s** | 11,016 MiB |
+
+E2_modify_2は、E2_modify_1よりDiceが2.53ポイント高く、8臓器中7臓器で
+Diceが改善し、最終lossが低く、平均epoch時間も約20.16%短縮しました。
+一方、HD95は4.84悪化しているため、この選択は暫定的なものです。
+境界の外れ値が収束後にも残るかを確認するため、E2_modify_2を300 epochで
+検証しています。300 epochのE1/E2と50 epochのスクリーニング結果は、
+最終性能として直接比較しません。
 
 ### 実験計画
 
