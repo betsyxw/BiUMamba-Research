@@ -27,4 +27,4 @@ Both variants used the same Synapse split, seed 42, batch size 32, 224x224 input
 
 The original green criterion (higher Dice and lower HD95) was not fully met. E2_modify_2 nevertheless shows the stronger screening signal: Dice improved in seven of eight organs, pancreas improved substantially, and training was about 20% faster. Its HD95 risk is concentrated in several organ/case outliers and must be checked after convergence.
 
-**Recommendation: select E2_modify_2 as the first 300-epoch candidate, with HD95 as an explicit stop/review criterion.** Keep E2_modify_1 archived as the simpler fallback. No 300-epoch run has been started.
+**Decision: E2_modify_2 was selected as the first 300-epoch candidate, with HD95 as an explicit stop/review criterion.** Keep E2_modify_1 archived as the simpler fallback. A fresh 300-epoch E2_modify_2 run has now been started; its final Dice/HD95 are not yet available and must not be inferred from the 50-epoch screen.
