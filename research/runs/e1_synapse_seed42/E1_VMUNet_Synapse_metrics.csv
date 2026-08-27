@@ -1,0 +1,11 @@
+experiment,method,scope,class_id,organ,dice,dice_percent,hd95,checkpoint_label_epoch,completed_epochs,seed,batch_size,input_size,wall_seconds,training_seconds,mean_epoch_seconds,peak_device_memory_mib
+E1,original_four_direction_fixed_sum,overall,mean,Mean,0.8004881192,80.04881192,24.6136121913,286,300,42,32,224x224,56955,53358.59,177.86,14665
+E1,original_four_direction_fixed_sum,organ,1,Aorta,0.857881,85.7881,22.799020,286,300,42,32,224x224,56955,53358.59,177.86,14665
+E1,original_four_direction_fixed_sum,organ,2,Gallbladder,0.682824,68.2824,26.334050,286,300,42,32,224x224,56955,53358.59,177.86,14665
+E1,original_four_direction_fixed_sum,organ,3,Left Kidney,0.850418,85.0418,36.076756,286,300,42,32,224x224,56955,53358.59,177.86,14665
+E1,original_four_direction_fixed_sum,organ,4,Right Kidney,0.789200,78.9200,37.934594,286,300,42,32,224x224,56955,53358.59,177.86,14665
+E1,original_four_direction_fixed_sum,organ,5,Liver,0.938822,93.8822,23.321075,286,300,42,32,224x224,56955,53358.59,177.86,14665
+E1,original_four_direction_fixed_sum,organ,6,Pancreas,0.609000,60.9000,9.906766,286,300,42,32,224x224,56955,53358.59,177.86,14665
+E1,original_four_direction_fixed_sum,organ,7,Spleen,0.878004,87.8004,22.722571,286,300,42,32,224x224,56955,53358.59,177.86,14665
+E1,original_four_direction_fixed_sum,organ,8,Stomach,0.797755,79.7755,17.814066,286,300,42,32,224x224,56955,53358.59,177.86,14665
+
