@@ -1,0 +1,46 @@
+{
+  "experiment_id": "E2_modify_2_full300_seed42_20260827_vmunetenv",
+  "formal_name": "Channel-Grouped 2D Bidirectional Scan with Fixed Sum",
+  "status": "completed",
+  "exit_code": 0,
+  "dataset": "Synapse",
+  "completed_epochs": 300,
+  "seed": 42,
+  "batch_size": 32,
+  "input_size": "224x224",
+  "checkpoint_selection": "minimum_training_loss",
+  "checkpoint_label_epoch": 297,
+  "official_checkpoint_test": {
+    "mean_dice": 0.8025402376811894,
+    "mean_hd95": 21.92055602481082,
+    "test_seconds": 641.63
+  },
+  "supplementary_epoch300_current_weight_validation": {
+    "mean_dice": 0.8032517249303044,
+    "mean_hd95": 21.064640826524787,
+    "validation_seconds": 623.91
+  },
+  "timing": {
+    "training_seconds": 47118.51,
+    "mean_epoch_seconds": 157.0617,
+    "wall_seconds": 49926.612
+  },
+  "gpu": {
+    "peak_sampled_memory_mib": 11016,
+    "peak_utilization_percent": 100,
+    "sample_interval_seconds": 30
+  },
+  "source": {
+    "repo": "/workspace/repos/VM-UNet_E2_modify_2",
+    "branch": "experiment/e2c-grouped-2d",
+    "commit": "62fc67c",
+    "tag": "E2_modify_2_smoke_pass",
+    "snapshot": "/workspace/source_versions/E2_modify_2/VM-UNet_E2_modify_2_full300_62fc67c_source.tar.gz",
+    "snapshot_sha256": "571c80f0dfa57210a1023c0a5d2489a9bfaae2e3b89c93b21b0142ddd0f17109"
+  },
+  "remote_run_directory": "/workspace/runs/e2_modify_2_full300_seed42_20260827_vmunetenv",
+  "nifti_output_files": 36,
+  "test_cases": 12,
+  "nsd_available": false,
+  "publication_status": "single_seed_preliminary_result"
+}
