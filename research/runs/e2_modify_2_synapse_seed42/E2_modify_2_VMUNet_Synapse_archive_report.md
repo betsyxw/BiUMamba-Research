@@ -1,5 +1,11 @@
 # E2_modify_2 VM-UNet Synapse Archive Report
 
+Research Author and Repository Maintainer: xuwen
+Affiliation: Japan Advanced Institute of Science and Technology (JAIST)
+GitHub: @betsyxw
+
+Research-specific designs, experiment implementations, ablation records, evaluation reports, and reproducibility documentation in this repository are maintained by xuwen. The original VM-UNet/VMamba code remains attributed to its upstream authors under the retained license. See AUTHORS.md.
+
 ## 1. Archive status
 
 - Experiment: **E2_modify_2 / E2b — Channel-Grouped 2D Bidirectional Scan with Fixed Sum**
