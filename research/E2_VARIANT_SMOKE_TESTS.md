@@ -67,6 +67,12 @@ a converged comparison with the 300-epoch E1/E2 results. The complete report,
 metrics, manifest, and text logs are stored under
 `experiments/E2_modify_1/results/screen50_seed42/`.
 
-E2_modify_2 has not yet undergone the matched 50-epoch screening run. The next
-decision point is a controlled E2_modify_1 versus E2_modify_2 comparison using
-identical training settings before selecting either variant for 300 epochs.
+E2_modify_2 subsequently completed the matched 50-epoch screening run with
+exit code 0. It reached mean Dice `0.750737` and mean HD95 `40.415915`, with a
+mean epoch time of `170.71 s` and sampled peak memory of `11,016 MiB`.
+
+Compared with E2_modify_1, E2_modify_2 improved Dice by 2.5341 percentage
+points and reduced mean epoch time by 20.16%, but worsened HD95 by 4.8362. The
+full matched comparison is recorded in `research/E2_MODIFY_SCREEN50_COMPARISON.md`.
+E2_modify_2 is recommended as the first 300-epoch candidate, with HD95 treated
+as an explicit risk. No 300-epoch run has been started.
