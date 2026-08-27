@@ -1,0 +1,10 @@
+scope,class_id,organ,dice,hd95,epochs,seed,batch_size,input_size,scan_fusion
+overall,,Mean,0.7507370608,40.4159146076,50,42,32,224x224,grouped_2d_bidirectional_sum
+organ,1,Aorta,0.816129,26.047898,50,42,32,224x224,grouped_2d_bidirectional_sum
+organ,2,Gallbladder,0.633108,46.447527,50,42,32,224x224,grouped_2d_bidirectional_sum
+organ,3,Left kidney,0.788762,70.177064,50,42,32,224x224,grouped_2d_bidirectional_sum
+organ,4,Right kidney,0.746203,59.991509,50,42,32,224x224,grouped_2d_bidirectional_sum
+organ,5,Liver,0.930443,25.007745,50,42,32,224x224,grouped_2d_bidirectional_sum
+organ,6,Pancreas,0.549673,13.664092,50,42,32,224x224,grouped_2d_bidirectional_sum
+organ,7,Spleen,0.859411,60.333604,50,42,32,224x224,grouped_2d_bidirectional_sum
+organ,8,Stomach,0.682168,21.657878,50,42,32,224x224,grouped_2d_bidirectional_sum
