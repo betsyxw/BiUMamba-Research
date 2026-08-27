@@ -2,7 +2,7 @@
 
 [English](#english) | [日本語](#日本語)
 
-**Research author and repository maintainer:** xuwen  
+**Research author and repository maintainer:** xuwen  from JAIST
 **GitHub:** [@betsyxw](https://github.com/betsyxw)
 
 Research-specific designs, experiment implementations, ablation records,
