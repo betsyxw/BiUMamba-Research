@@ -1,5 +1,8 @@
 """GPU smoke test for E2_modify_2 channel-grouped 2D bidirectional SS2D."""
 
+# Author: xuwen
+# Project: BiUMamba Research
+
 import json
 import sys
 from pathlib import Path
