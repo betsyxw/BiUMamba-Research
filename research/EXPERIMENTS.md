@@ -7,9 +7,9 @@
 | E1 | Original VMamba four-direction cross-scan | Fixed sum | Reproduced baseline | Complete |
 | E2 | Forward row-major + reverse row-major | Fixed sum | Test bidirectionality and two-path coverage | Complete; Red |
 | E2_modify_1 | Alternating-axis horizontal/vertical bidirectional blocks | Fixed sum | Restore 2D coverage across blocks | 50-epoch screen complete |
-| E2_modify_2 | Channel-grouped horizontal/vertical bidirectional scan | Fixed sum | Restore 2D coverage inside every block | 50-epoch screen complete; 300-epoch run active |
-| E3 | Coverage-safe design selected after convergence | Global static learnable weights | Separate learnable weighting from input adaptation | Pending E2_modify_2 decision gate |
-| E4 | Coverage-safe design selected after convergence | Input-dependent adaptive gate | Test the proposed adaptive fusion | Pending E2_modify_2 decision gate |
+| E2_modify_2 | Channel-grouped horizontal/vertical bidirectional scan | Fixed sum | Restore 2D coverage inside every block | 300-epoch run complete; current reference |
+| E3 | E2_modify_2 coverage-safe grouped-2D design | Global static learnable weights | Separate learnable weighting from input adaptation | 50- and 300-epoch runs complete; neutral/negative ablation |
+| E4 | E2_modify_2 coverage-safe grouped-2D design | Input-dependent adaptive gate | Test the proposed adaptive fusion | Next: smoke test and matched 50-epoch gate |
 
 The initially proposed E3 `average` is not scheduled for a full 300-epoch run
 until an equivalence test is completed. Because fusion is followed immediately
@@ -45,6 +45,13 @@ However, its HD95 was worse (`40.415915` versus `35.579682`), indicating a
 boundary-outlier risk. E2_modify_2 was therefore selected for a fresh 300-epoch
 validation, but the selection remains provisional until converged Dice and
 HD95 are available.
+
+The E2_modify_2 300-epoch run subsequently reached Dice `0.802540` and HD95
+`21.920556`, confirming the grouped-2D design as the current reference. E3
+static fusion reached Dice `0.800049` and HD95 `25.566945` at 300 epochs. Its
+static weights remained close to equal fusion, and it did not outperform
+E2_modify_2. E4 must therefore test the distinct input-dependent adaptation
+hypothesis and pass a matched 50-epoch gate before any full run.
 
 ## Pre-training pilot
 
