@@ -1,10 +1,4 @@
 # Research record
-Research Author and Repository Maintainer: xuwen
-Affiliation: Japan Advanced Institute of Science and Technology (JAIST)
-GitHub: @betsyxw
-
-Research-specific designs, experiment implementations, ablation records, evaluation reports, and reproducibility documentation in this repository are maintained by xuwen. The original VM-UNet/VMamba code remains attributed to its upstream authors under the retained license. See AUTHORS.md.
-
 
 This directory stores lightweight, reproducible experiment metadata. Large or
 restricted artifacts remain outside GitHub.
@@ -17,6 +11,12 @@ restricted artifacts remain outside GitHub.
 - `environment/`: frozen package versions used on RunPod.
 - `runs/e2_synapse_seed42/`: complete E2 report, CSV metrics, manifests, and
   text logs. Checkpoints and NIfTI outputs are excluded.
+- `runs/e1_synapse_seed42/`: archived E1 baseline report and metrics.
+- `runs/e2_modify_2_synapse_seed42/`: converged grouped-2D fixed-fusion report,
+  overall/per-organ comparisons, and manifest.
+- `runs/E3_fusion_50_epochs/`: E3 static-fusion 50-epoch screening record.
+- `runs/E3_fusion_300_epochs/`: E3 full-run archive, five-experiment overall
+  and per-organ comparisons, manifest, and trilingual PPT summary.
 
 The authoritative E2 source snapshot was created from RunPod branch
 `experiment/e2-bidirectional-fixed-sum`, commit
