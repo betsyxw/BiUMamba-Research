@@ -70,3 +70,21 @@ Status: complete (seed 42, 50 epochs, exit status 0).
 This screening result must not be ranked directly against the 300-epoch rows.
 The report and overall/per-organ CSV files are stored in
 [`runs/E3_fusion_50_epochs/`](runs/E3_fusion_50_epochs/).
+
+## E3 — static learnable fusion full run
+
+Status: complete (seed 42, 300 epochs, exit status 0).
+
+- Checkpoint epoch: 286
+- Mean Dice: 0.800049 (80.0049%)
+- Mean HD95: 25.5669
+- Training-only duration: 11 h 35 min 28 s
+- Mean training time per epoch: 139.09 s
+- Peak sampled device memory: 12,958 MiB
+- Relative to E2_modify_2: Dice -0.2491 percentage points; HD95 +3.6464
+- Per-organ Dice: improved for pancreas and stomach; decreased for six organs
+- Decision: E3 does not replace E2_modify_2; retain as a negative/neutral ablation
+
+The full archive, five-experiment comparison, per-organ CSV, manifest and
+trilingual presentation summary are stored in
+[`runs/E3_fusion_300_epochs/`](runs/E3_fusion_300_epochs/).
