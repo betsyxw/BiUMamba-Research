@@ -1,0 +1,7 @@
+metric,e2_modify_2_screen50,e3_static_fusion_screen50,e3_minus_e2_modify_2,relative_change_percent,preferred
+mean_dice,0.7507370608,0.7567725296,0.0060354688,0.8040,E3
+mean_dice_percentage_points,75.07370608,75.67725296,0.60354688,,E3
+mean_hd95,40.4159146076,36.0623788848,-4.3535357228,-10.7727,E3
+training_seconds,8535.29,7632.87,-902.42,-10.5728,E3
+mean_epoch_seconds,170.7058,152.6574,-18.0484,-10.5728,E3
+peak_sampled_gpu_memory_mib,11016,12958,1942,17.6289,E2_modify_2
