@@ -1,0 +1,5 @@
+experiment,method,epochs,comparison_scope,mean_dice,dice_percent,mean_hd95,checkpoint_epoch,training_seconds,mean_epoch_seconds,wall_seconds,peak_sampled_gpu_memory_mib
+E1,Original VM-UNet four-direction SS2D fixed sum,300,full-run,0.8004881192,80.04881192,24.6136121913,286,53358.59,177.86,56955,14665
+E2,Row-major forward/backward fixed sum,300,full-run,0.7860797383,78.60797383,26.1111351219,299,49345.06,164.48,52211,10747
+E2_modify_2,Channel-grouped horizontal/vertical bidirectional fixed sum,300,full-run,0.8025402377,80.25402377,21.9205560248,297,47118.51,157.0617,49926.612,11016
+E3,Channel-grouped horizontal/vertical bidirectional static learnable fusion,50,screening-only,0.7567725296,75.67725296,36.0623788848,48,7632.87,152.6574,8989,12958
