@@ -1,0 +1,38 @@
+{
+  "research_author": "xuwen",
+  "affiliation": "Japan Advanced Institute of Science and Technology (JAIST)",
+  "experiment_id": "e3_static_fusion_screen50_seed42_20260828_vmunetenv",
+  "formal_name": "Channel-Grouped 2D Bidirectional Scan with Static Learnable Fusion",
+  "status": "completed",
+  "exit_code": 0,
+  "dataset": "Synapse",
+  "completed_epochs": 50,
+  "seed": 42,
+  "batch_size": 32,
+  "input_size": "224x224",
+  "checkpoint_selection": "minimum_training_loss",
+  "checkpoint_epoch": 48,
+  "checkpoint_test": {
+    "mean_dice": 0.7567725295666781,
+    "mean_hd95": 36.0623788847899,
+    "test_seconds": 657.31
+  },
+  "timing": {
+    "training_seconds": 7632.87,
+    "mean_epoch_seconds": 152.6574,
+    "approximate_log_wall_seconds": 8989
+  },
+  "gpu": {
+    "peak_sampled_memory_mib": 12958,
+    "peak_utilization_percent": 100,
+    "sample_interval_seconds": 30
+  },
+  "source": {
+    "repo": "/workspace/repos/VM-UNet_E3_static_fusion",
+    "branch": "experiment/e3-static-learnable-fusion",
+    "commit": "25bde91e5a6b5f55432b62eb0b1e760ea29c437c"
+  },
+  "test_cases": 12,
+  "nsd_available": false,
+  "decision": "passes_short_screening_gate; recommend matched 300-epoch run before claims"
+}
