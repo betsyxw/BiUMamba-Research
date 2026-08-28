@@ -1,13 +1,5 @@
 # Verified results
 
-Research Author and Repository Maintainer: xuwen
-Affiliation: Japan Advanced Institute of Science and Technology (JAIST)
-GitHub: @betsyxw
-
-Research-specific designs, experiment implementations, ablation records, evaluation reports, and reproducibility documentation in this repository are maintained by xuwen. The original VM-UNet/VMamba code remains attributed to its upstream authors under the retained license. See AUTHORS.md.
-
-
-
 Only completed measurements are recorded here. Ongoing experiments are never
 filled with estimates.
 
@@ -46,3 +38,35 @@ Status: complete (seed 42, 300 epochs, exit status 0).
 
 The complete report, per-organ comparison, manifests, and logs are stored in
 [`runs/e2_synapse_seed42/`](runs/e2_synapse_seed42/).
+
+## E2_modify_2 — grouped 2D bidirectional fixed sum
+
+Status: complete (seed 42, 300 epochs, exit status 0).
+
+- Checkpoint epoch: 297
+- Mean Dice: 0.802540 (80.2540%)
+- Mean HD95: 21.9206
+- Mean training time per epoch: 157.06 s
+- Peak sampled device memory: 11,016 MiB
+- Relative to E1: Dice +0.2052 percentage points; HD95 -2.6931
+- Decision: Strong Green — preserve grouped horizontal/vertical coverage for E3/E4
+
+The archive and comparisons are stored in
+[`runs/e2_modify_2_synapse_seed42/`](runs/e2_modify_2_synapse_seed42/).
+
+## E3 — static learnable fusion screening
+
+Status: complete (seed 42, 50 epochs, exit status 0).
+
+- Checkpoint epoch: 48
+- Mean Dice: 0.756773 (75.6773%)
+- Mean HD95: 36.0624
+- Mean training time per epoch: 152.66 s
+- Peak sampled device memory: 12,958 MiB
+- Matched E2_modify_2 50-epoch result: Dice 75.0737%, HD95 40.4159
+- Matched change: Dice +0.6035 percentage points; HD95 -4.3535
+- Decision: passes the short-screening gate; a matched 300-epoch run is justified
+
+This screening result must not be ranked directly against the 300-epoch rows.
+The report and overall/per-organ CSV files are stored in
+[`runs/E3_fusion_50_epochs/`](runs/E3_fusion_50_epochs/).
