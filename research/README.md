@@ -17,6 +17,8 @@ restricted artifacts remain outside GitHub.
 - `runs/E3_fusion_50_epochs/`: E3 static-fusion 50-epoch screening record.
 - `runs/E3_fusion_300_epochs/`: E3 full-run archive, five-experiment overall
   and per-organ comparisons, manifest, and trilingual PPT summary.
+- `runs/E4_version_1_full300/`: E4 full-run archive, six-experiment overall
+  comparison, eight-organ comparison, metrics, and structured manifest.
 
 The authoritative E2 source snapshot was created from RunPod branch
 `experiment/e2-bidirectional-fixed-sum`, commit

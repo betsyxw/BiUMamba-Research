@@ -1,6 +1,6 @@
 # Per-organ Ablation Summary for Midterm Presentation
 
-**Research Author and Repository Maintainer:** xuwen  
+**Research Author and Repository Maintainer:** xuwen
 **Affiliation:** Japan Advanced Institute of Science and Technology (JAIST)
 
 > Reading rule: Dice ↑ is better; HD95 ↓ is better. `pp` means percentage points.

@@ -88,3 +88,24 @@ Status: complete (seed 42, 300 epochs, exit status 0).
 The full archive, five-experiment comparison, per-organ CSV, manifest and
 trilingual presentation summary are stored in
 [`runs/E3_fusion_300_epochs/`](runs/E3_fusion_300_epochs/).
+
+## E4 Version 1 — constrained adaptive gate full run
+
+Status: complete (seed 42, 300 epochs, exit status 0; Red decision).
+
+- Checkpoint epoch: 285, selected by minimum training loss
+- Mean Dice: 0.709089 (70.9089%)
+- Mean HD95: 35.3190
+- Training-only duration: 9 h 49 min 34 s
+- Mean training time per epoch: 117.91 s
+- Peak sampled device memory: 13,534 MiB
+- Relative to E2_modify_2: Dice -9.3451 percentage points; HD95 +13.3985
+- Per-organ Dice: decreased for all eight evaluated organs
+- Reproducibility warning: Epoch-50 loss was 0.7409 in the full run versus
+  0.1146 in the screening run despite matching logged settings
+- Decision: retain E4 as a negative ablation; audit the screen/full mismatch
+  before another full run
+
+The E4 archive, six-experiment overall comparison, eight-organ comparison,
+metrics and structured manifest are stored in
+[`runs/E4_version_1_full300/`](runs/E4_version_1_full300/).

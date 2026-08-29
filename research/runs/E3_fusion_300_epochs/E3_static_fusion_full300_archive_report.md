@@ -1,6 +1,6 @@
 # E3 Static Learnable Fusion - 300-Epoch Archive and Comparison Report
 
-**Research Author and Repository Maintainer:** xuwen  
+**Research Author and Repository Maintainer:** xuwen
 **Affiliation:** Japan Advanced Institute of Science and Technology (JAIST)
 
 ## 1. Archive status

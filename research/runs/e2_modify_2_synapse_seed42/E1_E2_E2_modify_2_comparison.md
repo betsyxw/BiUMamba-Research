@@ -27,4 +27,3 @@ All three results use the same Synapse split, seed 42, batch size 32, 224 × 224
 E2_modify_2 passes the predeclared **Strong Green** gate. The next justified step is to implement the static learnable fusion control and the input-adaptive gate on the coverage-preserving grouped-2D structure, first with a smoke test and short screening run.
 
 The current result is single-seed evidence and must not yet be presented as a statistically established improvement.
-

@@ -1,0 +1,10 @@
+Author,Experiment,Epochs,Seed,Organ,Class,Dice,HD95,Mean_Epoch_Time_s,Training_Time_s,Peak_Memory_MiB
+xuwen,E4_version_1_full300,300,42,Mean,all,0.7090894841,35.3190336018,117.9129,35373.86,13534
+xuwen,E4_version_1_full300,300,42,Aorta,1,0.785798,17.723681,,,
+xuwen,E4_version_1_full300,300,42,Gallbladder,2,0.583896,38.422510,,,
+xuwen,E4_version_1_full300,300,42,Left kidney,3,0.767140,74.554004,,,
+xuwen,E4_version_1_full300,300,42,Right kidney,4,0.651852,52.255843,,,
+xuwen,E4_version_1_full300,300,42,Liver,5,0.928237,21.404258,,,
+xuwen,E4_version_1_full300,300,42,Pancreas,6,0.443075,19.299761,,,
+xuwen,E4_version_1_full300,300,42,Spleen,7,0.857250,33.395191,,,
+xuwen,E4_version_1_full300,300,42,Stomach,8,0.655467,25.497020,,,

@@ -9,7 +9,7 @@
 | E2_modify_1 | Alternating-axis horizontal/vertical bidirectional blocks | Fixed sum | Restore 2D coverage across blocks | 50-epoch screen complete |
 | E2_modify_2 | Channel-grouped horizontal/vertical bidirectional scan | Fixed sum | Restore 2D coverage inside every block | 300-epoch run complete; current reference |
 | E3 | E2_modify_2 coverage-safe grouped-2D design | Global static learnable weights | Separate learnable weighting from input adaptation | 50- and 300-epoch runs complete; neutral/negative ablation |
-| E4 | E2_modify_2 coverage-safe grouped-2D design | Input-dependent adaptive gate | Test the proposed adaptive fusion | Next: smoke test and matched 50-epoch gate |
+| E4 | E2_modify_2 coverage-safe grouped-2D design | Constrained sample/channel adaptive gate | Test the proposed adaptive fusion | 50- and 300-epoch runs complete; Red, reproducibility audit required |
 
 The initially proposed E3 `average` is not scheduled for a full 300-epoch run
 until an equivalence test is completed. Because fusion is followed immediately
@@ -52,6 +52,13 @@ static fusion reached Dice `0.800049` and HD95 `25.566945` at 300 epochs. Its
 static weights remained close to equal fusion, and it did not outperform
 E2_modify_2. E4 must therefore test the distinct input-dependent adaptation
 hypothesis and pass a matched 50-epoch gate before any full run.
+
+E4 Version 1 subsequently completed 300 epochs with Dice `0.709089` and HD95
+`35.319034`. It did not outperform E2_modify_2 and lost Dice for all eight
+organs. Its full-run trajectory also diverged sharply from the favorable
+50-epoch screening trajectory despite matching logged settings. E4 is retained
+as a negative ablation while initialization, source identity, pretrained-weight
+loading and deterministic execution are audited.
 
 ## Pre-training pilot
 

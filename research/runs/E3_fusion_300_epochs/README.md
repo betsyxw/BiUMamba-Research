@@ -1,6 +1,6 @@
 # E3 Static Fusion — 300-Epoch Archive
 
-**Research Author and Repository Maintainer:** xuwen  
+**Research Author and Repository Maintainer:** xuwen
 **Affiliation:** Japan Advanced Institute of Science and Technology (JAIST)
 
 E3 uses the coverage-preserving channel-grouped horizontal/vertical

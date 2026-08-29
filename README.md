@@ -27,7 +27,7 @@ Current experimental status:
 - E2_modify_1: alternating-axis bidirectional scan — 50-epoch screening completed.
 - E2_modify_2: channel-grouped 2D bidirectional scan — 300-epoch validation completed; it recovered E2's lost accuracy and passed the Strong Green decision gate.
 - E3: static learnable fusion on E2_modify_2 — 50-epoch screening and the full 300-epoch run completed; the final result did not outperform E2_modify_2.
-- E4: input-adaptive fusion on the same coverage-preserving structure — next, subject to smoke testing and a matched 50-epoch gate.
+- E4: constrained sample/channel adaptive gate on the same coverage-preserving structure — 50-epoch screening and 300-epoch full run completed; the full run was a Red result and exposed a screen/full reproducibility mismatch.
 - Datasets: Synapse first, ACDC second; FractalDB pre-training pilot follows the directional ablation.
 
 ### Training story and current evidence
@@ -69,6 +69,7 @@ Mean HD95.
 | E2 | Row-major forward/backward + fixed sum | 299 | 78.6080% | 26.1111 | 13 h 42 m | 164.48 s | **10,747 MiB** |
 | **E2_modify_2** | **Channel-grouped horizontal/vertical bidirectional scan + fixed sum** | **297** | **80.2540%** | **21.9206** | **13 h 05 m** | **157.06 s** | 11,016 MiB |
 | E3 | Channel-grouped horizontal/vertical bidirectional scan + static learnable fusion | 286 | 80.0049% | 25.5669 | 11 h 35 m | **139.09 s** | 12,958 MiB |
+| E4 Version 1 | Channel-grouped horizontal/vertical bidirectional scan + constrained adaptive gate | 285 | 70.9089% | 35.3190 | 9 h 49 m | **117.91 s** | 13,534 MiB |
 
 Compared with E1, E2_modify_2 improved Dice by `0.2052` percentage points,
 reduced HD95 by `2.6931` (`10.94%`), reduced training time by `11.69%`, and
@@ -95,6 +96,19 @@ is insufficient. E2_modify_2 remains the current reference model.
 The E3 full-run archive, five-experiment overall comparison, per-organ CSV,
 manifest, and Chinese/English/Japanese presentation summary are available in
 [`research/runs/E3_fusion_300_epochs/`](research/runs/E3_fusion_300_epochs/).
+
+E4 Version 1 reached `70.9089%` Mean Dice and `35.3190` Mean HD95. Compared
+with E2_modify_2, Dice decreased by `9.3451` percentage points and HD95
+worsened by `13.3985`; all eight organs lost Dice. Although the mean epoch
+time was `24.93%` shorter, peak memory increased by `22.86%`. Moreover, the
+full run's Epoch-50 loss (`0.7409`) diverged sharply from the favorable
+screening run (`0.1146`) despite matching logged settings. E4 is therefore a
+negative ablation, and its initialization/determinism mismatch must be audited
+before another full run. E2_modify_2 remains the current reference model.
+
+The E4 archive, six-experiment overall comparison, eight-organ comparison and
+manifest are available in
+[`research/runs/E4_version_1_full300/`](research/runs/E4_version_1_full300/).
 
 ### E3 50-epoch screening result
 
@@ -144,7 +158,7 @@ VM-UNet/VMambaのオリジナルコードの著作権およびクレジットは
 - **E2_modify_1** — 水平・垂直軸をブロックごとに交互に用いる双方向走査。50 epochのスクリーニング完了。
 - **E2_modify_2** — 各ブロック内でチャネルを水平・垂直グループに分ける二次元双方向走査。300 epoch検証が完了し、E2で失われた精度を回復してStrong Green判定を満たした。
 - **E3** — E2_modify_2を基盤とする静的学習可能融合。50 epochスクリーニングおよび300 epochのFull runが完了したが、最終結果はE2_modify_2を上回らなかった。
-- **E4** — 同じ二次元被覆を維持した入力依存Adaptive Gate。次にSmoke testと同一条件50 epochスクリーニングを実施する。
+- **E4** — 同じ二次元被覆を維持したサンプル・チャネル依存Adaptive Gate。50 epochスクリーニングと300 epoch Full runが完了したが、Full runはRed判定となり、screen/full間の再現性不一致が確認された。
 
 ### 学習過程で得られた知見
 
@@ -181,6 +195,7 @@ E2_modify_2では、学習lossが最小となったEpoch 297が選択され、Me
 | E2 | Row-major Forward/Backward＋固定加算 | 299 | 78.6080% | 26.1111 | 13時間42分 | 164.48秒 | **10,747 MiB** |
 | **E2_modify_2** | **チャネル分割型水平・垂直双方向走査＋固定加算** | **297** | **80.2540%** | **21.9206** | **13時間05分** | **157.06秒** | 11,016 MiB |
 | E3 | チャネル分割型水平・垂直双方向走査＋静的学習可能融合 | 286 | 80.0049% | 25.5669 | 11時間35分 | **139.09秒** | 12,958 MiB |
+| E4 Version 1 | チャネル分割型水平・垂直双方向走査＋制約付きAdaptive Gate | 285 | 70.9089% | 35.3190 | 9時間49分 | **117.91秒** | 13,534 MiB |
 
 E1と比較すると、E2_modify_2はDiceを`0.2052`ポイント改善し、HD95を
 `2.6931`（`10.94%`）低減しました。また、学習時間を`11.69%`、Peak GPU
@@ -206,6 +221,19 @@ HD95は`3.6464`悪化しました。Diceが向上したのは膵臓と胃のみ�
 E3 Full runの完全レポート、5実験の全体比較、臓器別CSV、Manifest、および
 中日英3言語の発表用要約は
 [`research/runs/E3_fusion_300_epochs/`](research/runs/E3_fusion_300_epochs/)
+に保存しています。
+
+E4 Version 1の300 epoch Full runでは、Mean Dice `70.9089%`、Mean HD95
+`35.3190`となりました。E2_modify_2と比較するとDiceは`9.3451`ポイント
+低下し、HD95は`13.3985`悪化し、8臓器すべてでDiceが低下しました。
+平均epoch時間は`24.93%`短縮しましたが、Peak memoryは`22.86%`増加しました。
+また、同じ設定として記録された50 epoch screeningとFull runでEpoch 50の
+lossが`0.1146`対`0.7409`と大きく異なりました。したがってE4は負の
+アブレーションとして保持し、再実行前に初期化と決定性を監査します。
+現時点の参照モデルはE2_modify_2です。
+
+E4の完全レポート、6実験の全体比較、8臓器別CSVおよびManifestは
+[`research/runs/E4_version_1_full300/`](research/runs/E4_version_1_full300/)
 に保存しています。
 
 ### E3 50 epochスクリーニング結果
@@ -241,6 +269,7 @@ E2_modify_2と直接順位付けするものではありません。E3を300 epo
 - E2_modify_2 grouped-2D fixed sum：Mean Dice 80.2540%、Mean HD95 21.9206。E1よりDiceが0.2052ポイント高く、HD95、学習時間およびPeak GPU memoryも改善した。
 - E3 static learnable fusion（50 epoch screening）：Mean Dice 75.6773%、Mean HD95 36.0624。同一50 epoch条件のE2_modify_2よりDiceが0.6035ポイント高く、HD95が4.3535低い。300 epoch検証へ進む予備的根拠が得られた。
 - E3 static learnable fusion（300 epoch）：Mean Dice 80.0049%、Mean HD95 25.5669。E2_modify_2を上回らず、静的融合のみでは追加改善が得られないことを示すアブレーション結果となった。
+- E4 adaptive gate（300 epoch）：Mean Dice 70.9089%、Mean HD95 35.3190。E2_modify_2を下回り、screen/full学習軌跡の不一致を確認したためRed判定とした。
 
 実験設計、実行環境、設定値および確認済みの結果は[`research/`](research/)にまとめています。
 

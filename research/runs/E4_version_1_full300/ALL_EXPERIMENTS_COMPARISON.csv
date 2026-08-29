@@ -1,0 +1,7 @@
+Author,Experiment,Description,Epochs,Seed,Mean_Dice,Mean_Dice_Percent,Mean_HD95,Training_Time_s,Training_Time_h,Mean_Epoch_Time_s,Peak_Memory_MiB,Comparison_Note
+xuwen,E1,Original VM-UNet four-direction SS2D,300,42,0.8004881192,80.0488,24.6136121913,53358.59,14.8218,177.8620,14665,Full run
+xuwen,E2,Row-only forward/backward fixed sum,300,42,0.7860797383,78.6080,26.1111351219,49345.06,13.7070,164.4835,10747,Full run
+xuwen,E2_modify_2,Channel-grouped 2D bidirectional fixed fusion,300,42,0.8025402377,80.2540,21.9205560248,47118.51,13.0885,157.0617,11016,Current strongest candidate
+xuwen,E3_screen50,Static learnable fusion screening,50,42,0.7567725296,75.6773,36.0623788848,7632.87,2.1202,152.6574,12958,Screening only; not directly comparable to 300 epochs
+xuwen,E3_full300,Static learnable fusion,300,42,0.8000492093,80.0049,25.5669445719,41727.53,11.5910,139.0918,12958,Full run
+xuwen,E4_version_1_full300,Constrained residual sample/channel adaptive gate,300,42,0.7090894841,70.9089,35.3190336018,35373.86,9.8261,117.9129,13534,Red result; screen/full trajectory mismatch requires audit
