@@ -109,3 +109,33 @@ Status: complete (seed 42, 300 epochs, exit status 0; Red decision).
 The E4 archive, six-experiment overall comparison, eight-organ comparison,
 metrics and structured manifest are stored in
 [`runs/E4_version_1_full300/`](runs/E4_version_1_full300/).
+
+## E4 Version 2-B — stabilized adaptive gate screening
+
+Status: complete (seed 42, 50 epochs, exit status 0; negative/inconclusive
+accuracy decision).
+
+- Checkpoint epoch: 50, selected by held-out validation Dice with HD95 tie-break
+- Mean Dice: 0.749931 (74.9931%)
+- Mean HD95: 37.9087
+- Training-only duration: 1 h 21 min 30 s
+- End-to-end wall time: 1 h 48 min 29 s
+- Mean training time per epoch: 97.81 s
+- Peak allocated GPU memory: 11,499.30 MiB
+- Peak reserved GPU memory: 12,578 MiB
+- Final training loss: 0.1046
+- Stabilization changes: `0.1x` gate learning rate, five frozen gate epochs,
+  alpha ramp `0 -> 0.25`, gradient clipping `1.0`, equal-fusion regularization,
+  context normalization, temperature scaling, and persistent alpha checkpoints
+- Decision: the engineering stabilization succeeded, but the accuracy result
+  does not justify a 300-epoch extension; E2_modify_2 remains the main model
+
+Protocol warning: this run trained on 1,778 slices and reserved 433 slices for
+held-out validation. Earlier E1-E4 runs trained on all 2,211 slices, so E4
+Version 2-B is not a controlled architecture comparison against those runs.
+The seven-experiment table is provided for traceability and is explicitly
+marked as protocol-confounded.
+
+The archive report, overall and per-organ CSV files, verified workbook,
+manifest, and negative-ablation/stability analysis are stored in
+[`runs/E4_v2_stabilized_b_epoch50/`](runs/E4_v2_stabilized_b_epoch50/).
