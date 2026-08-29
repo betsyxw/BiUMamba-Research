@@ -1,0 +1,8 @@
+Author,Experiment,Description,Epochs,Protocol,Seed,Mean_Dice,Mean_Dice_Percent,Mean_HD95,Training_Time_s,Training_Time_h,Mean_Epoch_Time_s,Peak_Memory_MiB,Comparison_Note
+xuwen,E1,Original VM-UNet four-direction SS2D,300,Full300,42,0.8004881192,80.04881191999999,24.6136121913,53358.59,14.821830555555554,177.862,14665,Original baseline
+xuwen,E2,Row-only forward/backward fixed sum,300,Full300,42,0.7860797383,78.60797383,26.1111351219,49345.06,13.706961111111111,164.4835,10747,Coverage-loss diagnostic
+xuwen,E2_modify_2,Channel-grouped 2D bidirectional fixed fusion,300,Full300,42,0.8025402377,80.25402377,21.9205560248,47118.51,13.088475,157.0617,11016,Strongest valid full run
+xuwen,E3_screen50,Static learnable fusion screening,50,Screen50,42,0.7567725296,75.67725295999999,36.0623788848,7632.87,2.120241666666667,152.6574,12958,50 epochs; old full-training-set protocol
+xuwen,E3_full300,Static learnable fusion,300,Full300,42,0.8000492093,80.00492093,25.5669445719,41727.53,11.590980555555555,139.0918,12958,Full run
+xuwen,E4_version_1_full300,Constrained residual sample/channel adaptive gate,300,Full300,42,0.7090894841,70.90894841,35.3190336018,35373.86,9.826072222222223,117.9129,13534,Failed/unstable adaptive-gate run
+xuwen,E4_v2_stabilized_b_epoch50,Stabilized adaptive gate B with held-out validation,50,Screen50+held-out,42,0.7499307646165121,74.99307646165121,37.90870076540426,4890.43,1.358452777777778,97.8086,11499.296875,"Diagnostic only: trained on 1,778 vs 2,211 slices"

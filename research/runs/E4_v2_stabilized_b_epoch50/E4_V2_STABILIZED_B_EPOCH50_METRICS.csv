@@ -1,0 +1,2 @@
+Author,Experiment,Epochs,Seed,Checkpoint_Epoch,Mean_Dice,Mean_Dice_Percent,Mean_HD95,Training_Time_s,Training_Time_h,Mean_Epoch_Time_s,Wall_Time_s,Peak_Allocated_MiB,Peak_Reserved_MiB,Train_Slices,Validation_Slices,Source_Commit
+xuwen,E4_v2_stabilized_b_epoch50,50,42,50,0.7499307646165121,74.99307646165121,37.90870076540426,4890.43,1.358452777777778,97.8086,6509,11499.296875,12578,1778,433,814fc52834dde99dd5ae1fd656fdf4908414fd58
