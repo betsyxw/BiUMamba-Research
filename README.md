@@ -110,6 +110,17 @@ The E4 archive, six-experiment overall comparison, eight-organ comparison and
 manifest are available in
 [`research/runs/E4_version_1_full300/`](research/runs/E4_version_1_full300/).
 
+The subsequent deterministic A/A audit froze the E4 source and ran two matched
+12-epoch trajectories. Both runs began from the same model hash and used the
+same batch order at every epoch, yet their model and checkpoint hashes differed
+from Epoch 1; the maximum loss difference was `0.042850100568` at Epoch 11.
+The gate also reached the `tanh` limits of `-1` and `+1` during Epoch 1. This is
+a Red result for bitwise reproducibility, not proof that adaptive fusion is
+theoretically invalid. Formal E4 comparisons therefore require multiple seeds,
+while gate stabilization must be tested as a separately named ablation. The
+scripts, aggregate evidence, and decision record are archived in
+[`research/runs/E4_determinism_AA/`](research/runs/E4_determinism_AA/).
+
 ### E3 50-epoch screening result
 
 E3 replaces fixed-sum fusion on the E2_modify_2 grouped-2D structure with
@@ -234,6 +245,17 @@ lossが`0.1146`対`0.7409`と大きく異なりました。したがってE4は�
 
 E4の完全レポート、6実験の全体比較、8臓器別CSVおよびManifestは
 [`research/runs/E4_version_1_full300/`](research/runs/E4_version_1_full300/)
+に保存しています。
+
+その後、E4のソースを固定し、同一条件で12 epochのA/A再現性監査を2回
+実施しました。初期モデルのハッシュと各epochのバッチ順序は一致しましたが、
+モデルおよびcheckpointのハッシュはEpoch 1から一致せず、最大loss差は
+Epoch 11の`0.042850100568`でした。また、gate出力はEpoch 1で既に`tanh`の
+下限`-1`と上限`+1`へ到達しました。これはbitwise再現性に対するRed判定で
+あり、Adaptive Fusionそのものの理論的無効性を証明する結果ではありません。
+したがって、正式なE4比較では複数seedとmean ± stdを用い、gate安定化は
+別名のアブレーションとして検証します。診断コード、集約結果および判断記録は
+[`research/runs/E4_determinism_AA/`](research/runs/E4_determinism_AA/)
 に保存しています。
 
 ### E3 50 epochスクリーニング結果

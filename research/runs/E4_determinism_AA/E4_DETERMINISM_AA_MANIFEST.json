@@ -1,0 +1,17 @@
+{
+  "all_epoch_batch_order_hashes_match": true,
+  "author": "xuwen",
+  "decision": "RED: same-seed A/A runs still diverge; main experiments require multiple seeds. Gate saturation also warrants a separately named stabilization ablation.",
+  "diagnostic_substitution": "default CE replaced by mathematically equivalent log_softmax+gather+mean",
+  "epochs_per_run": 12,
+  "experiment": "E4 deterministic A/A diagnostic",
+  "initial_model_hash_match": true,
+  "initial_model_sha256": "04854affec079ebc3b0a1cb194db11d62d830ee461c899962dc172173f942244",
+  "matching_checkpoint_file_hash_count": 0,
+  "matching_epoch_model_hash_count": 0,
+  "maximum_absolute_loss_difference": 0.042850100568,
+  "maximum_difference_epoch": 11,
+  "run1_exit_code": "0",
+  "run2_exit_code": "0",
+  "strict_mode_initial_failure": "PyTorch 1.13 CUDA nll_loss2d has no deterministic implementation"
+}

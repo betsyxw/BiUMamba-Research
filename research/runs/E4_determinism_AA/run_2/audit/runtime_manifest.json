@@ -1,0 +1,22 @@
+{
+  "author": "xuwen",
+  "cuda": "11.7",
+  "cudnn": 8500,
+  "cudnn_benchmark": false,
+  "cudnn_deterministic": true,
+  "deterministic_algorithms": true,
+  "diagnostic_loss_substitution": "CrossEntropyLoss -> log_softmax+gather+mean because PyTorch 1.13 CUDA nll_loss2d is rejected by strict deterministic mode",
+  "environment": {
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+    "PYTHONHASHSEED": "42"
+  },
+  "epochs": 12,
+  "git_commit": "24fa3744e56d96e5bc46b3e2abf084b58545e139",
+  "platform": "Linux-6.8.0-94-generic-x86_64-with-glibc2.17",
+  "python": "3.8.20 (default, Oct  3 2024, 15:24:27) \n[GCC 11.2.0]",
+  "run_id": "aa_run_2",
+  "scan_fusion": "grouped_2d_adaptive_gate_v1",
+  "seed": 42,
+  "torch": "1.13.0+cu117",
+  "work_dir": "<run_output>/run_2"
+}

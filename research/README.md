@@ -19,6 +19,10 @@ restricted artifacts remain outside GitHub.
   and per-organ comparisons, manifest, and trilingual PPT summary.
 - `runs/E4_version_1_full300/`: E4 full-run archive, six-experiment overall
   comparison, eight-organ comparison, metrics, and structured manifest.
+- `runs/E4_determinism_AA/`: frozen-source deterministic A/A audit, aggregate
+  epoch metrics, model/checkpoint hashes, compatibility finding, and decision
+  record. Datasets, case lists, checkpoints, weights, and server logs are
+  excluded.
 
 The authoritative E2 source snapshot was created from RunPod branch
 `experiment/e2-bidirectional-fixed-sum`, commit
