@@ -28,6 +28,7 @@ Current experimental status:
 - E2_modify_2: channel-grouped 2D bidirectional scan — 300-epoch validation completed; it recovered E2's lost accuracy and passed the Strong Green decision gate.
 - E3: static learnable fusion on E2_modify_2 — 50-epoch screening and the full 300-epoch run completed; the final result did not outperform E2_modify_2.
 - E4: constrained sample/channel adaptive gate on the same coverage-preserving structure — 50-epoch screening and 300-epoch full run completed; the full run was a Red result and exposed a screen/full reproducibility mismatch.
+- E4 Version 2-B: separately named stabilized-gate ablation — deterministic A/A checks and a formal 50-epoch screening run completed. Training stability improved, but accuracy did not justify a 300-epoch extension.
 - Datasets: Synapse first, ACDC second; FractalDB pre-training pilot follows the directional ablation.
 
 ### Training story and current evidence
@@ -121,6 +122,23 @@ while gate stabilization must be tested as a separately named ablation. The
 scripts, aggregate evidence, and decision record are archived in
 [`research/runs/E4_determinism_AA/`](research/runs/E4_determinism_AA/).
 
+E4 Version 2-B was then created as a separate stabilization ablation rather
+than replacing Version 1. It uses a `0.1x` gate learning rate, five frozen gate
+epochs, an alpha ramp from `0` to `0.25`, gradient clipping, equal-fusion
+regularization, context normalization, and temperature scaling. Alpha was also
+made persistent in checkpoints and verified by save/reload testing. The formal
+50-epoch run completed normally with `74.9931%` Mean Dice, `37.9087` Mean
+HD95, `97.81 s` mean epoch time, and `11,499.30 MiB` peak allocated memory.
+
+This is a positive engineering-stability result but a negative/inconclusive
+accuracy ablation. E4 Version 2-B reserved 433 of the 2,211 training slices for
+held-out checkpoint selection, unlike the earlier experiments that trained on
+all 2,211 slices. It therefore must not be ranked as a controlled architecture
+comparison. A direct 300-epoch extension is not justified, and E2_modify_2
+remains the current main model. The source snapshot, seven-experiment table,
+eight-organ table, workbook, manifest, and negative-ablation analysis are in
+[`research/runs/E4_v2_stabilized_b_epoch50/`](research/runs/E4_v2_stabilized_b_epoch50/).
+
 ### E3 50-epoch screening result
 
 E3 replaces fixed-sum fusion on the E2_modify_2 grouped-2D structure with
@@ -170,6 +188,7 @@ VM-UNet/VMambaのオリジナルコードの著作権およびクレジットは
 - **E2_modify_2** — 各ブロック内でチャネルを水平・垂直グループに分ける二次元双方向走査。300 epoch検証が完了し、E2で失われた精度を回復してStrong Green判定を満たした。
 - **E3** — E2_modify_2を基盤とする静的学習可能融合。50 epochスクリーニングおよび300 epochのFull runが完了したが、最終結果はE2_modify_2を上回らなかった。
 - **E4** — 同じ二次元被覆を維持したサンプル・チャネル依存Adaptive Gate。50 epochスクリーニングと300 epoch Full runが完了したが、Full runはRed判定となり、screen/full間の再現性不一致が確認された。
+- **E4 Version 2-B** — E4 Version 1を上書きせず、独立した安定化Gateアブレーションとして作成。決定性A/A確認と50 epoch正式スクリーニングを完了した。学習安定性は改善したが、300 epochへ延長する精度上の根拠は得られなかった。
 
 ### 学習過程で得られた知見
 
@@ -258,6 +277,25 @@ Epoch 11の`0.042850100568`でした。また、gate出力はEpoch 1で既に`ta
 [`research/runs/E4_determinism_AA/`](research/runs/E4_determinism_AA/)
 に保存しています。
 
+次に、E4 Version 1を置き換えず、別名の安定化アブレーションとしてE4
+Version 2-Bを作成しました。Gateの学習率をbackboneの`0.1倍`とし、最初の
+5 epochでGateを凍結し、alphaを`0`から`0.25`へ段階的に増加させました。
+さらにgradient clipping、equal-fusion正則化、context normalization、
+temperature scalingを導入し、alphaをcheckpointへ保存・復元できるように
+修正しました。50 epoch正式実験は正常終了し、Mean Dice `74.9931%`、
+Mean HD95 `37.9087`、平均epoch時間`97.81秒`、Peak allocated memory
+`11,499.30 MiB`となりました。
+
+これは工学的な安定化には成功した一方、精度面では負または未確定の
+アブレーションです。E4 Version 2-Bは2,211枚の学習スライスから433枚を
+checkpoint選択用のhold-out validationへ分離しており、全2,211枚を学習に
+使用した従来実験とはプロトコルが一致しません。そのため、構造性能の直接順位
+には使用せず、300 epochへの延長も行いません。現時点の主モデルは引き続き
+E2_modify_2です。コード、7実験比較、8臓器比較、Excel、Manifestおよび
+負のアブレーション分析は
+[`research/runs/E4_v2_stabilized_b_epoch50/`](research/runs/E4_v2_stabilized_b_epoch50/)
+に保存しています。
+
 ### E3 50 epochスクリーニング結果
 
 E3では、E2_modify_2のチャネル分割型二次元双方向走査を維持し、固定加算を
@@ -292,6 +330,7 @@ E2_modify_2と直接順位付けするものではありません。E3を300 epo
 - E3 static learnable fusion（50 epoch screening）：Mean Dice 75.6773%、Mean HD95 36.0624。同一50 epoch条件のE2_modify_2よりDiceが0.6035ポイント高く、HD95が4.3535低い。300 epoch検証へ進む予備的根拠が得られた。
 - E3 static learnable fusion（300 epoch）：Mean Dice 80.0049%、Mean HD95 25.5669。E2_modify_2を上回らず、静的融合のみでは追加改善が得られないことを示すアブレーション結果となった。
 - E4 adaptive gate（300 epoch）：Mean Dice 70.9089%、Mean HD95 35.3190。E2_modify_2を下回り、screen/full学習軌跡の不一致を確認したためRed判定とした。
+- E4 Version 2-B stabilized gate（50 epoch）：Mean Dice 74.9931%、Mean HD95 37.9087。安定化は確認できたが精度改善は得られず、validation splitも従来実験と異なるため、負または未確定のアブレーションとして保存し300 epochへは進めない。
 
 実験設計、実行環境、設定値および確認済みの結果は[`research/`](research/)にまとめています。
 
@@ -334,7 +373,7 @@ The .whl files of causal_conv1d and mamba_ssm could be found here. {[Baidu](http
 ## 1. Prepare the dataset
 
 ### ISIC datasets
-- The ISIC17 and ISIC18 datasets, divided into a 7:3 ratio, can be found here {[Baidu](https://pan.baidu.com/s/1Y0YupaH21yDN5uldl7IcZA?pwd=dybm)}. 
+- The ISIC17 and ISIC18 datasets, divided into a 7:3 ratio, can be found here {[Baidu](https://pan.baidu.com/s/1Y0YupaH21yDN5uldl7IcZA?pwd=dybm)}.
 
 - After downloading the datasets, you are supposed to put them into './data/isic17/' and './data/isic18/', and the file format reference is as follows. (take the ISIC17 dataset as an example.)
 
@@ -380,14 +419,14 @@ python train.py  # Train and test VM-UNet on the ISIC17 or ISIC18 dataset.
 python train_synapse.py  # Train and test VM-UNet on the Synapse dataset.
 ```
 
-**NOTE**: If you want to use the trained checkpoint for inference testing only and save the corresponding test images, you can follow these steps:  
+**NOTE**: If you want to use the trained checkpoint for inference testing only and save the corresponding test images, you can follow these steps:
 
-- **In `config_setting`**:  
-   - Set the parameter `only_test_and_save_figs` to `True`.  
-   - Fill in the path of the trained checkpoint in `best_ckpt_path`.  
-   - Specify the save path for test images in `img_save_path`.  
+- **In `config_setting`**:
+   - Set the parameter `only_test_and_save_figs` to `True`.
+   - Fill in the path of the trained checkpoint in `best_ckpt_path`.
+   - Specify the save path for test images in `img_save_path`.
 
-- **Execute the script**:  
+- **Execute the script**:
    After setting the above parameters, you can run `train.py`.
 
 ## 4. Obtain the outputs
