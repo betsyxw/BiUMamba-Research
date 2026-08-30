@@ -1,0 +1,41 @@
+{
+  "protocol": "synapse_v2",
+  "research_author": "xuwen",
+  "dataset": "Synapse",
+  "model_reference": "E2_modify_2",
+  "input_size": [224, 224],
+  "batch_size": 32,
+  "num_workers": 0,
+  "optimizer": {
+    "name": "AdamW",
+    "learning_rate": 0.001,
+    "betas": [0.9, 0.999],
+    "epsilon": 1e-8,
+    "weight_decay": 0.01
+  },
+  "scheduler": {
+    "name": "CosineAnnealingLR",
+    "T_max": 100,
+    "eta_min": 0.00001
+  },
+  "loss": {
+    "name": "CeDiceLoss",
+    "weights": [1, 1]
+  },
+  "epochs": {
+    "screening": 50,
+    "formal": 300
+  },
+  "validation": {
+    "interval_epochs": 1,
+    "case_count": 4,
+    "selection_primary": "macro_dice_max",
+    "tie_breaker": "macro_hd95_min",
+    "dice_tie_tolerance": 1e-12,
+    "hd95_unit": "validation_voxels"
+  },
+  "test_access_during_training": false,
+  "formal_seeds": [42, 2026, 3407],
+  "final_offline_metrics": ["Dice", "HD95_mm", "NSD_1mm"]
+}
+
