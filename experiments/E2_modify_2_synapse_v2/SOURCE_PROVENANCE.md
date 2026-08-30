@@ -17,3 +17,7 @@ train/validation isolation, per-epoch validation, validation-selected
 checkpointing, formal seeds, frozen augmentation, and complete test isolation
 during training.
 
+Before the first formal run, non-invasive instrumentation was added to record
+parameter counts, total and per-epoch training/validation time, and PyTorch
+peak allocated/reserved GPU memory. It does not modify the model forward pass,
+loss, optimizer, scheduler, data split, augmentation, or checkpoint rule.

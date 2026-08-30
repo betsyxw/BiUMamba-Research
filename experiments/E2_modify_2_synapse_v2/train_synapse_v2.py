@@ -14,6 +14,7 @@ import hashlib
 import json
 import os
 import sys
+import time
 from pathlib import Path
 
 import torch
@@ -92,6 +93,10 @@ def main():
     )
     model.load_from()
     model = torch.nn.DataParallel(model.cuda(), device_ids=[0], output_device=0)
+    parameter_count = sum(parameter.numel() for parameter in model.parameters())
+    trainable_parameter_count = sum(
+        parameter.numel() for parameter in model.parameters() if parameter.requires_grad
+    )
     optimizer = get_optimizer(config, model)
     scheduler = get_scheduler(config, optimizer)
     scaler = GradScaler()
@@ -107,8 +112,13 @@ def main():
     protocol_hashes = {str(path): sha256(path) for path in controlled_files}
     selector = ValidationCheckpointSelector(checkpoint_dir / "best_validation.pth")
     history = []
+    torch.cuda.reset_peak_memory_stats()
+    run_started_at = time.time()
+    run_started_perf = time.perf_counter()
 
     for epoch in range(1, args.epochs + 1):
+        epoch_started_perf = time.perf_counter()
+        training_started_perf = time.perf_counter()
         loss = train_one_epoch(
             train_loader,
             model,
@@ -120,7 +130,10 @@ def main():
             config,
             scaler=scaler,
         )
+        training_seconds = time.perf_counter() - training_started_perf
+        validation_started_perf = time.perf_counter()
         val_dice, val_hd95, per_organ = evaluate_validation(model, val_loader, config.num_classes)
+        validation_seconds = time.perf_counter() - validation_started_perf
         improved = selector.update(
             epoch=epoch,
             dice=val_dice,
@@ -137,6 +150,11 @@ def main():
             "validation_hd95_voxels": val_hd95,
             "checkpoint_updated": improved,
             "per_organ": per_organ,
+            "training_seconds": training_seconds,
+            "validation_seconds": validation_seconds,
+            "epoch_total_seconds": time.perf_counter() - epoch_started_perf,
+            "peak_gpu_allocated_bytes": torch.cuda.max_memory_allocated(),
+            "peak_gpu_reserved_bytes": torch.cuda.max_memory_reserved(),
         }
         history.append(record)
         logger.info("synapse_v2_validation " + json.dumps(record, sort_keys=True))
@@ -155,6 +173,7 @@ def main():
         )
 
     os.replace(checkpoint_dir / "latest_resume.pth", checkpoint_dir / f"final_epoch_{args.epochs}.pth")
+    total_seconds = time.perf_counter() - run_started_perf
     summary = {
         "protocol": "synapse_v2",
         "seed": args.seed,
@@ -164,6 +183,20 @@ def main():
         "best_validation_hd95_voxels": selector.best_hd95,
         "test_access_during_training": False,
         "protocol_hashes": protocol_hashes,
+        "parameter_count": parameter_count,
+        "trainable_parameter_count": trainable_parameter_count,
+        "run_started_unix": run_started_at,
+        "total_training_and_validation_seconds": total_seconds,
+        "mean_epoch_total_seconds": sum(item["epoch_total_seconds"] for item in history)
+        / len(history),
+        "mean_training_seconds_per_epoch": sum(item["training_seconds"] for item in history)
+        / len(history),
+        "mean_validation_seconds_per_epoch": sum(
+            item["validation_seconds"] for item in history
+        )
+        / len(history),
+        "peak_gpu_allocated_bytes": torch.cuda.max_memory_allocated(),
+        "peak_gpu_reserved_bytes": torch.cuda.max_memory_reserved(),
     }
     (args.work_dir / "training_summary.json").write_text(
         json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8"
@@ -173,4 +206,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
