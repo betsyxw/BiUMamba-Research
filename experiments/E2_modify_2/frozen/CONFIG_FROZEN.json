@@ -1,0 +1,60 @@
+{
+  "research_author": "xuwen",
+  "affiliation": "Japan Advanced Institute of Science and Technology (JAIST)",
+  "freeze_date": "2026-08-30",
+  "timezone": "Asia/Tokyo",
+  "experiment_id": "E2_modify_2_full300_seed42_20260827_vmunetenv",
+  "formal_name": "Channel-Grouped 2D Bidirectional Scan with Fixed Sum",
+  "dataset": "Synapse",
+  "network": "vmunet",
+  "model": {
+    "num_classes": 9,
+    "input_channels": 3,
+    "depths": [2, 2, 2, 2],
+    "depths_decoder": [2, 2, 2, 1],
+    "drop_path_rate": 0.2,
+    "scan_fusion": "grouped_2d_bidirectional_sum",
+    "initialization": "./pre_trained_weights/vmamba_small_e238_ema.pth"
+  },
+  "data": {
+    "train_path": "./data/Synapse/train_npz/",
+    "list_dir": "./data/Synapse/lists/lists_Synapse/",
+    "test_volume_path": "./data/Synapse/test_vol_h5/",
+    "input_size": [224, 224],
+    "z_spacing": 1
+  },
+  "training": {
+    "seed": 42,
+    "batch_size": 32,
+    "epochs": 300,
+    "num_workers": 0,
+    "amp": false,
+    "distributed": false,
+    "loss": "CeDiceLoss",
+    "loss_weight": [1, 1],
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "betas": [0.9, 0.999],
+    "epsilon": 1e-8,
+    "weight_decay": 0.01,
+    "scheduler": "CosineAnnealingLR",
+    "scheduler_T_max": 100,
+    "scheduler_eta_min": 0.00001,
+    "print_interval": 20,
+    "validation_interval": 100
+  },
+  "checkpoint": {
+    "selection_rule": "minimum_training_loss",
+    "label_epoch": 297,
+    "mean_dice": 0.8025402376811894,
+    "mean_hd95": 21.92055602481082
+  },
+  "source": {
+    "runpod_repository": "/workspace/repos/VM-UNet_E2_modify_2",
+    "branch": "experiment/e2c-grouped-2d",
+    "commit": "62fc67c2839f225bc86edcba9f3f108bdfb99beb",
+    "tag": "E2_modify_2_smoke_pass",
+    "snapshot_sha256": "571c80f0dfa57210a1023c0a5d2489a9bfaae2e3b89c93b21b0142ddd0f17109"
+  },
+  "publication_status": "single_seed_preliminary_result"
+}

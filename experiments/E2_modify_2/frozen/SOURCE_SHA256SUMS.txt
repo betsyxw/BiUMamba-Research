@@ -1,0 +1,14 @@
+# Authoritative RunPod files at commit 62fc67c2839f225bc86edcba9f3f108bdfb99beb
+d188ae7dd4efa16e5f52fa91ba9d6f4993b31bad343c4cc4212589256cf51617  models/vmunet/vmamba.py
+cdfbb46fd89d019161b8af2884bc0cdeed7db7862670a2ebece63e498c4f790b  configs/config_setting_synapse.py
+bca32e41aac62f9a59a04b5f304efa32fd474ce93676ae4a5cfa9ff03b209def  research/E2_MODIFICATION.md
+bffb8a1003e79731d80e242f06a1e2a4848d17c6ee78211d164b06a38350f95e  research/smoke_test_e2_modify_2.py
+
+# Archived source snapshot on RunPod
+571c80f0dfa57210a1023c0a5d2489a9bfaae2e3b89c93b21b0142ddd0f17109  VM-UNet_E2_modify_2_full300_62fc67c_source.tar.gz
+
+# Text copies in this research repository (authorship headers / normalized line endings)
+309f4a7a9b2d5df98305957177eab30cc4eb258b307486f8f9712ad31f2db281  ../models/vmunet/vmamba.py
+cd1a4055f75bceeed2f6947241a50b951c75e756cbe29d5ae26530e0943ae5b7  ../configs/config_setting_synapse.py
+bca32e41aac62f9a59a04b5f304efa32fd474ce93676ae4a5cfa9ff03b209def  ../research/E2_MODIFICATION.md
+db1e4a9b1d61f45e09ebab23bf14a7a2a9bb6540e0b3d7421464b437f66642ac  ../research/smoke_test_e2_modify_2.py
