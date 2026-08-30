@@ -1,0 +1,316 @@
+2026-08-26 20:58:42 - #----------Config info----------#
+2026-08-26 20:58:42 - network: vmunet,
+2026-08-26 20:58:42 - model_config: {'num_classes': 9, 'input_channels': 3, 'depths': [2, 2, 2, 2], 'depths_decoder': [2, 2, 2, 1], 'drop_path_rate': 0.2, 'load_ckpt_path': './pre_trained_weights/vmamba_small_e238_ema.pth', 'scan_fusion': 'alternating_axis_sum'},
+2026-08-26 20:58:42 - datasets_name: synapse,
+2026-08-26 20:58:42 - input_size_h: 224,
+2026-08-26 20:58:42 - input_size_w: 224,
+2026-08-26 20:58:42 - data_path: ./data/Synapse/train_npz/,
+2026-08-26 20:58:42 - datasets: <class 'datasets.dataset.Synapse_dataset'>,
+2026-08-26 20:58:42 - list_dir: ./data/Synapse/lists/lists_Synapse/,
+2026-08-26 20:58:42 - volume_path: ./data/Synapse/test_vol_h5/,
+2026-08-26 20:58:42 - pretrained_path: ,
+2026-08-26 20:58:42 - num_classes: 9,
+2026-08-26 20:58:42 - loss_weight: [1, 1],
+2026-08-26 20:58:42 - criterion: CeDiceLoss(
+  (celoss): CrossEntropyLoss()
+  (diceloss): nDiceLoss()
+),
+2026-08-26 20:58:42 - z_spacing: 1,
+2026-08-26 20:58:42 - input_channels: 3,
+2026-08-26 20:58:42 - distributed: False,
+2026-08-26 20:58:42 - local_rank: -1,
+2026-08-26 20:58:42 - num_workers: 0,
+2026-08-26 20:58:42 - seed: 42,
+2026-08-26 20:58:42 - world_size: None,
+2026-08-26 20:58:42 - rank: None,
+2026-08-26 20:58:42 - amp: False,
+2026-08-26 20:58:42 - batch_size: 32,
+2026-08-26 20:58:42 - epochs: 50,
+2026-08-26 20:58:42 - work_dir: /workspace/runs/e2_modify_1_screen50_seed42_20260827_vmunetenv/,
+2026-08-26 20:58:42 - print_interval: 20,
+2026-08-26 20:58:42 - val_interval: 999,
+2026-08-26 20:58:42 - threshold: 0.5,
+2026-08-26 20:58:42 - only_test_and_save_figs: False,
+2026-08-26 20:58:42 - best_ckpt_path: PATH_TO_YOUR_BEST_CKPT,
+2026-08-26 20:58:42 - img_save_path: PATH_TO_SAVE_IMAGES,
+2026-08-26 20:58:42 - opt: AdamW,
+2026-08-26 20:58:42 - lr: 0.001,
+2026-08-26 20:58:42 - betas: (0.9, 0.999),
+2026-08-26 20:58:42 - eps: 1e-08,
+2026-08-26 20:58:42 - weight_decay: 0.01,
+2026-08-26 20:58:42 - amsgrad: False,
+2026-08-26 20:58:42 - sch: CosineAnnealingLR,
+2026-08-26 20:58:42 - T_max: 100,
+2026-08-26 20:58:42 - eta_min: 1e-05,
+2026-08-26 20:58:42 - last_epoch: -1,
+2026-08-26 20:59:10 - train: epoch 1, iter:0, loss: 3.3575, lr: 0.001
+2026-08-26 21:00:17 - train: epoch 1, iter:20, loss: 1.3704, lr: 0.001
+2026-08-26 21:01:26 - train: epoch 1, iter:40, loss: 1.1816, lr: 0.001
+2026-08-26 21:02:37 - train: epoch 1, iter:60, loss: 1.1912, lr: 0.001
+2026-08-26 21:03:06 - Finish one epoch train: epoch 1, loss: 1.3596, time(s): 249.85
+2026-08-26 21:03:10 - train: epoch 2, iter:0, loss: 1.1162, lr: 0.0009997557473810372
+2026-08-26 21:04:21 - train: epoch 2, iter:20, loss: 1.1604, lr: 0.0009997557473810372
+2026-08-26 21:05:29 - train: epoch 2, iter:40, loss: 1.0747, lr: 0.0009997557473810372
+2026-08-26 21:06:39 - train: epoch 2, iter:60, loss: 1.0331, lr: 0.0009997557473810372
+2026-08-26 21:07:08 - Finish one epoch train: epoch 2, loss: 1.0854, time(s): 241.07
+2026-08-26 21:07:12 - train: epoch 3, iter:0, loss: 0.9922, lr: 0.0009990232305719946
+2026-08-26 21:08:24 - train: epoch 3, iter:20, loss: 0.9606, lr: 0.0009990232305719946
+2026-08-26 21:09:36 - train: epoch 3, iter:40, loss: 0.9162, lr: 0.0009990232305719946
+2026-08-26 21:10:46 - train: epoch 3, iter:60, loss: 0.9523, lr: 0.0009990232305719946
+2026-08-26 21:11:14 - Finish one epoch train: epoch 3, loss: 0.9666, time(s): 244.65
+2026-08-26 21:11:18 - train: epoch 4, iter:0, loss: 0.9540, lr: 0.0009978031724785247
+2026-08-26 21:12:29 - train: epoch 4, iter:20, loss: 0.8559, lr: 0.0009978031724785247
+2026-08-26 21:13:39 - train: epoch 4, iter:40, loss: 0.8512, lr: 0.0009978031724785247
+2026-08-26 21:14:50 - train: epoch 4, iter:60, loss: 0.8420, lr: 0.0009978031724785247
+2026-08-26 21:15:18 - Finish one epoch train: epoch 4, loss: 0.8739, time(s): 243.81
+2026-08-26 21:15:23 - train: epoch 5, iter:0, loss: 0.7833, lr: 0.0009960967771506667
+2026-08-26 21:16:33 - train: epoch 5, iter:20, loss: 0.7663, lr: 0.0009960967771506667
+2026-08-26 21:17:44 - train: epoch 5, iter:40, loss: 0.7891, lr: 0.0009960967771506667
+2026-08-26 21:18:56 - train: epoch 5, iter:60, loss: 0.7569, lr: 0.0009960967771506667
+2026-08-26 21:19:25 - Finish one epoch train: epoch 5, loss: 0.7870, time(s): 245.31
+2026-08-26 21:19:30 - train: epoch 6, iter:0, loss: 0.7839, lr: 0.0009939057285945933
+2026-08-26 21:20:42 - train: epoch 6, iter:20, loss: 0.7084, lr: 0.0009939057285945933
+2026-08-26 21:21:54 - train: epoch 6, iter:40, loss: 0.7178, lr: 0.0009939057285945933
+2026-08-26 21:23:07 - train: epoch 6, iter:60, loss: 0.6907, lr: 0.0009939057285945933
+2026-08-26 21:23:36 - Finish one epoch train: epoch 6, loss: 0.7071, time(s): 249.63
+2026-08-26 21:23:40 - train: epoch 7, iter:0, loss: 0.6675, lr: 0.0009912321891107012
+2026-08-26 21:24:48 - train: epoch 7, iter:20, loss: 0.5914, lr: 0.0009912321891107012
+2026-08-26 21:25:57 - train: epoch 7, iter:40, loss: 0.6653, lr: 0.0009912321891107012
+2026-08-26 21:27:05 - train: epoch 7, iter:60, loss: 0.6261, lr: 0.0009912321891107012
+2026-08-26 21:27:32 - Finish one epoch train: epoch 7, loss: 0.6130, time(s): 235.56
+2026-08-26 21:27:37 - train: epoch 8, iter:0, loss: 0.5239, lr: 0.0009880787971596802
+2026-08-26 21:28:44 - train: epoch 8, iter:20, loss: 0.4217, lr: 0.0009880787971596802
+2026-08-26 21:29:54 - train: epoch 8, iter:40, loss: 0.6294, lr: 0.0009880787971596802
+2026-08-26 21:31:10 - train: epoch 8, iter:60, loss: 0.5732, lr: 0.0009880787971596802
+2026-08-26 21:31:39 - Finish one epoch train: epoch 8, loss: 0.5475, time(s): 245.44
+2026-08-26 21:31:44 - train: epoch 9, iter:0, loss: 0.4825, lr: 0.0009844486647586726
+2026-08-26 21:33:00 - train: epoch 9, iter:20, loss: 0.6043, lr: 0.0009844486647586726
+2026-08-26 21:34:16 - train: epoch 9, iter:40, loss: 0.4491, lr: 0.0009844486647586726
+2026-08-26 21:35:27 - train: epoch 9, iter:60, loss: 0.4726, lr: 0.0009844486647586726
+2026-08-26 21:35:55 - Finish one epoch train: epoch 9, loss: 0.5178, time(s): 255.46
+2026-08-26 21:36:00 - train: epoch 10, iter:0, loss: 0.5341, lr: 0.000980345374410087
+2026-08-26 21:37:12 - train: epoch 10, iter:20, loss: 0.5128, lr: 0.000980345374410087
+2026-08-26 21:38:24 - train: epoch 10, iter:40, loss: 0.5286, lr: 0.000980345374410087
+2026-08-26 21:39:35 - train: epoch 10, iter:60, loss: 0.4830, lr: 0.000980345374410087
+2026-08-26 21:40:03 - Finish one epoch train: epoch 10, loss: 0.4618, time(s): 246.54
+2026-08-26 21:40:07 - train: epoch 11, iter:0, loss: 0.4602, lr: 0.0009757729755661012
+2026-08-26 21:41:16 - train: epoch 11, iter:20, loss: 0.4609, lr: 0.0009757729755661012
+2026-08-26 21:42:26 - train: epoch 11, iter:40, loss: 0.3413, lr: 0.0009757729755661012
+2026-08-26 21:43:37 - train: epoch 11, iter:60, loss: 0.3769, lr: 0.0009757729755661012
+2026-08-26 21:44:07 - Finish one epoch train: epoch 11, loss: 0.4428, time(s): 242.53
+2026-08-26 21:44:11 - train: epoch 12, iter:0, loss: 0.4084, lr: 0.0009707359806323418
+2026-08-26 21:45:20 - train: epoch 12, iter:20, loss: 0.3137, lr: 0.0009707359806323418
+2026-08-26 21:46:22 - train: epoch 12, iter:40, loss: 0.3160, lr: 0.0009707359806323418
+2026-08-26 21:47:22 - train: epoch 12, iter:60, loss: 0.3221, lr: 0.0009707359806323418
+2026-08-26 21:47:46 - Finish one epoch train: epoch 12, loss: 0.3923, time(s): 218.75
+2026-08-26 21:47:50 - train: epoch 13, iter:0, loss: 0.3606, lr: 0.0009652393605146846
+2026-08-26 21:48:48 - train: epoch 13, iter:20, loss: 0.4265, lr: 0.0009652393605146846
+2026-08-26 21:49:48 - train: epoch 13, iter:40, loss: 0.3372, lr: 0.0009652393605146846
+2026-08-26 21:50:47 - train: epoch 13, iter:60, loss: 0.4593, lr: 0.0009652393605146846
+2026-08-26 21:51:13 - Finish one epoch train: epoch 13, loss: 0.4014, time(s): 205.51
+2026-08-26 21:51:16 - train: epoch 14, iter:0, loss: 0.4244, lr: 0.0009592885397135708
+2026-08-26 21:52:13 - train: epoch 14, iter:20, loss: 0.4460, lr: 0.0009592885397135708
+2026-08-26 21:53:11 - train: epoch 14, iter:40, loss: 0.5596, lr: 0.0009592885397135708
+2026-08-26 21:54:08 - train: epoch 14, iter:60, loss: 0.5788, lr: 0.0009592885397135708
+2026-08-26 21:54:31 - Finish one epoch train: epoch 14, loss: 0.5360, time(s): 197.24
+2026-08-26 21:54:34 - train: epoch 15, iter:0, loss: 0.6157, lr: 0.0009528893909706799
+2026-08-26 21:55:32 - train: epoch 15, iter:20, loss: 0.4511, lr: 0.0009528893909706799
+2026-08-26 21:56:30 - train: epoch 15, iter:40, loss: 0.3855, lr: 0.0009528893909706799
+2026-08-26 21:57:29 - train: epoch 15, iter:60, loss: 0.4448, lr: 0.0009528893909706799
+2026-08-26 21:57:53 - Finish one epoch train: epoch 15, loss: 0.4929, time(s): 201.33
+2026-08-26 21:57:57 - train: epoch 16, iter:0, loss: 0.5724, lr: 0.0009460482294732424
+2026-08-26 21:58:56 - train: epoch 16, iter:20, loss: 0.3909, lr: 0.0009460482294732424
+2026-08-26 21:59:55 - train: epoch 16, iter:40, loss: 0.4189, lr: 0.0009460482294732424
+2026-08-26 22:00:56 - train: epoch 16, iter:60, loss: 0.5394, lr: 0.0009460482294732424
+2026-08-26 22:01:22 - Finish one epoch train: epoch 16, loss: 0.4599, time(s): 208.23
+2026-08-26 22:01:25 - train: epoch 17, iter:0, loss: 0.3844, lr: 0.0009387718066217127
+2026-08-26 22:02:25 - train: epoch 17, iter:20, loss: 0.4975, lr: 0.0009387718066217127
+2026-08-26 22:03:22 - train: epoch 17, iter:40, loss: 0.3515, lr: 0.0009387718066217127
+2026-08-26 22:04:22 - train: epoch 17, iter:60, loss: 0.3783, lr: 0.0009387718066217127
+2026-08-26 22:04:46 - Finish one epoch train: epoch 17, loss: 0.4066, time(s): 203.08
+2026-08-26 22:04:49 - train: epoch 18, iter:0, loss: 0.4112, lr: 0.0009310673033669524
+2026-08-26 22:05:46 - train: epoch 18, iter:20, loss: 0.4042, lr: 0.0009310673033669524
+2026-08-26 22:06:49 - train: epoch 18, iter:40, loss: 0.3177, lr: 0.0009310673033669524
+2026-08-26 22:07:56 - train: epoch 18, iter:60, loss: 0.3573, lr: 0.0009310673033669524
+2026-08-26 22:08:21 - Finish one epoch train: epoch 18, loss: 0.3615, time(s): 214.98
+2026-08-26 22:08:25 - train: epoch 19, iter:0, loss: 0.4496, lr: 0.0009229423231234977
+2026-08-26 22:09:25 - train: epoch 19, iter:20, loss: 0.3816, lr: 0.0009229423231234977
+2026-08-26 22:10:25 - train: epoch 19, iter:40, loss: 0.3223, lr: 0.0009229423231234977
+2026-08-26 22:11:26 - train: epoch 19, iter:60, loss: 0.5015, lr: 0.0009229423231234977
+2026-08-26 22:11:50 - Finish one epoch train: epoch 19, loss: 0.3297, time(s): 208.19
+2026-08-26 22:11:54 - train: epoch 20, iter:0, loss: 0.2887, lr: 0.0009144048842659084
+2026-08-26 22:12:55 - train: epoch 20, iter:20, loss: 0.2756, lr: 0.0009144048842659084
+2026-08-26 22:13:54 - train: epoch 20, iter:40, loss: 0.2066, lr: 0.0009144048842659084
+2026-08-26 22:14:53 - train: epoch 20, iter:60, loss: 0.2959, lr: 0.0009144048842659084
+2026-08-26 22:15:17 - Finish one epoch train: epoch 20, loss: 0.3215, time(s): 205.45
+2026-08-26 22:15:21 - train: epoch 21, iter:0, loss: 0.2603, lr: 0.0009054634122155993
+2026-08-26 22:16:21 - train: epoch 21, iter:20, loss: 0.3760, lr: 0.0009054634122155993
+2026-08-26 22:17:22 - train: epoch 21, iter:40, loss: 0.2750, lr: 0.0009054634122155993
+2026-08-26 22:18:23 - train: epoch 21, iter:60, loss: 0.3446, lr: 0.0009054634122155993
+2026-08-26 22:18:47 - Finish one epoch train: epoch 21, loss: 0.3039, time(s): 209.36
+2026-08-26 22:18:51 - train: epoch 22, iter:0, loss: 0.3198, lr: 0.000896126731125967
+2026-08-26 22:19:49 - train: epoch 22, iter:20, loss: 0.2845, lr: 0.000896126731125967
+2026-08-26 22:20:49 - train: epoch 22, iter:40, loss: 0.2634, lr: 0.000896126731125967
+2026-08-26 22:21:49 - train: epoch 22, iter:60, loss: 0.2903, lr: 0.000896126731125967
+2026-08-26 22:22:14 - Finish one epoch train: epoch 22, loss: 0.2876, time(s): 205.88
+2026-08-26 22:22:18 - train: epoch 23, iter:0, loss: 0.2689, lr: 0.000886404055174016
+2026-08-26 22:23:17 - train: epoch 23, iter:20, loss: 0.2511, lr: 0.000886404055174016
+2026-08-26 22:24:20 - train: epoch 23, iter:40, loss: 0.2739, lr: 0.000886404055174016
+2026-08-26 22:25:24 - train: epoch 23, iter:60, loss: 0.2568, lr: 0.000886404055174016
+2026-08-26 22:25:49 - Finish one epoch train: epoch 23, loss: 0.2691, time(s): 213.98
+2026-08-26 22:25:53 - train: epoch 24, iter:0, loss: 0.3038, lr: 0.0008763049794670778
+2026-08-26 22:26:50 - train: epoch 24, iter:20, loss: 0.3037, lr: 0.0008763049794670778
+2026-08-26 22:27:50 - train: epoch 24, iter:40, loss: 0.1901, lr: 0.0008763049794670778
+2026-08-26 22:28:49 - train: epoch 24, iter:60, loss: 0.2366, lr: 0.0008763049794670778
+2026-08-26 22:29:13 - Finish one epoch train: epoch 24, loss: 0.2581, time(s): 202.71
+2026-08-26 22:29:17 - train: epoch 25, iter:0, loss: 0.2687, lr: 0.000865839470573599
+2026-08-26 22:30:15 - train: epoch 25, iter:20, loss: 0.2344, lr: 0.000865839470573599
+2026-08-26 22:31:15 - train: epoch 25, iter:40, loss: 0.2137, lr: 0.000865839470573599
+2026-08-26 22:32:16 - train: epoch 25, iter:60, loss: 0.2888, lr: 0.000865839470573599
+2026-08-26 22:32:41 - Finish one epoch train: epoch 25, loss: 0.2621, time(s): 206.71
+2026-08-26 22:32:45 - train: epoch 26, iter:0, loss: 0.2253, lr: 0.0008550178566873413
+2026-08-26 22:33:44 - train: epoch 26, iter:20, loss: 0.2853, lr: 0.0008550178566873413
+2026-08-26 22:34:44 - train: epoch 26, iter:40, loss: 0.2002, lr: 0.0008550178566873413
+2026-08-26 22:35:42 - train: epoch 26, iter:60, loss: 0.1915, lr: 0.0008550178566873413
+2026-08-26 22:36:07 - Finish one epoch train: epoch 26, loss: 0.2573, time(s): 205.59
+2026-08-26 22:36:11 - train: epoch 27, iter:0, loss: 0.2265, lr: 0.0008438508174347012
+2026-08-26 22:37:13 - train: epoch 27, iter:20, loss: 0.3577, lr: 0.0008438508174347012
+2026-08-26 22:38:15 - train: epoch 27, iter:40, loss: 0.2876, lr: 0.0008438508174347012
+2026-08-26 22:39:16 - train: epoch 27, iter:60, loss: 0.1956, lr: 0.0008438508174347012
+2026-08-26 22:39:41 - Finish one epoch train: epoch 27, loss: 0.2513, time(s): 212.48
+2026-08-26 22:39:44 - train: epoch 28, iter:0, loss: 0.1803, lr: 0.000832349373335208
+2026-08-26 22:40:45 - train: epoch 28, iter:20, loss: 0.1826, lr: 0.000832349373335208
+2026-08-26 22:41:46 - train: epoch 28, iter:40, loss: 0.2424, lr: 0.000832349373335208
+2026-08-26 22:42:47 - train: epoch 28, iter:60, loss: 0.2477, lr: 0.000832349373335208
+2026-08-26 22:43:11 - Finish one epoch train: epoch 28, loss: 0.2261, time(s): 209.82
+2026-08-26 22:43:15 - train: epoch 29, iter:0, loss: 0.3285, lr: 0.0008205248749256018
+2026-08-26 22:44:14 - train: epoch 29, iter:20, loss: 0.2075, lr: 0.0008205248749256018
+2026-08-26 22:45:12 - train: epoch 29, iter:40, loss: 0.1937, lr: 0.0008205248749256018
+2026-08-26 22:46:09 - train: epoch 29, iter:60, loss: 0.1702, lr: 0.0008205248749256018
+2026-08-26 22:46:32 - Finish one epoch train: epoch 29, loss: 0.2286, time(s): 199.40
+2026-08-26 22:46:36 - train: epoch 30, iter:0, loss: 0.1753, lr: 0.0008083889915582238
+2026-08-26 22:47:32 - train: epoch 30, iter:20, loss: 0.1999, lr: 0.0008083889915582238
+2026-08-26 22:48:29 - train: epoch 30, iter:40, loss: 0.2188, lr: 0.0008083889915582238
+2026-08-26 22:49:26 - train: epoch 30, iter:60, loss: 0.1435, lr: 0.0008083889915582238
+2026-08-26 22:49:48 - Finish one epoch train: epoch 30, loss: 0.2217, time(s): 195.13
+2026-08-26 22:49:51 - train: epoch 31, iter:0, loss: 0.1878, lr: 0.0007959536998847747
+2026-08-26 22:50:46 - train: epoch 31, iter:20, loss: 0.1815, lr: 0.0007959536998847747
+2026-08-26 22:51:44 - train: epoch 31, iter:40, loss: 0.2441, lr: 0.0007959536998847747
+2026-08-26 22:52:44 - train: epoch 31, iter:60, loss: 0.2113, lr: 0.0007959536998847747
+2026-08-26 22:53:07 - Finish one epoch train: epoch 31, loss: 0.2154, time(s): 198.22
+2026-08-26 22:53:11 - train: epoch 32, iter:0, loss: 0.1938, lr: 0.0007832312720368051
+2026-08-26 22:54:06 - train: epoch 32, iter:20, loss: 0.2004, lr: 0.0007832312720368051
+2026-08-26 22:55:02 - train: epoch 32, iter:40, loss: 0.1717, lr: 0.0007832312720368051
+2026-08-26 22:55:59 - train: epoch 32, iter:60, loss: 0.1996, lr: 0.0007832312720368051
+2026-08-26 22:56:23 - Finish one epoch train: epoch 32, loss: 0.2254, time(s): 195.34
+2026-08-26 22:56:27 - train: epoch 33, iter:0, loss: 0.2514, lr: 0.0007702342635146037
+2026-08-26 22:57:23 - train: epoch 33, iter:20, loss: 0.1981, lr: 0.0007702342635146037
+2026-08-26 22:58:21 - train: epoch 33, iter:40, loss: 0.1966, lr: 0.0007702342635146037
+2026-08-26 22:59:20 - train: epoch 33, iter:60, loss: 0.1662, lr: 0.0007702342635146037
+2026-08-26 22:59:43 - Finish one epoch train: epoch 33, loss: 0.2044, time(s): 199.41
+2026-08-26 22:59:47 - train: epoch 34, iter:0, loss: 0.1705, lr: 0.0007569755007964342
+2026-08-26 23:00:43 - train: epoch 34, iter:20, loss: 0.1764, lr: 0.0007569755007964342
+2026-08-26 23:01:38 - train: epoch 34, iter:40, loss: 0.1626, lr: 0.0007569755007964342
+2026-08-26 23:02:35 - train: epoch 34, iter:60, loss: 0.1743, lr: 0.0007569755007964342
+2026-08-26 23:02:57 - Finish one epoch train: epoch 34, loss: 0.1985, time(s): 192.48
+2026-08-26 23:03:01 - train: epoch 35, iter:0, loss: 0.1738, lr: 0.0007434680686803494
+2026-08-26 23:03:53 - train: epoch 35, iter:20, loss: 0.1779, lr: 0.0007434680686803494
+2026-08-26 23:04:49 - train: epoch 35, iter:40, loss: 0.1587, lr: 0.0007434680686803494
+2026-08-26 23:05:47 - train: epoch 35, iter:60, loss: 0.1798, lr: 0.0007434680686803494
+2026-08-26 23:06:09 - Finish one epoch train: epoch 35, loss: 0.1956, time(s): 190.77
+2026-08-26 23:06:42 - train: epoch 36, iter:0, loss: 0.1952, lr: 0.0007297252973710761
+2026-08-26 23:07:40 - train: epoch 36, iter:20, loss: 0.3018, lr: 0.0007297252973710761
+2026-08-26 23:08:36 - train: epoch 36, iter:40, loss: 0.1577, lr: 0.0007297252973710761
+2026-08-26 23:09:32 - train: epoch 36, iter:60, loss: 0.1919, lr: 0.0007297252973710761
+2026-08-26 23:09:53 - Finish one epoch train: epoch 36, loss: 0.1877, time(s): 193.87
+2026-08-26 23:09:57 - train: epoch 37, iter:0, loss: 0.1476, lr: 0.0007157607493247114
+2026-08-26 23:10:48 - train: epoch 37, iter:20, loss: 0.1576, lr: 0.0007157607493247114
+2026-08-26 23:11:44 - train: epoch 37, iter:40, loss: 0.2209, lr: 0.0007157607493247114
+2026-08-26 23:12:41 - train: epoch 37, iter:60, loss: 0.1217, lr: 0.0007157607493247114
+2026-08-26 23:13:03 - Finish one epoch train: epoch 37, loss: 0.1811, time(s): 188.39
+2026-08-26 23:13:06 - train: epoch 38, iter:0, loss: 0.1840, lr: 0.0007015882058642168
+2026-08-26 23:13:59 - train: epoch 38, iter:20, loss: 0.1535, lr: 0.0007015882058642168
+2026-08-26 23:14:56 - train: epoch 38, iter:40, loss: 0.1386, lr: 0.0007015882058642168
+2026-08-26 23:15:53 - train: epoch 38, iter:60, loss: 0.1407, lr: 0.0007015882058642168
+2026-08-26 23:16:16 - Finish one epoch train: epoch 38, loss: 0.1763, time(s): 192.12
+2026-08-26 23:16:19 - train: epoch 39, iter:0, loss: 0.1675, lr: 0.0006872216535789162
+2026-08-26 23:17:14 - train: epoch 39, iter:20, loss: 0.1504, lr: 0.0006872216535789162
+2026-08-26 23:18:12 - train: epoch 39, iter:40, loss: 0.1550, lr: 0.0006872216535789162
+2026-08-26 23:19:13 - train: epoch 39, iter:60, loss: 0.1533, lr: 0.0006872216535789162
+2026-08-26 23:19:39 - Finish one epoch train: epoch 39, loss: 0.1814, time(s): 202.10
+2026-08-26 23:19:42 - train: epoch 40, iter:0, loss: 0.1708, lr: 0.0006726752705214198
+2026-08-26 23:20:41 - train: epoch 40, iter:20, loss: 0.1452, lr: 0.0006726752705214198
+2026-08-26 23:21:41 - train: epoch 40, iter:40, loss: 0.1516, lr: 0.0006726752705214198
+2026-08-26 23:22:41 - train: epoch 40, iter:60, loss: 0.1488, lr: 0.0006726752705214198
+2026-08-26 23:23:06 - Finish one epoch train: epoch 40, loss: 0.1699, time(s): 206.87
+2026-08-26 23:23:10 - train: epoch 41, iter:0, loss: 0.1650, lr: 0.0006579634122155995
+2026-08-26 23:24:11 - train: epoch 41, iter:20, loss: 0.1498, lr: 0.0006579634122155995
+2026-08-26 23:25:12 - train: epoch 41, iter:40, loss: 0.1464, lr: 0.0006579634122155995
+2026-08-26 23:26:15 - train: epoch 41, iter:60, loss: 0.1800, lr: 0.0006579634122155995
+2026-08-26 23:26:43 - Finish one epoch train: epoch 41, loss: 0.1658, time(s): 215.67
+2026-08-26 23:26:47 - train: epoch 42, iter:0, loss: 0.2081, lr: 0.000643100597489419
+2026-08-26 23:27:47 - train: epoch 42, iter:20, loss: 0.1748, lr: 0.000643100597489419
+2026-08-26 23:28:49 - train: epoch 42, iter:40, loss: 0.1343, lr: 0.000643100597489419
+2026-08-26 23:29:52 - train: epoch 42, iter:60, loss: 0.1703, lr: 0.000643100597489419
+2026-08-26 23:30:18 - Finish one epoch train: epoch 42, loss: 0.1750, time(s): 213.59
+2026-08-26 23:30:21 - train: epoch 43, iter:0, loss: 0.1610, lr: 0.0006281014941466035
+2026-08-26 23:31:22 - train: epoch 43, iter:20, loss: 0.1488, lr: 0.0006281014941466035
+2026-08-26 23:32:27 - train: epoch 43, iter:40, loss: 0.2371, lr: 0.0006281014941466035
+2026-08-26 23:33:31 - train: epoch 43, iter:60, loss: 0.1477, lr: 0.0006281014941466035
+2026-08-26 23:33:57 - Finish one epoch train: epoch 43, loss: 0.1671, time(s): 218.39
+2026-08-26 23:34:00 - train: epoch 44, iter:0, loss: 0.1258, lr: 0.000612980904491289
+2026-08-26 23:35:01 - train: epoch 44, iter:20, loss: 0.1351, lr: 0.000612980904491289
+2026-08-26 23:36:04 - train: epoch 44, iter:40, loss: 0.1427, lr: 0.000612980904491289
+2026-08-26 23:37:07 - train: epoch 44, iter:60, loss: 0.1552, lr: 0.000612980904491289
+2026-08-26 23:37:35 - Finish one epoch train: epoch 44, loss: 0.1640, time(s): 217.68
+2026-08-26 23:37:39 - train: epoch 45, iter:0, loss: 0.2167, lr: 0.0005977537507199342
+2026-08-26 23:38:46 - train: epoch 45, iter:20, loss: 0.0944, lr: 0.0005977537507199342
+2026-08-26 23:39:52 - train: epoch 45, iter:40, loss: 0.1006, lr: 0.0005977537507199342
+2026-08-26 23:40:57 - train: epoch 45, iter:60, loss: 0.1286, lr: 0.0005977537507199342
+2026-08-26 23:41:22 - Finish one epoch train: epoch 45, loss: 0.1625, time(s): 226.07
+2026-08-26 23:41:26 - train: epoch 46, iter:0, loss: 0.1300, lr: 0.0005824350601949147
+2026-08-26 23:42:30 - train: epoch 46, iter:20, loss: 0.1643, lr: 0.0005824350601949147
+2026-08-26 23:43:30 - train: epoch 46, iter:40, loss: 0.1217, lr: 0.0005824350601949147
+2026-08-26 23:44:26 - train: epoch 46, iter:60, loss: 0.1361, lr: 0.0005824350601949147
+2026-08-26 23:44:49 - Finish one epoch train: epoch 46, loss: 0.1487, time(s): 205.53
+2026-08-26 23:44:53 - train: epoch 47, iter:0, loss: 0.1477, lr: 0.000567039950614331
+2026-08-26 23:45:47 - train: epoch 47, iter:20, loss: 0.1245, lr: 0.000567039950614331
+2026-08-26 23:46:44 - train: epoch 47, iter:40, loss: 0.2259, lr: 0.000567039950614331
+2026-08-26 23:47:43 - train: epoch 47, iter:60, loss: 0.1336, lr: 0.000567039950614331
+2026-08-26 23:48:06 - Finish one epoch train: epoch 47, loss: 0.1563, time(s): 196.18
+2026-08-26 23:48:09 - train: epoch 48, iter:0, loss: 0.1338, lr: 0.0005515836150926649
+2026-08-26 23:49:06 - train: epoch 48, iter:20, loss: 0.1789, lr: 0.0005515836150926649
+2026-08-26 23:50:04 - train: epoch 48, iter:40, loss: 0.1332, lr: 0.0005515836150926649
+2026-08-26 23:51:02 - train: epoch 48, iter:60, loss: 0.1260, lr: 0.0005515836150926649
+2026-08-26 23:51:26 - Finish one epoch train: epoch 48, loss: 0.1480, time(s): 198.81
+2026-08-26 23:51:29 - train: epoch 49, iter:0, loss: 0.1111, lr: 0.0005360813071670105
+2026-08-26 23:52:25 - train: epoch 49, iter:20, loss: 0.1496, lr: 0.0005360813071670105
+2026-08-26 23:53:22 - train: epoch 49, iter:40, loss: 0.1323, lr: 0.0005360813071670105
+2026-08-26 23:54:19 - train: epoch 49, iter:60, loss: 0.1431, lr: 0.0005360813071670105
+2026-08-26 23:54:42 - Finish one epoch train: epoch 49, loss: 0.1524, time(s): 195.10
+2026-08-26 23:54:45 - train: epoch 50, iter:0, loss: 0.1208, lr: 0.0005205483257436738
+2026-08-26 23:55:40 - train: epoch 50, iter:20, loss: 0.1296, lr: 0.0005205483257436738
+2026-08-26 23:57:04 - train: epoch 50, iter:40, loss: 0.1160, lr: 0.0005205483257436738
+2026-08-26 23:58:01 - train: epoch 50, iter:60, loss: 0.1032, lr: 0.0005205483257436738
+2026-08-26 23:58:23 - Finish one epoch train: epoch 50, loss: 0.1478, time(s): 220.41
+2026-08-26 23:59:34 - idx 0 case case0008 mean_dice 0.552210 mean_hd95 27.825124
+2026-08-27 00:00:10 - idx 1 case case0022 mean_dice 0.857572 mean_hd95 24.336718
+2026-08-27 00:00:46 - idx 2 case case0038 mean_dice 0.706652 mean_hd95 32.731820
+2026-08-27 00:02:16 - idx 3 case case0036 mean_dice 0.771397 mean_hd95 72.114619
+2026-08-27 00:03:16 - idx 4 case case0032 mean_dice 0.832046 mean_hd95 11.283355
+2026-08-27 00:04:12 - idx 5 case case0002 mean_dice 0.838959 mean_hd95 9.444023
+2026-08-27 00:04:51 - idx 6 case case0029 mean_dice 0.646750 mean_hd95 47.109316
+2026-08-27 00:06:15 - idx 7 case case0003 mean_dice 0.649394 mean_hd95 85.830347
+2026-08-27 00:07:16 - idx 8 case case0001 mean_dice 0.696449 mean_hd95 29.772703
+2026-08-27 00:08:12 - idx 9 case case0004 mean_dice 0.720992 mean_hd95 35.561417
+2026-08-27 00:08:47 - idx 10 case case0025 mean_dice 0.623814 mean_hd95 45.446588
+2026-08-27 00:09:20 - idx 11 case case0035 mean_dice 0.808517 mean_hd95 5.500156
+2026-08-27 00:09:20 - Mean class 1 mean_dice 0.804839 mean_hd95 27.920707
+2026-08-27 00:09:20 - Mean class 2 mean_dice 0.612600 mean_hd95 28.112656
+2026-08-27 00:09:20 - Mean class 3 mean_dice 0.767680 mean_hd95 49.026018
+2026-08-27 00:09:20 - Mean class 4 mean_dice 0.716257 mean_hd95 57.633590
+2026-08-27 00:09:20 - Mean class 5 mean_dice 0.925184 mean_hd95 27.271579
+2026-08-27 00:09:20 - Mean class 6 mean_dice 0.454485 mean_hd95 17.772487
+2026-08-27 00:09:20 - Mean class 7 mean_dice 0.837986 mean_hd95 51.442490
+2026-08-27 00:09:20 - Mean class 8 mean_dice 0.684138 mean_hd95 25.457931
+2026-08-27 00:09:20 - val epoch: 50, mean_dice: 0.7253960616968403, mean_hd95: 35.57968217809085, time(s): 655.74
