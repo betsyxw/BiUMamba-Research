@@ -1,0 +1,16 @@
+{
+  "augmentation_sha256": "d7ddcf526f7acf71289ac855c817f29cbc64fc8130318447654bd50f7a6752e4",
+  "checkpoint_decisions": [true, true, false],
+  "output_shape": [2, 9, 224, 224],
+  "protocol": "synapse_v2",
+  "real_batch_forward_backward": "pass",
+  "real_batch_loss": 3.583573341369629,
+  "selected_checkpoint_dice": 0.8,
+  "selected_checkpoint_epoch": 2,
+  "selected_checkpoint_hd95": 18.0,
+  "test_dataset_constructed": false,
+  "train_slice_count": 1798,
+  "validation_batch_inference": "pass",
+  "validation_output_shape": [2, 9, 224, 224],
+  "validation_slice_count": 413
+}

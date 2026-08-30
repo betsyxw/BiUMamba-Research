@@ -1,0 +1,11 @@
+{
+  "case_count": 12,
+  "case_list_sha256": "6976606c015c8bd4188faf6ee3d120fd8a481f260ec940e8a2ad90706967cab3",
+  "evaluator_sha256": "7b7f40f76b57155139005ba08815d2c99bcdc454e00303b4e1b2fe6c63b4dacb",
+  "mean_dice": 0.7921235710125001,
+  "mean_hd95_mm": 27.54872302965,
+  "mean_nsd_1mm": 0.7466564990375,
+  "nsd_tolerance_mm": 1.0,
+  "organ_count": 8,
+  "protocol": "synapse_v1_evaluator_reused_by_synapse_v2"
+}
