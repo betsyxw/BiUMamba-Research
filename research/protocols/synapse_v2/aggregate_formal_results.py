@@ -295,6 +295,42 @@ def main() -> None:
         )
     write_csv(args.output_dir / "paired_seed_deltas.csv", list(paired_rows[0]), paired_rows)
 
+    # The formal accuracy aggregation can combine fixed-checkpoint inference
+    # across GPUs. Efficiency claims cannot. Seed 42 is the preregistered pair
+    # measured on the same RunPod RTX 4090 and is therefore the fair comparison.
+    same_hardware_rows: list[dict] = []
+    for method in METHOD_ORDER:
+        summary = next(
+            row for row in per_seed_rows if row["method"] == method and row["seed"] == 42
+        )
+        same_hardware_rows.append(
+            {
+                "method": method,
+                "seed": 42,
+                "gpu": summary["cuda_device"],
+                "training_total_hours": float(summary["training_total_seconds"]) / 3600.0,
+                "mean_epoch_total_seconds": summary["mean_epoch_total_seconds"],
+                "peak_training_allocated_gib": float(
+                    summary["peak_training_gpu_allocated_bytes"]
+                )
+                / 2**30,
+                "parameter_count": summary["parameter_count"],
+                "thop_macs_g": float(summary["thop_macs"]) / 1e9,
+                "thop_flops_two_per_mac_g": float(summary["thop_flops_two_per_mac"])
+                / 1e9,
+                "inference_ms_per_slice": summary["inference_ms_per_slice"],
+                "peak_inference_allocated_gib": float(
+                    summary["peak_inference_gpu_allocated_bytes"]
+                )
+                / 2**30,
+            }
+        )
+    write_csv(
+        args.output_dir / "same_hardware_efficiency_seed42.csv",
+        list(same_hardware_rows[0]),
+        same_hardware_rows,
+    )
+
     e1_dice = method_stats["E1"]["test_mean_dice"][0]
     e2_dice = method_stats["E2_modify_2"]["test_mean_dice"][0]
     e1_hd95 = method_stats["E1"]["test_mean_hd95_mm"][0]
@@ -342,6 +378,25 @@ def main() -> None:
             f"- Dice: {100.0 * delta_dice:+.2f} percentage points",
             f"- HD95: {delta_hd95:+.2f} mm (lower is better)",
             f"- NSD@1 mm: {100.0 * delta_nsd:+.2f} percentage points",
+            "",
+            "## Same-hardware efficiency comparison (seed 42, RTX 4090)",
+            "",
+            "| Method | Train time (h) | Mean epoch (s) | Peak train memory (GiB) | Params | Inference (ms/slice) |",
+            "|---|---:|---:|---:|---:|---:|",
+        ]
+    )
+    for item in same_hardware_rows:
+        lines.append(
+            f"| {item['method']} | {float(item['training_total_hours']):.2f} | "
+            f"{float(item['mean_epoch_total_seconds']):.2f} | "
+            f"{float(item['peak_training_allocated_gib']):.2f} | "
+            f"{int(item['parameter_count']):,} | "
+            f"{float(item['inference_ms_per_slice']):.3f} |"
+        )
+    lines.extend(
+        [
+            "",
+            "THOP reports the same parameter count and nominal convolution/linear MAC total for both methods, but custom selective-scan operations may be undercounted. Measured time and memory are therefore the primary efficiency evidence.",
             "",
             f"## Decision: **{decision}**",
             "",
