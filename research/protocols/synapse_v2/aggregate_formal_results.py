@@ -177,6 +177,69 @@ def main() -> None:
     )
     write_csv(args.output_dir / "input_file_hashes.csv", list(input_records[0]), input_records)
 
+    per_seed_report_dir = args.output_dir / "per_seed_reports"
+    per_seed_report_dir.mkdir(exist_ok=True)
+    for summary in per_seed_rows:
+        method = summary["method"]
+        seed = int(summary["seed"])
+        organs = [
+            row
+            for row in per_organ_seed_rows
+            if row["method"] == method and int(row["seed"]) == seed
+        ]
+        report_lines = [
+            f"# {method} Synapse v2 Formal Test — Seed {seed}",
+            "",
+            "**Research Author and Repository Maintainer:** xuwen  ",
+            "**Affiliation:** Japan Advanced Institute of Science and Technology (JAIST)",
+            "",
+            "## Completion and checkpoint audit",
+            "",
+            "- Training exit status: `0`",
+            "- Training epochs: `300`",
+            f"- Best validation epoch: `{summary['best_validation_epoch']}`",
+            f"- Checkpoint SHA-256: `{summary['checkpoint_sha256']}`",
+            f"- Evaluator SHA-256: `{summary['evaluator_sha256']}`",
+            f"- Platform: `{summary['platform']}`",
+            f"- GPU: `{summary['cuda_device']}`",
+            "",
+            "## Isolated 12-case test results",
+            "",
+            f"- Mean Dice: **{fmt_percent(float(summary['test_mean_dice']))}**",
+            f"- Mean HD95: **{float(summary['test_mean_hd95_mm']):.2f} mm**",
+            f"- Mean NSD@1 mm: **{fmt_percent(float(summary['test_mean_nsd_1mm']))}**",
+            "",
+            "## Per-organ results",
+            "",
+            "| Organ | Dice (%) | HD95 (mm) | NSD@1 mm (%) |",
+            "|---|---:|---:|---:|",
+        ]
+        for organ in organs:
+            report_lines.append(
+                f"| {organ['organ']} | {100.0 * float(organ['mean_dice']):.2f} | "
+                f"{float(organ['mean_hd95_mm']):.2f} | "
+                f"{100.0 * float(organ['mean_nsd_1mm']):.2f} |"
+            )
+        report_lines.extend(
+            [
+                "",
+                "## Training and efficiency record",
+                "",
+                f"- Total training + validation time: {float(summary['training_total_seconds']) / 3600.0:.2f} h",
+                f"- Mean epoch time: {float(summary['mean_epoch_total_seconds']):.2f} s",
+                f"- Peak training allocated memory: {float(summary['peak_training_gpu_allocated_bytes']) / 2**30:.2f} GiB",
+                f"- Parameters: {int(summary['parameter_count']):,}",
+                f"- THOP MACs: {float(summary['thop_macs']) / 1e9:.3f} G (custom selective-scan operations may be undercounted)",
+                f"- Convention-based FLOPs (2 × MACs): {float(summary['thop_flops_two_per_mac']) / 1e9:.3f} G",
+                f"- Model forward time: {float(summary['inference_ms_per_slice']):.3f} ms/slice on {summary['cuda_device']}",
+                "",
+                "Timing from different GPU models must not be directly used for an efficiency superiority claim.",
+            ]
+        )
+        (per_seed_report_dir / f"{method}_seed{seed}_report.md").write_text(
+            "\n".join(report_lines) + "\n", encoding="utf-8"
+        )
+
     metric_fields = ["test_mean_dice", "test_mean_hd95_mm", "test_mean_nsd_1mm"]
     method_rows: list[dict] = []
     method_stats: dict[str, dict[str, tuple[float, float]]] = defaultdict(dict)
