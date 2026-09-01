@@ -154,7 +154,6 @@ def main() -> None:
             )
         for path in [
             training_dir / "training_summary.json",
-            training_dir / "validation_history.json",
             test_dir / "metrics" / "overall_metrics.json",
             test_dir / "metrics" / "per_organ_metrics.csv",
             test_dir / "inference_manifest.json",
@@ -168,6 +167,24 @@ def main() -> None:
                     "sha256": sha256_file(path),
                 }
             )
+        validation_history = training_dir / "validation_history.json"
+        if validation_history.is_file():
+            validation_history_sha256 = sha256_file(validation_history)
+        else:
+            validation_history_sha256 = spec.get("validation_history_sha256")
+            if not validation_history_sha256:
+                raise FileNotFoundError(
+                    f"Missing {validation_history} and validation_history_sha256 for "
+                    f"{method} seed {seed}"
+                )
+        input_records.append(
+            {
+                "method": method,
+                "seed": seed,
+                "file": str(validation_history),
+                "sha256": validation_history_sha256,
+            }
+        )
 
     write_csv(args.output_dir / "per_seed_summary.csv", list(per_seed_rows[0]), per_seed_rows)
     write_csv(
