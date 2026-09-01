@@ -1,0 +1,29 @@
+{
+  "affiliation": "Japan Advanced Institute of Science and Technology (JAIST)",
+  "decision": "Yellow",
+  "delta_e2_modify_2_minus_e1": {
+    "dice": -0.0018072356499999609,
+    "hd95_mm": 0.9950543005416534,
+    "nsd_1mm": -6.8577249998647005e-06
+  },
+  "excluded_from_github": [
+    "datasets",
+    "patient images",
+    "NIfTI predictions and ground truth",
+    "checkpoints",
+    "pretrained weights",
+    "keys and credentials"
+  ],
+  "methods": [
+    "E1",
+    "E2_modify_2"
+  ],
+  "protocol": "synapse_v2",
+  "research_author": "xuwen",
+  "sample_std_ddof": 1,
+  "seeds": [
+    42,
+    2026,
+    3407
+  ]
+}
