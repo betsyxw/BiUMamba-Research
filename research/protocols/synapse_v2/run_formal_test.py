@@ -30,7 +30,7 @@ from scipy.ndimage import zoom
 
 METHOD_TO_SCAN_FUSION = {
     "E1": "original",
-    "E2_modify_2": "bidirectional_sum",
+    "E2_modify_2": "grouped_2d_bidirectional_sum",
 }
 
 
