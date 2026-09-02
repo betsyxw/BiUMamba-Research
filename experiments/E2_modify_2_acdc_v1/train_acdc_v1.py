@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Formal ACDC v1 E1 trainer with validation-only checkpoint selection.
+"""Formal ACDC v1 E2_modify_2 trainer with validation-only checkpoint selection.
 
 Research Author and Repository Maintainer: xuwen
 Affiliation: Japan Advanced Institute of Science and Technology (JAIST)
