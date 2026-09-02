@@ -1,0 +1,31 @@
+{
+  "author": "xuwen",
+  "affiliation": "Japan Advanced Institute of Science and Technology (JAIST)",
+  "protocol": "acdc_v1",
+  "platform": "RunPod RTX 4090",
+  "seed": 42,
+  "epochs": 300,
+  "train_patients": 70,
+  "validation_patients": 10,
+  "isolated_test_patients": 20,
+  "test_volumes": 40,
+  "checkpoint_selection": "higher validation Dice; lower validation HD95 as tie-breaker",
+  "test_used_for_checkpoint_selection": false,
+  "nsd_tolerance_mm": 1.0,
+  "e1_source_commit": "d151646082d3f4f1a7b3995fb174f3e0a65cb92f",
+  "e2_modify_2_source_commit": "cf8ccfacf7931666c11971dc5ab3431d38863fa5",
+  "test_split_sha256": "043388a6f69f436e6a8084073b6a5216975912c2c3fc0a667bab2d195e4d1825",
+  "decision": "Yellow",
+  "flops": null,
+  "flops_note": "Unavailable; no reliable value was measured.",
+  "github_exclusions": [
+    "dataset",
+    "patient images",
+    "qualitative PDF/PNG",
+    "NIfTI predictions",
+    "checkpoints",
+    "pretrained weights",
+    "archives",
+    "secrets and credentials"
+  ]
+}
