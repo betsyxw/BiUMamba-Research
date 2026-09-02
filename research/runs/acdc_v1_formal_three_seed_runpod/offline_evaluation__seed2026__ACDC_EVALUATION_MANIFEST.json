@@ -1,0 +1,144 @@
+{
+  "checkpoint_selection": "Higher validation Dice; lower validation HD95 as tie-breaker; test never used.",
+  "combined_pdf": "/workspace/outputs/acdc_v1_formal_seed2026_runpod/qualitative_medical_images_DO_NOT_UPLOAD_GITHUB/ACDC_E1_vs_E2_modify_2_qualitative_seed2026_runpod.pdf",
+  "combined_png": "/workspace/outputs/acdc_v1_formal_seed2026_runpod/qualitative_medical_images_DO_NOT_UPLOAD_GITHUB/ACDC_E1_vs_E2_modify_2_qualitative_seed2026_runpod.png",
+  "decision": "Yellow",
+  "differences_e2_minus_e1": {
+    "dice_absolute": 0.0032679215389809224,
+    "hd95_mm_absolute": 0.3808065248961019,
+    "inference_time_percent": -35.745097238812285,
+    "mean_epoch_time_percent": -31.321434293073168,
+    "nsd_absolute": 0.008306679687642982,
+    "peak_memory_percent": -24.920626137700907,
+    "training_time_percent": -30.168926815221987
+  },
+  "flops": "Unavailable in this evaluator; do not invent a value.",
+  "nsd_tolerance_mm": 1.0,
+  "protocol": "acdc_v1",
+  "qualitative": {
+    "cases": {
+      "difficult": {
+        "patient": "patient034",
+        "phase": "es",
+        "slice_index": 1,
+        "volume_id": "patient034_es"
+      },
+      "e2_failure": {
+        "patient": "patient034",
+        "phase": "es",
+        "slice_index": 1,
+        "volume_id": "patient034_es"
+      },
+      "thin_myocardium": {
+        "patient": "patient093",
+        "phase": "ed",
+        "slice_index": 2,
+        "volume_id": "patient093_ed"
+      },
+      "typical": {
+        "patient": "patient001",
+        "phase": "ed",
+        "slice_index": 2,
+        "volume_id": "patient001_ed"
+      }
+    },
+    "selection_rules": {
+      "difficult": "Lowest combined E1/E2 volume Dice.",
+      "e2_failure": "Most negative E2_modify_2 minus E1 volume Dice difference.",
+      "slice_rule": "Slice with maximum ground-truth foreground area; for thin myocardium, maximum myocardium area.",
+      "thin_myocardium": "Highest ground-truth myocardium 3D surface-to-volume ratio.",
+      "typical": "Combined E1/E2 volume Dice closest to the test-set median."
+    }
+  },
+  "results": {
+    "E1": {
+      "best_validation_dice": 0.8990633057814086,
+      "best_validation_epoch": 251,
+      "best_validation_hd95_mm": 2.739181989656641,
+      "checkpoint": "/workspace/runs/e1_acdc_v1_full300_seed2026_runpod/checkpoints/best_validation.pth",
+      "checkpoint_sha256": "eab2158a88ec0b95ecb9754dcc72df6ab9cb8732c5ba66b5789a6901037ab451",
+      "inference": {
+        "milliseconds_per_slice": 1.8209162588107448,
+        "slice_count": 346,
+        "total_forward_seconds": 0.6300370255485177
+      },
+      "model": "E1",
+      "nsd_tolerance_mm": 1.0,
+      "overall": {
+        "mean_dice": 0.905058996152142,
+        "mean_hd95_mm": 2.930754097874853,
+        "mean_nsd": 0.9046445014200607
+      },
+      "per_organ": {
+        "left_ventricle": {
+          "dice": 0.9398163580431117,
+          "hd95_mm": 2.1509313038337194,
+          "nsd": 0.9268308310859983,
+          "volume_count": 40
+        },
+        "myocardium": {
+          "dice": 0.8941991006994459,
+          "hd95_mm": 1.8362317853274057,
+          "nsd": 0.9296456509851054,
+          "volume_count": 40
+        },
+        "right_ventricle": {
+          "dice": 0.8811615297138685,
+          "hd95_mm": 4.805099204463433,
+          "nsd": 0.8574570221890783,
+          "volume_count": 40
+        }
+      },
+      "scan_fusion": "original",
+      "strict_checkpoint_load": true,
+      "test_patient_count": 20,
+      "test_volume_count": 40
+    },
+    "E2_modify_2": {
+      "best_validation_dice": 0.9010776821679062,
+      "best_validation_epoch": 251,
+      "best_validation_hd95_mm": 2.4386730069085365,
+      "checkpoint": "/workspace/runs/e2_modify_2_acdc_v1_full300_seed2026_runpod/checkpoints/best_validation.pth",
+      "checkpoint_sha256": "4816b425d6ac6e42b3dd0a8f8f70d429d325d5e662962a9f0d0cea34fe8cbf21",
+      "inference": {
+        "milliseconds_per_slice": 1.1700279714615014,
+        "slice_count": 346,
+        "total_forward_seconds": 0.4048296781256795
+      },
+      "model": "E2_modify_2",
+      "nsd_tolerance_mm": 1.0,
+      "overall": {
+        "mean_dice": 0.908326917691123,
+        "mean_hd95_mm": 3.311560622770955,
+        "mean_nsd": 0.9129511811077037
+      },
+      "per_organ": {
+        "left_ventricle": {
+          "dice": 0.940710867185803,
+          "hd95_mm": 2.022765715071192,
+          "nsd": 0.9328369053373976,
+          "volume_count": 40
+        },
+        "myocardium": {
+          "dice": 0.8918583309579684,
+          "hd95_mm": 2.311488498811868,
+          "nsd": 0.9217843389089454,
+          "volume_count": 40
+        },
+        "right_ventricle": {
+          "dice": 0.8924115549295978,
+          "hd95_mm": 5.6004276544298035,
+          "nsd": 0.884232299076768,
+          "volume_count": 40
+        }
+      },
+      "scan_fusion": "grouped_2d_bidirectional_sum",
+      "strict_checkpoint_load": true,
+      "test_patient_count": 20,
+      "test_volume_count": 40
+    }
+  },
+  "test_list_sha256": "043388a6f69f436e6a8084073b6a5216975912c2c3fc0a667bab2d195e4d1825",
+  "test_patient_count": 20,
+  "test_volume_count": 40
+}

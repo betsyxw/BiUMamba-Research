@@ -1,0 +1,43 @@
+{
+  "best_validation_dice": 0.9019494101693031,
+  "best_validation_epoch": 272,
+  "best_validation_hd95_mm": 2.395717857554628,
+  "checkpoint": "/workspace/runs/e2_modify_2_acdc_v1_full300_seed3407_runpod/checkpoints/best_validation.pth",
+  "checkpoint_sha256": "7432b4bc3262440b4f38f57f53cfcec9738121e9b868c1eb09776890bd7ab21a",
+  "inference": {
+    "milliseconds_per_slice": 1.1541196118200445,
+    "slice_count": 346,
+    "total_forward_seconds": 0.3993253856897354
+  },
+  "model": "E2_modify_2",
+  "nsd_tolerance_mm": 1.0,
+  "overall": {
+    "mean_dice": 0.907933983162262,
+    "mean_hd95_mm": 2.7973489574513724,
+    "mean_nsd": 0.9098804037480074
+  },
+  "per_organ": {
+    "left_ventricle": {
+      "dice": 0.94014431552615,
+      "hd95_mm": 1.9873904192761862,
+      "nsd": 0.9311083325366376,
+      "volume_count": 40
+    },
+    "myocardium": {
+      "dice": 0.8941671582237147,
+      "hd95_mm": 2.2961904262691095,
+      "nsd": 0.9255262908964397,
+      "volume_count": 40
+    },
+    "right_ventricle": {
+      "dice": 0.8894904757369216,
+      "hd95_mm": 4.108466026808821,
+      "nsd": 0.873006587810945,
+      "volume_count": 40
+    }
+  },
+  "scan_fusion": "grouped_2d_bidirectional_sum",
+  "strict_checkpoint_load": true,
+  "test_patient_count": 20,
+  "test_volume_count": 40
+}

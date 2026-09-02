@@ -1,0 +1,9 @@
+Author: xuwen
+Protocol: acdc_v1
+Model: E2_modify_2_coverage_preserving_bidirectional
+Seed: 2026
+Epochs: 300
+Platform: RunPod RTX 4090
+Checkpoint rule: highest validation Dice; lower validation HD95 tie-breaker
+Test access during training: forbidden
+Queue: acdc_v1_multiseed_3407_2026

@@ -1,0 +1,27 @@
+{
+  "dataset_protocol": "acdc_v1",
+  "models": [
+    "E1",
+    "E2_modify_2"
+  ],
+  "seeds": [
+    42,
+    3407,
+    2026
+  ],
+  "split": {
+    "train_patients": 70,
+    "validation_patients": 10,
+    "isolated_test_patients": 20
+  },
+  "test_volumes": 40,
+  "checkpoint_rule": "highest validation Dice; lower validation HD95 tie-breaker",
+  "test_used_for_checkpoint_selection": false,
+  "metrics": [
+    "Dice",
+    "physical HD95 mm",
+    "NSD@1mm"
+  ],
+  "flops": "N/A: selective-scan custom operator is not counted reliably by generic profilers",
+  "qualitative_upload_policy": "download-only; excluded from GitHub"
+}
