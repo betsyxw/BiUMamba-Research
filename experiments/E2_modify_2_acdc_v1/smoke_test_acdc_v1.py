@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""End-to-end ACDC v1 E1 smoke test (no formal training claim).
+"""End-to-end ACDC v1 E2_modify_2 smoke test (no formal training claim).
 
 Research Author and Repository Maintainer: xuwen
 Affiliation: Japan Advanced Institute of Science and Technology (JAIST)
