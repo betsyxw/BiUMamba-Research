@@ -1,0 +1,44 @@
+diff --git a/experiments/E2_modify_2_acdc_v1/config_acdc_v1.py b/experiments/E2_modify_2_acdc_v1/config_acdc_v1.py
+--- a/experiments/E2_modify_2_acdc_v1/config_acdc_v1.py
++++ b/experiments/E2_modify_2_acdc_v1/config_acdc_v1.py
+@@
+-        "scan_fusion": "original",
++        "scan_fusion": "grouped_2d_bidirectional_sum",
+diff --git a/experiments/E2_modify_2_acdc_v1/train_acdc_v1.py b/experiments/E2_modify_2_acdc_v1/train_acdc_v1.py
+--- a/experiments/E2_modify_2_acdc_v1/train_acdc_v1.py
++++ b/experiments/E2_modify_2_acdc_v1/train_acdc_v1.py
+@@
+-        scan_fusion="original",
++        scan_fusion="grouped_2d_bidirectional_sum",
+@@
+-    from experiments.E1_acdc_v1.checkpointing import ValidationCheckpointSelector
+-    from experiments.E1_acdc_v1.config_acdc_v1 import ACDCV1Config as config
+-    from experiments.E1_acdc_v1.dataset_acdc_v1 import ACDCSlicesV1
+-    from experiments.E1_acdc_v1.validation_acdc_v1 import evaluate_validation
++    from experiments.E2_modify_2_acdc_v1.checkpointing import ValidationCheckpointSelector
++    from experiments.E2_modify_2_acdc_v1.config_acdc_v1 import ACDCV1Config as config
++    from experiments.E2_modify_2_acdc_v1.dataset_acdc_v1 import ACDCSlicesV1
++    from experiments.E2_modify_2_acdc_v1.validation_acdc_v1 import evaluate_validation
+@@
+-        "model_reference": "E1_original_four_direction_ss2d",
++        "model_reference": "E2_modify_2_grouped_2d_bidirectional_sum",
+diff --git a/experiments/E2_modify_2_acdc_v1/smoke_test_acdc_v1.py b/experiments/E2_modify_2_acdc_v1/smoke_test_acdc_v1.py
+--- a/experiments/E2_modify_2_acdc_v1/smoke_test_acdc_v1.py
++++ b/experiments/E2_modify_2_acdc_v1/smoke_test_acdc_v1.py
+@@
+-    from experiments.E1_acdc_v1.checkpointing import ValidationCheckpointSelector
+-    from experiments.E1_acdc_v1.config_acdc_v1 import ACDCV1Config as config
+-    from experiments.E1_acdc_v1.dataset_acdc_v1 import ACDCSlicesV1
+-    from experiments.E1_acdc_v1.train_acdc_v1 import build_model
+-    from experiments.E1_acdc_v1.validation_acdc_v1 import evaluate_validation
++    from experiments.E2_modify_2_acdc_v1.checkpointing import ValidationCheckpointSelector
++    from experiments.E2_modify_2_acdc_v1.config_acdc_v1 import ACDCV1Config as config
++    from experiments.E2_modify_2_acdc_v1.dataset_acdc_v1 import ACDCSlicesV1
++    from experiments.E2_modify_2_acdc_v1.train_acdc_v1 import build_model
++    from experiments.E2_modify_2_acdc_v1.validation_acdc_v1 import evaluate_validation
+diff --git a/research/protocols/acdc_v1/TRAINING_CONFIG.json b/research/protocols/acdc_v1/TRAINING_CONFIG.json
+--- a/research/protocols/acdc_v1/TRAINING_CONFIG.json
++++ b/research/protocols/acdc_v1/TRAINING_CONFIG.json
+@@
+-  "model": "E1_original_VM-UNet_four_direction_SS2D",
++  "model": "E2_modify_2_channel_grouped_2D_bidirectional_scan",
