@@ -1,4 +1,4 @@
-"""Frozen ACDC v1 E1 training configuration.
+"""Frozen ACDC v1 E2_modify_2 training configuration.
 
 Research Author and Repository Maintainer: xuwen
 Affiliation: Japan Advanced Institute of Science and Technology (JAIST)
