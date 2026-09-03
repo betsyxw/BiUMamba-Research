@@ -24,7 +24,7 @@ Current experimental status:
 
 - E1: original four-direction VM-UNet baseline — completed.
 - E2: forward/reverse row-major scan with fixed sum — completed; below E1.
-- E2_modify_1: alternating-axis bidirectional scan — 50-epoch screening completed.
+- E2_modify_1: alternating-axis bidirectional scan — 50-epoch screening completed. The report, metrics, manifest, logs, and matched comparison are mirrored in [`research/runs/E2_modify_1_screen50/`](research/runs/E2_modify_1_screen50/).
 - E2_modify_2: channel-grouped 2D bidirectional scan — formal three-seed evaluation is complete on Synapse, ACDC and BUSI. It is now treated as an efficiency-oriented method, not a universal accuracy improvement.
 - E3: static learnable fusion on E2_modify_2 — 50-epoch screening and the full 300-epoch run completed; the final result did not outperform E2_modify_2.
 - E4: constrained sample/channel adaptive gate on the same coverage-preserving structure — 50-epoch screening and 300-epoch full run completed; the full run was a Red result and exposed a screen/full reproducibility mismatch.
@@ -208,7 +208,7 @@ VM-UNet/VMambaのオリジナルコードの著作権およびクレジットは
 
 - **E1：Original** — VM-UNetのオリジナル4方向スキャンによるベースライン。完了。
 - **E2：Bidirectional + Fixed Sum** — Row-majorのForward/Reverseを固定加算で融合。完了したがE1を下回った。
-- **E2_modify_1** — 水平・垂直軸をブロックごとに交互に用いる双方向走査。50 epochのスクリーニング完了。
+- **E2_modify_1** — 水平・垂直軸をブロックごとに交互に用いる双方向走査。50 epochのスクリーニング完了。Report、metrics、manifest、log、および同条件比較は[`research/runs/E2_modify_1_screen50/`](research/runs/E2_modify_1_screen50/)にも整理しています。
 - **E2_modify_2** — 各ブロック内でチャネルを水平・垂直グループに分ける二次元双方向走査。Synapse、ACDC、BUSIで正式な3 seed評価を完了した。現在は普遍的な精度改善ではなく、効率重視の手法として位置付ける。
 - **E3** — E2_modify_2を基盤とする静的学習可能融合。50 epochスクリーニングおよび300 epochのFull runが完了したが、最終結果はE2_modify_2を上回らなかった。
 - **E4** — 同じ二次元被覆を維持したサンプル・チャネル依存Adaptive Gate。50 epochスクリーニングと300 epoch Full runが完了したが、Full runはRed判定となり、screen/full間の再現性不一致が確認された。

@@ -214,6 +214,8 @@ def main() -> None:
             "",
             "- Training exit status: `0`",
             "- Training epochs: `300`",
+            "- Validation history: complete (`300` epoch records)",
+            "- Training/test text logs: archived and hash-audited",
             f"- Best validation epoch: `{summary['best_validation_epoch']}`",
             f"- Checkpoint SHA-256: `{summary['checkpoint_sha256']}`",
             f"- Evaluator SHA-256: `{summary['evaluator_sha256']}`",
@@ -289,6 +291,44 @@ def main() -> None:
         args.output_dir / "per_organ_mean_std.csv",
         list(organ_summary_rows[0]),
         organ_summary_rows,
+    )
+
+    organ_delta_rows: list[dict] = []
+    for organ in ORGANS:
+        e1 = next(
+            row
+            for row in organ_summary_rows
+            if row["method"] == "E1" and row["organ"] == organ
+        )
+        e2 = next(
+            row
+            for row in organ_summary_rows
+            if row["method"] == "E2_modify_2" and row["organ"] == organ
+        )
+        dice_delta = float(e2["mean_dice_mean"]) - float(e1["mean_dice_mean"])
+        hd95_delta = float(e2["mean_hd95_mm_mean"]) - float(e1["mean_hd95_mm_mean"])
+        nsd_delta = float(e2["mean_nsd_1mm_mean"]) - float(e1["mean_nsd_1mm_mean"])
+        organ_delta_rows.append(
+            {
+                "organ": organ,
+                "delta_dice_e2_minus_e1": dice_delta,
+                "delta_hd95_mm_e2_minus_e1": hd95_delta,
+                "delta_nsd_e2_minus_e1": nsd_delta,
+                "dice_direction": (
+                    "improved" if dice_delta > 0 else "declined" if dice_delta < 0 else "unchanged"
+                ),
+                "hd95_direction": (
+                    "improved" if hd95_delta < 0 else "declined" if hd95_delta > 0 else "unchanged"
+                ),
+                "nsd_direction": (
+                    "improved" if nsd_delta > 0 else "declined" if nsd_delta < 0 else "unchanged"
+                ),
+            }
+        )
+    write_csv(
+        args.output_dir / "per_organ_method_deltas.csv",
+        list(organ_delta_rows[0]),
+        organ_delta_rows,
     )
 
     paired_rows: list[dict] = []
@@ -390,6 +430,21 @@ def main() -> None:
     lines.extend(
         [
             "",
+            "## Per-organ mean changes (E2_modify_2 − E1)",
+            "",
+            "| Organ | Dice (pp) | HD95 (mm) | NSD (pp) |",
+            "|---|---:|---:|---:|",
+        ]
+    )
+    for item in organ_delta_rows:
+        lines.append(
+            f"| {item['organ']} | {100.0 * float(item['delta_dice_e2_minus_e1']):+.2f} | "
+            f"{float(item['delta_hd95_mm_e2_minus_e1']):+.2f} | "
+            f"{100.0 * float(item['delta_nsd_e2_minus_e1']):+.2f} |"
+        )
+    lines.extend(
+        [
+            "",
             "## Paired mean differences (E2_modify_2 − E1)",
             "",
             f"- Dice: {100.0 * delta_dice:+.2f} percentage points",
@@ -425,6 +480,8 @@ def main() -> None:
             "",
             "- Test metrics: Dice, physical HD95 in mm, and NSD at 1 mm.",
             "- Eight organs are aggregated by organ and then macro-averaged.",
+            "- E2_modify_2 inference used `grouped_2d_bidirectional_sum`; an earlier wrong-mode dry run was excluded and recorded in `FORMAL_TEST_CORRECTION_AUDIT.md`.",
+            "- Cross-platform source differences were audited as comments/whitespace only; no executable model difference was found.",
             "- HAKUSAN A100 and RunPod RTX 4090 were both used for fixed-checkpoint inference. Accuracy aggregation is valid, but cross-platform timing is not used as the primary efficiency comparison.",
             "- Fair efficiency claims must use E1 and E2_modify_2 measured on the same RTX 4090 hardware.",
         ]
