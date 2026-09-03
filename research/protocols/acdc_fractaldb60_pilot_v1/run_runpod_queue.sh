@@ -23,6 +23,8 @@ trap finish EXIT
 
 cd "$REPO_ROOT"
 date -u +%FT%TZ > "$RUN_ROOT/QUEUE_STARTED_UTC.txt"
+test -f research/protocols/acdc_v1/checkpointing.py
+test -f research/protocols/acdc_v1/validation_acdc_v1.py
 "$PYTHON_BIN" "$PROTOCOL/verify_protocol.py" | tee "$RUN_ROOT/protocol_verification.json"
 
 test -f "$FRACTAL_ARCHIVE"
