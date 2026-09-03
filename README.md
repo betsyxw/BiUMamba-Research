@@ -25,11 +25,34 @@ Current experimental status:
 - E1: original four-direction VM-UNet baseline — completed.
 - E2: forward/reverse row-major scan with fixed sum — completed; below E1.
 - E2_modify_1: alternating-axis bidirectional scan — 50-epoch screening completed.
-- E2_modify_2: channel-grouped 2D bidirectional scan — 300-epoch validation completed; it recovered E2's lost accuracy and passed the Strong Green decision gate.
+- E2_modify_2: channel-grouped 2D bidirectional scan — formal three-seed evaluation is complete on Synapse, ACDC and BUSI. It is now treated as an efficiency-oriented method, not a universal accuracy improvement.
 - E3: static learnable fusion on E2_modify_2 — 50-epoch screening and the full 300-epoch run completed; the final result did not outperform E2_modify_2.
 - E4: constrained sample/channel adaptive gate on the same coverage-preserving structure — 50-epoch screening and 300-epoch full run completed; the full run was a Red result and exposed a screen/full reproducibility mismatch.
 - E4 Version 2-B: separately named stabilized-gate ablation — deterministic A/A checks and a formal 50-epoch screening run completed. Training stability improved, but accuracy did not justify a 300-epoch extension.
-- Datasets: Synapse first, ACDC second; FractalDB pre-training pilot follows the directional ablation.
+- Datasets: formal three-seed tests are complete on Synapse CT, ACDC cardiac MRI and BUSI breast ultrasound. The FractalDB low-label pre-training pilot is the next stage.
+
+### Formal three-seed cross-dataset results (updated 2026-09-03)
+
+All formal comparisons use the fixed seeds `42`, `3407` and `2026`, matched
+E1/E2_modify_2 training settings, validation-selected checkpoints and isolated
+test sets.
+
+| Dataset | Image type | E1 Dice | E2_modify_2 Dice | Dice change | Main efficiency evidence | Decision |
+|---|---|---:|---:|---:|---|---|
+| Synapse | Abdominal CT | 76.84 ± 1.15% | 76.66 ± 1.22% | -0.18 pp | Peak memory -24.41% on the same RTX 4090 seed-42 run | Yellow |
+| ACDC | Cardiac MRI | 90.77 ± 0.24% | 90.73 ± 0.15% | -0.046 pp | Epoch time -31.40%, peak memory -24.93%, inference time -34.58% | Yellow |
+| BUSI | Breast ultrasound | 75.46 ± 0.87% | 72.60 ± 2.50% | -2.86 pp | Epoch time -11.02%, peak memory -24.93%, approximate FLOPs -18.36% | Negative accuracy result |
+
+The grouped two-axis scan consistently reduced peak training memory by about
+24-25%, but its accuracy was dataset-dependent. It kept mean Dice close to E1
+on Synapse and ACDC, while it did not preserve E1 accuracy on BUSI. The current
+defensible conclusion is therefore an **accuracy-memory trade-off**, not
+universal superiority. Full Dice/HD95/NSD results, per-seed tables and audit
+records are archived in:
+
+- [`research/runs/synapse_v2_formal_3seed_comparison/`](research/runs/synapse_v2_formal_3seed_comparison/)
+- [`research/runs/acdc_v1_formal_three_seed_runpod/`](research/runs/acdc_v1_formal_three_seed_runpod/)
+- [`research/runs/busi_v1_clean_formal_three_seed/`](research/runs/busi_v1_clean_formal_three_seed/)
 
 ### Training story and current evidence
 
@@ -52,10 +75,10 @@ E2_modify_2 was selected for the first full 300-epoch validation because it
 improved Dice by `2.53` percentage points, improved Dice in seven of eight
 organs, reduced final loss, and trained about `20.16%` faster per epoch than
 E2_modify_1. Its HD95 was `4.84` worse, so this is a provisional selection—not
-evidence that the method is already superior. The 300-epoch run will determine
-whether the boundary outliers persist after convergence. E1/E2 (300 epochs)
-and E2_modify_1/E2_modify_2 (50 epochs) are not treated as directly comparable
-final results.
+evidence that the method is already superior. This screening result motivated
+the later 300-epoch and formal three-seed evaluations reported above. E1/E2
+(300 epochs) and E2_modify_1/E2_modify_2 (50 epochs) are not treated as directly
+comparable final results.
 
 ### Converged 300-epoch comparison
 
@@ -78,8 +101,9 @@ reduced peak GPU memory by `24.88%`. Compared with E2, it recovered `1.6460`
 Dice points and reduced HD95 by `4.1906`. This supports the interpretation that
 E2 failed mainly because it removed vertical coverage, while the grouped-2D
 design preserves two-dimensional context at lower cost than the original
-four-direction implementation. These are single-seed results and are not yet a
-statistical superiority claim.
+four-direction implementation. These values are retained as historical
+single-seed evidence; the formal three-seed results above supersede them for
+the final cross-dataset conclusion.
 
 The complete archive report, overall and per-organ CSV comparisons, and
 structured manifest are available in
@@ -150,8 +174,8 @@ points and HD95 decreased by `4.3535`. Mean epoch time decreased from
 to `12,958 MiB`.
 
 This is a short single-seed screening result, not a direct comparison with the
-300-epoch E1/E2/E2_modify_2 results. The result supports running E3 for the
-matched 300-epoch budget. Right-kidney Dice and the spleen HD95 outlier remain
+300-epoch E1/E2/E2_modify_2 results. It motivated the completed E3 300-epoch
+run described above. Right-kidney Dice and the spleen HD95 outlier remain
 explicit risks. The report and structured comparisons are archived in
 [`research/runs/E3_fusion_50_epochs/`](research/runs/E3_fusion_50_epochs/).
 
@@ -185,10 +209,32 @@ VM-UNet/VMambaのオリジナルコードの著作権およびクレジットは
 - **E1：Original** — VM-UNetのオリジナル4方向スキャンによるベースライン。完了。
 - **E2：Bidirectional + Fixed Sum** — Row-majorのForward/Reverseを固定加算で融合。完了したがE1を下回った。
 - **E2_modify_1** — 水平・垂直軸をブロックごとに交互に用いる双方向走査。50 epochのスクリーニング完了。
-- **E2_modify_2** — 各ブロック内でチャネルを水平・垂直グループに分ける二次元双方向走査。300 epoch検証が完了し、E2で失われた精度を回復してStrong Green判定を満たした。
+- **E2_modify_2** — 各ブロック内でチャネルを水平・垂直グループに分ける二次元双方向走査。Synapse、ACDC、BUSIで正式な3 seed評価を完了した。現在は普遍的な精度改善ではなく、効率重視の手法として位置付ける。
 - **E3** — E2_modify_2を基盤とする静的学習可能融合。50 epochスクリーニングおよび300 epochのFull runが完了したが、最終結果はE2_modify_2を上回らなかった。
 - **E4** — 同じ二次元被覆を維持したサンプル・チャネル依存Adaptive Gate。50 epochスクリーニングと300 epoch Full runが完了したが、Full runはRed判定となり、screen/full間の再現性不一致が確認された。
 - **E4 Version 2-B** — E4 Version 1を上書きせず、独立した安定化Gateアブレーションとして作成。決定性A/A確認と50 epoch正式スクリーニングを完了した。学習安定性は改善したが、300 epochへ延長する精度上の根拠は得られなかった。
+
+### 正式な3 seedクロスデータセット結果（2026-09-03更新）
+
+すべての正式比較では、固定seed `42`、`3407`、`2026`、一致した
+E1/E2_modify_2学習条件、validationで選択したcheckpoint、および独立した
+test setを使用しました。
+
+| データセット | 画像種別 | E1 Dice | E2_modify_2 Dice | Dice差 | 主な効率結果 | 判定 |
+|---|---|---:|---:|---:|---|---|
+| Synapse | 腹部CT | 76.84 ± 1.15% | 76.66 ± 1.22% | -0.18 pp | 同一RTX 4090 seed-42比較でPeak memory -24.41% | Yellow |
+| ACDC | 心臓MRI | 90.77 ± 0.24% | 90.73 ± 0.15% | -0.046 pp | Epoch時間 -31.40%、Peak memory -24.93%、推論時間 -34.58% | Yellow |
+| BUSI | 乳腺超音波 | 75.46 ± 0.87% | 72.60 ± 2.50% | -2.86 pp | Epoch時間 -11.02%、Peak memory -24.93%、概算FLOPs -18.36% | 精度面でNegative |
+
+チャネル分割型二軸スキャンは、3データセットでPeak training memoryを
+約24-25%削減しました。一方、精度はデータセットに依存し、SynapseとACDC
+ではE1に近いMean Diceを維持しましたが、BUSIではE1の精度を維持できません
+でした。したがって、現時点で支持される結論は普遍的な優越性ではなく、
+**精度とメモリ効率のトレードオフ**です。詳細は以下に保存しています。
+
+- [`research/runs/synapse_v2_formal_3seed_comparison/`](research/runs/synapse_v2_formal_3seed_comparison/)
+- [`research/runs/acdc_v1_formal_three_seed_runpod/`](research/runs/acdc_v1_formal_three_seed_runpod/)
+- [`research/runs/busi_v1_clean_formal_three_seed/`](research/runs/busi_v1_clean_formal_three_seed/)
 
 ### 学習過程で得られた知見
 
@@ -209,9 +255,9 @@ E2では、4方向SS2DをRow-majorのForward/Reverseの2方向へ削減しまし
 E2_modify_2は、E2_modify_1よりDiceが2.53ポイント高く、8臓器中7臓器で
 Diceが改善し、最終lossが低く、平均epoch時間も約20.16%短縮しました。
 一方、HD95は4.84悪化しているため、この選択は暫定的なものです。
-境界の外れ値が収束後にも残るかを確認するため、E2_modify_2を300 epochで
-検証しています。300 epochのE1/E2と50 epochのスクリーニング結果は、
-最終性能として直接比較しません。
+このscreening結果を根拠として、その後300 epochおよび正式3 seed評価を
+実施しました。300 epochのE1/E2と50 epochのスクリーニング結果は、最終性能
+として直接比較しません。
 
 ### 300 epoch収束結果の比較
 
@@ -232,8 +278,9 @@ E1と比較すると、E2_modify_2はDiceを`0.2052`ポイント改善し、HD95
 memoryを`24.88%`削減しました。E2と比較すると、Diceを`1.6460`ポイント
 回復し、HD95を`4.1906`改善しました。この結果は、E2の性能低下が主に
 垂直方向の被覆を削除したことに起因し、E2_modify_2が低コストで二次元
-コンテキストを維持できる可能性を支持します。ただし、現段階では単一seed
-の結果であり、統計的な優越性を主張するものではありません。
+コンテキストを維持できる可能性を支持します。この値は過去の単一seed結果
+として残し、最終的なクロスデータセット結論には上記の正式3 seed結果を
+使用します。
 
 完全なアーカイブレポート、全体・臓器別比較CSVおよびManifestは
 [`research/runs/e2_modify_2_synapse_seed42/`](research/runs/e2_modify_2_synapse_seed42/)
@@ -307,17 +354,18 @@ Dice `75.6773%`、Mean HD95 `36.0624`を達成しました。E2_modify_2の50 ep
 へ増加しました。
 
 これは単一seed・50 epochのスクリーニング結果であり、300 epochのE1/E2/
-E2_modify_2と直接順位付けするものではありません。E3を300 epochで検証する
-根拠は得られましたが、右腎Diceと脾臓HD95の外れ値は引き続き確認が必要です。
+E2_modify_2と直接順位付けするものではありません。この結果を受けてE3の
+300 epoch検証を実施し、その完了結果を上記に記載しています。右腎Diceと
+脾臓HD95の外れ値は引き続き確認が必要です。
 レポートと比較CSVは
 [`research/runs/E3_fusion_50_epochs/`](research/runs/E3_fusion_50_epochs/)
 に保存しています。
 
 ### 実験計画
 
-- 最初にSynapseデータセットを用いてE1〜E4を単一seedで比較し、提案手法の有効性を予備評価します。
-- 改善傾向が確認できた場合、3 seedsおよびACDCデータセットへ実験を拡張します。
-- その後、Scratch、ImageNet、FractalDBの事前学習条件を比較し、FractalDBの有効性を検証します。
+- Synapse、ACDC、BUSIにおけるE1とE2_modify_2の正式3 seed比較は完了しました。
+- 次に25%の医用ラベルを用いたFractalDB事前学習pilotを実施します。
+- Pilotが有効な場合のみ、50%および100%ラベル条件へ拡張し、ScratchおよびImageNet事前学習と比較します。
 - 主な評価指標はDice、HD95、NSDです。
 
 ### 現在確認済みの結果
@@ -439,5 +487,3 @@ python train_synapse.py  # Train and test VM-UNet on the Synapse dataset.
 ## 6. Acknowledgments
 
 - We thank the authors of [VMamba](https://github.com/MzeroMiko/VMamba) and [Swin-UNet](https://github.com/HuCaoFighting/Swin-Unet) for their open-source codes.
-
-
