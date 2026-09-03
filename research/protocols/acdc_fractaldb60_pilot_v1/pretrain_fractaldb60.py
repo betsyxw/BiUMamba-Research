@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import json
 import random
+import sys
 import time
 from pathlib import Path
 
@@ -81,6 +82,8 @@ def main():
 
     if not torch.cuda.is_available():
         raise RuntimeError("CUDA is required")
+    repo_root = Path.cwd().resolve()
+    sys.path.insert(0, str(repo_root))
     set_seed(args.seed)
     args.work_dir.mkdir(parents=True, exist_ok=True)
 
