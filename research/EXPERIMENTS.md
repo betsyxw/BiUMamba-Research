@@ -68,5 +68,9 @@ After the directional signal is established:
 2. ImageNet
 3. FractalDB
 
-The first pilot uses 25% labels. Expansion to 50% and 100% labels depends on
-the pilot signal.
+The first pilot uses E2_modify_2 on ACDC with seed 42 and a fixed 18/70-patient
+training subset (25.7%, reported as approximately 25%). The 10 validation and
+20 isolated-test patients remain unchanged. FractalDB-60 pre-trains a matching
+VMamba encoder; an incompatible ResNet checkpoint is not used. Expansion to
+seeds 3407 and 2026, and then to 50% and 100% labels, depends on the pilot
+signal.

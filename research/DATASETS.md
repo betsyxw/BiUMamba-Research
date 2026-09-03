@@ -22,8 +22,10 @@ preprocessing manifest must be frozen before the first full run.
 
 Compressed archives are stored outside GitHub:
 
-- FractalDB-60: pipeline smoke testing only.
-- FractalDB-1k: formal natural-image-free pre-training experiments.
+- FractalDB-60: first low-cost pre-training pilot (60 classes x 1,000 images).
+- FractalDB-1k: optional expansion only after the FractalDB-60 decision gate.
 
-FractalDB-1k, ImageNet and scratch comparisons must use the same downstream
-split, label fraction and evaluation protocol.
+FractalDB-60, ImageNet and scratch comparisons use the same downstream split,
+label fraction, seed, model and evaluation protocol. The first pilot uses a
+fixed 18/70-patient ACDC training subset; see
+`research/protocols/acdc_fractaldb60_pilot_v1/`.
