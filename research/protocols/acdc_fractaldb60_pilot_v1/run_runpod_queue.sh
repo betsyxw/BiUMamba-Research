@@ -28,7 +28,7 @@ date -u +%FT%TZ > "$RUN_ROOT/QUEUE_STARTED_UTC.txt"
 test -f "$FRACTAL_ARCHIVE"
 test -f "$IMAGENET_CKPT"
 if [[ ! -d "$FRACTAL_ROOT" ]]; then
-  tar -xzf "$FRACTAL_ARCHIVE" -C "$FRACTAL_PARENT" --exclude='*/._*' --exclude='./._*'
+  tar --no-same-owner -xzf "$FRACTAL_ARCHIVE" -C "$FRACTAL_PARENT" --exclude='*/._*' --exclude='./._*'
 fi
 test "$(find "$FRACTAL_ROOT" -mindepth 2 -maxdepth 2 -type f -name '*.png' | wc -l)" -eq 60000
 
