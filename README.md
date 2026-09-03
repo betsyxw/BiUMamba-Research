@@ -29,7 +29,7 @@ Current experimental status:
 - E3: static learnable fusion on E2_modify_2 — 50-epoch screening and the full 300-epoch run completed; the final result did not outperform E2_modify_2.
 - E4: constrained sample/channel adaptive gate on the same coverage-preserving structure — 50-epoch screening and 300-epoch full run completed; the full run was a Red result and exposed a screen/full reproducibility mismatch.
 - E4 Version 2-B: separately named stabilized-gate ablation — deterministic A/A checks and a formal 50-epoch screening run completed. Training stability improved, but accuracy did not justify a 300-epoch extension.
-- Datasets: formal three-seed tests are complete on Synapse CT, ACDC cardiac MRI and BUSI breast ultrasound. The FractalDB low-label pre-training pilot is the next stage.
+- Datasets: formal three-seed tests are complete on Synapse CT, ACDC cardiac MRI and BUSI breast ultrasound. The ACDC FractalDB-60 low-label pilot (E2_modify_2, fixed 18/70 patients, seed 42) is running on a RunPod RTX 4090.
 
 ### Formal three-seed cross-dataset results (updated 2026-09-03)
 
@@ -364,7 +364,7 @@ E2_modify_2と直接順位付けするものではありません。この結果
 ### 実験計画
 
 - Synapse、ACDC、BUSIにおけるE1とE2_modify_2の正式3 seed比較は完了しました。
-- 次に25%の医用ラベルを用いたFractalDB事前学習pilotを実施します。
+- 25%の医用ラベルを用いたFractalDB-60事前学習pilotは、ACDC、E2_modify_2、固定18/70患者、seed 42の条件でRunPod RTX 4090上にて実行中です。
 - Pilotが有効な場合のみ、50%および100%ラベル条件へ拡張し、ScratchおよびImageNet事前学習と比較します。
 - 主な評価指標はDice、HD95、NSDです。
 
