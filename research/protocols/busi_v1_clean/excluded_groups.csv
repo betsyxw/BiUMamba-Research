@@ -1,0 +1,59 @@
+group_id,source_ids,source_names,objection,annotation,reason
+group_0042,42&131&488,benign (42)|benign (131)|malignant (51),multiclass,,multiclass
+group_0085,85&164&489,benign (85)|benign (164)|malignant (52),multiclass,,multiclass
+group_0104,106,benign (106),axilla,,axilla
+group_0133,166,benign (166),axilla,,axilla
+group_0164,199&248,benign (199)|benign (248),axilla,overlay,axilla
+group_0170,205&262,benign (205)|benign (262),axilla,text,axilla
+group_0172,207&256,benign (207)|benign (256),axilla,text,axilla
+group_0175,210&298,benign (210)|benign (298),axilla,overlay,axilla
+group_0182,217&268,benign (217)|benign (268),axilla,measurement,axilla
+group_0183,218&296,benign (218)|benign (296),axilla,measurement,axilla
+group_0188,223&257,benign (223)|benign (257),axilla,text,axilla
+group_0190,225&292&293,benign (225)|benign (292)|benign (293),axilla,text,axilla
+group_0193,228&306,benign (228)|benign (306),axilla,overlay,axilla
+group_0198,233&299,benign (233)|benign (299),axilla,,axilla
+group_0200,235&294,benign (235)|benign (294),axilla,text,axilla
+group_0201,236&247,benign (236)|benign (247),axilla,overlay,axilla
+group_0208,243,benign (243),axilla,text,axilla
+group_0211,269&648,benign (269)|normal (1),multiclass,,multiclass
+group_0226,333&514&515,benign (333)|malignant (77)|malignant (78),multiclass,,multiclass
+group_0292,399&530,benign (399)|malignant (93),multiclass,,multiclass
+group_0299,406&531,benign (406)|malignant (94),multiclass,,multiclass
+group_0315,433&582,benign (433)|malignant (145),multiclass,measurement,multiclass
+group_0319,437&681,benign (437)|normal (34),multiclass,,multiclass
+group_0325,448&550,malignant (11)|malignant (113),axilla,overlay,axilla
+group_0326,449&547,malignant (12)|malignant (110),axilla,measurement&text,axilla
+group_0327,450&546,malignant (13)|malignant (109),axilla,text,axilla
+group_0341,464&465,malignant (27)|malignant (28),axilla,,axilla
+group_0371,498,malignant (61),axilla,text,axilla
+group_0378,506,malignant (69),needle,,needle
+group_0379,507,malignant (70),needle,,needle
+group_0405,545,malignant (108),axilla,,axilla
+group_0434,585,malignant (148),axilla,text,axilla
+group_0435,586,malignant (149),axilla,,axilla
+group_0453,604,malignant (167),axilla,text,axilla
+group_0459,610,malignant (173),needle,,needle
+group_0460,611,malignant (174),needle,,needle
+group_0466,617,malignant (180),axilla,text,axilla
+group_0476,627,malignant (190),needle,,needle
+group_0486,637,malignant (200),axilla,,axilla
+group_0497,649,normal (2),axilla,,axilla
+group_0528,682&776,normal (35)|normal (129),needle,,needle
+group_0532,686&695&703,normal (39)|normal (48)|normal (56),axilla,,axilla
+group_0535,689&692&696&709,normal (42)|normal (45)|normal (49)|normal (62),axilla,,axilla
+group_0538,705&707&716,normal (58)|normal (60)|normal (69),axilla,,axilla
+group_0546,722,normal (75),axilla,,axilla
+group_0553,730,normal (83),axilla,,axilla
+group_0555,732,normal (85),axilla,,axilla
+group_0560,737,normal (90),axilla,,axilla
+group_0561,738,normal (91),axilla,,axilla
+group_0562,739,normal (92),axilla,,axilla
+group_0563,740,normal (93),axilla,,axilla
+group_0564,741,normal (94),axilla,,axilla
+group_0567,744&745,normal (97)|normal (98),axilla,,axilla
+group_0569,747,normal (100),axilla,,axilla
+group_0570,748,normal (101),axilla,,axilla
+group_0573,751&754,normal (104)|normal (107),axilla,,axilla
+group_0578,757,normal (110),axilla,,axilla
+group_0586,765,normal (118),axilla,pictogram,axilla

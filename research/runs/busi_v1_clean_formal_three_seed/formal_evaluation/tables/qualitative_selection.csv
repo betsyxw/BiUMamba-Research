@@ -1,0 +1,5 @@
+order,category,group_id,sample_id,class_name,gt_area_fraction,e1_seed42_dice,e2_modify_2_seed42_dice,selection_reason
+1,Typical case,group_0013,benign (13),benign,0.1145766900510204,0.9788572427048751,0.9554971602949902,Both models have high Dice and similar boundaries.
+2,Small-lesion case,group_0114,benign (120),benign,0.0028300382653061226,0.7573333333333333,0.7263427109974424,The ground-truth lesion has a small area.
+3,Difficult case,group_0301,benign (408),benign,0.06313775510204081,0.30073200488003254,0.3376040999359385,"Both methods find the lesion, but the boundary remains difficult."
+4,E2 failure case,group_0178,benign (213),benign,0.03216677295918367,0.8729552889858233,0.10531053105310531,"E1 finds the lesion, while E2_modify_2 has a clear segmentation error."

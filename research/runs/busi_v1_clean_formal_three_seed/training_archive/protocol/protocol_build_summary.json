@@ -1,0 +1,43 @@
+{
+  "correction_csv_sha256": "e3c2abc0ce027401dc717bf8a7ec76442e30c3cda2df32a0bc8aa197ff1c74a4",
+  "correction_group_count": 587,
+  "excluded_group_count": 58,
+  "exclusion_counts": {
+    "axilla": 44,
+    "multiclass": 8,
+    "needle": 6
+  },
+  "kept_class_counts": {
+    "benign": 296,
+    "malignant": 161,
+    "normal": 72
+  },
+  "kept_group_count": 529,
+  "patient_level_split_claimed": false,
+  "protocol": "busi_v1_clean",
+  "raw_image_count": 780,
+  "reason": "The public BUSI release does not expose patient identifiers.",
+  "split_class_counts": {
+    "test": {
+      "benign": 59,
+      "malignant": 32,
+      "normal": 14
+    },
+    "train": {
+      "benign": 207,
+      "malignant": 113,
+      "normal": 51
+    },
+    "validation": {
+      "benign": 30,
+      "malignant": 16,
+      "normal": 7
+    }
+  },
+  "split_counts": {
+    "test": 105,
+    "train": 371,
+    "validation": 53
+  },
+  "split_seed": 42
+}

@@ -1,0 +1,2 @@
+comparison,dice_delta_points,hd95_delta_px,nsd_delta_points,training_time_delta_percent,mean_epoch_time_delta_percent,peak_allocated_memory_delta_percent,peak_reserved_memory_delta_percent,inference_time_delta_percent,approx_flops_delta_percent,selective_scan_core_macs_delta_percent
+E2_modify_2 vs E1,-2.8604821212490306,6.476412969929989,-3.583337274969456,-10.698628809165402,-11.017942498794795,-24.926476358563786,-23.938826466916353,41.641753915708186,-18.36010986504651,-49.99884128835718

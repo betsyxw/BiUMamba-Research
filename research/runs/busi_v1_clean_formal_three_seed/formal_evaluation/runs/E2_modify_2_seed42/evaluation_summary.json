@@ -1,0 +1,113 @@
+{
+  "checkpoint_path": "/workspace/runs/e2_modify_2_busi_v1_clean_full300_seed42_runpod/checkpoints/best_validation.pth",
+  "checkpoint_selected_epoch": 208,
+  "checkpoint_sha256": "99b196a6c99c5306bdf3a77eac63e8c536a56164fd58ab4410beb34fb520026c",
+  "checkpoint_validation_metrics": {
+    "lesion_positive_count": 46,
+    "lesion_positive_mean_dice": 0.7604239748102029,
+    "lesion_positive_mean_hd95_px": 36.227816752165054,
+    "lesion_positive_mean_nsd_at_2px": 0.48154175422992135,
+    "normal_count": 7,
+    "normal_empty_mask_accuracy": 0.0,
+    "normal_mean_false_positive_area_fraction": 0.009033914905247813,
+    "per_class": {
+      "benign": {
+        "count": 30,
+        "mean_dice": 0.7563346597631369,
+        "mean_hd95_px": 38.92830123093931,
+        "mean_nsd_at_2px": 0.5776969585091376
+      },
+      "malignant": {
+        "count": 16,
+        "mean_dice": 0.7680914405234516,
+        "mean_hd95_px": 31.164408354463326,
+        "mean_nsd_at_2px": 0.3012507462063909
+      }
+    }
+  },
+  "clean_manifest_sha256": "33c4b57e8c48c86ba8ec9efdc5ee88cea07d6d6fa27c2c3bba8b3a1aa45fdd44",
+  "cuda_device": "NVIDIA GeForce RTX 4090",
+  "evaluator_sha256": "a7f6e9a80247b1d47820ec4a5215721d9262e9e28340481615bf20af8f6f99e3",
+  "flops_status": "not_measured_in_this_run; custom selective-scan FLOPs require a registered profiler",
+  "method": "E2_modify_2",
+  "metrics": {
+    "lesion_positive_count": 91,
+    "lesion_positive_mean_dice": 0.7174780316117251,
+    "lesion_positive_mean_hd95_px": 37.25315637423897,
+    "lesion_positive_mean_nsd_at_2px": 0.4923678010663455,
+    "normal_count": 14,
+    "normal_empty_mask_accuracy": 0.35714285714285715,
+    "normal_mean_false_positive_area_fraction": 0.0101371742893586,
+    "per_class": {
+      "benign": {
+        "count": 59,
+        "mean_dice": 0.7684271043164094,
+        "mean_hd95_px": 30.77720733536713,
+        "mean_nsd_at_2px": 0.6124184779911135
+      },
+      "malignant": {
+        "count": 32,
+        "mean_dice": 0.6235406788124633,
+        "mean_hd95_px": 49.19318741465893,
+        "mean_nsd_at_2px": 0.27102436548630476
+      }
+    }
+  },
+  "model_source_sha256": "309f4a7a9b2d5df98305957177eab30cc4eb258b307486f8f9712ad31f2db281",
+  "model_wrapper_sha256": "535e86b8947157a81c21cf6c7022c8df2efe61f2b71a4c90021eb866298f6fcb",
+  "nsd_tolerance_pixels": 2.0,
+  "parameter_count": 27427561,
+  "peak_inference_gpu_allocated_bytes": 158581248,
+  "peak_inference_gpu_reserved_bytes": 174063616,
+  "protocol": "busi_v1_clean",
+  "scan_fusion": "grouped_2d_bidirectional_sum",
+  "seed": 42,
+  "test_group_count": 105,
+  "test_list_sha256": "59d938e73ed8e020c2e88e1e7412153203b63cac7d3ec659d14c730a1d8883dc",
+  "threshold": 0.5,
+  "timing": {
+    "evaluation_end_to_end_seconds": 18.807643892243505,
+    "model_forward_mean_ms_batch1": 7.596765511802265,
+    "model_forward_median_ms_batch1": 7.5120143592357635,
+    "model_forward_std_ms_batch1": 0.37759182580397105,
+    "model_forward_total_seconds": 0.7976603787392378,
+    "timed_image_count": 105,
+    "warmup_iterations": 10
+  },
+  "trainable_parameter_count": 27427561,
+  "training_summary": {
+    "best_validation_epoch": 208,
+    "best_validation_lesion_positive_dice": 0.7604239748102029,
+    "best_validation_lesion_positive_hd95_px": 36.227816752165054,
+    "epochs": 300,
+    "mean_epoch_total_seconds": 17.16902716582641,
+    "mean_training_seconds_per_epoch": 15.178015805389732,
+    "mean_validation_seconds_per_epoch": 1.9393010484799742,
+    "method": "E2_modify_2",
+    "parameter_count": 27427561,
+    "peak_gpu_allocated_bytes": 9600047616,
+    "peak_gpu_reserved_bytes": 10221518848,
+    "protocol": "busi_v1_clean",
+    "protocol_hashes": {
+      "/workspace/repos/BUSI_v1_clean_exec_runpod/research/protocols/busi_v1_clean/PREPROCESSING_POLICY.md": "a71d8831357d1be26d1fe9c68aa3f780e4745c62caabcd48d74743b2b245db19",
+      "/workspace/repos/BUSI_v1_clean_exec_runpod/research/protocols/busi_v1_clean/SEEDS.txt": "88352672b27e6c1900baf26091c7a9ffe3f38248c6c065a620f4b845d5677279",
+      "/workspace/repos/BUSI_v1_clean_exec_runpod/research/protocols/busi_v1_clean/TRAINING_CONFIG.json": "1c99d2071ef20f7e2fa1266a1dd0de69a5cbbef4a65407dffafffc2e223c0ae5",
+      "/workspace/repos/BUSI_v1_clean_exec_runpod/research/protocols/busi_v1_clean/clean_manifest.csv": "33c4b57e8c48c86ba8ec9efdc5ee88cea07d6d6fa27c2c3bba8b3a1aa45fdd44",
+      "/workspace/repos/BUSI_v1_clean_exec_runpod/research/protocols/busi_v1_clean/dataset_comment_list.csv": "e3c2abc0ce027401dc717bf8a7ec76442e30c3cda2df32a0bc8aa197ff1c74a4",
+      "/workspace/repos/BUSI_v1_clean_exec_runpod/research/protocols/busi_v1_clean/excluded_groups.csv": "d8c594294bca6ee9d48bbd261d7c51796d471150a7ed61da694654ec6d854d30",
+      "/workspace/repos/BUSI_v1_clean_exec_runpod/research/protocols/busi_v1_clean/frozen_augmentation.py": "b472929fe808cc2ac9a0c42d8ebf51bc158b1f4ae1bc52c337ac3dc4e3283865",
+      "/workspace/repos/BUSI_v1_clean_exec_runpod/research/protocols/busi_v1_clean/splits/test_groups.txt": "59d938e73ed8e020c2e88e1e7412153203b63cac7d3ec659d14c730a1d8883dc",
+      "/workspace/repos/BUSI_v1_clean_exec_runpod/research/protocols/busi_v1_clean/splits/train_groups.txt": "bcd469e897e735c9abbb0643d9a4b1ef7bfc4d5752015ffe6c472bb440cb6eba",
+      "/workspace/repos/BUSI_v1_clean_exec_runpod/research/protocols/busi_v1_clean/splits/validation_groups.txt": "c8e7a2e1a026ef3129c69b04ff308a67773973d4c70efc4c182b2c012ca36fb9"
+    },
+    "run_started_unix": 1788356517.7138033,
+    "scan_fusion": "grouped_2d_bidirectional_sum",
+    "seed": 42,
+    "test_dataset_constructed": false,
+    "test_group_count": 105,
+    "total_training_and_validation_seconds": 5343.926860405132,
+    "train_group_count": 371,
+    "trainable_parameter_count": 27427561,
+    "validation_group_count": 53
+  }
+}

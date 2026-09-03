@@ -1,0 +1,11 @@
+Author: xuwen
+Method: E2_modify_2
+Protocol: busi_v1_clean
+Scope: full300
+Seed: 2026
+Platform: RunPod RTX 4090
+Source commit: ff97fe283118f1c6a845c35a26a1703c37b134a2
+Trainer SHA256: 962c04d66a6b26eee99d765f7e34dad0a948eb3dd522012bcb48ae4bf8deb5a7
+VMamba SHA256: 309f4a7a9b2d5df98305957177eab30cc4eb258b307486f8f9712ad31f2db281
+Clean manifest SHA256: 33c4b57e8c48c86ba8ec9efdc5ee88cea07d6d6fa27c2c3bba8b3a1aa45fdd44
+Test access during training: false

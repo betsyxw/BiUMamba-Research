@@ -3,6 +3,10 @@ import math
 from functools import partial
 from typing import Optional, Callable
 
+# Author: xuwen
+# Project: BiUMamba Research
+# Research modifications only; upstream VM-UNet/VMamba attribution is retained.
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -34,12 +38,12 @@ def flops_selective_scan_ref(B=1, L=256, D=768, N=16, with_D=True, with_Z=False,
     D: r(D)
     z: r(B D L)
     delta_bias: r(D), fp32
-    
+
     ignores:
-        [.float(), +, .softplus, .shape, new_zeros, repeat, stack, to(dtype), silu] 
+        [.float(), +, .softplus, .shape, new_zeros, repeat, stack, to(dtype), silu]
     """
     import numpy as np
-    
+
     # fvcore.nn.jit_handles
     def get_flops_einsum(input_shapes, equation):
         np_arrs = [np.zeros(s) for s in input_shapes]
@@ -49,7 +53,7 @@ def flops_selective_scan_ref(B=1, L=256, D=768, N=16, with_D=True, with_Z=False,
                 # divided by 2 because we count MAC (multiply-add counted as one flop)
                 flop = float(np.floor(float(line.split(":")[-1]) / 2))
                 return flop
-    
+
 
     assert not with_complex
 
@@ -100,13 +104,13 @@ def flops_selective_scan_ref(B=1, L=256, D=768, N=16, with_D=True, with_Z=False,
             C = repeat(C, "B G N L -> B (G H) N L", H=dim // C.shape[1])
         last_state = None
         """
-    
-    in_for_flops = B * D * N   
+
+    in_for_flops = B * D * N
     if with_Group:
         in_for_flops += get_flops_einsum([[B, D, N], [B, D, N]], "bdn,bdn->bd")
     else:
         in_for_flops += get_flops_einsum([[B, D, N], [B, N]], "bdn,bn->bd")
-    flops += L * in_for_flops 
+    flops += L * in_for_flops
     if False:
         ...
         """
@@ -139,7 +143,7 @@ def flops_selective_scan_ref(B=1, L=256, D=768, N=16, with_D=True, with_Z=False,
             out = out * F.silu(z)
         out = out.to(dtype=dtype_in)
         """
-    
+
     return flops
 
 
@@ -201,7 +205,7 @@ class PatchMerging2D(nn.Module):
             x1 = x1[:, :SHAPE_FIX[0], :SHAPE_FIX[1], :]
             x2 = x2[:, :SHAPE_FIX[0], :SHAPE_FIX[1], :]
             x3 = x3[:, :SHAPE_FIX[0], :SHAPE_FIX[1], :]
-        
+
         x = torch.cat([x0, x1, x2, x3], -1)  # B H/2 W/2 4*C
         x = x.view(B, H//2, W//2, 4 * C)  # B H/2*W/2 4*C
 
@@ -209,7 +213,7 @@ class PatchMerging2D(nn.Module):
         x = self.reduction(x)
 
         return x
-    
+
 
 class PatchExpand2D(nn.Module):
     def __init__(self, dim, dim_scale=2, norm_layer=nn.LayerNorm):
@@ -227,7 +231,7 @@ class PatchExpand2D(nn.Module):
         x= self.norm(x)
 
         return x
-    
+
 
 class Final_PatchExpand2D(nn.Module):
     def __init__(self, dim, dim_scale=4, norm_layer=nn.LayerNorm):
@@ -284,6 +288,7 @@ class SS2D(nn.Module):
             "bidirectional_sum",
             "bidirectional_average",
             "adaptive_gate",
+            "grouped_2d_bidirectional_sum",
         }
         if scan_fusion not in valid_scan_fusions:
             raise ValueError(
@@ -305,10 +310,10 @@ class SS2D(nn.Module):
         self.act = nn.SiLU()
 
         self.x_proj = (
-            nn.Linear(self.d_inner, (self.dt_rank + self.d_state * 2), bias=False, **factory_kwargs), 
-            nn.Linear(self.d_inner, (self.dt_rank + self.d_state * 2), bias=False, **factory_kwargs), 
-            nn.Linear(self.d_inner, (self.dt_rank + self.d_state * 2), bias=False, **factory_kwargs), 
-            nn.Linear(self.d_inner, (self.dt_rank + self.d_state * 2), bias=False, **factory_kwargs), 
+            nn.Linear(self.d_inner, (self.dt_rank + self.d_state * 2), bias=False, **factory_kwargs),
+            nn.Linear(self.d_inner, (self.dt_rank + self.d_state * 2), bias=False, **factory_kwargs),
+            nn.Linear(self.d_inner, (self.dt_rank + self.d_state * 2), bias=False, **factory_kwargs),
+            nn.Linear(self.d_inner, (self.dt_rank + self.d_state * 2), bias=False, **factory_kwargs),
         )
         self.x_proj_weight = nn.Parameter(torch.stack([t.weight for t in self.x_proj], dim=0)) # (K=4, N, inner)
         del self.x_proj
@@ -322,7 +327,7 @@ class SS2D(nn.Module):
         self.dt_projs_weight = nn.Parameter(torch.stack([t.weight for t in self.dt_projs], dim=0)) # (K=4, inner, rank)
         self.dt_projs_bias = nn.Parameter(torch.stack([t.bias for t in self.dt_projs], dim=0)) # (K=4, inner)
         del self.dt_projs
-        
+
         self.A_logs = self.A_log_init(self.d_state, self.d_inner, copies=4, merge=True) # (K=4, D, N)
         self.Ds = self.D_init(self.d_inner, copies=4, merge=True) # (K=4, D, N)
 
@@ -367,7 +372,7 @@ class SS2D(nn.Module):
             dt_proj.bias.copy_(inv_dt)
         # Our initialization would set all Linear.bias to zero, need to mark this one as _no_reinit
         dt_proj.bias._no_reinit = True
-        
+
         return dt_proj
 
     @staticmethod
@@ -401,7 +406,7 @@ class SS2D(nn.Module):
 
     def forward_corev0(self, x: torch.Tensor):
         self.selective_scan = selective_scan_fn
-        
+
         B, C, H, W = x.shape
         L = H * W
         K = 4
@@ -424,7 +429,7 @@ class SS2D(nn.Module):
         dt_projs_bias = self.dt_projs_bias.float().view(-1) # (k * d)
 
         out_y = self.selective_scan(
-            xs, dts, 
+            xs, dts,
             As, Bs, Cs, Ds, z=None,
             delta_bias=dt_projs_bias,
             delta_softplus=True,
@@ -495,6 +500,121 @@ class SS2D(nn.Module):
         y_backward = torch.flip(out_y[:, 1], dims=[-1])
         return y_forward, y_backward
 
+    def forward_core_grouped_2d(self, x: torch.Tensor):
+        """Run coverage-safe 2D scans on two complementary channel groups.
+
+        The first half of the inner channels uses horizontal forward/reverse
+        parameter sets 0 and 2. The second half uses transposed vertical
+        forward/reverse parameter sets 1 and 3. All four scans are packed into
+        one selective-scan call, but each direction processes only half of the
+        channels. The two restored groups are concatenated before the existing
+        output normalization and projection mix their information.
+        """
+        self.selective_scan = selective_scan_fn
+
+        B, D, H, W = x.shape
+        L = H * W
+        if D != self.d_inner or D % 2 != 0:
+            raise ValueError(
+                "grouped_2d_bidirectional_sum requires an even d_inner; "
+                f"received tensor channels={D}, configured d_inner={self.d_inner}"
+            )
+        group_dim = D // 2
+
+        x_horizontal = x[:, :group_dim].contiguous().view(B, group_dim, L)
+        x_vertical = torch.transpose(
+            x[:, group_dim:], dim0=2, dim1=3
+        ).contiguous().view(B, group_dim, L)
+        xs = torch.stack(
+            [
+                x_horizontal,
+                x_vertical,
+                torch.flip(x_horizontal, dims=[-1]),
+                torch.flip(x_vertical, dims=[-1]),
+            ],
+            dim=1,
+        )
+
+        dts_parts = []
+        Bs_parts = []
+        Cs_parts = []
+        As_parts = []
+        Ds_parts = []
+        dt_bias_parts = []
+        A_logs = self.A_logs.view(4, D, self.d_state)
+        Ds = self.Ds.view(4, D)
+
+        for direction_index in range(4):
+            channel_slice = (
+                slice(0, group_dim)
+                if direction_index in (0, 2)
+                else slice(group_dim, D)
+            )
+            x_dbl = torch.einsum(
+                "b d l, c d -> b c l",
+                xs[:, direction_index],
+                self.x_proj_weight[direction_index, :, channel_slice],
+            )
+            dts, Bs_part, Cs_part = torch.split(
+                x_dbl,
+                [self.dt_rank, self.d_state, self.d_state],
+                dim=1,
+            )
+            dts = torch.einsum(
+                "b r l, d r -> b d l",
+                dts,
+                self.dt_projs_weight[
+                    direction_index, channel_slice, :
+                ],
+            )
+            dts_parts.append(dts)
+            Bs_parts.append(Bs_part)
+            Cs_parts.append(Cs_part)
+            As_parts.append(A_logs[direction_index, channel_slice])
+            Ds_parts.append(Ds[direction_index, channel_slice])
+            dt_bias_parts.append(
+                self.dt_projs_bias[direction_index, channel_slice]
+            )
+
+        xs_flat = xs.float().view(B, -1, L)
+        dts_flat = torch.stack(dts_parts, dim=1).float().view(B, -1, L)
+        Bs_stacked = torch.stack(Bs_parts, dim=1).float()
+        Cs_stacked = torch.stack(Cs_parts, dim=1).float()
+        As_flat = -torch.exp(torch.cat(As_parts, dim=0).float())
+        Ds_flat = torch.cat(Ds_parts, dim=0).float()
+        dt_bias_flat = torch.cat(dt_bias_parts, dim=0).float()
+
+        out_y = self.selective_scan(
+            xs_flat,
+            dts_flat,
+            As_flat,
+            Bs_stacked,
+            Cs_stacked,
+            Ds_flat,
+            z=None,
+            delta_bias=dt_bias_flat,
+            delta_softplus=True,
+            return_last_state=False,
+        ).view(B, 4, group_dim, L)
+        assert out_y.dtype == torch.float
+
+        horizontal = out_y[:, 0] + torch.flip(
+            out_y[:, 2], dims=[-1]
+        )
+        vertical_forward = torch.transpose(
+            out_y[:, 1].view(B, group_dim, W, H), dim0=2, dim1=3
+        ).contiguous().view(B, group_dim, L)
+        vertical_backward = torch.transpose(
+            torch.flip(out_y[:, 3], dims=[-1]).view(
+                B, group_dim, W, H
+            ),
+            dim0=2,
+            dim1=3,
+        ).contiguous().view(B, group_dim, L)
+        vertical = vertical_forward + vertical_backward
+
+        return torch.cat([horizontal, vertical], dim=1)
+
     # an alternative to forward_corev1
     def forward_corev1(self, x: torch.Tensor):
         self.selective_scan = selective_scan_fn_v1
@@ -521,7 +641,7 @@ class SS2D(nn.Module):
         dt_projs_bias = self.dt_projs_bias.float().view(-1) # (k * d)
 
         out_y = self.selective_scan(
-            xs, dts, 
+            xs, dts,
             As, Bs, Cs, Ds,
             delta_bias=dt_projs_bias,
             delta_softplus=True,
@@ -546,6 +666,9 @@ class SS2D(nn.Module):
             y1, y2, y3, y4 = self.forward_core(x)
             assert y1.dtype == torch.float32
             y = y1 + y2 + y3 + y4
+        elif self.scan_fusion == "grouped_2d_bidirectional_sum":
+            y = self.forward_core_grouped_2d(x)
+            assert y.dtype == torch.float32
         else:
             y_forward, y_backward = self.forward_core_bidirectional(x)
             assert y_forward.dtype == torch.float32
@@ -607,14 +730,14 @@ class VSSLayer(nn.Module):
     """
 
     def __init__(
-        self, 
-        dim, 
-        depth, 
+        self,
+        dim,
+        depth,
         attn_drop=0.,
-        drop_path=0., 
-        norm_layer=nn.LayerNorm, 
-        downsample=None, 
-        use_checkpoint=False, 
+        drop_path=0.,
+        norm_layer=nn.LayerNorm,
+        downsample=None,
+        use_checkpoint=False,
         d_state=16,
         **kwargs,
     ):
@@ -632,7 +755,7 @@ class VSSLayer(nn.Module):
                 **kwargs,
             )
             for i in range(depth)])
-        
+
         if True: # is this really applied? Yes, but been overriden later in VSSM!
             def _init_weights(module: nn.Module):
                 for name, p in module.named_parameters():
@@ -653,12 +776,12 @@ class VSSLayer(nn.Module):
                 x = checkpoint.checkpoint(blk, x)
             else:
                 x = blk(x)
-        
+
         if self.downsample is not None:
             x = self.downsample(x)
 
         return x
-    
+
 
 
 class VSSLayer_up(nn.Module):
@@ -675,14 +798,14 @@ class VSSLayer_up(nn.Module):
     """
 
     def __init__(
-        self, 
-        dim, 
-        depth, 
+        self,
+        dim,
+        depth,
         attn_drop=0.,
-        drop_path=0., 
-        norm_layer=nn.LayerNorm, 
-        upsample=None, 
-        use_checkpoint=False, 
+        drop_path=0.,
+        norm_layer=nn.LayerNorm,
+        upsample=None,
+        use_checkpoint=False,
         d_state=16,
         **kwargs,
     ):
@@ -700,7 +823,7 @@ class VSSLayer_up(nn.Module):
                 **kwargs,
             )
             for i in range(depth)])
-        
+
         if True: # is this really applied? Yes, but been overriden later in VSSM!
             def _init_weights(module: nn.Module):
                 for name, p in module.named_parameters():
@@ -724,7 +847,7 @@ class VSSLayer_up(nn.Module):
             else:
                 x = blk(x)
         return x
-    
+
 
 
 class VSSM(nn.Module):
@@ -764,7 +887,7 @@ class VSSM(nn.Module):
                 dim=dims[i_layer],
                 depth=depths[i_layer],
                 d_state=math.ceil(dims[0] / 6) if d_state is None else d_state, # 20240109
-                drop=drop_rate, 
+                drop=drop_rate,
                 attn_drop=attn_drop_rate,
                 drop_path=dpr[sum(depths[:i_layer]):sum(depths[:i_layer + 1])],
                 norm_layer=norm_layer,
@@ -780,7 +903,7 @@ class VSSM(nn.Module):
                 dim=dims_decoder[i_layer],
                 depth=depths_decoder[i_layer],
                 d_state=math.ceil(dims[0] / 6) if d_state is None else d_state, # 20240109
-                drop=drop_rate, 
+                drop=drop_rate,
                 attn_drop=attn_drop_rate,
                 drop_path=dpr_decoder[sum(depths_decoder[:i_layer]):sum(depths_decoder[:i_layer + 1])],
                 norm_layer=norm_layer,
@@ -805,7 +928,7 @@ class VSSM(nn.Module):
         no fc.weight found in the any of the model parameters
         no nn.Embedding found in the any of the model parameters
         so the thing is, VSSBlock initialization is useless
-        
+
         Conv2D is not intialized !!!
         """
         if isinstance(m, nn.Linear):
@@ -835,7 +958,7 @@ class VSSM(nn.Module):
             skip_list.append(x)
             x = layer(x)
         return x, skip_list
-    
+
     def forward_features_up(self, x, skip_list):
         for inx, layer_up in enumerate(self.layers_up):
             if inx == 0:
@@ -844,7 +967,7 @@ class VSSM(nn.Module):
                 x = layer_up(x+skip_list[-inx])
 
         return x
-    
+
     def forward_final(self, x):
         x = self.final_up(x)
         x = x.permute(0,3,1,2)
@@ -865,11 +988,10 @@ class VSSM(nn.Module):
         x, skip_list = self.forward_features(x)
         x = self.forward_features_up(x, skip_list)
         x = self.forward_final(x)
-        
+
         return x
 
 
 
 
-    
 

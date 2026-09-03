@@ -1,0 +1,23 @@
+{
+  "protocol": "busi_v1_clean",
+  "task": "binary_breast_lesion_segmentation",
+  "input_size": [224, 224],
+  "input_channels": 3,
+  "resize_policy": "aspect_ratio_preserving_resize_then_symmetric_zero_padding",
+  "training_augmentation": "horizontal_flip_p0.5_then_rotation_minus15_to_plus15_p0.5",
+  "validation_augmentation": "none",
+  "test_augmentation": "none",
+  "batch_size": 32,
+  "optimizer": "AdamW",
+  "learning_rate": 0.001,
+  "weight_decay": 0.01,
+  "scheduler": "CosineAnnealingLR_Tmax100_eta_min_1e-5",
+  "loss": "BCE_plus_soft_Dice_equal_weights",
+  "epochs": 300,
+  "seeds": [42, 3407, 2026],
+  "current_formal_seed": 42,
+  "checkpoint_rule": "maximum_validation_lesion_positive_mean_Dice_then_minimum_validation_lesion_positive_mean_HD95_px",
+  "primary_test_metrics": ["lesion_positive_Dice", "lesion_positive_HD95_px", "lesion_positive_NSD_at_2px"],
+  "normal_test_metrics": ["empty_mask_accuracy", "false_positive_area_fraction"],
+  "test_access_during_training": false
+}

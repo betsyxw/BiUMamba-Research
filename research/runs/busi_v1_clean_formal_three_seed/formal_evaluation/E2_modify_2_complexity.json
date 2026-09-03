@@ -1,0 +1,14 @@
+{
+  "analytical_selective_scan_core_macs": 446195552.0,
+  "analytical_unregistered_projection_macs": 467238912.0,
+  "augmented_total_flops_two_per_mac": 8123154112.0,
+  "augmented_total_macs": 4061577056.0,
+  "input_shape": [1, 3, 224, 224],
+  "method": "E2_modify_2",
+  "parameter_count": 27427561,
+  "scan_fusion": "grouped_2d_bidirectional_sum",
+  "ss2d_call_count": 15,
+  "status": "approximate: THOP supported layers plus analytical einsum and selective-scan core; elementwise and normalization operations are not fully counted",
+  "thop_parameter_count": 22037737,
+  "thop_supported_layer_macs": 3148142592.0
+}
