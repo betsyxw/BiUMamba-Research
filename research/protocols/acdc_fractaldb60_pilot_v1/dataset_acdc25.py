@@ -18,17 +18,23 @@ def read_patients(path: Path):
     return [line.strip() for line in path.read_text().splitlines() if line.strip()]
 
 
-class ACDC25Slices(Dataset):
-    """ED/ES axial slices for the fixed 18-patient train or 10-patient val split."""
+class ACDCLabelFractionSlices(Dataset):
+    """ED/ES slices for a frozen ACDC label fraction or the fixed validation split."""
 
-    def __init__(self, data_root: Path, protocol_dir: Path, split: str):
+    def __init__(self, data_root: Path, protocol_dir: Path, split: str, label_fraction: int = 25):
         if split not in {"train", "validation"}:
             raise ValueError("Training code may construct only train or validation data")
+        if label_fraction not in {25, 50, 100}:
+            raise ValueError(f"Unsupported label fraction: {label_fraction}")
         self.data_root = Path(data_root)
         self.split = split
-        split_name = "train_patients_25pct.txt" if split == "train" else "validation_patients.txt"
+        train_splits = {
+            25: ("train_patients_25pct.txt", 18),
+            50: ("train_patients_50pct.txt", 35),
+            100: ("train_patients_100pct.txt", 70),
+        }
+        split_name, expected = train_splits[label_fraction] if split == "train" else ("validation_patients.txt", 10)
         self.patients = read_patients(Path(protocol_dir) / "splits" / split_name)
-        expected = 18 if split == "train" else 10
         if len(self.patients) != expected or len(set(self.patients)) != expected:
             raise ValueError(f"{split}: expected {expected} unique patients, found {len(self.patients)}")
 
@@ -74,3 +80,10 @@ class ACDC25Slices(Dataset):
             "slice_index": int(z_index),
             "spacing_xyz": np.asarray(spacing_xyz, dtype=np.float32),
         }
+
+
+class ACDC25Slices(ACDCLabelFractionSlices):
+    """Backward-compatible name for the original fixed 18-patient pilot dataset."""
+
+    def __init__(self, data_root: Path, protocol_dir: Path, split: str):
+        super().__init__(data_root, protocol_dir, split, label_fraction=25)

@@ -49,3 +49,18 @@ matching tensors.
 
 This seed-42 pilot is exploratory. A positive signal must be confirmed with
 seeds 3407 and 2026 before a formal claim.
+
+## Post-pilot label-fraction extension
+
+The seed-42 25% pilot produced a negative primary Dice signal for FractalDB-60
+relative to scratch, although its validation HD95 was better. A user-authorized
+exploratory extension therefore tests whether this result changes with more
+labeled data. It keeps the same model, seed, validation patients, optimizer,
+augmentation and checkpoint rule, and compares all three initializations at:
+
+- 50%: 35 patients sampled once with `random.Random(42)` from the frozen
+  70-patient training pool. This set contains all 18 pilot patients.
+- 100%: all 70 frozen ACDC v1 training patients.
+
+This extension is a label-fraction sensitivity analysis, not evidence that the
+25% decision gate passed. The isolated test set remains unread during training.

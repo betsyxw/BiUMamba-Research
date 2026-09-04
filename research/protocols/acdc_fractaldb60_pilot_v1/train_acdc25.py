@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Train E2_modify_2 on the fixed 18-patient ACDC pilot split."""
+"""Train E2_modify_2 on a frozen ACDC label-fraction split."""
 
 from __future__ import annotations
 
@@ -113,6 +113,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--condition", choices=["scratch", "imagenet", "fractaldb60"], required=True)
     parser.add_argument("--epochs", type=int, required=True)
+    parser.add_argument("--label-fraction", type=int, choices=[25, 50, 100], default=25)
     parser.add_argument("--seed", type=int, default=42, choices=[42])
     parser.add_argument("--work-dir", type=Path, required=True)
     parser.add_argument("--data-root", type=Path, default=Path("/workspace/datasets/ACDC_hf_preprocessed_train100"))
@@ -125,7 +126,7 @@ def main():
     sys.path.insert(0, str(repo_root))
     from engine_synapse import train_one_epoch
     from models.vmunet.vmunet import VMUNet
-    from research.protocols.acdc_fractaldb60_pilot_v1.dataset_acdc25 import ACDC25Slices
+    from research.protocols.acdc_fractaldb60_pilot_v1.dataset_acdc25 import ACDCLabelFractionSlices
     from research.protocols.acdc_v1.checkpointing import ValidationCheckpointSelector
     from research.protocols.acdc_v1.validation_acdc_v1 import evaluate_validation
     from utils import CeDiceLoss, get_logger, get_optimizer, get_scheduler, set_seed
@@ -138,7 +139,10 @@ def main():
     args.work_dir.mkdir(parents=True, exist_ok=True)
     checkpoint_dir = args.work_dir / "checkpoints"
     checkpoint_dir.mkdir(exist_ok=True)
-    logger = get_logger(f"acdc25_{args.condition}_seed{args.seed}", str(args.work_dir / "log"))
+    logger = get_logger(
+        f"acdc{args.label_fraction}_{args.condition}_seed{args.seed}",
+        str(args.work_dir / "log"),
+    )
 
     model = VMUNet(
         num_classes=4,
@@ -160,8 +164,12 @@ def main():
     )
     model = torch.nn.DataParallel(model.cuda(), device_ids=[0], output_device=0)
 
-    train_dataset = ACDC25Slices(args.data_root, args.protocol_dir, "train")
-    val_dataset = ACDC25Slices(args.data_root, args.protocol_dir, "validation")
+    train_dataset = ACDCLabelFractionSlices(
+        args.data_root, args.protocol_dir, "train", label_fraction=args.label_fraction
+    )
+    val_dataset = ACDCLabelFractionSlices(
+        args.data_root, args.protocol_dir, "validation", label_fraction=args.label_fraction
+    )
     generator = torch.Generator().manual_seed(args.seed)
     train_loader = DataLoader(
         train_dataset,
@@ -177,9 +185,9 @@ def main():
     scheduler = get_scheduler(Config, optimizer)
     scaler = GradScaler()
     controlled_files = [
-        args.protocol_dir / "PILOT_CONFIG.json",
+        args.protocol_dir / ("PILOT_CONFIG.json" if args.label_fraction == 25 else "EXTENSION_CONFIG.json"),
         args.protocol_dir / "README.md",
-        args.protocol_dir / "splits" / "train_patients_25pct.txt",
+        args.protocol_dir / "splits" / f"train_patients_{args.label_fraction}pct.txt",
         args.protocol_dir / "splits" / "validation_patients.txt",
         args.protocol_dir / "splits" / "test_patients.txt",
         Path("research/protocols/acdc_v1/frozen_augmentation.py"),
@@ -245,7 +253,8 @@ def main():
         "model_reference": "E2_modify_2_grouped_2d_bidirectional_sum",
         "seed": args.seed,
         "epochs": args.epochs,
-        "train_patient_count": 18,
+        "label_fraction_percent": args.label_fraction,
+        "train_patient_count": len(train_dataset.patients),
         "validation_patient_count": 10,
         "isolated_test_patient_count": 20,
         "train_slice_count": len(train_dataset),

@@ -1,0 +1,26 @@
+{
+  "protocol": "acdc_fractaldb60_extension_v1",
+  "reason": "Post-pilot label-fraction sensitivity analysis after a negative seed-42 Dice signal",
+  "downstream_dataset": "ACDC",
+  "downstream_model": "E2_modify_2_grouped_2d_bidirectional_sum",
+  "seed": 42,
+  "label_fractions": {
+    "50": "35/70 patients; deterministic nested extension of the 18-patient subset",
+    "100": "70/70 frozen ACDC v1 training patients"
+  },
+  "validation_patient_count": 10,
+  "isolated_test_patient_count": 20,
+  "initializations": ["scratch", "imagenet", "fractaldb60"],
+  "input_size": [192, 192],
+  "input_channels": 3,
+  "batch_size": 32,
+  "optimizer": "AdamW",
+  "learning_rate": 0.001,
+  "weight_decay": 0.01,
+  "scheduler": "CosineAnnealingLR_Tmax100_eta_min_1e-5",
+  "loss": "CrossEntropy_plus_multiclass_Dice_equal_weights",
+  "epochs": 300,
+  "checkpoint_rule": "maximum_validation_mean_Dice_then_minimum_validation_mean_HD95_mm",
+  "test_access_during_training": false,
+  "fractaldb60_checkpoint": "reuse_fixed_final_epoch_90_from_step16"
+}
