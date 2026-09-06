@@ -1,0 +1,25 @@
+{
+  "generated_by": "complete_step20_step205.py",
+  "generated_date": "2026-09-06",
+  "bootstrap_resamples": 10000,
+  "bootstrap_seed": 20260906,
+  "completed": [
+    "patient-level paired-difference distributions and forest plot",
+    "Synapse and ACDC anomaly tables",
+    "BUSI precision, recall, false-positive and false-negative ratios",
+    "BUSI ground-truth bounding-box shape analysis",
+    "BUSI objective local contrast-to-noise analysis",
+    "Synapse per-organ and ACDC per-structure ground-truth size-tertile analysis",
+    "fixed seven-category qualitative selection manifests"
+  ],
+  "definitions": {
+    "shape_horizontal": "GT bounding-box width/height >= 1.25",
+    "shape_vertical": "GT bounding-box width/height <= 0.80",
+    "shape_balanced": "0.80 < GT bounding-box width/height < 1.25",
+    "contrast": "absolute lesion-vs-dilated-ring mean difference divided by pooled local standard deviation",
+    "false_positive_to_gt_ratio": "FP pixels divided by GT-positive pixels",
+    "false_negative_to_gt_ratio": "FN pixels divided by GT-positive pixels",
+    "size": "GT-only tertiles; independently formed within every Synapse organ and ACDC structure"
+  },
+  "causal_limit": "Shape and contrast subgroup associations do not prove that scan direction or reduced channel capacity caused an error."
+}

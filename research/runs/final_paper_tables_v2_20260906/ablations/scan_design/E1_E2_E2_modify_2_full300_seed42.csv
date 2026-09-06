@@ -1,0 +1,8 @@
+metric,e1_original_four_direction,e2_row_bidirectional,e2_modify_2_grouped_2d,e2_modify_2_vs_e1_absolute,e2_modify_2_vs_e1_percent,e2_modify_2_vs_e2_absolute,e2_modify_2_vs_e2_percent,preferred
+mean_dice,0.8004881192,0.7860797383,0.8025402377,0.0020521185,0.2564,0.0164604994,2.0940,E2_modify_2
+mean_dice_percentage_points,80.04881192,78.60797383,80.25402377,0.20521185,,1.64604994,,E2_modify_2
+mean_hd95,24.6136121913,26.1111351219,21.9205560248,-2.6930561665,-10.9413,-4.1905790971,-16.0490,E2_modify_2
+wall_seconds,56955,52211,49926.612,-7028.388,-12.3402,-2284.388,-4.3753,E2_modify_2
+training_seconds,53358.59,49345.06,47118.51,-6240.08,-11.6946,-2226.55,-4.5122,E2_modify_2
+mean_epoch_seconds,177.86,164.48,157.0617,-20.7983,-11.6936,-7.4183,-4.5102,E2_modify_2
+peak_device_memory_mib,14665,10747,11016,-3649,-24.8824,269,2.5030,E2

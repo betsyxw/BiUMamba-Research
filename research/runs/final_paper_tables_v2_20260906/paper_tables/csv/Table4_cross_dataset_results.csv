@@ -1,0 +1,7 @@
+Dataset,Modality,Method,Seeds,Dice (%) ↑,HD95 ↓,NSD (%) ↑,Peak training allocated (GiB) ↓,Patient-level Dice result
+Synapse,CT,E1 (VM-UNet),3,77.73 ± 1.17,24.59 ± 4.95,72.46 ± 2.28,11.96,No significant patient-level Dice difference
+Synapse,CT,E2_modify_2 (BiUMamba),3,77.54 ± 1.22,25.57 ± 5.06,72.47 ± 1.74,9.04 ± 0.00,No significant patient-level Dice difference
+ACDC,MRI,E1 (VM-UNet),3,90.77 ± 0.24,2.91 ± 0.19,91.06 ± 0.60,8.95 ± 0.00,No significant patient-level Dice difference
+ACDC,MRI,E2_modify_2 (BiUMamba),3,90.73 ± 0.15,3.03 ± 0.26,90.91 ± 0.44,6.72 ± 0.00,No significant patient-level Dice difference
+BUSI,Ultrasound,E1 (VM-UNet),3,75.46 ± 0.87,30.17 ± 3.42,56.75 ± 2.81,11.91 ± 0.00,Significant patient-level Dice decrease for BiUMamba
+BUSI,Ultrasound,E2_modify_2 (BiUMamba),3,72.60 ± 2.50,36.65 ± 8.75,53.16 ± 4.20,8.94 ± 0.00,Significant patient-level Dice decrease for BiUMamba

@@ -1,0 +1,3 @@
+method,source,training_test_split,input_size,reported_dice_percent,reported_hd_mm,reproduction_status,comparison_note,source_url
+TransUNet,Original TransUNet paper,18 train / 12 evaluation,224 x 224,77.48,31.69,Not reproduced,Reported by the original paper; not reproduced under our setting.,https://arxiv.org/pdf/2102.04306
+Swin-Unet,Original Swin-Unet paper,18 train / 12 test,224 x 224,79.13,21.55,Not reproduced,Reported by the original paper; not reproduced under our setting.,https://arxiv.org/abs/2105.05537

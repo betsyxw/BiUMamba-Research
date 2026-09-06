@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "table_panels": [
+    "Table1a_Synapse_reproduced.csv",
+    "Table1b_Synapse_reported_baselines.csv",
+    "Table2_scan_design_ablation.csv",
+    "Table3_fusion_ablation.csv",
+    "Table4_cross_dataset_results.csv",
+    "Table5_pretraining_ablation.csv",
+    "Table6_efficiency.csv"
+  ],
+  "source_map": "paper_tables/source_map/table_cell_source_map.csv",
+  "numeric_cell_provenance_entries": 205,
+  "step20_merged": true,
+  "step20_5_merged": true,
+  "notes": [
+    "No value was copied from the PPT.",
+    "Table 1 and Table 4 use different pre-declared aggregation levels.",
+    "External baselines are isolated in Table 1b."
+  ]
+}

@@ -1,0 +1,4884 @@
+{
+  "schema_version": 1,
+  "overall_status": "PASS",
+  "mapped_numeric_cells": 205,
+  "passed": 205,
+  "failed": 0,
+  "tables": {
+    "Table 1a": {
+      "PASS": 33
+    },
+    "Table 1b": {
+      "PASS": 4
+    },
+    "Table 2": {
+      "PASS": 15
+    },
+    "Table 3": {
+      "PASS": 12
+    },
+    "Table 4": {
+      "PASS": 24
+    },
+    "Table 5": {
+      "PASS": 33
+    },
+    "Table 6": {
+      "PASS": 84
+    }
+  },
+  "table_csv_sha256": {
+    "Table1a_Synapse_reproduced.csv": "8edad9f17c296263c565aca5bf149563415e50ff9ca6a02ce42aaa1728b5a19f",
+    "Table1b_Synapse_reported_baselines.csv": "3d3f807c0bd43114cb5725e23b1433900d949dec7aac3304f4c4d7a038614506",
+    "Table2_scan_design_ablation.csv": "dc5120a94f08c33ffa558ba7b165a9ff21b2f7550c0132a2dc473ab043242075",
+    "Table3_fusion_ablation.csv": "11dbbb5f5cc887ab9bf3cbce5a69dbf4e1f81a0ec75cb243c12a05911bba887b",
+    "Table4_cross_dataset_results.csv": "e0e0676acdcc984245d98a3b8ff3f0140c5e43eb243c91eadd72e0b1877fb6ba",
+    "Table5_pretraining_ablation.csv": "b829337442f49f5f1a4c797c0e291893fee1795fca2291356e07208317f29966",
+    "Table6_efficiency.csv": "a5e9c12496bbb14e813796c22c7bb7d1d12aaacc432bc60f6e3e88631094c9f8"
+  },
+  "step20_present": true,
+  "step20_5_present": true,
+  "checks": [
+    {
+      "id": 1,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "E1 (VM-UNet)",
+      "target_column": "Mean Dice (%) ↑",
+      "target_value": "76.84 ± 1.15",
+      "computed_value": "76.84 ± 1.15",
+      "source_csv": "synapse/final_v2/method_mean_std.csv",
+      "selector": {
+        "method": "E1"
+      },
+      "source_columns": [
+        "test_mean_dice_mean",
+        "test_mean_dice_sample_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 2,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "E1 (VM-UNet)",
+      "target_column": "HD95 (mm) ↓",
+      "target_value": "32.13 ± 4.95",
+      "computed_value": "32.13 ± 4.95",
+      "source_csv": "synapse/final_v2/method_mean_std.csv",
+      "selector": {
+        "method": "E1"
+      },
+      "source_columns": [
+        "test_mean_hd95_mm_mean",
+        "test_mean_hd95_mm_sample_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 3,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "E1 (VM-UNet)",
+      "target_column": "NSD@1mm (%) ↑",
+      "target_value": "71.59 ± 2.25",
+      "computed_value": "71.59 ± 2.25",
+      "source_csv": "synapse/final_v2/method_mean_std.csv",
+      "selector": {
+        "method": "E1"
+      },
+      "source_columns": [
+        "test_mean_nsd_1mm_mean",
+        "test_mean_nsd_1mm_sample_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 4,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "E1 (VM-UNet)",
+      "target_column": "Aorta Dice (%)",
+      "target_value": "85.83 ± 0.22",
+      "computed_value": "85.83 ± 0.22",
+      "source_csv": "synapse/final_v2/per_organ_mean_std.csv",
+      "selector": {
+        "method": "E1",
+        "organ": "Aorta"
+      },
+      "source_columns": [
+        "mean_dice_mean",
+        "mean_dice_sample_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 5,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "E1 (VM-UNet)",
+      "target_column": "Gallbladder Dice (%)",
+      "target_value": "56.48 ± 0.98",
+      "computed_value": "56.48 ± 0.98",
+      "source_csv": "synapse/final_v2/per_organ_mean_std.csv",
+      "selector": {
+        "method": "E1",
+        "organ": "Gallbladder"
+      },
+      "source_columns": [
+        "mean_dice_mean",
+        "mean_dice_sample_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 6,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "E1 (VM-UNet)",
+      "target_column": "Left Kidney Dice (%)",
+      "target_value": "82.66 ± 1.96",
+      "computed_value": "82.66 ± 1.96",
+      "source_csv": "synapse/final_v2/per_organ_mean_std.csv",
+      "selector": {
+        "method": "E1",
+        "organ": "Left Kidney"
+      },
+      "source_columns": [
+        "mean_dice_mean",
+        "mean_dice_sample_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 7,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "E1 (VM-UNet)",
+      "target_column": "Right Kidney Dice (%)",
+      "target_value": "77.61 ± 1.93",
+      "computed_value": "77.61 ± 1.93",
+      "source_csv": "synapse/final_v2/per_organ_mean_std.csv",
+      "selector": {
+        "method": "E1",
+        "organ": "Right Kidney"
+      },
+      "source_columns": [
+        "mean_dice_mean",
+        "mean_dice_sample_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 8,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "E1 (VM-UNet)",
+      "target_column": "Liver Dice (%)",
+      "target_value": "93.51 ± 0.44",
+      "computed_value": "93.51 ± 0.44",
+      "source_csv": "synapse/final_v2/per_organ_mean_std.csv",
+      "selector": {
+        "method": "E1",
+        "organ": "Liver"
+      },
+      "source_columns": [
+        "mean_dice_mean",
+        "mean_dice_sample_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 9,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "E1 (VM-UNet)",
+      "target_column": "Pancreas Dice (%)",
+      "target_value": "55.86 ± 2.39",
+      "computed_value": "55.86 ± 2.39",
+      "source_csv": "synapse/final_v2/per_organ_mean_std.csv",
+      "selector": {
+        "method": "E1",
+        "organ": "Pancreas"
+      },
+      "source_columns": [
+        "mean_dice_mean",
+        "mean_dice_sample_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 10,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "E1 (VM-UNet)",
+      "target_column": "Spleen Dice (%)",
+      "target_value": "87.80 ± 0.58",
+      "computed_value": "87.80 ± 0.58",
+      "source_csv": "synapse/final_v2/per_organ_mean_std.csv",
+      "selector": {
+        "method": "E1",
+        "organ": "Spleen"
+      },
+      "source_columns": [
+        "mean_dice_mean",
+        "mean_dice_sample_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 11,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "E1 (VM-UNet)",
+      "target_column": "Stomach Dice (%)",
+      "target_value": "75.00 ± 1.56",
+      "computed_value": "75.00 ± 1.56",
+      "source_csv": "synapse/final_v2/per_organ_mean_std.csv",
+      "selector": {
+        "method": "E1",
+        "organ": "Stomach"
+      },
+      "source_columns": [
+        "mean_dice_mean",
+        "mean_dice_sample_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 12,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "E2_modify_2 (BiUMamba)",
+      "target_column": "Mean Dice (%) ↑",
+      "target_value": "76.66 ± 1.22",
+      "computed_value": "76.66 ± 1.22",
+      "source_csv": "synapse/final_v2/method_mean_std.csv",
+      "selector": {
+        "method": "E2_modify_2"
+      },
+      "source_columns": [
+        "test_mean_dice_mean",
+        "test_mean_dice_sample_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 13,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "E2_modify_2 (BiUMamba)",
+      "target_column": "HD95 (mm) ↓",
+      "target_value": "33.12 ± 5.06",
+      "computed_value": "33.12 ± 5.06",
+      "source_csv": "synapse/final_v2/method_mean_std.csv",
+      "selector": {
+        "method": "E2_modify_2"
+      },
+      "source_columns": [
+        "test_mean_hd95_mm_mean",
+        "test_mean_hd95_mm_sample_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 14,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "E2_modify_2 (BiUMamba)",
+      "target_column": "NSD@1mm (%) ↑",
+      "target_value": "71.59 ± 1.73",
+      "computed_value": "71.59 ± 1.73",
+      "source_csv": "synapse/final_v2/method_mean_std.csv",
+      "selector": {
+        "method": "E2_modify_2"
+      },
+      "source_columns": [
+        "test_mean_nsd_1mm_mean",
+        "test_mean_nsd_1mm_sample_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 15,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "E2_modify_2 (BiUMamba)",
+      "target_column": "Aorta Dice (%)",
+      "target_value": "85.38 ± 0.51",
+      "computed_value": "85.38 ± 0.51",
+      "source_csv": "synapse/final_v2/per_organ_mean_std.csv",
+      "selector": {
+        "method": "E2_modify_2",
+        "organ": "Aorta"
+      },
+      "source_columns": [
+        "mean_dice_mean",
+        "mean_dice_sample_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 16,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "E2_modify_2 (BiUMamba)",
+      "target_column": "Gallbladder Dice (%)",
+      "target_value": "58.06 ± 4.29",
+      "computed_value": "58.06 ± 4.29",
+      "source_csv": "synapse/final_v2/per_organ_mean_std.csv",
+      "selector": {
+        "method": "E2_modify_2",
+        "organ": "Gallbladder"
+      },
+      "source_columns": [
+        "mean_dice_mean",
+        "mean_dice_sample_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 17,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "E2_modify_2 (BiUMamba)",
+      "target_column": "Left Kidney Dice (%)",
+      "target_value": "83.91 ± 1.97",
+      "computed_value": "83.91 ± 1.97",
+      "source_csv": "synapse/final_v2/per_organ_mean_std.csv",
+      "selector": {
+        "method": "E2_modify_2",
+        "organ": "Left Kidney"
+      },
+      "source_columns": [
+        "mean_dice_mean",
+        "mean_dice_sample_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 18,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "E2_modify_2 (BiUMamba)",
+      "target_column": "Right Kidney Dice (%)",
+      "target_value": "79.81 ± 1.92",
+      "computed_value": "79.81 ± 1.92",
+      "source_csv": "synapse/final_v2/per_organ_mean_std.csv",
+      "selector": {
+        "method": "E2_modify_2",
+        "organ": "Right Kidney"
+      },
+      "source_columns": [
+        "mean_dice_mean",
+        "mean_dice_sample_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 19,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "E2_modify_2 (BiUMamba)",
+      "target_column": "Liver Dice (%)",
+      "target_value": "93.76 ± 0.26",
+      "computed_value": "93.76 ± 0.26",
+      "source_csv": "synapse/final_v2/per_organ_mean_std.csv",
+      "selector": {
+        "method": "E2_modify_2",
+        "organ": "Liver"
+      },
+      "source_columns": [
+        "mean_dice_mean",
+        "mean_dice_sample_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 20,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "E2_modify_2 (BiUMamba)",
+      "target_column": "Pancreas Dice (%)",
+      "target_value": "53.04 ± 2.54",
+      "computed_value": "53.04 ± 2.54",
+      "source_csv": "synapse/final_v2/per_organ_mean_std.csv",
+      "selector": {
+        "method": "E2_modify_2",
+        "organ": "Pancreas"
+      },
+      "source_columns": [
+        "mean_dice_mean",
+        "mean_dice_sample_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 21,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "E2_modify_2 (BiUMamba)",
+      "target_column": "Spleen Dice (%)",
+      "target_value": "86.01 ± 1.17",
+      "computed_value": "86.01 ± 1.17",
+      "source_csv": "synapse/final_v2/per_organ_mean_std.csv",
+      "selector": {
+        "method": "E2_modify_2",
+        "organ": "Spleen"
+      },
+      "source_columns": [
+        "mean_dice_mean",
+        "mean_dice_sample_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 22,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "E2_modify_2 (BiUMamba)",
+      "target_column": "Stomach Dice (%)",
+      "target_value": "73.32 ± 0.62",
+      "computed_value": "73.32 ± 0.62",
+      "source_csv": "synapse/final_v2/per_organ_mean_std.csv",
+      "selector": {
+        "method": "E2_modify_2",
+        "organ": "Stomach"
+      },
+      "source_columns": [
+        "mean_dice_mean",
+        "mean_dice_sample_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 23,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "nnU-Net v2",
+      "target_column": "Mean Dice (%) ↑",
+      "target_value": "81.14 ± 0.27",
+      "computed_value": "81.14 ± 0.27",
+      "source_csv": "nnunet/isolated_test/three_seed_mean_std.csv",
+      "selector": {
+        "metric": "dice"
+      },
+      "source_columns": [
+        "mean",
+        "std_sample"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 24,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "nnU-Net v2",
+      "target_column": "HD95 (mm) ↓",
+      "target_value": "31.97 ± 0.41",
+      "computed_value": "31.97 ± 0.41",
+      "source_csv": "nnunet/isolated_test/three_seed_mean_std.csv",
+      "selector": {
+        "metric": "hd95_mm"
+      },
+      "source_columns": [
+        "mean",
+        "std_sample"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 25,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "nnU-Net v2",
+      "target_column": "NSD@1mm (%) ↑",
+      "target_value": "79.47 ± 0.27",
+      "computed_value": "79.47 ± 0.27",
+      "source_csv": "nnunet/isolated_test/three_seed_mean_std.csv",
+      "selector": {
+        "metric": "nsd_1mm"
+      },
+      "source_columns": [
+        "mean",
+        "std_sample"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 26,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "nnU-Net v2",
+      "target_column": "Aorta Dice (%)",
+      "target_value": "91.87 ± 0.07",
+      "computed_value": "91.87 ± 0.07",
+      "source_csv": "nnunet/isolated_test/per_organ_three_seed_mean_std.csv",
+      "selector": {
+        "organ": "Aorta"
+      },
+      "source_columns": [
+        "mean_dice_mean",
+        "mean_dice_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 27,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "nnU-Net v2",
+      "target_column": "Gallbladder Dice (%)",
+      "target_value": "65.98 ± 0.99",
+      "computed_value": "65.98 ± 0.99",
+      "source_csv": "nnunet/isolated_test/per_organ_three_seed_mean_std.csv",
+      "selector": {
+        "organ": "Gallbladder"
+      },
+      "source_columns": [
+        "mean_dice_mean",
+        "mean_dice_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 28,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "nnU-Net v2",
+      "target_column": "Left Kidney Dice (%)",
+      "target_value": "82.16 ± 2.02",
+      "computed_value": "82.16 ± 2.02",
+      "source_csv": "nnunet/isolated_test/per_organ_three_seed_mean_std.csv",
+      "selector": {
+        "organ": "Left Kidney"
+      },
+      "source_columns": [
+        "mean_dice_mean",
+        "mean_dice_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 29,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "nnU-Net v2",
+      "target_column": "Right Kidney Dice (%)",
+      "target_value": "76.85 ± 1.15",
+      "computed_value": "76.85 ± 1.15",
+      "source_csv": "nnunet/isolated_test/per_organ_three_seed_mean_std.csv",
+      "selector": {
+        "organ": "Right Kidney"
+      },
+      "source_columns": [
+        "mean_dice_mean",
+        "mean_dice_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 30,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "nnU-Net v2",
+      "target_column": "Liver Dice (%)",
+      "target_value": "96.03 ± 0.36",
+      "computed_value": "96.03 ± 0.36",
+      "source_csv": "nnunet/isolated_test/per_organ_three_seed_mean_std.csv",
+      "selector": {
+        "organ": "Liver"
+      },
+      "source_columns": [
+        "mean_dice_mean",
+        "mean_dice_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 31,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "nnU-Net v2",
+      "target_column": "Pancreas Dice (%)",
+      "target_value": "66.29 ± 1.76",
+      "computed_value": "66.29 ± 1.76",
+      "source_csv": "nnunet/isolated_test/per_organ_three_seed_mean_std.csv",
+      "selector": {
+        "organ": "Pancreas"
+      },
+      "source_columns": [
+        "mean_dice_mean",
+        "mean_dice_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 32,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "nnU-Net v2",
+      "target_column": "Spleen Dice (%)",
+      "target_value": "91.19 ± 1.18",
+      "computed_value": "91.19 ± 1.18",
+      "source_csv": "nnunet/isolated_test/per_organ_three_seed_mean_std.csv",
+      "selector": {
+        "organ": "Spleen"
+      },
+      "source_columns": [
+        "mean_dice_mean",
+        "mean_dice_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 33,
+      "table": "Table 1a",
+      "target_csv": "paper_tables/csv/Table1a_Synapse_reproduced.csv",
+      "target_row_key": "nnU-Net v2",
+      "target_column": "Stomach Dice (%)",
+      "target_value": "78.73 ± 2.69",
+      "computed_value": "78.73 ± 2.69",
+      "source_csv": "nnunet/isolated_test/per_organ_three_seed_mean_std.csv",
+      "selector": {
+        "organ": "Stomach"
+      },
+      "source_columns": [
+        "mean_dice_mean",
+        "mean_dice_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 34,
+      "table": "Table 1b",
+      "target_csv": "paper_tables/csv/Table1b_Synapse_reported_baselines.csv",
+      "target_row_key": "TransUNet",
+      "target_column": "Mean Dice (%) ↑",
+      "target_value": "77.48",
+      "computed_value": "77.48",
+      "source_csv": "reported_baselines/reported_transformer_results.csv",
+      "selector": {
+        "method": "TransUNet"
+      },
+      "source_columns": [
+        "reported_dice_percent"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 35,
+      "table": "Table 1b",
+      "target_csv": "paper_tables/csv/Table1b_Synapse_reported_baselines.csv",
+      "target_row_key": "TransUNet",
+      "target_column": "HD95 (mm) ↓",
+      "target_value": "31.69",
+      "computed_value": "31.69",
+      "source_csv": "reported_baselines/reported_transformer_results.csv",
+      "selector": {
+        "method": "TransUNet"
+      },
+      "source_columns": [
+        "reported_hd_mm"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 36,
+      "table": "Table 1b",
+      "target_csv": "paper_tables/csv/Table1b_Synapse_reported_baselines.csv",
+      "target_row_key": "Swin-Unet",
+      "target_column": "Mean Dice (%) ↑",
+      "target_value": "79.13",
+      "computed_value": "79.13",
+      "source_csv": "reported_baselines/reported_transformer_results.csv",
+      "selector": {
+        "method": "Swin-Unet"
+      },
+      "source_columns": [
+        "reported_dice_percent"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 37,
+      "table": "Table 1b",
+      "target_csv": "paper_tables/csv/Table1b_Synapse_reported_baselines.csv",
+      "target_row_key": "Swin-Unet",
+      "target_column": "HD95 (mm) ↓",
+      "target_value": "21.55",
+      "computed_value": "21.55",
+      "source_csv": "reported_baselines/reported_transformer_results.csv",
+      "selector": {
+        "method": "Swin-Unet"
+      },
+      "source_columns": [
+        "reported_hd_mm"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 38,
+      "table": "Table 2",
+      "target_csv": "paper_tables/csv/Table2_scan_design_ablation.csv",
+      "target_row_key": "E1|Full300",
+      "target_column": "Dice (%) ↑",
+      "target_value": "80.05",
+      "computed_value": "80.05",
+      "source_csv": "ablations/scan_design/E1_E2_E2_modify_2_full300_seed42.csv",
+      "selector": {
+        "metric": "mean_dice_percentage_points"
+      },
+      "source_columns": [
+        "e1_original_four_direction"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 39,
+      "table": "Table 2",
+      "target_csv": "paper_tables/csv/Table2_scan_design_ablation.csv",
+      "target_row_key": "E1|Full300",
+      "target_column": "HD95 ↓",
+      "target_value": "24.61",
+      "computed_value": "24.61",
+      "source_csv": "ablations/scan_design/E1_E2_E2_modify_2_full300_seed42.csv",
+      "selector": {
+        "metric": "mean_hd95"
+      },
+      "source_columns": [
+        "e1_original_four_direction"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 40,
+      "table": "Table 2",
+      "target_csv": "paper_tables/csv/Table2_scan_design_ablation.csv",
+      "target_row_key": "E1|Full300",
+      "target_column": "Peak memory (MiB) ↓",
+      "target_value": "14665",
+      "computed_value": "14665",
+      "source_csv": "ablations/scan_design/E1_E2_E2_modify_2_full300_seed42.csv",
+      "selector": {
+        "metric": "peak_device_memory_mib"
+      },
+      "source_columns": [
+        "e1_original_four_direction"
+      ],
+      "transformation": "identity_number:0",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 41,
+      "table": "Table 2",
+      "target_csv": "paper_tables/csv/Table2_scan_design_ablation.csv",
+      "target_row_key": "E2|Full300",
+      "target_column": "Dice (%) ↑",
+      "target_value": "78.61",
+      "computed_value": "78.61",
+      "source_csv": "ablations/scan_design/E1_E2_E2_modify_2_full300_seed42.csv",
+      "selector": {
+        "metric": "mean_dice_percentage_points"
+      },
+      "source_columns": [
+        "e2_row_bidirectional"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 42,
+      "table": "Table 2",
+      "target_csv": "paper_tables/csv/Table2_scan_design_ablation.csv",
+      "target_row_key": "E2|Full300",
+      "target_column": "HD95 ↓",
+      "target_value": "26.11",
+      "computed_value": "26.11",
+      "source_csv": "ablations/scan_design/E1_E2_E2_modify_2_full300_seed42.csv",
+      "selector": {
+        "metric": "mean_hd95"
+      },
+      "source_columns": [
+        "e2_row_bidirectional"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 43,
+      "table": "Table 2",
+      "target_csv": "paper_tables/csv/Table2_scan_design_ablation.csv",
+      "target_row_key": "E2|Full300",
+      "target_column": "Peak memory (MiB) ↓",
+      "target_value": "10747",
+      "computed_value": "10747",
+      "source_csv": "ablations/scan_design/E1_E2_E2_modify_2_full300_seed42.csv",
+      "selector": {
+        "metric": "peak_device_memory_mib"
+      },
+      "source_columns": [
+        "e2_row_bidirectional"
+      ],
+      "transformation": "identity_number:0",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 44,
+      "table": "Table 2",
+      "target_csv": "paper_tables/csv/Table2_scan_design_ablation.csv",
+      "target_row_key": "E2_modify_2|Full300",
+      "target_column": "Dice (%) ↑",
+      "target_value": "80.25",
+      "computed_value": "80.25",
+      "source_csv": "ablations/scan_design/E1_E2_E2_modify_2_full300_seed42.csv",
+      "selector": {
+        "metric": "mean_dice_percentage_points"
+      },
+      "source_columns": [
+        "e2_modify_2_grouped_2d"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 45,
+      "table": "Table 2",
+      "target_csv": "paper_tables/csv/Table2_scan_design_ablation.csv",
+      "target_row_key": "E2_modify_2|Full300",
+      "target_column": "HD95 ↓",
+      "target_value": "21.92",
+      "computed_value": "21.92",
+      "source_csv": "ablations/scan_design/E1_E2_E2_modify_2_full300_seed42.csv",
+      "selector": {
+        "metric": "mean_hd95"
+      },
+      "source_columns": [
+        "e2_modify_2_grouped_2d"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 46,
+      "table": "Table 2",
+      "target_csv": "paper_tables/csv/Table2_scan_design_ablation.csv",
+      "target_row_key": "E2_modify_2|Full300",
+      "target_column": "Peak memory (MiB) ↓",
+      "target_value": "11016",
+      "computed_value": "11016",
+      "source_csv": "ablations/scan_design/E1_E2_E2_modify_2_full300_seed42.csv",
+      "selector": {
+        "metric": "peak_device_memory_mib"
+      },
+      "source_columns": [
+        "e2_modify_2_grouped_2d"
+      ],
+      "transformation": "identity_number:0",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 47,
+      "table": "Table 2",
+      "target_csv": "paper_tables/csv/Table2_scan_design_ablation.csv",
+      "target_row_key": "E2_modify_1|Screen50",
+      "target_column": "Dice (%) ↑",
+      "target_value": "72.54",
+      "computed_value": "72.54",
+      "source_csv": "ablations/scan_design/E2_modify_1_vs_E2_modify_2_screen50_seed42.csv",
+      "selector": {
+        "metric": "mean_dice"
+      },
+      "source_columns": [
+        "e2_modify_1"
+      ],
+      "transformation": "identity_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 48,
+      "table": "Table 2",
+      "target_csv": "paper_tables/csv/Table2_scan_design_ablation.csv",
+      "target_row_key": "E2_modify_1|Screen50",
+      "target_column": "HD95 ↓",
+      "target_value": "35.58",
+      "computed_value": "35.58",
+      "source_csv": "ablations/scan_design/E2_modify_1_vs_E2_modify_2_screen50_seed42.csv",
+      "selector": {
+        "metric": "mean_hd95"
+      },
+      "source_columns": [
+        "e2_modify_1"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 49,
+      "table": "Table 2",
+      "target_csv": "paper_tables/csv/Table2_scan_design_ablation.csv",
+      "target_row_key": "E2_modify_1|Screen50",
+      "target_column": "Peak memory (MiB) ↓",
+      "target_value": "10396",
+      "computed_value": "10396",
+      "source_csv": "ablations/scan_design/E2_modify_1_vs_E2_modify_2_screen50_seed42.csv",
+      "selector": {
+        "metric": "peak_gpu_memory_mib"
+      },
+      "source_columns": [
+        "e2_modify_1"
+      ],
+      "transformation": "identity_number:0",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 50,
+      "table": "Table 2",
+      "target_csv": "paper_tables/csv/Table2_scan_design_ablation.csv",
+      "target_row_key": "E2_modify_2|Screen50",
+      "target_column": "Dice (%) ↑",
+      "target_value": "75.07",
+      "computed_value": "75.07",
+      "source_csv": "ablations/scan_design/E2_modify_1_vs_E2_modify_2_screen50_seed42.csv",
+      "selector": {
+        "metric": "mean_dice"
+      },
+      "source_columns": [
+        "e2_modify_2"
+      ],
+      "transformation": "identity_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 51,
+      "table": "Table 2",
+      "target_csv": "paper_tables/csv/Table2_scan_design_ablation.csv",
+      "target_row_key": "E2_modify_2|Screen50",
+      "target_column": "HD95 ↓",
+      "target_value": "40.42",
+      "computed_value": "40.42",
+      "source_csv": "ablations/scan_design/E2_modify_1_vs_E2_modify_2_screen50_seed42.csv",
+      "selector": {
+        "metric": "mean_hd95"
+      },
+      "source_columns": [
+        "e2_modify_2"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 52,
+      "table": "Table 2",
+      "target_csv": "paper_tables/csv/Table2_scan_design_ablation.csv",
+      "target_row_key": "E2_modify_2|Screen50",
+      "target_column": "Peak memory (MiB) ↓",
+      "target_value": "11016",
+      "computed_value": "11016",
+      "source_csv": "ablations/scan_design/E2_modify_1_vs_E2_modify_2_screen50_seed42.csv",
+      "selector": {
+        "metric": "peak_gpu_memory_mib"
+      },
+      "source_columns": [
+        "e2_modify_2"
+      ],
+      "transformation": "identity_number:0",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 53,
+      "table": "Table 3",
+      "target_csv": "paper_tables/csv/Table3_fusion_ablation.csv",
+      "target_row_key": "Fixed sum",
+      "target_column": "Dice (%) ↑",
+      "target_value": "80.25",
+      "computed_value": "80.25",
+      "source_csv": "ablations/fusion/E1_E2_E2_modify_2_E3_full300_seed42.csv",
+      "selector": {
+        "experiment": "E2_modify_2"
+      },
+      "source_columns": [
+        "mean_dice"
+      ],
+      "transformation": "identity_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 54,
+      "table": "Table 3",
+      "target_csv": "paper_tables/csv/Table3_fusion_ablation.csv",
+      "target_row_key": "Fixed sum",
+      "target_column": "HD95 ↓",
+      "target_value": "21.92",
+      "computed_value": "21.92",
+      "source_csv": "ablations/fusion/E1_E2_E2_modify_2_E3_full300_seed42.csv",
+      "selector": {
+        "experiment": "E2_modify_2"
+      },
+      "source_columns": [
+        "mean_hd95"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 55,
+      "table": "Table 3",
+      "target_csv": "paper_tables/csv/Table3_fusion_ablation.csv",
+      "target_row_key": "Fixed sum",
+      "target_column": "Peak memory (MiB) ↓",
+      "target_value": "11016",
+      "computed_value": "11016",
+      "source_csv": "ablations/fusion/E1_E2_E2_modify_2_E3_full300_seed42.csv",
+      "selector": {
+        "experiment": "E2_modify_2"
+      },
+      "source_columns": [
+        "peak_sampled_gpu_memory_mib"
+      ],
+      "transformation": "identity_number:0",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 56,
+      "table": "Table 3",
+      "target_csv": "paper_tables/csv/Table3_fusion_ablation.csv",
+      "target_row_key": "Static learnable fusion",
+      "target_column": "Dice (%) ↑",
+      "target_value": "80.00",
+      "computed_value": "80.00",
+      "source_csv": "ablations/fusion/E1_E2_E2_modify_2_E3_full300_seed42.csv",
+      "selector": {
+        "experiment": "E3_full300"
+      },
+      "source_columns": [
+        "mean_dice"
+      ],
+      "transformation": "identity_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 57,
+      "table": "Table 3",
+      "target_csv": "paper_tables/csv/Table3_fusion_ablation.csv",
+      "target_row_key": "Static learnable fusion",
+      "target_column": "HD95 ↓",
+      "target_value": "25.57",
+      "computed_value": "25.57",
+      "source_csv": "ablations/fusion/E1_E2_E2_modify_2_E3_full300_seed42.csv",
+      "selector": {
+        "experiment": "E3_full300"
+      },
+      "source_columns": [
+        "mean_hd95"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 58,
+      "table": "Table 3",
+      "target_csv": "paper_tables/csv/Table3_fusion_ablation.csv",
+      "target_row_key": "Static learnable fusion",
+      "target_column": "Peak memory (MiB) ↓",
+      "target_value": "12958",
+      "computed_value": "12958",
+      "source_csv": "ablations/fusion/E1_E2_E2_modify_2_E3_full300_seed42.csv",
+      "selector": {
+        "experiment": "E3_full300"
+      },
+      "source_columns": [
+        "peak_sampled_gpu_memory_mib"
+      ],
+      "transformation": "identity_number:0",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 59,
+      "table": "Table 3",
+      "target_csv": "paper_tables/csv/Table3_fusion_ablation.csv",
+      "target_row_key": "Adaptive Gate v1",
+      "target_column": "Dice (%) ↑",
+      "target_value": "70.91",
+      "computed_value": "70.91",
+      "source_csv": "ablations/fusion/E4_version_1_full300_seed42.csv",
+      "selector": {
+        "Experiment": "E4_version_1_full300"
+      },
+      "source_columns": [
+        "Mean_Dice"
+      ],
+      "transformation": "identity_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 60,
+      "table": "Table 3",
+      "target_csv": "paper_tables/csv/Table3_fusion_ablation.csv",
+      "target_row_key": "Adaptive Gate v1",
+      "target_column": "HD95 ↓",
+      "target_value": "35.32",
+      "computed_value": "35.32",
+      "source_csv": "ablations/fusion/E4_version_1_full300_seed42.csv",
+      "selector": {
+        "Experiment": "E4_version_1_full300"
+      },
+      "source_columns": [
+        "Mean_HD95"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 61,
+      "table": "Table 3",
+      "target_csv": "paper_tables/csv/Table3_fusion_ablation.csv",
+      "target_row_key": "Adaptive Gate v1",
+      "target_column": "Peak memory (MiB) ↓",
+      "target_value": "13534",
+      "computed_value": "13534",
+      "source_csv": "ablations/fusion/E4_version_1_full300_seed42.csv",
+      "selector": {
+        "Experiment": "E4_version_1_full300"
+      },
+      "source_columns": [
+        "Peak_Memory_MiB"
+      ],
+      "transformation": "identity_number:0",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 62,
+      "table": "Table 3",
+      "target_csv": "paper_tables/csv/Table3_fusion_ablation.csv",
+      "target_row_key": "Stabilized Adaptive Gate v2-B",
+      "target_column": "Dice (%) ↑",
+      "target_value": "74.99",
+      "computed_value": "74.99",
+      "source_csv": "ablations/fusion/E4_v2_stabilized_b_screen50_seed42.csv",
+      "selector": {
+        "Experiment": "E4_v2_stabilized_b_epoch50"
+      },
+      "source_columns": [
+        "Mean_Dice"
+      ],
+      "transformation": "identity_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 63,
+      "table": "Table 3",
+      "target_csv": "paper_tables/csv/Table3_fusion_ablation.csv",
+      "target_row_key": "Stabilized Adaptive Gate v2-B",
+      "target_column": "HD95 ↓",
+      "target_value": "37.91",
+      "computed_value": "37.91",
+      "source_csv": "ablations/fusion/E4_v2_stabilized_b_screen50_seed42.csv",
+      "selector": {
+        "Experiment": "E4_v2_stabilized_b_epoch50"
+      },
+      "source_columns": [
+        "Mean_HD95"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 64,
+      "table": "Table 3",
+      "target_csv": "paper_tables/csv/Table3_fusion_ablation.csv",
+      "target_row_key": "Stabilized Adaptive Gate v2-B",
+      "target_column": "Peak memory (MiB) ↓",
+      "target_value": "11499",
+      "computed_value": "11499",
+      "source_csv": "ablations/fusion/E4_v2_stabilized_b_screen50_seed42.csv",
+      "selector": {
+        "Experiment": "E4_v2_stabilized_b_epoch50"
+      },
+      "source_columns": [
+        "Peak_Memory_MiB"
+      ],
+      "transformation": "identity_number:0",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 65,
+      "table": "Table 4",
+      "target_csv": "paper_tables/csv/Table4_cross_dataset_results.csv",
+      "target_row_key": "Synapse|E1",
+      "target_column": "Dice (%) ↑",
+      "target_value": "77.73 ± 1.17",
+      "computed_value": "77.73 ± 1.17",
+      "source_csv": "statistics/seed_level_mean_std.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E1"
+      },
+      "source_columns": [
+        "dice_mean",
+        "dice_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 66,
+      "table": "Table 4",
+      "target_csv": "paper_tables/csv/Table4_cross_dataset_results.csv",
+      "target_row_key": "Synapse|E1",
+      "target_column": "HD95 ↓",
+      "target_value": "24.59 ± 4.95",
+      "computed_value": "24.59 ± 4.95",
+      "source_csv": "statistics/seed_level_mean_std.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E1"
+      },
+      "source_columns": [
+        "hd95_mean",
+        "hd95_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 67,
+      "table": "Table 4",
+      "target_csv": "paper_tables/csv/Table4_cross_dataset_results.csv",
+      "target_row_key": "Synapse|E1",
+      "target_column": "NSD (%) ↑",
+      "target_value": "72.46 ± 2.28",
+      "computed_value": "72.46 ± 2.28",
+      "source_csv": "statistics/seed_level_mean_std.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E1"
+      },
+      "source_columns": [
+        "nsd_mean",
+        "nsd_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 68,
+      "table": "Table 4",
+      "target_csv": "paper_tables/csv/Table4_cross_dataset_results.csv",
+      "target_row_key": "Synapse|E1",
+      "target_column": "Peak training allocated (GiB) ↓",
+      "target_value": "11.96",
+      "computed_value": "11.96",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_aggregate.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E1"
+      },
+      "source_columns": [
+        "peak_training_allocated_gib_mean",
+        "peak_training_allocated_gib_sample_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 69,
+      "table": "Table 4",
+      "target_csv": "paper_tables/csv/Table4_cross_dataset_results.csv",
+      "target_row_key": "Synapse|E2_modify_2",
+      "target_column": "Dice (%) ↑",
+      "target_value": "77.54 ± 1.22",
+      "computed_value": "77.54 ± 1.22",
+      "source_csv": "statistics/seed_level_mean_std.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E2_modify_2"
+      },
+      "source_columns": [
+        "dice_mean",
+        "dice_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 70,
+      "table": "Table 4",
+      "target_csv": "paper_tables/csv/Table4_cross_dataset_results.csv",
+      "target_row_key": "Synapse|E2_modify_2",
+      "target_column": "HD95 ↓",
+      "target_value": "25.57 ± 5.06",
+      "computed_value": "25.57 ± 5.06",
+      "source_csv": "statistics/seed_level_mean_std.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E2_modify_2"
+      },
+      "source_columns": [
+        "hd95_mean",
+        "hd95_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 71,
+      "table": "Table 4",
+      "target_csv": "paper_tables/csv/Table4_cross_dataset_results.csv",
+      "target_row_key": "Synapse|E2_modify_2",
+      "target_column": "NSD (%) ↑",
+      "target_value": "72.47 ± 1.74",
+      "computed_value": "72.47 ± 1.74",
+      "source_csv": "statistics/seed_level_mean_std.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E2_modify_2"
+      },
+      "source_columns": [
+        "nsd_mean",
+        "nsd_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 72,
+      "table": "Table 4",
+      "target_csv": "paper_tables/csv/Table4_cross_dataset_results.csv",
+      "target_row_key": "Synapse|E2_modify_2",
+      "target_column": "Peak training allocated (GiB) ↓",
+      "target_value": "9.04 ± 0.00",
+      "computed_value": "9.04 ± 0.00",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_aggregate.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E2_modify_2"
+      },
+      "source_columns": [
+        "peak_training_allocated_gib_mean",
+        "peak_training_allocated_gib_sample_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 73,
+      "table": "Table 4",
+      "target_csv": "paper_tables/csv/Table4_cross_dataset_results.csv",
+      "target_row_key": "ACDC|E1",
+      "target_column": "Dice (%) ↑",
+      "target_value": "90.77 ± 0.24",
+      "computed_value": "90.77 ± 0.24",
+      "source_csv": "statistics/seed_level_mean_std.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E1"
+      },
+      "source_columns": [
+        "dice_mean",
+        "dice_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 74,
+      "table": "Table 4",
+      "target_csv": "paper_tables/csv/Table4_cross_dataset_results.csv",
+      "target_row_key": "ACDC|E1",
+      "target_column": "HD95 ↓",
+      "target_value": "2.91 ± 0.19",
+      "computed_value": "2.91 ± 0.19",
+      "source_csv": "statistics/seed_level_mean_std.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E1"
+      },
+      "source_columns": [
+        "hd95_mean",
+        "hd95_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 75,
+      "table": "Table 4",
+      "target_csv": "paper_tables/csv/Table4_cross_dataset_results.csv",
+      "target_row_key": "ACDC|E1",
+      "target_column": "NSD (%) ↑",
+      "target_value": "91.06 ± 0.60",
+      "computed_value": "91.06 ± 0.60",
+      "source_csv": "statistics/seed_level_mean_std.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E1"
+      },
+      "source_columns": [
+        "nsd_mean",
+        "nsd_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 76,
+      "table": "Table 4",
+      "target_csv": "paper_tables/csv/Table4_cross_dataset_results.csv",
+      "target_row_key": "ACDC|E1",
+      "target_column": "Peak training allocated (GiB) ↓",
+      "target_value": "8.95 ± 0.00",
+      "computed_value": "8.95 ± 0.00",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_aggregate.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E1"
+      },
+      "source_columns": [
+        "peak_training_allocated_gib_mean",
+        "peak_training_allocated_gib_sample_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 77,
+      "table": "Table 4",
+      "target_csv": "paper_tables/csv/Table4_cross_dataset_results.csv",
+      "target_row_key": "ACDC|E2_modify_2",
+      "target_column": "Dice (%) ↑",
+      "target_value": "90.73 ± 0.15",
+      "computed_value": "90.73 ± 0.15",
+      "source_csv": "statistics/seed_level_mean_std.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E2_modify_2"
+      },
+      "source_columns": [
+        "dice_mean",
+        "dice_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 78,
+      "table": "Table 4",
+      "target_csv": "paper_tables/csv/Table4_cross_dataset_results.csv",
+      "target_row_key": "ACDC|E2_modify_2",
+      "target_column": "HD95 ↓",
+      "target_value": "3.03 ± 0.26",
+      "computed_value": "3.03 ± 0.26",
+      "source_csv": "statistics/seed_level_mean_std.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E2_modify_2"
+      },
+      "source_columns": [
+        "hd95_mean",
+        "hd95_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 79,
+      "table": "Table 4",
+      "target_csv": "paper_tables/csv/Table4_cross_dataset_results.csv",
+      "target_row_key": "ACDC|E2_modify_2",
+      "target_column": "NSD (%) ↑",
+      "target_value": "90.91 ± 0.44",
+      "computed_value": "90.91 ± 0.44",
+      "source_csv": "statistics/seed_level_mean_std.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E2_modify_2"
+      },
+      "source_columns": [
+        "nsd_mean",
+        "nsd_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 80,
+      "table": "Table 4",
+      "target_csv": "paper_tables/csv/Table4_cross_dataset_results.csv",
+      "target_row_key": "ACDC|E2_modify_2",
+      "target_column": "Peak training allocated (GiB) ↓",
+      "target_value": "6.72 ± 0.00",
+      "computed_value": "6.72 ± 0.00",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_aggregate.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E2_modify_2"
+      },
+      "source_columns": [
+        "peak_training_allocated_gib_mean",
+        "peak_training_allocated_gib_sample_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 81,
+      "table": "Table 4",
+      "target_csv": "paper_tables/csv/Table4_cross_dataset_results.csv",
+      "target_row_key": "BUSI|E1",
+      "target_column": "Dice (%) ↑",
+      "target_value": "75.46 ± 0.87",
+      "computed_value": "75.46 ± 0.87",
+      "source_csv": "statistics/seed_level_mean_std.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E1"
+      },
+      "source_columns": [
+        "dice_mean",
+        "dice_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 82,
+      "table": "Table 4",
+      "target_csv": "paper_tables/csv/Table4_cross_dataset_results.csv",
+      "target_row_key": "BUSI|E1",
+      "target_column": "HD95 ↓",
+      "target_value": "30.17 ± 3.42",
+      "computed_value": "30.17 ± 3.42",
+      "source_csv": "statistics/seed_level_mean_std.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E1"
+      },
+      "source_columns": [
+        "hd95_mean",
+        "hd95_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 83,
+      "table": "Table 4",
+      "target_csv": "paper_tables/csv/Table4_cross_dataset_results.csv",
+      "target_row_key": "BUSI|E1",
+      "target_column": "NSD (%) ↑",
+      "target_value": "56.75 ± 2.81",
+      "computed_value": "56.75 ± 2.81",
+      "source_csv": "statistics/seed_level_mean_std.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E1"
+      },
+      "source_columns": [
+        "nsd_mean",
+        "nsd_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 84,
+      "table": "Table 4",
+      "target_csv": "paper_tables/csv/Table4_cross_dataset_results.csv",
+      "target_row_key": "BUSI|E1",
+      "target_column": "Peak training allocated (GiB) ↓",
+      "target_value": "11.91 ± 0.00",
+      "computed_value": "11.91 ± 0.00",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_aggregate.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E1"
+      },
+      "source_columns": [
+        "peak_training_allocated_gib_mean",
+        "peak_training_allocated_gib_sample_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 85,
+      "table": "Table 4",
+      "target_csv": "paper_tables/csv/Table4_cross_dataset_results.csv",
+      "target_row_key": "BUSI|E2_modify_2",
+      "target_column": "Dice (%) ↑",
+      "target_value": "72.60 ± 2.50",
+      "computed_value": "72.60 ± 2.50",
+      "source_csv": "statistics/seed_level_mean_std.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E2_modify_2"
+      },
+      "source_columns": [
+        "dice_mean",
+        "dice_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 86,
+      "table": "Table 4",
+      "target_csv": "paper_tables/csv/Table4_cross_dataset_results.csv",
+      "target_row_key": "BUSI|E2_modify_2",
+      "target_column": "HD95 ↓",
+      "target_value": "36.65 ± 8.75",
+      "computed_value": "36.65 ± 8.75",
+      "source_csv": "statistics/seed_level_mean_std.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E2_modify_2"
+      },
+      "source_columns": [
+        "hd95_mean",
+        "hd95_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 87,
+      "table": "Table 4",
+      "target_csv": "paper_tables/csv/Table4_cross_dataset_results.csv",
+      "target_row_key": "BUSI|E2_modify_2",
+      "target_column": "NSD (%) ↑",
+      "target_value": "53.16 ± 4.20",
+      "computed_value": "53.16 ± 4.20",
+      "source_csv": "statistics/seed_level_mean_std.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E2_modify_2"
+      },
+      "source_columns": [
+        "nsd_mean",
+        "nsd_std"
+      ],
+      "transformation": "mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 88,
+      "table": "Table 4",
+      "target_csv": "paper_tables/csv/Table4_cross_dataset_results.csv",
+      "target_row_key": "BUSI|E2_modify_2",
+      "target_column": "Peak training allocated (GiB) ↓",
+      "target_value": "8.94 ± 0.00",
+      "computed_value": "8.94 ± 0.00",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_aggregate.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E2_modify_2"
+      },
+      "source_columns": [
+        "peak_training_allocated_gib_mean",
+        "peak_training_allocated_gib_sample_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 89,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "validation25|scratch",
+      "target_column": "Dice (%) ↑",
+      "target_value": "86.96 ± 0.60",
+      "computed_value": "86.96 ± 0.60",
+      "source_csv": "paper_tables/source_inputs/fractaldb25_validation_per_seed.csv",
+      "selector": {
+        "condition": "scratch",
+        "label_fraction_percent": 25
+      },
+      "source_columns": [
+        "best_validation_dice"
+      ],
+      "transformation": "aggregate_mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 90,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "validation25|scratch",
+      "target_column": "HD95 (mm) ↓",
+      "target_value": "4.34 ± 0.50",
+      "computed_value": "4.34 ± 0.50",
+      "source_csv": "paper_tables/source_inputs/fractaldb25_validation_per_seed.csv",
+      "selector": {
+        "condition": "scratch",
+        "label_fraction_percent": 25
+      },
+      "source_columns": [
+        "best_validation_hd95_mm"
+      ],
+      "transformation": "aggregate_mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 91,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "validation25|imagenet",
+      "target_column": "Dice (%) ↑",
+      "target_value": "88.41 ± 0.57",
+      "computed_value": "88.41 ± 0.57",
+      "source_csv": "paper_tables/source_inputs/fractaldb25_validation_per_seed.csv",
+      "selector": {
+        "condition": "imagenet",
+        "label_fraction_percent": 25
+      },
+      "source_columns": [
+        "best_validation_dice"
+      ],
+      "transformation": "aggregate_mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 92,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "validation25|imagenet",
+      "target_column": "HD95 (mm) ↓",
+      "target_value": "3.89 ± 0.67",
+      "computed_value": "3.89 ± 0.67",
+      "source_csv": "paper_tables/source_inputs/fractaldb25_validation_per_seed.csv",
+      "selector": {
+        "condition": "imagenet",
+        "label_fraction_percent": 25
+      },
+      "source_columns": [
+        "best_validation_hd95_mm"
+      ],
+      "transformation": "aggregate_mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 93,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "validation25|fractaldb60",
+      "target_column": "Dice (%) ↑",
+      "target_value": "86.03 ± 0.32",
+      "computed_value": "86.03 ± 0.32",
+      "source_csv": "paper_tables/source_inputs/fractaldb25_validation_per_seed.csv",
+      "selector": {
+        "condition": "fractaldb60",
+        "label_fraction_percent": 25
+      },
+      "source_columns": [
+        "best_validation_dice"
+      ],
+      "transformation": "aggregate_mean_std_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 94,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "validation25|fractaldb60",
+      "target_column": "HD95 (mm) ↓",
+      "target_value": "4.46 ± 0.25",
+      "computed_value": "4.46 ± 0.25",
+      "source_csv": "paper_tables/source_inputs/fractaldb25_validation_per_seed.csv",
+      "selector": {
+        "condition": "fractaldb60",
+        "label_fraction_percent": 25
+      },
+      "source_columns": [
+        "best_validation_hd95_mm"
+      ],
+      "transformation": "aggregate_mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 95,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test25|scratch",
+      "target_column": "Dice (%) ↑",
+      "target_value": "86.77",
+      "computed_value": "86.77",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "scratch",
+        "label_fraction_percent": 25,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_dice"
+      ],
+      "transformation": "identity_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 96,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test25|scratch",
+      "target_column": "HD95 (mm) ↓",
+      "target_value": "5.67",
+      "computed_value": "5.67",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "scratch",
+        "label_fraction_percent": 25,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_hd95_mm"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 97,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test25|scratch",
+      "target_column": "NSD@1mm (%) ↑",
+      "target_value": "83.98",
+      "computed_value": "83.98",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "scratch",
+        "label_fraction_percent": 25,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_nsd_at_1mm"
+      ],
+      "transformation": "identity_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 98,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test25|imagenet",
+      "target_column": "Dice (%) ↑",
+      "target_value": "89.50",
+      "computed_value": "89.50",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "imagenet",
+        "label_fraction_percent": 25,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_dice"
+      ],
+      "transformation": "identity_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 99,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test25|imagenet",
+      "target_column": "HD95 (mm) ↓",
+      "target_value": "4.10",
+      "computed_value": "4.10",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "imagenet",
+        "label_fraction_percent": 25,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_hd95_mm"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 100,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test25|imagenet",
+      "target_column": "NSD@1mm (%) ↑",
+      "target_value": "88.51",
+      "computed_value": "88.51",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "imagenet",
+        "label_fraction_percent": 25,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_nsd_at_1mm"
+      ],
+      "transformation": "identity_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 101,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test25|fractaldb60",
+      "target_column": "Dice (%) ↑",
+      "target_value": "86.39",
+      "computed_value": "86.39",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "fractaldb60",
+        "label_fraction_percent": 25,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_dice"
+      ],
+      "transformation": "identity_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 102,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test25|fractaldb60",
+      "target_column": "HD95 (mm) ↓",
+      "target_value": "6.67",
+      "computed_value": "6.67",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "fractaldb60",
+        "label_fraction_percent": 25,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_hd95_mm"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 103,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test25|fractaldb60",
+      "target_column": "NSD@1mm (%) ↑",
+      "target_value": "83.43",
+      "computed_value": "83.43",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "fractaldb60",
+        "label_fraction_percent": 25,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_nsd_at_1mm"
+      ],
+      "transformation": "identity_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 104,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test50|scratch",
+      "target_column": "Dice (%) ↑",
+      "target_value": "85.39",
+      "computed_value": "85.39",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "scratch",
+        "label_fraction_percent": 50,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_dice"
+      ],
+      "transformation": "identity_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 105,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test50|scratch",
+      "target_column": "HD95 (mm) ↓",
+      "target_value": "6.08",
+      "computed_value": "6.08",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "scratch",
+        "label_fraction_percent": 50,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_hd95_mm"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 106,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test50|scratch",
+      "target_column": "NSD@1mm (%) ↑",
+      "target_value": "83.04",
+      "computed_value": "83.04",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "scratch",
+        "label_fraction_percent": 50,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_nsd_at_1mm"
+      ],
+      "transformation": "identity_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 107,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test50|imagenet",
+      "target_column": "Dice (%) ↑",
+      "target_value": "90.31",
+      "computed_value": "90.31",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "imagenet",
+        "label_fraction_percent": 50,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_dice"
+      ],
+      "transformation": "identity_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 108,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test50|imagenet",
+      "target_column": "HD95 (mm) ↓",
+      "target_value": "3.05",
+      "computed_value": "3.05",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "imagenet",
+        "label_fraction_percent": 50,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_hd95_mm"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 109,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test50|imagenet",
+      "target_column": "NSD@1mm (%) ↑",
+      "target_value": "90.30",
+      "computed_value": "90.30",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "imagenet",
+        "label_fraction_percent": 50,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_nsd_at_1mm"
+      ],
+      "transformation": "identity_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 110,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test50|fractaldb60",
+      "target_column": "Dice (%) ↑",
+      "target_value": "87.83",
+      "computed_value": "87.83",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "fractaldb60",
+        "label_fraction_percent": 50,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_dice"
+      ],
+      "transformation": "identity_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 111,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test50|fractaldb60",
+      "target_column": "HD95 (mm) ↓",
+      "target_value": "5.13",
+      "computed_value": "5.13",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "fractaldb60",
+        "label_fraction_percent": 50,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_hd95_mm"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 112,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test50|fractaldb60",
+      "target_column": "NSD@1mm (%) ↑",
+      "target_value": "86.20",
+      "computed_value": "86.20",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "fractaldb60",
+        "label_fraction_percent": 50,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_nsd_at_1mm"
+      ],
+      "transformation": "identity_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 113,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test100|scratch",
+      "target_column": "Dice (%) ↑",
+      "target_value": "89.90",
+      "computed_value": "89.90",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "scratch",
+        "label_fraction_percent": 100,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_dice"
+      ],
+      "transformation": "identity_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 114,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test100|scratch",
+      "target_column": "HD95 (mm) ↓",
+      "target_value": "3.22",
+      "computed_value": "3.22",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "scratch",
+        "label_fraction_percent": 100,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_hd95_mm"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 115,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test100|scratch",
+      "target_column": "NSD@1mm (%) ↑",
+      "target_value": "89.84",
+      "computed_value": "89.84",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "scratch",
+        "label_fraction_percent": 100,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_nsd_at_1mm"
+      ],
+      "transformation": "identity_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 116,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test100|imagenet",
+      "target_column": "Dice (%) ↑",
+      "target_value": "90.33",
+      "computed_value": "90.33",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "imagenet",
+        "label_fraction_percent": 100,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_dice"
+      ],
+      "transformation": "identity_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 117,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test100|imagenet",
+      "target_column": "HD95 (mm) ↓",
+      "target_value": "3.68",
+      "computed_value": "3.68",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "imagenet",
+        "label_fraction_percent": 100,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_hd95_mm"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 118,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test100|imagenet",
+      "target_column": "NSD@1mm (%) ↑",
+      "target_value": "90.02",
+      "computed_value": "90.02",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "imagenet",
+        "label_fraction_percent": 100,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_nsd_at_1mm"
+      ],
+      "transformation": "identity_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 119,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test100|fractaldb60",
+      "target_column": "Dice (%) ↑",
+      "target_value": "90.06",
+      "computed_value": "90.06",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "fractaldb60",
+        "label_fraction_percent": 100,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_dice"
+      ],
+      "transformation": "identity_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 120,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test100|fractaldb60",
+      "target_column": "HD95 (mm) ↓",
+      "target_value": "3.14",
+      "computed_value": "3.14",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "fractaldb60",
+        "label_fraction_percent": 100,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_hd95_mm"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 121,
+      "table": "Table 5",
+      "target_csv": "paper_tables/csv/Table5_pretraining_ablation.csv",
+      "target_row_key": "test100|fractaldb60",
+      "target_column": "NSD@1mm (%) ↑",
+      "target_value": "89.96",
+      "computed_value": "89.96",
+      "source_csv": "fractaldb/label_fraction_seed42_isolated_test/ACDC_FRACTALDB_LABEL_FRACTIONS_OVERALL.csv",
+      "selector": {
+        "condition": "fractaldb60",
+        "label_fraction_percent": 100,
+        "seed": 42
+      },
+      "source_columns": [
+        "test_mean_nsd_at_1mm"
+      ],
+      "transformation": "identity_percent:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 122,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E1",
+      "target_column": "Parameters (M)",
+      "target_value": "27.43",
+      "computed_value": "27.43",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "parameter_count"
+      ],
+      "transformation": "divide_1e6_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 123,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E1",
+      "target_column": "Estimated whole-model FLOPs (G)",
+      "target_value": "9.97",
+      "computed_value": "9.97",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "estimated_whole_model_flops_g"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 124,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E1",
+      "target_column": "Analytical SS2D-core FLOPs (G)",
+      "target_value": "1.78",
+      "computed_value": "1.78",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "analytical_ss2d_scan_core_flops_g"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 125,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E1",
+      "target_column": "Deployable state_dict (MiB)",
+      "target_value": "104.70",
+      "computed_value": "104.70",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "deployable_state_dict_mib"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 126,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E1",
+      "target_column": "Latency mean ± SD (ms)",
+      "target_value": "4.955 ± 0.544",
+      "computed_value": "4.955 ± 0.544",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "mean_latency_ms",
+        "sample_std_latency_ms"
+      ],
+      "transformation": "mean_std_number:3",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 127,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E1",
+      "target_column": "Median latency (ms)",
+      "target_value": "4.835",
+      "computed_value": "4.835",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "median_latency_ms"
+      ],
+      "transformation": "identity_number:3",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 128,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E1",
+      "target_column": "P95 latency (ms)",
+      "target_value": "5.956",
+      "computed_value": "5.956",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "p95_latency_ms"
+      ],
+      "transformation": "identity_number:3",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 129,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E1",
+      "target_column": "Throughput (images/s)",
+      "target_value": "201.80",
+      "computed_value": "201.80",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "throughput_images_per_second"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 130,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E1",
+      "target_column": "Peak inference allocated (MiB)",
+      "target_value": "163.16",
+      "computed_value": "163.16",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "peak_inference_allocated_mib"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 131,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E1",
+      "target_column": "Peak inference reserved (MiB)",
+      "target_value": "182.00",
+      "computed_value": "182.00",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "peak_inference_reserved_mib"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 132,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E1",
+      "target_column": "Stable epoch time (s)",
+      "target_value": "103.51",
+      "computed_value": "103.51",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_per_run.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "mean_epoch_total_s_stable"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 133,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E1",
+      "target_column": "Training+validation wall time (h)",
+      "target_value": "8.61",
+      "computed_value": "8.61",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_per_run.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "wall_clock_training_and_validation_h"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 134,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E1",
+      "target_column": "Peak training allocated (GiB)",
+      "target_value": "11.96",
+      "computed_value": "11.96",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_per_run.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "peak_training_allocated_gib"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 135,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E1",
+      "target_column": "Peak training reserved (GiB)",
+      "target_value": "12.80",
+      "computed_value": "12.80",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_per_run.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "peak_training_reserved_gib"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 136,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E2_modify_2",
+      "target_column": "Parameters (M)",
+      "target_value": "27.43",
+      "computed_value": "27.43",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "parameter_count"
+      ],
+      "transformation": "divide_1e6_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 137,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E2_modify_2",
+      "target_column": "Estimated whole-model FLOPs (G)",
+      "target_value": "8.14",
+      "computed_value": "8.14",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "estimated_whole_model_flops_g"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 138,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E2_modify_2",
+      "target_column": "Analytical SS2D-core FLOPs (G)",
+      "target_value": "0.89",
+      "computed_value": "0.89",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "analytical_ss2d_scan_core_flops_g"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 139,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E2_modify_2",
+      "target_column": "Deployable state_dict (MiB)",
+      "target_value": "104.70",
+      "computed_value": "104.70",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "deployable_state_dict_mib"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 140,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E2_modify_2",
+      "target_column": "Latency mean ± SD (ms)",
+      "target_value": "7.043 ± 0.832",
+      "computed_value": "7.043 ± 0.832",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "mean_latency_ms",
+        "sample_std_latency_ms"
+      ],
+      "transformation": "mean_std_number:3",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 141,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E2_modify_2",
+      "target_column": "Median latency (ms)",
+      "target_value": "6.794",
+      "computed_value": "6.794",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "median_latency_ms"
+      ],
+      "transformation": "identity_number:3",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 142,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E2_modify_2",
+      "target_column": "P95 latency (ms)",
+      "target_value": "8.681",
+      "computed_value": "8.681",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "p95_latency_ms"
+      ],
+      "transformation": "identity_number:3",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 143,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E2_modify_2",
+      "target_column": "Throughput (images/s)",
+      "target_value": "141.99",
+      "computed_value": "141.99",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "throughput_images_per_second"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 144,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E2_modify_2",
+      "target_column": "Peak inference allocated (MiB)",
+      "target_value": "150.47",
+      "computed_value": "150.47",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "peak_inference_allocated_mib"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 145,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E2_modify_2",
+      "target_column": "Peak inference reserved (MiB)",
+      "target_value": "164.00",
+      "computed_value": "164.00",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "peak_inference_reserved_mib"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 146,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E2_modify_2",
+      "target_column": "Stable epoch time (s)",
+      "target_value": "106.23",
+      "computed_value": "106.23",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_per_run.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "mean_epoch_total_s_stable"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 147,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E2_modify_2",
+      "target_column": "Training+validation wall time (h)",
+      "target_value": "9.01",
+      "computed_value": "9.01",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_per_run.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "wall_clock_training_and_validation_h"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 148,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E2_modify_2",
+      "target_column": "Peak training allocated (GiB)",
+      "target_value": "9.04",
+      "computed_value": "9.04",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_per_run.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "peak_training_allocated_gib"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 149,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "Synapse|E2_modify_2",
+      "target_column": "Peak training reserved (GiB)",
+      "target_value": "9.60",
+      "computed_value": "9.60",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_per_run.csv",
+      "selector": {
+        "dataset": "Synapse",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "peak_training_reserved_gib"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 150,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E1",
+      "target_column": "Parameters (M)",
+      "target_value": "27.43",
+      "computed_value": "27.43",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "parameter_count"
+      ],
+      "transformation": "divide_1e6_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 151,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E1",
+      "target_column": "Estimated whole-model FLOPs (G)",
+      "target_value": "7.32",
+      "computed_value": "7.32",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "estimated_whole_model_flops_g"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 152,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E1",
+      "target_column": "Analytical SS2D-core FLOPs (G)",
+      "target_value": "1.31",
+      "computed_value": "1.31",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "analytical_ss2d_scan_core_flops_g"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 153,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E1",
+      "target_column": "Deployable state_dict (MiB)",
+      "target_value": "104.70",
+      "computed_value": "104.70",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "deployable_state_dict_mib"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 154,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E1",
+      "target_column": "Latency mean ± SD (ms)",
+      "target_value": "4.072 ± 0.044",
+      "computed_value": "4.072 ± 0.044",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "mean_latency_ms",
+        "sample_std_latency_ms"
+      ],
+      "transformation": "mean_std_number:3",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 155,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E1",
+      "target_column": "Median latency (ms)",
+      "target_value": "4.062",
+      "computed_value": "4.062",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "median_latency_ms"
+      ],
+      "transformation": "identity_number:3",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 156,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E1",
+      "target_column": "P95 latency (ms)",
+      "target_value": "4.140",
+      "computed_value": "4.140",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "p95_latency_ms"
+      ],
+      "transformation": "identity_number:3",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 157,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E1",
+      "target_column": "Throughput (images/s)",
+      "target_value": "245.60",
+      "computed_value": "245.60",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "throughput_images_per_second"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 158,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E1",
+      "target_column": "Peak inference allocated (MiB)",
+      "target_value": "147.72",
+      "computed_value": "147.72",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "peak_inference_allocated_mib"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 159,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E1",
+      "target_column": "Peak inference reserved (MiB)",
+      "target_value": "164.00",
+      "computed_value": "164.00",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "peak_inference_reserved_mib"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 160,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E1",
+      "target_column": "Stable epoch time (s)",
+      "target_value": "13.49 ± 0.24",
+      "computed_value": "13.49 ± 0.24",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_aggregate.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E1"
+      },
+      "source_columns": [
+        "mean_epoch_total_s_stable_mean",
+        "mean_epoch_total_s_stable_sample_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 161,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E1",
+      "target_column": "Training+validation wall time (h)",
+      "target_value": "1.18 ± 0.02",
+      "computed_value": "1.18 ± 0.02",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_aggregate.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E1"
+      },
+      "source_columns": [
+        "wall_clock_training_and_validation_h_mean",
+        "wall_clock_training_and_validation_h_sample_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 162,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E1",
+      "target_column": "Peak training allocated (GiB)",
+      "target_value": "8.95 ± 0.00",
+      "computed_value": "8.95 ± 0.00",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_aggregate.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E1"
+      },
+      "source_columns": [
+        "peak_training_allocated_gib_mean",
+        "peak_training_allocated_gib_sample_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 163,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E1",
+      "target_column": "Peak training reserved (GiB)",
+      "target_value": "9.68 ± 0.00",
+      "computed_value": "9.68 ± 0.00",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_aggregate.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E1"
+      },
+      "source_columns": [
+        "peak_training_reserved_gib_mean",
+        "peak_training_reserved_gib_sample_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 164,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E2_modify_2",
+      "target_column": "Parameters (M)",
+      "target_value": "27.43",
+      "computed_value": "27.43",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "parameter_count"
+      ],
+      "transformation": "divide_1e6_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 165,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E2_modify_2",
+      "target_column": "Estimated whole-model FLOPs (G)",
+      "target_value": "5.97",
+      "computed_value": "5.97",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "estimated_whole_model_flops_g"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 166,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E2_modify_2",
+      "target_column": "Analytical SS2D-core FLOPs (G)",
+      "target_value": "0.66",
+      "computed_value": "0.66",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "analytical_ss2d_scan_core_flops_g"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 167,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E2_modify_2",
+      "target_column": "Deployable state_dict (MiB)",
+      "target_value": "104.70",
+      "computed_value": "104.70",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "deployable_state_dict_mib"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 168,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E2_modify_2",
+      "target_column": "Latency mean ± SD (ms)",
+      "target_value": "7.280 ± 0.677",
+      "computed_value": "7.280 ± 0.677",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "mean_latency_ms",
+        "sample_std_latency_ms"
+      ],
+      "transformation": "mean_std_number:3",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 169,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E2_modify_2",
+      "target_column": "Median latency (ms)",
+      "target_value": "7.114",
+      "computed_value": "7.114",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "median_latency_ms"
+      ],
+      "transformation": "identity_number:3",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 170,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E2_modify_2",
+      "target_column": "P95 latency (ms)",
+      "target_value": "8.572",
+      "computed_value": "8.572",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "p95_latency_ms"
+      ],
+      "transformation": "identity_number:3",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 171,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E2_modify_2",
+      "target_column": "Throughput (images/s)",
+      "target_value": "137.37",
+      "computed_value": "137.37",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "throughput_images_per_second"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 172,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E2_modify_2",
+      "target_column": "Peak inference allocated (MiB)",
+      "target_value": "138.73",
+      "computed_value": "138.73",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "peak_inference_allocated_mib"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 173,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E2_modify_2",
+      "target_column": "Peak inference reserved (MiB)",
+      "target_value": "152.00",
+      "computed_value": "152.00",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "peak_inference_reserved_mib"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 174,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E2_modify_2",
+      "target_column": "Stable epoch time (s)",
+      "target_value": "9.24 ± 0.29",
+      "computed_value": "9.24 ± 0.29",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_aggregate.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E2_modify_2"
+      },
+      "source_columns": [
+        "mean_epoch_total_s_stable_mean",
+        "mean_epoch_total_s_stable_sample_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 175,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E2_modify_2",
+      "target_column": "Training+validation wall time (h)",
+      "target_value": "0.82 ± 0.03",
+      "computed_value": "0.82 ± 0.03",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_aggregate.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E2_modify_2"
+      },
+      "source_columns": [
+        "wall_clock_training_and_validation_h_mean",
+        "wall_clock_training_and_validation_h_sample_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 176,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E2_modify_2",
+      "target_column": "Peak training allocated (GiB)",
+      "target_value": "6.72 ± 0.00",
+      "computed_value": "6.72 ± 0.00",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_aggregate.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E2_modify_2"
+      },
+      "source_columns": [
+        "peak_training_allocated_gib_mean",
+        "peak_training_allocated_gib_sample_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 177,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "ACDC|E2_modify_2",
+      "target_column": "Peak training reserved (GiB)",
+      "target_value": "7.13 ± 0.00",
+      "computed_value": "7.13 ± 0.00",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_aggregate.csv",
+      "selector": {
+        "dataset": "ACDC",
+        "method": "E2_modify_2"
+      },
+      "source_columns": [
+        "peak_training_reserved_gib_mean",
+        "peak_training_reserved_gib_sample_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 178,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E1",
+      "target_column": "Parameters (M)",
+      "target_value": "27.43",
+      "computed_value": "27.43",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "parameter_count"
+      ],
+      "transformation": "divide_1e6_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 179,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E1",
+      "target_column": "Estimated whole-model FLOPs (G)",
+      "target_value": "9.95",
+      "computed_value": "9.95",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "estimated_whole_model_flops_g"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 180,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E1",
+      "target_column": "Analytical SS2D-core FLOPs (G)",
+      "target_value": "1.78",
+      "computed_value": "1.78",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "analytical_ss2d_scan_core_flops_g"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 181,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E1",
+      "target_column": "Deployable state_dict (MiB)",
+      "target_value": "104.70",
+      "computed_value": "104.70",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "deployable_state_dict_mib"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 182,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E1",
+      "target_column": "Latency mean ± SD (ms)",
+      "target_value": "4.901 ± 0.476",
+      "computed_value": "4.901 ± 0.476",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "mean_latency_ms",
+        "sample_std_latency_ms"
+      ],
+      "transformation": "mean_std_number:3",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 183,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E1",
+      "target_column": "Median latency (ms)",
+      "target_value": "4.795",
+      "computed_value": "4.795",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "median_latency_ms"
+      ],
+      "transformation": "identity_number:3",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 184,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E1",
+      "target_column": "P95 latency (ms)",
+      "target_value": "5.876",
+      "computed_value": "5.876",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "p95_latency_ms"
+      ],
+      "transformation": "identity_number:3",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 185,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E1",
+      "target_column": "Throughput (images/s)",
+      "target_value": "204.05",
+      "computed_value": "204.05",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "throughput_images_per_second"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 186,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E1",
+      "target_column": "Peak inference allocated (MiB)",
+      "target_value": "163.16",
+      "computed_value": "163.16",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "peak_inference_allocated_mib"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 187,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E1",
+      "target_column": "Peak inference reserved (MiB)",
+      "target_value": "182.00",
+      "computed_value": "182.00",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E1",
+        "seed": 42
+      },
+      "source_columns": [
+        "peak_inference_reserved_mib"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 188,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E1",
+      "target_column": "Stable epoch time (s)",
+      "target_value": "15.90 ± 2.51",
+      "computed_value": "15.90 ± 2.51",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_aggregate.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E1"
+      },
+      "source_columns": [
+        "mean_epoch_total_s_stable_mean",
+        "mean_epoch_total_s_stable_sample_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 189,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E1",
+      "target_column": "Training+validation wall time (h)",
+      "target_value": "1.39 ± 0.20",
+      "computed_value": "1.39 ± 0.20",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_aggregate.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E1"
+      },
+      "source_columns": [
+        "wall_clock_training_and_validation_h_mean",
+        "wall_clock_training_and_validation_h_sample_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 190,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E1",
+      "target_column": "Peak training allocated (GiB)",
+      "target_value": "11.91 ± 0.00",
+      "computed_value": "11.91 ± 0.00",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_aggregate.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E1"
+      },
+      "source_columns": [
+        "peak_training_allocated_gib_mean",
+        "peak_training_allocated_gib_sample_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 191,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E1",
+      "target_column": "Peak training reserved (GiB)",
+      "target_value": "12.52 ± 0.00",
+      "computed_value": "12.52 ± 0.00",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_aggregate.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E1"
+      },
+      "source_columns": [
+        "peak_training_reserved_gib_mean",
+        "peak_training_reserved_gib_sample_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 192,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E2_modify_2",
+      "target_column": "Parameters (M)",
+      "target_value": "27.43",
+      "computed_value": "27.43",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "parameter_count"
+      ],
+      "transformation": "divide_1e6_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 193,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E2_modify_2",
+      "target_column": "Estimated whole-model FLOPs (G)",
+      "target_value": "8.12",
+      "computed_value": "8.12",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "estimated_whole_model_flops_g"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 194,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E2_modify_2",
+      "target_column": "Analytical SS2D-core FLOPs (G)",
+      "target_value": "0.89",
+      "computed_value": "0.89",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "analytical_ss2d_scan_core_flops_g"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 195,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E2_modify_2",
+      "target_column": "Deployable state_dict (MiB)",
+      "target_value": "104.70",
+      "computed_value": "104.70",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "deployable_state_dict_mib"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 196,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E2_modify_2",
+      "target_column": "Latency mean ± SD (ms)",
+      "target_value": "6.826 ± 0.560",
+      "computed_value": "6.826 ± 0.560",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "mean_latency_ms",
+        "sample_std_latency_ms"
+      ],
+      "transformation": "mean_std_number:3",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 197,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E2_modify_2",
+      "target_column": "Median latency (ms)",
+      "target_value": "6.710",
+      "computed_value": "6.710",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "median_latency_ms"
+      ],
+      "transformation": "identity_number:3",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 198,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E2_modify_2",
+      "target_column": "P95 latency (ms)",
+      "target_value": "7.906",
+      "computed_value": "7.906",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "p95_latency_ms"
+      ],
+      "transformation": "identity_number:3",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 199,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E2_modify_2",
+      "target_column": "Throughput (images/s)",
+      "target_value": "146.50",
+      "computed_value": "146.50",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "throughput_images_per_second"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 200,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E2_modify_2",
+      "target_column": "Peak inference allocated (MiB)",
+      "target_value": "150.47",
+      "computed_value": "150.47",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "peak_inference_allocated_mib"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 201,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E2_modify_2",
+      "target_column": "Peak inference reserved (MiB)",
+      "target_value": "164.00",
+      "computed_value": "164.00",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_unified_inference_and_theory.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E2_modify_2",
+        "seed": 42
+      },
+      "source_columns": [
+        "peak_inference_reserved_mib"
+      ],
+      "transformation": "identity_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 202,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E2_modify_2",
+      "target_column": "Stable epoch time (s)",
+      "target_value": "14.26 ± 2.39",
+      "computed_value": "14.26 ± 2.39",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_aggregate.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E2_modify_2"
+      },
+      "source_columns": [
+        "mean_epoch_total_s_stable_mean",
+        "mean_epoch_total_s_stable_sample_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 203,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E2_modify_2",
+      "target_column": "Training+validation wall time (h)",
+      "target_value": "1.25 ± 0.21",
+      "computed_value": "1.25 ± 0.21",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_aggregate.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E2_modify_2"
+      },
+      "source_columns": [
+        "wall_clock_training_and_validation_h_mean",
+        "wall_clock_training_and_validation_h_sample_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 204,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E2_modify_2",
+      "target_column": "Peak training allocated (GiB)",
+      "target_value": "8.94 ± 0.00",
+      "computed_value": "8.94 ± 0.00",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_aggregate.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E2_modify_2"
+      },
+      "source_columns": [
+        "peak_training_allocated_gib_mean",
+        "peak_training_allocated_gib_sample_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    },
+    {
+      "id": 205,
+      "table": "Table 6",
+      "target_csv": "paper_tables/csv/Table6_efficiency.csv",
+      "target_row_key": "BUSI|E2_modify_2",
+      "target_column": "Peak training reserved (GiB)",
+      "target_value": "9.52 ± 0.00",
+      "computed_value": "9.52 ± 0.00",
+      "source_csv": "efficiency/unified_benchmark_20260906/step19_training_efficiency_aggregate.csv",
+      "selector": {
+        "dataset": "BUSI",
+        "method": "E2_modify_2"
+      },
+      "source_columns": [
+        "peak_training_reserved_gib_mean",
+        "peak_training_reserved_gib_sample_std"
+      ],
+      "transformation": "mean_std_number:2",
+      "source_hash_ok": true,
+      "source_to_target_value_ok": true,
+      "target_cell_present": true,
+      "status": "PASS",
+      "errors": []
+    }
+  ]
+}

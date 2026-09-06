@@ -1,0 +1,13 @@
+Evaluation,Labels,Initialization,Seeds,Dice (%) ↑,HD95 (mm) ↓,NSD@1mm (%) ↑,Interpretation
+Validation; formal three-seed training ablation,25%,Scratch,"42, 3407, 2026",86.96 ± 0.60,4.34 ± 0.50,Not computed in validation history,Reference initialization
+Validation; formal three-seed training ablation,25%,ImageNet,"42, 3407, 2026",88.41 ± 0.57,3.89 ± 0.67,Not computed in validation history,Reference initialization
+Validation; formal three-seed training ablation,25%,FractalDB-60,"42, 3407, 2026",86.03 ± 0.32,4.46 ± 0.25,Not computed in validation history,Red: below Scratch
+Isolated test; exploratory single seed,25%,Scratch,42 only,86.77,5.67,83.98,Exploratory seed42 reference
+Isolated test; exploratory single seed,25%,ImageNet,42 only,89.50,4.10,88.51,Exploratory seed42 reference
+Isolated test; exploratory single seed,25%,FractalDB-60,42 only,86.39,6.67,83.43,Red; below Scratch
+Isolated test; exploratory single seed,50%,Scratch,42 only,85.39,6.08,83.04,Exploratory seed42 reference
+Isolated test; exploratory single seed,50%,ImageNet,42 only,90.31,3.05,90.30,Exploratory seed42 reference
+Isolated test; exploratory single seed,50%,FractalDB-60,42 only,87.83,5.13,86.20,Yellow; above Scratch but below ImageNet
+Isolated test; exploratory single seed,100%,Scratch,42 only,89.90,3.22,89.84,Exploratory seed42 reference
+Isolated test; exploratory single seed,100%,ImageNet,42 only,90.33,3.68,90.02,Exploratory seed42 reference
+Isolated test; exploratory single seed,100%,FractalDB-60,42 only,90.06,3.14,89.96,Yellow; above Scratch and close to ImageNet
