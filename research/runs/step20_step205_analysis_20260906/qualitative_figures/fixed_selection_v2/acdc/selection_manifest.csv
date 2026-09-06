@@ -1,0 +1,8 @@
+unit_id,e1_dice,e2_dice,gt_volume_ml,size_group,combined_dice,delta_dice_e2_minus_e1,category,selection_rule,distance_to_median,distance_to_group_median
+patient057,0.9276168446351242,0.9169461149709336,339.49,Medium,0.9222814798030289,-0.010670729664190581,largest_decline,Most negative three-seed mean Dice difference (E2_modify_2 minus E1).,,
+patient061,0.9310200703538823,0.9383291194292008,324.27500000000003,Small,0.9346745948915416,0.007309049075318486,largest_improvement,Most positive three-seed mean Dice difference (E2_modify_2 minus E1).,,
+patient034,0.8095645218669962,0.8002185033973662,427.7950000000001,Large,0.8048915126321812,-0.009346018469630013,both_poor,Lowest combined Dice among cases where both models are below 0.60; fallback is overall lowest.,,
+patient089,0.917768506742082,0.9166150173943248,221.905,Small,0.9171917620682034,-0.001153489347757164,typical_median,Combined Dice closest to the dataset median.,0.0002832210121167522,
+patient070,0.9286337987083771,0.9283758236335948,206.2,Small,0.9285048111709859,-0.00025797507478231285,small_representative,Combined Dice closest to the Small group median; size group defined from ground truth only.,0.011596270114899276,0.011313049102782524
+patient062,0.920414595099293,0.9214269400908536,399.315,Medium,0.9209207675950732,0.0010123449915605542,medium_representative,Combined Dice closest to the Medium group median; size group defined from ground truth only.,0.004012226538986585,0.0006803561039778749
+patient001,0.9001901926382434,0.9037658119992884,539.9100000000001,Large,0.9019780023187659,0.0035756193610450016,large_representative,Combined Dice closest to the Large group median; size group defined from ground truth only.,0.014930538737320753,0.0

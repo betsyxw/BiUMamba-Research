@@ -1,0 +1,15 @@
+{
+  "analysis_scope": "BUSI error analysis; lesion-positive cases for size groups and normal cases for false positives",
+  "size_group_rule": "tertiles of ground-truth lesion area fraction across the 91 positive test groups",
+  "size_cutpoints_gt_area_fraction": {
+    "0.3333333333333333": 0.022680165816326498,
+    "0.6666666666666666": 0.0763313137755102
+  },
+  "fp_fn_derivation": "For binary positive masks, intersection = Dice*(GT area + prediction area)/2; FP = prediction area - intersection; FN = GT area - intersection.",
+  "candidate_rules": {
+    "large_e2_drop": "E1 mean Dice - E2 mean Dice >= 0.10",
+    "e1_good_e2_poor": "E1 mean Dice >= 0.70 and E2 mean Dice < 0.60",
+    "both_poor": "both mean Dice values < 0.60"
+  },
+  "important_limit": "Size groups and derived FP/FN are currently quantitative for BUSI only; Synapse and ACDC remain qualitative error analyses until mask-level grouping is added."
+}

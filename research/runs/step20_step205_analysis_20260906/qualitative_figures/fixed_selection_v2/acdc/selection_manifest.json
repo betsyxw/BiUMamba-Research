@@ -1,0 +1,99 @@
+{
+  "dataset": "ACDC",
+  "metric_source": "patient-level values averaged across seeds 42, 3407, and 2026",
+  "display_seed": 42,
+  "size_rule": "dataset-level tertiles of total ground-truth target volume; quantitative organ analysis uses per-organ tertiles",
+  "cases": [
+    {
+      "unit_id": "patient057",
+      "e1_dice": 0.9276168446351242,
+      "e2_dice": 0.9169461149709336,
+      "gt_volume_ml": 339.49,
+      "size_group": "Medium",
+      "combined_dice": 0.9222814798030289,
+      "delta_dice_e2_minus_e1": -0.010670729664190581,
+      "category": "largest_decline",
+      "selection_rule": "Most negative three-seed mean Dice difference (E2_modify_2 minus E1).",
+      "distance_to_median": NaN,
+      "distance_to_group_median": NaN
+    },
+    {
+      "unit_id": "patient061",
+      "e1_dice": 0.9310200703538823,
+      "e2_dice": 0.9383291194292008,
+      "gt_volume_ml": 324.27500000000003,
+      "size_group": "Small",
+      "combined_dice": 0.9346745948915416,
+      "delta_dice_e2_minus_e1": 0.007309049075318486,
+      "category": "largest_improvement",
+      "selection_rule": "Most positive three-seed mean Dice difference (E2_modify_2 minus E1).",
+      "distance_to_median": NaN,
+      "distance_to_group_median": NaN
+    },
+    {
+      "unit_id": "patient034",
+      "e1_dice": 0.8095645218669962,
+      "e2_dice": 0.8002185033973662,
+      "gt_volume_ml": 427.7950000000001,
+      "size_group": "Large",
+      "combined_dice": 0.8048915126321812,
+      "delta_dice_e2_minus_e1": -0.009346018469630013,
+      "category": "both_poor",
+      "selection_rule": "Lowest combined Dice among cases where both models are below 0.60; fallback is overall lowest.",
+      "distance_to_median": NaN,
+      "distance_to_group_median": NaN
+    },
+    {
+      "unit_id": "patient089",
+      "e1_dice": 0.917768506742082,
+      "e2_dice": 0.9166150173943248,
+      "gt_volume_ml": 221.905,
+      "size_group": "Small",
+      "combined_dice": 0.9171917620682034,
+      "delta_dice_e2_minus_e1": -0.001153489347757164,
+      "category": "typical_median",
+      "selection_rule": "Combined Dice closest to the dataset median.",
+      "distance_to_median": 0.0002832210121167522,
+      "distance_to_group_median": NaN
+    },
+    {
+      "unit_id": "patient070",
+      "e1_dice": 0.9286337987083771,
+      "e2_dice": 0.9283758236335948,
+      "gt_volume_ml": 206.2,
+      "size_group": "Small",
+      "combined_dice": 0.9285048111709859,
+      "delta_dice_e2_minus_e1": -0.00025797507478231285,
+      "category": "small_representative",
+      "selection_rule": "Combined Dice closest to the Small group median; size group defined from ground truth only.",
+      "distance_to_median": 0.011596270114899276,
+      "distance_to_group_median": 0.011313049102782524
+    },
+    {
+      "unit_id": "patient062",
+      "e1_dice": 0.920414595099293,
+      "e2_dice": 0.9214269400908536,
+      "gt_volume_ml": 399.315,
+      "size_group": "Medium",
+      "combined_dice": 0.9209207675950732,
+      "delta_dice_e2_minus_e1": 0.0010123449915605542,
+      "category": "medium_representative",
+      "selection_rule": "Combined Dice closest to the Medium group median; size group defined from ground truth only.",
+      "distance_to_median": 0.004012226538986585,
+      "distance_to_group_median": 0.0006803561039778749
+    },
+    {
+      "unit_id": "patient001",
+      "e1_dice": 0.9001901926382434,
+      "e2_dice": 0.9037658119992884,
+      "gt_volume_ml": 539.9100000000001,
+      "size_group": "Large",
+      "combined_dice": 0.9019780023187659,
+      "delta_dice_e2_minus_e1": 0.0035756193610450016,
+      "category": "large_representative",
+      "selection_rule": "Combined Dice closest to the Large group median; size group defined from ground truth only.",
+      "distance_to_median": 0.014930538737320753,
+      "distance_to_group_median": 0.0
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "status": "complete",
+  "selection_basis": "Frozen rules applied to three-seed patient/group means before viewing seed-42 images.",
+  "display_seed": 42,
+  "datasets": [
+    "Synapse",
+    "ACDC",
+    "BUSI"
+  ],
+  "medical_image_outputs": "medical_images_DO_NOT_UPLOAD_GITHUB",
+  "github_policy": "Do not upload medical images, ground truth masks, or prediction masks."
+}

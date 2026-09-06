@@ -1,0 +1,18 @@
+{
+  "generated_by": "finalize_step20_step205.py",
+  "datasets": [
+    "Synapse",
+    "ACDC",
+    "BUSI"
+  ],
+  "seeds": [
+    42,
+    3407,
+    2026
+  ],
+  "bootstrap_resamples": 10000,
+  "bootstrap_seed": 20260906,
+  "difference_definition": "E2_modify_2 minus E1",
+  "main_analysis_unit": "patient/case/group, averaged across seeds before paired testing",
+  "multiple_testing": "Holm adjustment across the three main metrics per dataset and across organs/classes within each dataset-metric family"
+}

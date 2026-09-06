@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-09-06",
+  "status": "complete",
+  "retraining_performed": false,
+  "tasks": {
+    "step20_forest_and_paired_difference_figures": "complete",
+    "synapse_acdc_anomaly_tables": "complete",
+    "busi_precision_recall_fp_fn": "complete",
+    "busi_shape_and_low_contrast_analysis": "complete",
+    "synapse_acdc_per_organ_size_groups": "complete",
+    "fixed_rule_qualitative_cases": "complete",
+    "step20_step205_reports_and_paper_tables": "complete",
+    "github_sync": "pending_external_sync",
+    "archive_download_hash_verification": "pending_external_sync",
+    "runpod_stop": "pending_external_sync"
+  },
+  "statistical_caveats": [
+    "Subgroup analyses are exploratory.",
+    "The BUSI vertical-shape subgroup has only four lesion groups.",
+    "Associations with size or contrast do not establish causality.",
+    "Medical images, ground truth, and prediction masks are excluded from public GitHub."
+  ]
+}
