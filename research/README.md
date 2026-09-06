@@ -5,6 +5,8 @@ restricted artifacts remain outside GitHub.
 
 - `EXPERIMENTS.md`: E1-E4 definitions and decision gates.
 - `RESULTS.md`: verified quantitative results only.
+- `CLAIM_AUDIT.md`: Step 25 evidence-package claim audit and the remaining manuscript-level gate.
+- `result_img/`: public-safe aggregate figures and rendered tables without source medical-image pixels.
 - `DATASETS.md`: expected dataset layout without dataset files.
 - `manifests/`: launch and smoke-test records.
 - `metrics/`: small CSV result tables.
