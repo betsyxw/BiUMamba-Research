@@ -1,0 +1,10 @@
+# Prevent accidental publication of dataset-derived qualitative panels.
+*qualitative*
+*medical_image*
+*patient*.png
+*case*.png
+*group_*.png
+*input*.png
+*ground_truth*.png
+*prediction*.png
+*mask*.png
