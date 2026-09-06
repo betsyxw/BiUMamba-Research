@@ -3,6 +3,28 @@
 Only completed measurements are recorded here. Ongoing experiments are never
 filled with estimates.
 
+## Step 24 — frozen paper story
+
+Status: frozen (2026-09-06).
+
+> Naively reducing SS2D to row-wise forward and backward scans reduces directional coverage and damages segmentation performance. The proposed channel-grouped bidirectional design preserves horizontal and vertical contextual modeling while consistently reducing peak GPU memory. It produced small observed mean differences from VM-UNet and no statistically significant patient-level difference on Synapse CT and ACDC MRI, but its performance decreased on BUSI ultrasound, indicating a dataset-dependent limitation.
+
+The paired Synapse and ACDC results do not establish formal equivalence or
+non-inferiority. The safe interpretation is `comparable observed performance`
+or `no statistically significant difference in the paired patient-level
+analysis`. A formal equivalence or non-inferiority claim would require a
+pre-specified acceptable margin and the corresponding statistical test.
+
+> We evaluated FractalDB-60 as a natural-image-free initialization method. Under the frozen ACDC 25% label protocol, it did not outperform training from scratch and remained below ImageNet initialization across the three fixed seeds. The 50% and 100% experiments were limited to seed 42 and are reported only as exploratory trends.
+
+This negative result is specific to the present model, dataset size, downstream
+task, and frozen protocol. It is not evidence of data fabrication in the
+original FractalDB paper.
+
+Final storyline:
+
+> A memory-efficient channel-grouped bidirectional scanning design, together with a systematic study of directional coverage, fusion complexity, dataset dependence, training stability, and the limitations of natural-image-free pre-training.
+
 ## Step 19 — unified RTX 4090 efficiency benchmark
 
 Status: complete (2026-09-06).
