@@ -14,16 +14,7 @@
     "archive_download_hash_verification": "complete",
     "runpod_stop": "ready after final full-tree hash generation"
   },
-  "verified_archives": {
-    "github_safe": {
-      "filename": "BiUMamba_Step20_Step20_5_GitHub_Safe_20260906.zip",
-      "sha256": "163a3e2debf692996dec777d2a0372fc768bb75c9c9bcc3329f2916db0a650d9"
-    },
-    "professor_with_images": {
-      "filename": "BiUMamba_Step20_Step20_5_Professor_With_Images_20260906.zip",
-      "sha256": "b3e7a2d1054fa48ce3d2be1a436e861bc54e0b3e9522e417a7ca9a0ff0ffe71f"
-    }
-  },
+  "archive_note": "Both ZIP formats were locally test-extracted. Final package hashes are stored outside the ZIP files in BiUMamba_Step20_Step20_5_PACKAGES_20260906.json to avoid a recursive self-hash.",
   "statistical_caveats": [
     "Subgroup analyses are exploratory.",
     "The BUSI vertical-shape subgroup has only four lesion groups.",
