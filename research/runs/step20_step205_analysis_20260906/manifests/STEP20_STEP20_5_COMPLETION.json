@@ -12,7 +12,7 @@
     "step20_step205_reports_and_paper_tables": "complete",
     "github_sync": "complete (commit 82dcada)",
     "archive_download_hash_verification": "complete",
-    "runpod_stop": "ready after final full-tree hash generation"
+    "runpod_stop": "complete ($0.00/hr verified in RunPod console)"
   },
   "archive_note": "Both ZIP formats were locally test-extracted. Final package hashes are stored outside the ZIP files in BiUMamba_Step20_Step20_5_PACKAGES_20260906.json to avoid a recursive self-hash.",
   "statistical_caveats": [
