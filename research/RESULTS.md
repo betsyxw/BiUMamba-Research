@@ -3,6 +3,35 @@
 Only completed measurements are recorded here. Ongoing experiments are never
 filled with estimates.
 
+## Step 19 — unified RTX 4090 efficiency benchmark
+
+Status: complete (2026-09-06).
+
+E1 and E2_modify_2 were remeasured on the same RTX 4090 with batch size 1,
+AMP disabled, 20 warm-up passes, 200 synchronized timed passes, and model
+forward time only. Synapse and BUSI used `1 x 3 x 224 x 224`; ACDC used its
+actual `1 x 3 x 192 x 192` protocol.
+
+| Dataset | Method | Mean ± SD latency (ms) | P95 (ms) | Throughput (images/s) | Peak allocated / reserved (MiB) |
+|---|---|---:|---:|---:|---:|
+| Synapse | E1 | 4.955 ± 0.544 | 5.956 | 201.80 | 163.16 / 182.00 |
+| Synapse | E2_modify_2 | 7.043 ± 0.832 | 8.681 | 141.99 | 150.47 / 164.00 |
+| ACDC | E1 | 4.072 ± 0.044 | 4.140 | 245.60 | 147.72 / 164.00 |
+| ACDC | E2_modify_2 | 7.280 ± 0.677 | 8.572 | 137.37 | 138.73 / 152.00 |
+| BUSI | E1 | 4.901 ± 0.476 | 5.876 | 204.05 | 163.16 / 182.00 |
+| BUSI | E2_modify_2 | 6.826 ± 0.560 | 7.906 | 146.50 | 150.47 / 164.00 |
+
+E2_modify_2 reduced inference peak allocated memory by 6.1-7.8% and peak
+reserved memory by 7.3-9.9%. Its estimated whole-model FLOPs decreased by
+about 18.3%, and its analytical SS2D scan-core workload decreased by about
+50%. Parameters and deployable FP32 state-dict size remained essentially
+unchanged at about 27.43M and 104.70 MiB. However, mean latency increased by
+39.3-78.8%, so the current implementation does not support a runtime-speedup
+claim. FLOPs are estimates, not exact values.
+
+The full GitHub-safe evidence is stored in
+[`runs/step19_unified_efficiency_20260906/`](runs/step19_unified_efficiency_20260906/).
+
 ## E1 — VM-UNet Synapse baseline
 
 - Best checkpoint: epoch 286

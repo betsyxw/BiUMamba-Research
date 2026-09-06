@@ -29,9 +29,9 @@ Current experimental status:
 - E3: static learnable fusion on E2_modify_2 — 50-epoch screening and the full 300-epoch run completed; the final result did not outperform E2_modify_2.
 - E4: constrained sample/channel adaptive gate on the same coverage-preserving structure — 50-epoch screening and 300-epoch full run completed; the full run was a Red result and exposed a screen/full reproducibility mismatch.
 - E4 Version 2-B: separately named stabilized-gate ablation — deterministic A/A checks and a formal 50-epoch screening run completed. Training stability improved, but accuracy did not justify a 300-epoch extension.
-- Datasets: formal three-seed tests are complete on Synapse CT, ACDC cardiac MRI and BUSI breast ultrasound. The ACDC FractalDB-60 low-label pilot (E2_modify_2, fixed 18/70 patients, seed 42) is running on a RunPod RTX 4090.
+- Datasets: formal three-seed tests are complete on Synapse CT, ACDC cardiac MRI and BUSI breast ultrasound. The FractalDB-60 low-label study is complete and did not show a stable advantage in the ACDC setting.
 
-### Formal three-seed cross-dataset results (updated 2026-09-03)
+### Formal three-seed cross-dataset results (updated 2026-09-06)
 
 All formal comparisons use the fixed seeds `42`, `3407` and `2026`, matched
 E1/E2_modify_2 training settings, validation-selected checkpoints and isolated
@@ -39,9 +39,9 @@ test sets.
 
 | Dataset | Image type | E1 Dice | E2_modify_2 Dice | Dice change | Main efficiency evidence | Decision |
 |---|---|---:|---:|---:|---|---|
-| Synapse | Abdominal CT | 76.84 ± 1.15% | 76.66 ± 1.22% | -0.18 pp | Peak memory -24.41% on the same RTX 4090 seed-42 run | Yellow |
-| ACDC | Cardiac MRI | 90.77 ± 0.24% | 90.73 ± 0.15% | -0.046 pp | Epoch time -31.40%, peak memory -24.93%, inference time -34.58% | Yellow |
-| BUSI | Breast ultrasound | 75.46 ± 0.87% | 72.60 ± 2.50% | -2.86 pp | Epoch time -11.02%, peak memory -24.93%, approximate FLOPs -18.36% | Negative accuracy result |
+| Synapse | Abdominal CT | 76.84 ± 1.15% | 76.66 ± 1.22% | -0.18 pp | Training peak memory -24.41%; unified inference latency +42.12% | Yellow |
+| ACDC | Cardiac MRI | 90.77 ± 0.24% | 90.73 ± 0.15% | -0.046 pp | Training peak memory -24.93%; unified inference latency +78.79% | Yellow |
+| BUSI | Breast ultrasound | 75.46 ± 0.87% | 72.60 ± 2.50% | -2.86 pp | Training peak memory -24.93%; unified inference latency +39.28% | Negative accuracy result |
 
 The grouped two-axis scan consistently reduced peak training memory by about
 24-25%, but its accuracy was dataset-dependent. It kept mean Dice close to E1
@@ -50,9 +50,16 @@ defensible conclusion is therefore an **accuracy-memory trade-off**, not
 universal superiority. Full Dice/HD95/NSD results, per-seed tables and audit
 records are archived in:
 
+In the completed same-RTX-4090 inference benchmark, E2_modify_2 reduced peak
+inference memory but increased mean latency by 42.12% on Synapse, 78.79% on
+ACDC, and 39.28% on BUSI. Thus, the approximately 50% lower analytical SS2D
+scan-core workload does not translate into a runtime speedup in the current
+implementation. Whole-model FLOPs are explicitly reported as estimates.
+
 - [`research/runs/synapse_v2_formal_3seed_comparison/`](research/runs/synapse_v2_formal_3seed_comparison/)
 - [`research/runs/acdc_v1_formal_three_seed_runpod/`](research/runs/acdc_v1_formal_three_seed_runpod/)
 - [`research/runs/busi_v1_clean_formal_three_seed/`](research/runs/busi_v1_clean_formal_three_seed/)
+- [`research/runs/step19_unified_efficiency_20260906/`](research/runs/step19_unified_efficiency_20260906/)
 
 ### Training story and current evidence
 
@@ -214,7 +221,7 @@ VM-UNet/VMambaのオリジナルコードの著作権およびクレジットは
 - **E4** — 同じ二次元被覆を維持したサンプル・チャネル依存Adaptive Gate。50 epochスクリーニングと300 epoch Full runが完了したが、Full runはRed判定となり、screen/full間の再現性不一致が確認された。
 - **E4 Version 2-B** — E4 Version 1を上書きせず、独立した安定化Gateアブレーションとして作成。決定性A/A確認と50 epoch正式スクリーニングを完了した。学習安定性は改善したが、300 epochへ延長する精度上の根拠は得られなかった。
 
-### 正式な3 seedクロスデータセット結果（2026-09-03更新）
+### 正式な3 seedクロスデータセット結果（2026-09-06更新）
 
 すべての正式比較では、固定seed `42`、`3407`、`2026`、一致した
 E1/E2_modify_2学習条件、validationで選択したcheckpoint、および独立した
@@ -222,9 +229,9 @@ test setを使用しました。
 
 | データセット | 画像種別 | E1 Dice | E2_modify_2 Dice | Dice差 | 主な効率結果 | 判定 |
 |---|---|---:|---:|---:|---|---|
-| Synapse | 腹部CT | 76.84 ± 1.15% | 76.66 ± 1.22% | -0.18 pp | 同一RTX 4090 seed-42比較でPeak memory -24.41% | Yellow |
-| ACDC | 心臓MRI | 90.77 ± 0.24% | 90.73 ± 0.15% | -0.046 pp | Epoch時間 -31.40%、Peak memory -24.93%、推論時間 -34.58% | Yellow |
-| BUSI | 乳腺超音波 | 75.46 ± 0.87% | 72.60 ± 2.50% | -2.86 pp | Epoch時間 -11.02%、Peak memory -24.93%、概算FLOPs -18.36% | 精度面でNegative |
+| Synapse | 腹部CT | 76.84 ± 1.15% | 76.66 ± 1.22% | -0.18 pp | 学習Peak memory -24.41%、統一推論latency +42.12% | Yellow |
+| ACDC | 心臓MRI | 90.77 ± 0.24% | 90.73 ± 0.15% | -0.046 pp | 学習Peak memory -24.93%、統一推論latency +78.79% | Yellow |
+| BUSI | 乳腺超音波 | 75.46 ± 0.87% | 72.60 ± 2.50% | -2.86 pp | 学習Peak memory -24.93%、統一推論latency +39.28% | 精度面でNegative |
 
 チャネル分割型二軸スキャンは、3データセットでPeak training memoryを
 約24-25%削減しました。一方、精度はデータセットに依存し、SynapseとACDC
@@ -232,9 +239,16 @@ test setを使用しました。
 でした。したがって、現時点で支持される結論は普遍的な優越性ではなく、
 **精度とメモリ効率のトレードオフ**です。詳細は以下に保存しています。
 
+同一RTX 4090上の統一推論benchmarkでは、E2_modify_2の推論Peak memoryは
+低下した一方、Mean latencyはSynapseで42.12%、ACDCで78.79%、BUSIで
+39.28%増加しました。したがって、SS2D scan-coreの理論計算量が約50%減少
+しても、現実装の実行時間が短くなるとは主張しません。Whole-model FLOPsは
+elementwise演算とnormalizationを完全には含まない推定値です。
+
 - [`research/runs/synapse_v2_formal_3seed_comparison/`](research/runs/synapse_v2_formal_3seed_comparison/)
 - [`research/runs/acdc_v1_formal_three_seed_runpod/`](research/runs/acdc_v1_formal_three_seed_runpod/)
 - [`research/runs/busi_v1_clean_formal_three_seed/`](research/runs/busi_v1_clean_formal_three_seed/)
+- [`research/runs/step19_unified_efficiency_20260906/`](research/runs/step19_unified_efficiency_20260906/)
 
 ### 学習過程で得られた知見
 
@@ -364,8 +378,8 @@ E2_modify_2と直接順位付けするものではありません。この結果
 ### 実験計画
 
 - Synapse、ACDC、BUSIにおけるE1とE2_modify_2の正式3 seed比較は完了しました。
-- 25%の医用ラベルを用いたFractalDB-60事前学習pilotは、ACDC、E2_modify_2、固定18/70患者、seed 42の条件でRunPod RTX 4090上にて実行中です。
-- Pilotが有効な場合のみ、50%および100%ラベル条件へ拡張し、ScratchおよびImageNet事前学習と比較します。
+- ACDCにおけるFractalDB-60低ラベル実験は完了しましたが、安定した優位性は確認されませんでした。探索的・負の結果として記録します。
+- Scratch、ImageNet、FractalDB-60の比較結果は、低ラベル条件におけるFractalDBの有効性を主張する根拠には使用しません。
 - 主な評価指標はDice、HD95、NSDです。
 
 ### 現在確認済みの結果

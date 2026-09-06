@@ -1,0 +1,83 @@
+{
+  "benchmark": {
+    "amp_enabled": false,
+    "batch_size": 1,
+    "excluded_scope": "data loading, host-to-device transfer, postprocessing, metric calculation, and image saving",
+    "gradient_enabled": false,
+    "included_scope": "model forward only",
+    "max_latency_ms": 9.30877,
+    "mean_latency_ms": 6.825727035,
+    "median_latency_ms": 6.710136,
+    "min_latency_ms": 6.224798,
+    "model_eval": true,
+    "p95_latency_ms": 7.906403349999998,
+    "peak_inference_allocated_bytes": 157778432,
+    "peak_inference_allocated_mib": 150.46923828125,
+    "peak_inference_reserved_bytes": 171966464,
+    "peak_inference_reserved_mib": 164.0,
+    "sample_std_latency_ms": 0.5596322216974501,
+    "throughput_images_per_second": 146.5045400837656,
+    "timed_iterations": 200,
+    "timer": "time.perf_counter_ns with torch.cuda.synchronize immediately before and after every forward",
+    "warmup_iterations": 20
+  },
+  "checkpoint": "/workspace/paper_final_results_v1/busi/training_runs/e2_modify_2_seed42/checkpoints/best_validation.pth",
+  "checkpoint_selected_epoch": 208,
+  "checkpoint_sha256": "99b196a6c99c5306bdf3a77eac63e8c536a56164fd58ab4410beb34fb520026c",
+  "checkpoint_size_bytes": 329417417,
+  "created_utc": "2026-09-06T00:15:33Z",
+  "dataset": "BUSI",
+  "deployable_state_dict": {
+    "format": "PyTorch state_dict only; CPU tensors; optimizer and scheduler excluded",
+    "path": "/workspace/paper_final_results_v2/efficiency/unified_benchmark_20260906/deployable_state_dicts/busi_e2_modify_2_seed42_state_dict.pth",
+    "serialized_bytes": 109788325,
+    "serialized_mib": 104.7023057937622,
+    "sha256": "e3e925183858fabff011c51dc219a8aa1d3d6235e0644fe28de136034e0d6dc7",
+    "tensor_count": 222,
+    "tensor_payload_bytes": 109710244,
+    "tensor_payload_mib": 104.62784194946289
+  },
+  "hardware": {
+    "cuda_runtime_reported_by_pytorch": "11.7",
+    "cudnn": 8500,
+    "driver_version": "580.159.04",
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "gpu_total_memory_bytes": 25250627584,
+    "pytorch": "1.13.0+cu117"
+  },
+  "input_shape": [
+    1,
+    3,
+    224,
+    224
+  ],
+  "input_source": {
+    "class_name": "benign",
+    "group_id": "group_0004",
+    "preprocessing": "aspect-ratio-preserving bilinear resize and symmetric zero padding to 224x224",
+    "sample_id": "benign (4)",
+    "source_file": "/workspace/datasets/Dataset_BUSI_with_GT/benign/benign (4).png",
+    "source_file_sha256": "6549a0053b9b3ae7efb75d0518494e86c49344469eac7ded25818214121046c9"
+  },
+  "input_tensor_sha256": "72c009bd28c2bcb28405dd1e32e61621341cf9c4075739d488ccd2f3e17a4066",
+  "method": "E2_modify_2",
+  "model_source_sha256": "309f4a7a9b2d5df98305957177eab30cc4eb258b307486f8f9712ad31f2db281",
+  "protocol_name": "step19_unified_inference_v1",
+  "repo": "/workspace/repos/BUSI_v1_clean_exec_runpod",
+  "scan_fusion": "grouped_2d_bidirectional_sum",
+  "seed": 42,
+  "theoretical_efficiency": {
+    "analytical_ss2d_scan_core_macs": 446195552.0,
+    "analytical_unregistered_projection_macs": 467238912.0,
+    "estimated_whole_model_flops": 8123154112.0,
+    "estimated_whole_model_macs": 4061577056.0,
+    "flops_tool": "THOP for registered layers plus analytical SS2D projection and selective-scan core",
+    "mac_to_flop_rule": "1 MAC = 2 FLOPs",
+    "parameter_count": 27427561,
+    "postprocessing_included": false,
+    "ss2d_call_count": 15,
+    "status": "estimated, not exact: elementwise operations and normalization are not fully counted",
+    "thop_reported_parameter_count": 22037737,
+    "thop_supported_layer_macs": 3148142592.0
+  }
+}

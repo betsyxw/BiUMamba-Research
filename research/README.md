@@ -27,6 +27,10 @@ restricted artifacts remain outside GitHub.
   seven-experiment overall comparison, eight-organ comparison, workbook,
   manifest, and negative-ablation/stability analysis. The unmatched held-out
   validation protocol is explicitly documented.
+- `runs/step19_unified_efficiency_20260906/`: same-RTX-4090 inference benchmark
+  for E1 and E2_modify_2 on Synapse, ACDC, and BUSI, including 200 raw timings
+  per pair, memory results, estimated FLOPs, deployable-size metadata, and the
+  exact scripts. Model weights and medical data are excluded.
 
 The authoritative E2 source snapshot was created from RunPod branch
 `experiment/e2-bidirectional-fixed-sum`, commit
