@@ -1,0 +1,30 @@
+{
+  "updated": "20260909",
+  "status": "CANDIDATE_NOT_FROZEN",
+  "synapse_runs": 6,
+  "seeds": [
+    42,
+    3407,
+    2026
+  ],
+  "independent_cases": 12,
+  "organs": 8,
+  "records_checked": 576,
+  "single_empty_rows_retained": 6,
+  "both_empty_rows": 0,
+  "bootstrap_repeats": 10000,
+  "synapse_bootstrap_seed": 20260909,
+  "other_datasets_bootstrap_seed": 20260906,
+  "numeric_cells_checked": 289,
+  "numeric_cells_passed": 289,
+  "numeric_cells_failed": 0,
+  "local_package_files_hash_verified": 114,
+  "local_update_package_sha256": "7350e9e92ccdb8707ea70aa7de3427e8c488bd527f684e85345e8e1bb3c46ea2",
+  "pending": [
+    "Synapse case0038 formal seed42 E1 and E2_modify_2 prediction masks and corrected Small representative figure"
+  ],
+  "original_v2_preserved": true,
+  "raw_mask_reevaluation": false,
+  "equivalence_test_performed": false,
+  "public_upload": "text_reports_and_aggregate_verification_only"
+}
