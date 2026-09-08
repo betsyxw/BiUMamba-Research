@@ -1,6 +1,6 @@
 # BiUMamba Research
 
-**Last updated: 20260906**
+**Last updated: 20260909**
 
 **Research Author and Repository Maintainer:** xuwen
 
@@ -27,20 +27,32 @@ natural-image-free initialization.
 
 ## Current progress
 
-**20260906 — Approximately 90% of the experiment and model-result work is
-complete. Some remaining work is still running on JAIST Hakusan.**
+**20260909 — Corrected results and manuscript assets are available as a
+candidate release; final freezing is not yet complete.**
 
-This is the maintainer's overall progress estimate, not a measured percentage
-of completed jobs. Completed evaluations below remain available as evidence;
-the full project should not yet be treated as a 100% complete release.
-Results from the remaining Hakusan work will be added after completion and
-verification.
+Formal E1/BiUMamba three-seed results are available for Synapse, ACDC and BUSI.
+The Synapse empty-mask aggregation audit is complete, and downstream
+Tables 1–7 and statistical figures have been regenerated locally. All 289
+mapped numerical cells passed source/value checks. This update supersedes
+the previous approximate 90% progress statement; it is not a live job-status
+report for Hakusan.
+
+Remaining verified blocker: the newly selected Synapse Small representative
+`case0038` needs the formal seed-42 E1 and E2_modify_2 prediction masks before
+its corrected qualitative panel can be completed. The current release is
+**CANDIDATE_NOT_FROZEN**; old frozen versions remain unchanged.
+
+See the [updated conclusions and reports](research/hakusan/),
+[Step 20 correction](research/hakusan/STEP20_CORRECTION_REPORT_20260909.md)
+and [manuscript update status](research/hakusan/PAPER_UPDATE_REPORT_20260909.md).
 
 ### Update history
 
 - **20260906** — Updated overall progress to approximately 90%, noted remaining
   work on Hakusan, made this README English-only, and clarified the final
   fixed-sum BiUMamba design and the separate exploratory pre-training study.
+
+- **20260909** — Replaced the outdated progress estimate with verified candidate-release status; added corrected Synapse paired statistics and report links; clarified the training-memory advantage, inference-latency cost, BUSI limitation and lack of equivalence evidence.
 
 For every future README update, update the `Last updated` date and append a
 new entry here using `YYYYMMDD`. Preserve earlier entries; updates made on the
@@ -57,7 +69,7 @@ same day may share the same date.
 - E4 Version 2-B: separately named stabilized-gate ablation — deterministic A/A checks and a formal 50-epoch screening run completed. Training stability improved, but accuracy did not justify a 300-epoch extension.
 - Datasets: formal three-seed tests are complete on Synapse CT, ACDC cardiac MRI and BUSI breast ultrasound. The FractalDB-60 low-label study is complete and did not show a stable advantage in the ACDC setting.
 
-### Formal three-seed cross-dataset results (updated 20260906)
+### Formal three-seed cross-dataset results (reviewed 20260909)
 
 All formal comparisons use the fixed seeds `42`, `3407` and `2026`, matched
 E1/E2_modify_2 training settings, validation-selected checkpoints and isolated
@@ -73,8 +85,8 @@ The grouped two-axis scan consistently reduced peak training memory by about
 24-25%, but its accuracy was dataset-dependent. It kept mean Dice close to E1
 on Synapse and ACDC, while it did not preserve E1 accuracy on BUSI. The current
 defensible conclusion is therefore an **accuracy-memory trade-off**, not
-universal superiority. Full Dice/HD95/NSD results, per-seed tables and audit
-records are archived in:
+universal superiority. These findings concern this implementation and protocol,
+not all Mamba architectures.
 
 In the completed same-RTX-4090 inference benchmark, E2_modify_2 reduced peak
 inference memory but increased mean latency by 42.12% on Synapse, 78.79% on
@@ -87,7 +99,50 @@ implementation. Whole-model FLOPs are explicitly reported as estimates.
 - [`research/runs/busi_v1_clean_formal_three_seed/`](research/runs/busi_v1_clean_formal_three_seed/)
 - [`research/runs/step19_unified_efficiency_20260906/`](research/runs/step19_unified_efficiency_20260906/)
 
-### Training story and current evidence
+### Corrected paired statistics and main conclusion (20260909)
+
+The previous Step 20 aggregation incorrectly dropped six single-empty
+case-organ-seed rows. The correction retains their stored penalties and
+excludes only both-empty undefined pairs (none occurred in these six runs).
+It does not change checkpoints or rerun raw-mask evaluation. The Synapse
+descriptive Dice values in the table above were already correct.
+
+After averaging the three seeds within each patient, the corrected Synapse
+analysis uses 12 independent cases and 10,000 bootstrap resamples
+(seed 20260909).
+
+| Metric | BiUMamba minus E1 | Unadjusted bootstrap 95% CI | Raw p | Holm p |
+|---|---:|---|---:|---:|
+| Dice (percentage points) | -0.18072 | [-1.00645, +0.70612] | 0.697696 | 1.000000 |
+| HD95 (protocol units) | +0.99505 | [-0.74899, +2.70181] | 0.300065 | 0.900196 |
+| NSD (percentage points) | -0.00069 | [-0.75680, +0.83275] | 0.998731 | 1.000000 |
+
+Holm adjustment covers the three overall metrics. Synapse distances use the
+stored unit-spacing protocol, not verified physical CT millimetres. ACDC/BUSI
+statistics are unchanged in this update.
+
+**Main contribution:** a channel-grouped bidirectional scan that preserves
+horizontal and vertical coverage while reducing peak training memory by
+approximately 24–25%. Synapse and ACDC show small observed mean accuracy
+differences and no statistically significant patient-level differences.
+BUSI shows significantly worse Dice and NSD and higher HD95.
+
+**Limitations:** no equivalence or non-inferiority test was performed, so
+"equivalent", "no accuracy loss" and universal accuracy improvement are not
+supported. The current strict RTX 4090 benchmark shows increased inference
+latency on all three datasets, despite lower analytical scan-core workload.
+The contribution is an observed accuracy–memory trade-off with runtime
+costs and dataset-dependent limitations, not a speedup claim.
+
+### Natural-image-free pre-training (20260909)
+
+Under the frozen ACDC 25% label protocol, FractalDB-60 did not outperform
+training from scratch and remained below ImageNet initialization across the
+three fixed seeds. The 50% and 100% runs use seed 42 only and are exploratory;
+they cannot overturn the formal 25% conclusion or support a general
+low-label advantage. This negative finding is specific to our setting.
+
+### Historical training story and screening evidence
 
 E2 reduced the original four SS2D directions to row-major forward/reverse scans.
 It reduced mean epoch time and peak memory, but Dice decreased from `80.05%` to
@@ -131,10 +186,10 @@ Mean HD95.
 Compared with E1, E2_modify_2 improved Dice by `0.2052` percentage points,
 reduced HD95 by `2.6931` (`10.94%`), reduced training time by `11.69%`, and
 reduced peak GPU memory by `24.88%`. Compared with E2, it recovered `1.6460`
-Dice points and reduced HD95 by `4.1906`. This supports the interpretation that
-E2 failed mainly because it removed vertical coverage, while the grouped-2D
-design preserves two-dimensional context at lower cost than the original
-four-direction implementation. These values are retained as historical
+Dice points and reduced HD95 by `4.1906`. This is consistent with directional
+coverage being important, but does not establish it as the sole cause of the
+performance difference. The grouped-2D design retains both scan axes with a
+lower directional scan workload than the original implementation. These values are retained as historical
 single-seed evidence; the formal three-seed results above supersede them for
 the final cross-dataset conclusion.
 
