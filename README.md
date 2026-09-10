@@ -1,6 +1,6 @@
 # BiUMamba Research
 
-**Last updated: 20260909**
+**Last updated: 20260911**
 
 **Research Author and Repository Maintainer:** xuwen
 
@@ -37,6 +37,10 @@ mapped numerical cells passed source/value checks. This update supersedes
 the previous approximate 90% progress statement; it is not a live job-status
 report for Hakusan.
 
+The preselected Synapse E1-Narrow memory-control experiment is also complete
+for seeds `42`, `2026` and `3407`. It provides a direct test of channel-grouped
+scanning against the simpler alternative of narrowing the original E1 model.
+
 Remaining verified blocker: the newly selected Synapse Small representative
 `case0038` needs the formal seed-42 E1 and E2_modify_2 prediction masks before
 its corrected qualitative panel can be completed. The current release is
@@ -54,6 +58,8 @@ and [manuscript update status](research/hakusan/PAPER_UPDATE_REPORT_20260909.md)
 
 - **20260909** — Replaced the outdated progress estimate with verified candidate-release status; added corrected Synapse paired statistics and report links; clarified the training-memory advantage, inference-latency cost, BUSI limitation and lack of equivalence evidence.
 
+- **20260911** — Added the formal three-seed E1-Narrow Synapse control, patient-level paired statistics, the strict RTX 4090 inference benchmark, and updated Tables 2, 4 and 6. The new control supports BiUMamba over simple narrowing for the observed accuracy-memory balance, while preserving the existing claim limits.
+
 For every future README update, update the `Last updated` date and append a
 new entry here using `YYYYMMDD`. Preserve earlier entries; updates made on the
 same day may share the same date.
@@ -64,6 +70,7 @@ same day may share the same date.
 - E2: forward/reverse row-major scan with fixed sum — completed; below E1.
 - E2_modify_1: alternating-axis bidirectional scan — 50-epoch screening completed. The report, metrics, manifest, logs, and matched comparison are mirrored in [`research/runs/E2_modify_1_screen50/`](research/runs/E2_modify_1_screen50/).
 - E2_modify_2: channel-grouped 2D bidirectional scan — formal three-seed evaluation is complete on Synapse, ACDC and BUSI. It is now treated as an efficiency-oriented method, not a universal accuracy improvement.
+- E1-Narrow: original four-direction E1 with SS2D expansion reduced to `1.50` — the preselected near-memory-matched Synapse control completed 300 epochs and isolated testing for all three fixed seeds. No post-hoc seed was added.
 - E3: static learnable fusion on E2_modify_2 — 50-epoch screening and the full 300-epoch run completed; the final result did not outperform E2_modify_2.
 - E4: constrained sample/channel adaptive gate on the same coverage-preserving structure — 50-epoch screening and 300-epoch full run completed; the full run was a Red result and exposed a screen/full reproducibility mismatch.
 - E4 Version 2-B: separately named stabilized-gate ablation — deterministic A/A checks and a formal 50-epoch screening run completed. Training stability improved, but accuracy did not justify a 300-epoch extension.
@@ -133,6 +140,43 @@ supported. The current strict RTX 4090 benchmark shows increased inference
 latency on all three datasets, despite lower analytical scan-core workload.
 The contribution is an observed accuracy–memory trade-off with runtime
 costs and dataset-dependent limitations, not a speedup claim.
+
+### Near-memory-matched E1-Narrow control (20260911)
+
+To test whether BiUMamba's result could be reproduced by simply shrinking the
+baseline, four E1 width candidates received short memory-only calibration.
+The SS2D expansion `1.50` candidate was selected before full training and was
+then evaluated with the fixed seeds `42`, `2026` and `3407`. Every run completed
+300 epochs and used the same frozen Synapse split and 12-case isolated test set.
+
+| Method | Dice (%) | HD95 | NSD (%) | Peak training allocated | Parameters | Strict inference latency |
+|---|---:|---:|---:|---:|---:|---:|
+| E1 / VM-UNet | 76.84 ± 1.15 | 32.13 ± 4.95 | 71.59 ± 2.25 | 11.96 GiB | 27.43 M | 4.955 ± 0.544 ms |
+| E1-Narrow | 75.04 ± 2.82 | 33.89 ± 3.99 | 69.15 ± 2.34 | 9.47 GiB | 21.36 M | 10.740 ± 0.187 ms |
+| BiUMamba | 76.66 ± 1.22 | 33.12 ± 5.06 | 71.59 ± 1.73 | 9.04 GiB | 27.43 M | 7.043 ± 0.832 ms |
+
+Each patient was first averaged across the three seeds before paired testing.
+Relative to E1, E1-Narrow had significantly lower Dice and NSD after Holm
+correction. Relative to E1-Narrow, BiUMamba's observed Dice was `1.62`
+percentage points higher, but this difference did not remain significant after
+Holm correction (`p=0.0683`). Its NSD was `2.44` percentage points higher and
+remained significant (`p=0.0111`); HD95 did not differ significantly.
+
+BiUMamba also had lower observed seed-level variability for Dice (`1.22` versus
+`2.82` percentage points) and NSD (`1.73` versus `2.34` percentage points).
+With only three fixed seeds, this is descriptive stability evidence rather than
+a formal variance test.
+
+The control therefore supports retaining BiUMamba for the observed
+accuracy-memory balance. Simple narrowing reduced parameters but also reduced
+Dice and NSD. BiUMamba used slightly less peak allocated training memory than
+E1-Narrow and had lower strict inference latency while retaining the original
+model capacity. Original E1 remained the fastest, so these findings do not
+support a universal speedup claim.
+
+The GitHub-safe statistics, strict benchmark record, updated tables and paper
+conclusion are archived in
+[`research/runs/e1_narrow_synapse_3seed_20260911/`](research/runs/e1_narrow_synapse_3seed_20260911/).
 
 ### Natural-image-free pre-training (20260909)
 

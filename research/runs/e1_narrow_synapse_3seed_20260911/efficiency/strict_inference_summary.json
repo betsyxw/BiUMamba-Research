@@ -1,0 +1,86 @@
+{
+  "benchmark": {
+    "amp_enabled": false,
+    "batch_size": 1,
+    "excluded_scope": "data loading, host-to-device transfer, postprocessing, metric calculation, and image saving",
+    "gradient_enabled": false,
+    "included_scope": "model forward only",
+    "max_latency_ms": 11.206415,
+    "mean_latency_ms": 10.740009335,
+    "median_latency_ms": 10.789705999999999,
+    "min_latency_ms": 10.189431,
+    "model_eval": true,
+    "p95_latency_ms": 10.930243500000001,
+    "peak_inference_allocated_bytes": 134057472,
+    "peak_inference_allocated_mib": 127.84716796875,
+    "peak_inference_reserved_bytes": 155189248,
+    "peak_inference_reserved_mib": 148.0,
+    "sample_std_latency_ms": 0.1868220155968001,
+    "throughput_images_per_second": 93.10978871695738,
+    "timed_iterations": 200,
+    "timer": "time.perf_counter_ns with torch.cuda.synchronize immediately before and after every forward",
+    "warmup_iterations": 20
+  },
+  "checkpoint": "/workspace/runs/e1_narrow_synapse_v2_expand1p50_seed42_20260909/checkpoints/best_validation.pth",
+  "checkpoint_selected_epoch": 247,
+  "checkpoint_sha256": "4a697df28c2710a78c6cf9e5818219502b8e3f3ba0ef247f47ac987100f0bdd9",
+  "checkpoint_size_bytes": 256604809,
+  "created_utc": "2026-09-10T15:13:59Z",
+  "dataset": "Synapse",
+  "deployable_state_dict": {
+    "format": "PyTorch state_dict only; CPU tensors; optimizer and scheduler excluded",
+    "path": "/workspace/runs/e1_narrow_step19_benchmark_20260911/deployable_state_dicts/synapse_e1_narrow_seed42_state_dict.pth",
+    "serialized_bytes": 85518277,
+    "serialized_mib": 81.55658435821533,
+    "sha256": "a0a825cc2f6073c5398d514cafc9ae182fe377ac7f7e50430ae6dd8ae2f87a6e",
+    "tensor_count": 222,
+    "tensor_payload_bytes": 85439940,
+    "tensor_payload_mib": 81.48187637329102
+  },
+  "hardware": {
+    "cuda_runtime_reported_by_pytorch": "11.7",
+    "cudnn": 8500,
+    "driver_version": "580.173.02",
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "gpu_total_memory_bytes": 25250627584,
+    "pytorch": "1.13.0+cu117"
+  },
+  "input_shape": [
+    1,
+    3,
+    224,
+    224
+  ],
+  "input_source": {
+    "case": "case0001",
+    "original_shape": [
+      512,
+      512
+    ],
+    "preprocessing": "cubic resize to 224x224; repeat grayscale channel to 3 channels",
+    "slice_index": 73,
+    "source_file": "/workspace/datasets/Synapse/test_vol_h5/case0001.npy.h5",
+    "source_file_sha256": "ae536b7d85bbc64d42adef8157b63f693e34adcc27e8ab575cb03ee772572991"
+  },
+  "input_tensor_sha256": "fed578c841fd10732548f84391391cb85bf9a4e9db0405e0469a7a6b277f20c1",
+  "method": "E1_Narrow",
+  "model_source_sha256": "46f4d28770b8e364fbd88353054154dd3331e4ee36867855c4269f044af15c42",
+  "protocol_name": "step19_unified_inference_v1",
+  "repo": "/workspace/repos/VM-UNet_E1_narrow_synapse_v2_20260909",
+  "scan_fusion": "original",
+  "seed": 42,
+  "theoretical_efficiency": {
+    "analytical_ss2d_scan_core_macs": 669224488.0,
+    "analytical_unregistered_projection_macs": 700858368.0,
+    "estimated_whole_model_flops": 7729717328.0,
+    "estimated_whole_model_macs": 3864858664.0,
+    "flops_tool": "THOP for registered layers plus analytical SS2D projection and selective-scan core",
+    "mac_to_flop_rule": "1 MAC = 2 FLOPs",
+    "parameter_count": 21359985,
+    "postprocessing_included": false,
+    "ss2d_call_count": 15,
+    "status": "estimated, not exact: elementwise operations and normalization are not fully counted",
+    "thop_reported_parameter_count": 17317617,
+    "thop_supported_layer_macs": 2494775808.0
+  }
+}
