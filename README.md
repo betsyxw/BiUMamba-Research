@@ -32,7 +32,8 @@ natural-image-free initialization.
 Formal E1/BiUMamba three-seed results are available for Synapse, ACDC and BUSI.
 The Synapse empty-mask aggregation audit is complete, and downstream
 Tables 1–7 and statistical figures have been regenerated locally. All 289
-mapped numerical cells passed source/value checks. This update supersedes
+mapped numerical cells passed the earlier source/value check; the expanded
+final audit covers 774 mapped table cells with zero failures. This update supersedes
 the previous approximate 90% progress statement; it is not a live job-status
 report for Hakusan.
 
@@ -63,6 +64,13 @@ and [final paper evidence package](research/paper_evidence_20260912/).
 - **20260911** — Added the formal three-seed E1-Narrow Synapse control, patient-level paired statistics, the strict RTX 4090 inference benchmark, and updated Tables 2, 4 and 6. The new control supports BiUMamba over simple narrowing for the observed accuracy-memory balance, while preserving the existing claim limits.
 
 - **20260912** — Froze the GitHub-safe final paper evidence: expanded related work, method-difference table, E1/BiUMamba diagram, analytical scan-core derivation, research-question-based Table 2, E1-Narrow matched-memory comparison, Dice/NSD-memory Pareto figures, cross-dataset Table 4, patient-level Table 7 and forest plot, rewritten Discussion and Limitations, claim audit, cell-level source map and regenerated workbook. The central claim is a dataset-dependent training-memory trade-off, not higher accuracy or universal speed.
+
+- **20260912** — Added direct repository access to the final public-safe
+  [method diagram](research/result_img/paper_evidence_20260912/Figure_method_E1_vs_BiUMamba.png),
+  [Dice–memory Pareto figure](research/result_img/paper_evidence_20260912/Figure_pareto_Dice_vs_memory.png),
+  [NSD–memory Pareto figure](research/result_img/paper_evidence_20260912/Figure_pareto_NSD_vs_memory.png),
+  and [patient-level forest plot](research/result_img/paper_evidence_20260912/Figure_patient_level_forest_plot.png).
+  The corresponding PDF files remain in the same directory.
 
 For every future README update, update the `Last updated` date and append a
 new entry here using `YYYYMMDD`. Preserve earlier entries; updates made on the
