@@ -1,6 +1,6 @@
 # BiUMamba Research
 
-**Last updated: 20260911**
+**Last updated: 20260912**
 
 **Research Author and Repository Maintainer:** xuwen
 
@@ -27,8 +27,7 @@ natural-image-free initialization.
 
 ## Current progress
 
-**20260909 — Corrected results and manuscript assets are available as a
-candidate release; final freezing is not yet complete.**
+**20260912 — The paper evidence package has been regenerated and frozen.**
 
 Formal E1/BiUMamba three-seed results are available for Synapse, ACDC and BUSI.
 The Synapse empty-mask aggregation audit is complete, and downstream
@@ -41,14 +40,17 @@ The preselected Synapse E1-Narrow memory-control experiment is also complete
 for seeds `42`, `2026` and `3407`. It provides a direct test of channel-grouped
 scanning against the simpler alternative of narrowing the original E1 model.
 
-Remaining verified blocker: the newly selected Synapse Small representative
-`case0038` needs the formal seed-42 E1 and E2_modify_2 prediction masks before
-its corrected qualitative panel can be completed. The current release is
-**CANDIDATE_NOT_FROZEN**; old frozen versions remain unchanged.
+The final GitHub-safe evidence package now includes the related-work comparison,
+method differentiation table, `4HWC -> 2HWC` derivation, research-question-based
+scan ablation, the E1-Narrow matched-memory control, Pareto figures, the
+cross-dataset scope table, patient-level paired statistics, a forest plot,
+manuscript-ready Discussion and Limitations, and a cell-level source map.
+All 774 mapped cells passed the final cross-check. Medical-image qualitative
+panels and the complete freeze archive remain outside GitHub.
 
 See the [updated conclusions and reports](research/hakusan/),
 [Step 20 correction](research/hakusan/STEP20_CORRECTION_REPORT_20260909.md)
-and [manuscript update status](research/hakusan/PAPER_UPDATE_REPORT_20260909.md).
+and [final paper evidence package](research/paper_evidence_20260912/).
 
 ### Update history
 
@@ -59,6 +61,8 @@ and [manuscript update status](research/hakusan/PAPER_UPDATE_REPORT_20260909.md)
 - **20260909** — Replaced the outdated progress estimate with verified candidate-release status; added corrected Synapse paired statistics and report links; clarified the training-memory advantage, inference-latency cost, BUSI limitation and lack of equivalence evidence.
 
 - **20260911** — Added the formal three-seed E1-Narrow Synapse control, patient-level paired statistics, the strict RTX 4090 inference benchmark, and updated Tables 2, 4 and 6. The new control supports BiUMamba over simple narrowing for the observed accuracy-memory balance, while preserving the existing claim limits.
+
+- **20260912** — Froze the GitHub-safe final paper evidence: expanded related work, method-difference table, E1/BiUMamba diagram, analytical scan-core derivation, research-question-based Table 2, E1-Narrow matched-memory comparison, Dice/NSD-memory Pareto figures, cross-dataset Table 4, patient-level Table 7 and forest plot, rewritten Discussion and Limitations, claim audit, cell-level source map and regenerated workbook. The central claim is a dataset-dependent training-memory trade-off, not higher accuracy or universal speed.
 
 For every future README update, update the `Last updated` date and append a
 new entry here using `YYYYMMDD`. Preserve earlier entries; updates made on the

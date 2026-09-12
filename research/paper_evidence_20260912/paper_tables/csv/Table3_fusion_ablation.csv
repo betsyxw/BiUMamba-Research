@@ -1,0 +1,5 @@
+Fusion,Protocol,Epochs,Seed,Evidence,Dice (%) ↑,HD95 ↓,Peak memory (MiB) ↓,Conclusion
+Fixed sum,Full300,300,42,Exploratory single-seed ablation,80.25,21.92,11016,Final selected fusion
+Static learnable fusion,Full300,300,42,Exploratory single-seed ablation,80.00,25.57,12958,No clear gain over fixed sum
+Adaptive Gate v1,Full300,300,42,Exploratory single-seed ablation,70.91,35.32,13534,Unstable negative result
+Stabilized Adaptive Gate v2-B,Screen50 + held-out; not directly comparable,50,42,Exploratory single-seed ablation,74.99,37.91,11499,Diagnostic only

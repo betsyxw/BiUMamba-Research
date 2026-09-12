@@ -7,6 +7,10 @@ restricted artifacts remain outside GitHub.
 - `RESULTS.md`: verified quantitative results only.
 - `CLAIM_AUDIT.md`: Step 25 evidence-package claim audit and the remaining manuscript-level gate.
 - `result_img/`: public-safe aggregate figures and rendered tables without source medical-image pixels.
+- `paper_evidence_20260912/`: frozen GitHub-safe Tables 1–7, E1-Narrow
+  matched-memory evidence, related-work differentiation, method derivation,
+  manuscript-ready text, claim audit, source map, workbook and regeneration
+  scripts. Qualitative medical-image panels are excluded.
 - `DATASETS.md`: expected dataset layout without dataset files.
 - `manifests/`: launch and smoke-test records.
 - `metrics/`: small CSV result tables.

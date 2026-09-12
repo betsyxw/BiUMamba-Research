@@ -1,0 +1,14 @@
+claim_id,proposed_claim,evidence,status,required_wording
+C1,BiUMamba retains horizontal and vertical bidirectional modeling in every block,Method implementation and scan-design table,Supported,Use retains both axes; do not claim first grouped Mamba
+C2,The analytical directional scan-core workload decreases from 4HWC to 2HWC,Method derivation and analytical SS2D-core estimate,Supported,State that this is scan-core workload rather than exact whole-model FLOPs
+C3,BiUMamba reduces peak training allocated memory on Synapse ACDC and BUSI,Strict efficiency table,Supported,Name training allocated memory and hardware/protocol
+C4,BiUMamba has small observed mean differences from E1 on Synapse and ACDC,Three-seed table and paired patient analysis,Supported,Use observed or no statistically significant paired difference
+C5,BiUMamba is statistically equivalent or non-inferior to E1,None,Not supported,Do not use equivalent or non-inferior
+C6,BiUMamba is faster than E1,Strict inference benchmark,Contradicted,State that E1 remained faster in strict inference
+C7,BiUMamba provides a more favorable observed Synapse accuracy-memory trade-off than E1-Narrow,Matched-memory table and patient statistics,Supported with qualification,Note that Dice was not significant after Holm correction; NSD was significant
+C8,BiUMamba generalizes across all medical modalities,BUSI paired results,Contradicted,State dataset-dependent limitation
+C9,BiUMamba improves accuracy over E1,Formal three-seed results,Not supported,Do not claim an accuracy improvement
+C10,BiUMamba is the first channel-grouped Vision Mamba,GroupMamba prior work,Not supported,Claim the specific two-axis bidirectional allocation only
+C11,BUSI degradation is caused only by scan direction,Error analysis,Not supported,Describe associations rather than unique causation
+C12,FractalDB is especially effective with limited labels,25-percent three-seed result,Contradicted,Report the negative 25-percent result and exploratory status at 50/100 percent
+
