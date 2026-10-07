@@ -77,7 +77,7 @@ This result is reported as supplementary evidence. The formal E1/E2/E2_modify_2 
 | Maximum epoch time | 192.21 s |
 | Monitored wall time | 49,926.612 s |
 | Wall duration | 13 h 52 m 06.61 s |
-| Peak sampled GPU memory | **11,016 MiB** |
+| Peak sampled GPU memory | **11.551 GB** |
 | Peak GPU utilization | 100% |
 | Peak sampled temperature | 51 °C |
 | Peak sampled power | 130.11 W |
@@ -122,7 +122,7 @@ The Synapse training and test split is the same split used by E1 and E2.
 | Mean epoch time | 177.86 s | 164.48 s | **157.06 s** |
 | Training-only time | 14.82 h | 13.71 h | **13.09 h** |
 | Wall time | 15.82 h | 14.50 h | **13.87 h** |
-| Peak GPU memory | 14,665 MiB | **10,747 MiB** | 11,016 MiB |
+| Peak GPU memory | 15.377 GB | **11.269 GB** | 11.551 GB |
 
 Compared with E1, E2_modify_2:
 
@@ -136,7 +136,7 @@ Compared with E2, E2_modify_2:
 - improves Dice by **1.6460 percentage points**;
 - reduces HD95 by **4.1906**;
 - reduces mean epoch time by **4.51%**;
-- uses 269 MiB more sampled GPU memory.
+- uses 0.282 GB more sampled GPU memory.
 
 ## 8. Interpretation
 

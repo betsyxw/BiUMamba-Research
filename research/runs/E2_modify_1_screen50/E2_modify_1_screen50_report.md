@@ -23,7 +23,7 @@ This is **not** a final 300-epoch result and must not be compared as if it were 
 - Final evaluation time: `655.74 s` (`10 min 56 s`)
 - Accounted training + evaluation time: `11,346.41 s` (`3 h 9 min 6 s`)
 - Wall time from configuration logging to final evaluation: approximately `3 h 10 min 38 s`
-- Peak GPU memory from 30-second sampling: `10,396 MiB` (`10.15 GiB`)
+- Peak GPU memory from 30-second sampling: `10.901 GB`
 - Peak sampled GPU utilization: `100%`
 
 ## Per-organ result

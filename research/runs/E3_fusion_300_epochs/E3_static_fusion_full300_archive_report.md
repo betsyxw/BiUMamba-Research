@@ -80,7 +80,7 @@ The formal comparison uses the minimum-loss checkpoint result to match the E1, E
 | Minimum epoch time | 119.47 s |
 | Maximum epoch time | 174.03 s |
 | Logged wall duration | 44,634 s (12 h 23 m 54 s) |
-| Peak sampled GPU memory | **12,958 MiB** |
+| Peak sampled GPU memory | **13.587 GB** |
 | Peak sampled GPU utilization | 100% |
 | Peak sampled temperature | 46 C |
 | Peak sampled power | 133.82 W |
@@ -92,17 +92,17 @@ The memory figure is sampled by `nvidia-smi`, not the exact CUDA allocator peak.
 
 | Experiment | Method | Dice | HD95 | Mean epoch | Peak memory |
 |---|---|---:|---:|---:|---:|
-| E1 | Original four-direction SS2D + fixed sum | 80.0488% | 24.6136 | 177.86 s | 14,665 MiB |
-| E2 | Row-only forward/backward + fixed sum | 78.6080% | 26.1111 | 164.48 s | **10,747 MiB** |
-| E2_modify_2 | Grouped 2D bidirectional + fixed sum | **80.2540%** | **21.9206** | 157.06 s | 11,016 MiB |
-| E3 | Grouped 2D bidirectional + static fusion | 80.0049% | 25.5669 | **139.09 s** | 12,958 MiB |
+| E1 | Original four-direction SS2D + fixed sum | 80.0488% | 24.6136 | 177.86 s | 15.377 GB |
+| E2 | Row-only forward/backward + fixed sum | 78.6080% | 26.1111 | 164.48 s | **11.269 GB** |
+| E2_modify_2 | Grouped 2D bidirectional + fixed sum | **80.2540%** | **21.9206** | 157.06 s | 11.551 GB |
+| E3 | Grouped 2D bidirectional + static fusion | 80.0049% | 25.5669 | **139.09 s** | 13.587 GB |
 
 ### E3 versus E2_modify_2
 
 - Dice decreases by `0.2491` percentage points.
 - HD95 increases by `3.6464`, indicating worse boundary performance.
 - Mean epoch time decreases by `17.97 s` (`11.44%`).
-- Peak sampled memory increases by `1,942 MiB` (`17.63%`).
+- Peak sampled memory increases by `2.036 GB` (`17.63%`).
 - Dice improves only for pancreas and stomach; six of eight organs decrease.
 - Right-kidney HD95 increases from `31.5460` to `56.1532`, the largest adverse boundary change.
 
@@ -111,7 +111,7 @@ The memory figure is sampled by `nvidia-smi`, not the exact CUDA allocator peak.
 - Dice is nearly tied but decreases by `0.0439` percentage points.
 - HD95 increases by `0.9533`.
 - Mean epoch time decreases by approximately `21.8%`.
-- Peak sampled memory decreases by `1,707 MiB` (`11.64%`).
+- Peak sampled memory decreases by `1.790 GB` (`11.64%`).
 
 ## 7. E3-50 versus E3-300
 
@@ -120,7 +120,7 @@ The memory figure is sampled by `nvidia-smi`, not the exact CUDA allocator peak.
 | Mean Dice | 75.6773% | 80.0049% |
 | Mean HD95 | 36.0624 | 25.5669 |
 | Mean epoch time | 152.66 s | 139.09 s |
-| Peak sampled memory | 12,958 MiB | 12,958 MiB |
+| Peak sampled memory | 13.587 GB | 13.587 GB |
 
 The 50-epoch screening correctly showed that E3 could converge, but its favorable ranking against the matched E2_modify_2 50-epoch run did **not** persist at 300 epochs. Short screening remains useful for eliminating broken variants, but it cannot establish the final ranking of closely matched methods.
 
@@ -171,8 +171,8 @@ The data split matches E1, E2, E2_modify_2 and E3-50.
 
 ## 10. Archived remote artifacts
 
-- Best checkpoint: 105 MiB, retained only on RunPod.
-- Latest training-state checkpoint: 315 MiB, retained only on RunPod.
+- Best checkpoint: 0.110 GB, retained only on RunPod.
+- Latest training-state checkpoint: 0.330 GB, retained only on RunPod.
 - Complete training console log: retained on RunPod.
 - Structured training/test log: retained on RunPod.
 - GPU monitor CSV: retained on RunPod.

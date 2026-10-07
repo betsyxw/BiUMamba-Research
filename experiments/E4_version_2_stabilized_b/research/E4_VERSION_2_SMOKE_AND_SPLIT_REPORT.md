@@ -17,7 +17,7 @@ Status: **PASS**
   completed without NaN/Inf.
 - Unclipped global gradient norm in the synthetic smoke batch: `1.1947223`;
   configured clip threshold: `1.0`.
-- Peak allocated GPU memory in the synthetic smoke batch: `504.11 MiB`.
+- Peak allocated GPU memory in the synthetic smoke batch: `0.529 GB`.
 
 ## Fixed case-level split
 

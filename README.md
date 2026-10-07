@@ -1,6 +1,13 @@
 # BiUMamba Research
 
-**Last updated: 20260912**
+**Last updated: 20261007**
+
+**20261007 — Memory and model-file sizes are now reported in decimal GB
+(`1 GB = 1,000,000,000 bytes`).** Published reports, tables, workbooks and
+memory plots have been numerically converted. Device logs and original
+benchmark records retain their native units for reproducibility. This is a
+unit presentation update; accuracy, timings and percentage reductions are
+unchanged. See the [conversion audit](research/unit_standardization_20261007/README.md).
 
 **Research Author and Repository Maintainer:** xuwen
 
@@ -163,9 +170,9 @@ then evaluated with the fixed seeds `42`, `2026` and `3407`. Every run completed
 
 | Method | Dice (%) | HD95 | NSD (%) | Peak training allocated | Parameters | Strict inference latency |
 |---|---:|---:|---:|---:|---:|---:|
-| E1 / VM-UNet | 76.84 ± 1.15 | 32.13 ± 4.95 | 71.59 ± 2.25 | 11.96 GiB | 27.43 M | 4.955 ± 0.544 ms |
-| E1-Narrow | 75.04 ± 2.82 | 33.89 ± 3.99 | 69.15 ± 2.34 | 9.47 GiB | 21.36 M | 10.740 ± 0.187 ms |
-| BiUMamba | 76.66 ± 1.22 | 33.12 ± 5.06 | 71.59 ± 1.73 | 9.04 GiB | 27.43 M | 7.043 ± 0.832 ms |
+| E1 / VM-UNet | 76.84 ± 1.15 | 32.13 ± 4.95 | 71.59 ± 2.25 | 12.842 GB | 27.43 M | 4.955 ± 0.544 ms |
+| E1-Narrow | 75.04 ± 2.82 | 33.89 ± 3.99 | 69.15 ± 2.34 | 10.168 GB | 21.36 M | 10.740 ± 0.187 ms |
+| BiUMamba | 76.66 ± 1.22 | 33.12 ± 5.06 | 71.59 ± 1.73 | 9.707 GB | 27.43 M | 7.043 ± 0.832 ms |
 
 Each patient was first averaged across the three seeds before paired testing.
 Relative to E1, E1-Narrow had significantly lower Dice and NSD after Holm
@@ -212,8 +219,8 @@ input, and the same initialization and optimization settings):
 
 | Variant | Design | Mean Dice | Mean HD95 | Final loss | Mean epoch time | Peak memory |
 |---|---|---:|---:|---:|---:|---:|
-| E2_modify_1 | Alternating horizontal/vertical bidirectional blocks | 72.54% | **35.58** | 0.1478 | 213.81 s | **10,396 MiB** |
-| E2_modify_2 | Channel-grouped horizontal/vertical bidirectional scan in every block | **75.07%** | 40.42 | **0.1307** | **170.71 s** | 11,016 MiB |
+| E2_modify_1 | Alternating horizontal/vertical bidirectional blocks | 72.54% | **35.58** | 0.1478 | 213.81 s | **10.901 GB** |
+| E2_modify_2 | Channel-grouped horizontal/vertical bidirectional scan in every block | **75.07%** | 40.42 | **0.1307** | **170.71 s** | 11.551 GB |
 
 E2_modify_2 was selected for the first full 300-epoch validation because it
 improved Dice by `2.53` percentage points, improved Dice in seven of eight
@@ -233,11 +240,11 @@ Mean HD95.
 
 | Experiment | Scan and fusion design | Checkpoint epoch | Mean Dice ↑ | Mean HD95 ↓ | Training time | Mean epoch time | Peak GPU memory |
 |---|---|---:|---:|---:|---:|---:|---:|
-| E1 | Original VM-UNet four-direction SS2D + fixed sum | 286 | 80.0488% | 24.6136 | 14 h 49 m | 177.86 s | 14,665 MiB |
-| E2 | Row-major forward/backward + fixed sum | 299 | 78.6080% | 26.1111 | 13 h 42 m | 164.48 s | **10,747 MiB** |
-| **E2_modify_2** | **Channel-grouped horizontal/vertical bidirectional scan + fixed sum** | **297** | **80.2540%** | **21.9206** | **13 h 05 m** | **157.06 s** | 11,016 MiB |
-| E3 | Channel-grouped horizontal/vertical bidirectional scan + static learnable fusion | 286 | 80.0049% | 25.5669 | 11 h 35 m | **139.09 s** | 12,958 MiB |
-| E4 Version 1 | Channel-grouped horizontal/vertical bidirectional scan + constrained adaptive gate | 285 | 70.9089% | 35.3190 | 9 h 49 m | **117.91 s** | 13,534 MiB |
+| E1 | Original VM-UNet four-direction SS2D + fixed sum | 286 | 80.0488% | 24.6136 | 14 h 49 m | 177.86 s | 15.377 GB |
+| E2 | Row-major forward/backward + fixed sum | 299 | 78.6080% | 26.1111 | 13 h 42 m | 164.48 s | **11.269 GB** |
+| **E2_modify_2** | **Channel-grouped horizontal/vertical bidirectional scan + fixed sum** | **297** | **80.2540%** | **21.9206** | **13 h 05 m** | **157.06 s** | 11.551 GB |
+| E3 | Channel-grouped horizontal/vertical bidirectional scan + static learnable fusion | 286 | 80.0049% | 25.5669 | 11 h 35 m | **139.09 s** | 13.587 GB |
+| E4 Version 1 | Channel-grouped horizontal/vertical bidirectional scan + constrained adaptive gate | 285 | 70.9089% | 35.3190 | 9 h 49 m | **117.91 s** | 14.191 GB |
 
 Compared with E1, E2_modify_2 improved Dice by `0.2052` percentage points,
 reduced HD95 by `2.6931` (`10.94%`), reduced training time by `11.69%`, and
@@ -296,7 +303,7 @@ epochs, an alpha ramp from `0` to `0.25`, gradient clipping, equal-fusion
 regularization, context normalization, and temperature scaling. Alpha was also
 made persistent in checkpoints and verified by save/reload testing. The formal
 50-epoch run completed normally with `74.9931%` Mean Dice, `37.9087` Mean
-HD95, `97.81 s` mean epoch time, and `11,499.30 MiB` peak allocated memory.
+HD95, `97.81 s` mean epoch time, and `12.058 GB` peak allocated memory.
 
 This is a positive engineering-stability result but a negative/inconclusive
 accuracy ablation. E4 Version 2-B reserved 433 of the 2,211 training slices for
@@ -315,7 +322,7 @@ static learnable fusion. Under the matched 50-epoch protocol, E3 achieved
 `40.4159` for E2_modify_2. Dice therefore improved by `0.6035` percentage
 points and HD95 decreased by `4.3535`. Mean epoch time decreased from
 `170.71 s` to `152.66 s`, while sampled peak memory increased from `11,016`
-to `12,958 MiB`.
+to `13.587 GB`.
 
 This is a short single-seed screening result, not a direct comparison with the
 300-epoch E1/E2/E2_modify_2 results. It motivated the completed E3 300-epoch

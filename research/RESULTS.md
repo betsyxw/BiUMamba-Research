@@ -34,20 +34,20 @@ AMP disabled, 20 warm-up passes, 200 synchronized timed passes, and model
 forward time only. Synapse and BUSI used `1 x 3 x 224 x 224`; ACDC used its
 actual `1 x 3 x 192 x 192` protocol.
 
-| Dataset | Method | Mean ± SD latency (ms) | P95 (ms) | Throughput (images/s) | Peak allocated / reserved (MiB) |
+| Dataset | Method | Mean ± SD latency (ms) | P95 (ms) | Throughput (images/s) | Peak allocated / reserved (GB) |
 |---|---|---:|---:|---:|---:|
-| Synapse | E1 | 4.955 ± 0.544 | 5.956 | 201.80 | 163.16 / 182.00 |
-| Synapse | E2_modify_2 | 7.043 ± 0.832 | 8.681 | 141.99 | 150.47 / 164.00 |
-| ACDC | E1 | 4.072 ± 0.044 | 4.140 | 245.60 | 147.72 / 164.00 |
-| ACDC | E2_modify_2 | 7.280 ± 0.677 | 8.572 | 137.37 | 138.73 / 152.00 |
-| BUSI | E1 | 4.901 ± 0.476 | 5.876 | 204.05 | 163.16 / 182.00 |
-| BUSI | E2_modify_2 | 6.826 ± 0.560 | 7.906 | 146.50 | 150.47 / 164.00 |
+| Synapse | E1 | 4.955 ± 0.544 | 5.956 | 201.80 | 0.171 / 0.191 |
+| Synapse | E2_modify_2 | 7.043 ± 0.832 | 8.681 | 141.99 | 0.158 / 0.172 |
+| ACDC | E1 | 4.072 ± 0.044 | 4.140 | 245.60 | 0.155 / 0.172 |
+| ACDC | E2_modify_2 | 7.280 ± 0.677 | 8.572 | 137.37 | 0.145 / 0.159 |
+| BUSI | E1 | 4.901 ± 0.476 | 5.876 | 204.05 | 0.171 / 0.191 |
+| BUSI | E2_modify_2 | 6.826 ± 0.560 | 7.906 | 146.50 | 0.158 / 0.172 |
 
 E2_modify_2 reduced inference peak allocated memory by 6.1-7.8% and peak
 reserved memory by 7.3-9.9%. Its estimated whole-model FLOPs decreased by
 about 18.3%, and its analytical SS2D scan-core workload decreased by about
 50%. Parameters and deployable FP32 state-dict size remained essentially
-unchanged at about 27.43M and 104.70 MiB. However, mean latency increased by
+unchanged at about 27.43M and 0.110 GB. However, mean latency increased by
 39.3-78.8%, so the current implementation does not support a runtime-speedup
 claim. FLOPs are estimates, not exact values.
 
@@ -60,7 +60,7 @@ The full GitHub-safe evidence is stored in
 - Mean Dice: 0.800488 (80.0488%)
 - Mean HD95: 24.6136
 - Training duration: approximately 15 h 49 min
-- Peak GPU memory: approximately 14.3 GB
+- Peak GPU memory: approximately 15.377 GB (sampled device memory)
 - Test volumes: 12
 - Qualitative exports: 36 NIfTI files (not stored in GitHub)
 
@@ -83,7 +83,7 @@ Status: complete (seed 42, 300 epochs, exit status 0).
 - Mean HD95: 26.1111
 - Wall-clock duration: 14 h 30 min 11 s
 - Mean training time per epoch: 164.48 s
-- Peak sampled device memory: 10,747 MiB
+- Peak sampled device memory: 11.269 GB
 - Relative to E1: Dice -1.4408 percentage points; HD95 +1.4975
 - Decision: Red — audit lost transposed/vertical coverage before E3/E4
 
@@ -98,7 +98,7 @@ Status: complete (seed 42, 300 epochs, exit status 0).
 - Mean Dice: 0.802540 (80.2540%)
 - Mean HD95: 21.9206
 - Mean training time per epoch: 157.06 s
-- Peak sampled device memory: 11,016 MiB
+- Peak sampled device memory: 11.551 GB
 - Relative to E1: Dice +0.2052 percentage points; HD95 -2.6931
 - Decision: Strong Green — preserve grouped horizontal/vertical coverage for E3/E4
 
@@ -113,7 +113,7 @@ Status: complete (seed 42, 50 epochs, exit status 0).
 - Mean Dice: 0.756773 (75.6773%)
 - Mean HD95: 36.0624
 - Mean training time per epoch: 152.66 s
-- Peak sampled device memory: 12,958 MiB
+- Peak sampled device memory: 13.587 GB
 - Matched E2_modify_2 50-epoch result: Dice 75.0737%, HD95 40.4159
 - Matched change: Dice +0.6035 percentage points; HD95 -4.3535
 - Decision: passes the short-screening gate; a matched 300-epoch run is justified
@@ -131,7 +131,7 @@ Status: complete (seed 42, 300 epochs, exit status 0).
 - Mean HD95: 25.5669
 - Training-only duration: 11 h 35 min 28 s
 - Mean training time per epoch: 139.09 s
-- Peak sampled device memory: 12,958 MiB
+- Peak sampled device memory: 13.587 GB
 - Relative to E2_modify_2: Dice -0.2491 percentage points; HD95 +3.6464
 - Per-organ Dice: improved for pancreas and stomach; decreased for six organs
 - Decision: E3 does not replace E2_modify_2; retain as a negative/neutral ablation
@@ -149,7 +149,7 @@ Status: complete (seed 42, 300 epochs, exit status 0; Red decision).
 - Mean HD95: 35.3190
 - Training-only duration: 9 h 49 min 34 s
 - Mean training time per epoch: 117.91 s
-- Peak sampled device memory: 13,534 MiB
+- Peak sampled device memory: 14.191 GB
 - Relative to E2_modify_2: Dice -9.3451 percentage points; HD95 +13.3985
 - Per-organ Dice: decreased for all eight evaluated organs
 - Reproducibility warning: Epoch-50 loss was 0.7409 in the full run versus
@@ -172,8 +172,8 @@ accuracy decision).
 - Training-only duration: 1 h 21 min 30 s
 - End-to-end wall time: 1 h 48 min 29 s
 - Mean training time per epoch: 97.81 s
-- Peak allocated GPU memory: 11,499.30 MiB
-- Peak reserved GPU memory: 12,578 MiB
+- Peak allocated GPU memory: 12.058 GB
+- Peak reserved GPU memory: 13.189 GB
 - Final training loss: 0.1046
 - Stabilization changes: `0.1x` gate learning rate, five frozen gate epochs,
   alpha ramp `0 -> 0.25`, gradient clipping `1.0`, equal-fusion regularization,

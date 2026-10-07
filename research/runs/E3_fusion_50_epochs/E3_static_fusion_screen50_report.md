@@ -55,7 +55,7 @@ The Epoch-50 current-weight validation result was Dice `0.7539140799` and HD95 `
 | Training-only duration | 2 h 07 m 12.87 s |
 | Mean epoch time | **152.6574 s** |
 | Logged wall duration | approximately 8,989 s (2 h 29 m 49 s) |
-| Peak sampled GPU memory | **12,958 MiB** |
+| Peak sampled GPU memory | **13.587 GB** |
 | Peak sampled utilization | 100% |
 
 ## Matched 50-epoch comparison
@@ -66,7 +66,7 @@ The Epoch-50 current-weight validation result was Dice `0.7539140799` and HD95 `
 | Mean HD95 | 40.415915 | **36.062379** | **−4.353536** |
 | Training time | 8,535.29 s | **7,632.87 s** | **−902.42 s (−10.57%)** |
 | Mean epoch time | 170.71 s | **152.66 s** | **−18.05 s (−10.57%)** |
-| Peak GPU memory | **11,016 MiB** | 12,958 MiB | +1,942 MiB (+17.63%) |
+| Peak GPU memory | **11.551 GB** | 13.587 GB | 2.036 GB (+17.63%) |
 
 E3 improves both screening accuracy criteria and training speed. Six of eight organs improve in Dice; the exceptions are right kidney and spleen. HD95 improves in seven organs, while spleen HD95 becomes substantially worse.
 
@@ -74,10 +74,10 @@ E3 improves both screening accuracy criteria and training speed. Six of eight or
 
 | Experiment | Epochs | Mean Dice | Mean HD95 | Mean epoch time | Peak memory |
 |---|---:|---:|---:|---:|---:|
-| E1 four-direction fixed sum | 300 | 80.0488% | 24.6136 | 177.86 s | 14,665 MiB |
-| E2 row-only bidirectional fixed sum | 300 | 78.6080% | 26.1111 | 164.48 s | 10,747 MiB |
-| E2_modify_2 grouped-2D fixed sum | 300 | **80.2540%** | **21.9206** | 157.06 s | 11,016 MiB |
-| E3 grouped-2D static learnable fusion | **50** | 75.6773% | 36.0624 | **152.66 s** | 12,958 MiB |
+| E1 four-direction fixed sum | 300 | 80.0488% | 24.6136 | 177.86 s | 15.377 GB |
+| E2 row-only bidirectional fixed sum | 300 | 78.6080% | 26.1111 | 164.48 s | 11.269 GB |
+| E2_modify_2 grouped-2D fixed sum | 300 | **80.2540%** | **21.9206** | 157.06 s | 11.551 GB |
+| E3 grouped-2D static learnable fusion | **50** | 75.6773% | 36.0624 | **152.66 s** | 13.587 GB |
 
 E1, E2, and E2_modify_2 are 300-epoch results; E3 is a 50-epoch screening result. E3 must not be ranked directly against the full runs. Its valid decision comparison is the matched E2_modify_2 50-epoch run.
 

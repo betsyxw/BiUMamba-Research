@@ -29,6 +29,9 @@ def write_csv(path: Path, rows: list[dict[str, object]], columns: list[str]) -> 
         w = csv.DictWriter(f, fieldnames=columns, extrasaction="ignore")
         w.writeheader()
         w.writerows(rows)
+    from standardize_memory_units import csv_text
+    original = path.read_text(encoding="utf-8-sig")
+    path.write_text(csv_text(original, str(path)), encoding="utf-8")
 
 
 def sha256(path: Path) -> str:

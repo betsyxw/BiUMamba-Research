@@ -38,7 +38,7 @@
 
 - Total training + validation time: 9.48 h
 - Mean epoch time: 110.43 s
-- Peak training allocated memory: 12.07 GiB
+- Peak training allocated memory: 12.960 GB
 - Parameters: 27,427,761
 - THOP MACs: 3.158 G (custom selective-scan operations may be undercounted)
 - Convention-based FLOPs (2 × MACs): 6.316 G

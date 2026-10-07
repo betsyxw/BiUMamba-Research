@@ -33,10 +33,10 @@ All values use the frozen 14/4/12 Synapse v2 protocol. Checkpoints were selected
 
 ## Same-hardware efficiency comparison (seed 42, RTX 4090)
 
-| Method | Train time (h) | Mean epoch (s) | Peak train memory (GiB) | Params | Inference (ms/slice) |
+| Method | Train time (h) | Mean epoch (s) | Peak train memory (GB) | Params | Inference (ms/slice) |
 |---|---:|---:|---:|---:|---:|
-| E1 | 8.61 | 102.69 | 11.96 | 27,427,761 | 4.786 |
-| E2_modify_2 | 9.01 | 107.42 | 9.04 | 27,427,761 | 6.950 |
+| E1 | 8.61 | 102.69 | 12.842 | 27,427,761 | 4.786 |
+| E2_modify_2 | 9.01 | 107.42 | 9.707 | 27,427,761 | 6.950 |
 
 THOP reports the same parameter count and nominal convolution/linear MAC total for both methods, but custom selective-scan operations may be undercounted. Measured time and memory are therefore the primary efficiency evidence.
 

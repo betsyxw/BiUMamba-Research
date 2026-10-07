@@ -20,7 +20,7 @@ This is an early screening result, not a converged 300-epoch result.
 - Final evaluation time: `650.39 s` (`10 min 50 s`)
 - Accounted training + evaluation time: `9,185.68 s` (`2 h 33 min 6 s`)
 - Wall time from configuration logging to final evaluation: approximately `9,247 s` (`2 h 34 min 7 s`)
-- Peak GPU memory from 30-second sampling: `11,016 MiB` (`10.76 GiB`)
+- Peak GPU memory from 30-second sampling: `11.551 GB`
 - Peak sampled GPU utilization: `100%`
 
 ## Per-organ result
@@ -44,7 +44,7 @@ This is an early screening result, not a converged 300-epoch result.
 | Mean HD95 | **35.579682** | 40.415915 | +4.836232 (worse) |
 | Final training loss | 0.1478 | **0.1307** | -0.0171 |
 | Mean epoch time | 213.81 s | **170.71 s** | -43.10 s (-20.16%) |
-| Peak GPU memory | **10,396 MiB** | 11,016 MiB | +620 MiB |
+| Peak GPU memory | **10.901 GB** | 11.551 GB | 0.650 GB |
 
 E2_modify_2 improved Dice in seven of eight organs; the largest gain was pancreas (+9.52 percentage points). Its overall HD95 worsened because boundary outliers increased in gallbladder, left kidney, right kidney, and spleen. The left-kidney HD95 increase was especially large.
 

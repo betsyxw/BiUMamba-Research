@@ -21,7 +21,7 @@ The duplicate under `research/runs/` is provided so E2_modify_1 can be found nex
 | Mean HD95 | 35.5797 |
 | Final training loss | 0.1478 |
 | Mean epoch time | 213.81 s |
-| Peak GPU memory | 10,396 MiB |
+| Peak GPU memory | 10.901 GB |
 
 This was a screening experiment, not a converged 300-epoch result. It must not be directly ranked against the 300-epoch E1, E2, or E2_modify_2 results.
 

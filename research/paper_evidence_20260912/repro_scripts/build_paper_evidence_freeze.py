@@ -261,10 +261,12 @@ def draw_pareto_figures():
         for key in order:
             r = formal[key]
             mean, sd = parse_mean_std(r[metric])
-            x = float(r["Peak training memory (GiB) ↓"])
+            x = (float(r["Peak training memory (GB) ↓"])
+                 if "Peak training memory (GB) ↓" in r
+                 else float(r["Peak training memory (GiB) ↓"]) * 2**30 / 1e9)
             ax.errorbar(x, mean, yerr=sd, fmt="o", ms=9, capsize=4, color=colors[key], label=labels[key])
             ax.annotate(labels[key], (x, mean), xytext=(7, 7), textcoords="offset points", fontsize=10)
-        ax.set_xlabel("Peak training allocated memory (GiB; RTX 4090)")
+        ax.set_xlabel("Peak training allocated memory (GB; RTX 4090)")
         ax.set_ylabel(ylabel)
         ax.set_title(f"Synapse {ylabel}–memory comparison")
         ax.grid(True, alpha=0.22)
@@ -362,6 +364,11 @@ def main():
         shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
     build_tables()
+    # Convert presentation outputs while retaining frozen source measurements.
+    from standardize_memory_units import csv_text
+    for table in (OUT / "paper_tables").rglob("*.csv"):
+        original = table.read_text(encoding="utf-8-sig")
+        table.write_text(csv_text(original, str(table)), encoding="utf-8")
     build_related_work()
     draw_core_figure()
     draw_pareto_figures()

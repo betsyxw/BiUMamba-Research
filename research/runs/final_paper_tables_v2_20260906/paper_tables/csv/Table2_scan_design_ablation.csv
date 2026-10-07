@@ -1,6 +1,6 @@
-Variant,Design,Protocol,Epochs,Seed,Dice (%) ↑,HD95 ↓,Peak memory (MiB) ↓,Interpretation
-E1,Four-direction SS2D on all channels,Full300; exploratory single-seed ablation,300,42,80.05,24.61,14665,Original baseline
-E2,Horizontal forward/backward scans only,Full300; exploratory single-seed ablation,300,42,78.61,26.11,10747,Lower memory but loses vertical coverage
-E2_modify_2,C/2 horizontal + C/2 vertical channels in every block,Full300; exploratory single-seed ablation,300,42,80.25,21.92,11016,Final BiUMamba design
-E2_modify_1,Alternate horizontal/vertical scans between blocks,Screen50; exploratory single-seed ablation; not directly comparable with Full300,50,42,72.54,35.58,10396,Alternate-axis screen
-E2_modify_2,C/2 horizontal + C/2 vertical channels in every block,Screen50; exploratory single-seed ablation; not directly comparable with Full300,50,42,75.07,40.42,11016,Same-protocol screen comparator
+Variant,Design,Protocol,Epochs,Seed,Dice (%) ↑,HD95 ↓,Peak memory (GB) ↓,Interpretation
+E1,Four-direction SS2D on all channels,Full300; exploratory single-seed ablation,300,42,80.05,24.61,15.377367,Original baseline
+E2,Horizontal forward/backward scans only,Full300; exploratory single-seed ablation,300,42,78.61,26.11,11.269046,Lower memory but loses vertical coverage
+E2_modify_2,C/2 horizontal + C/2 vertical channels in every block,Full300; exploratory single-seed ablation,300,42,80.25,21.92,11.551113,Final BiUMamba design
+E2_modify_1,Alternate horizontal/vertical scans between blocks,Screen50; exploratory single-seed ablation; not directly comparable with Full300,50,42,72.54,35.58,10.900996,Alternate-axis screen
+E2_modify_2,C/2 horizontal + C/2 vertical channels in every block,Screen50; exploratory single-seed ablation; not directly comparable with Full300,50,42,75.07,40.42,11.551113,Same-protocol screen comparator

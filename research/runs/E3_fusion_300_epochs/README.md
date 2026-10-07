@@ -11,11 +11,11 @@ learnable fusion.
 
 | Experiment | Epochs | Mean Dice ↑ | Mean HD95 ↓ | Mean epoch time | Peak sampled memory |
 |---|---:|---:|---:|---:|---:|
-| E1 | 300 | 80.0488% | 24.6136 | 177.86 s | 14,665 MiB |
-| E2 | 300 | 78.6080% | 26.1111 | 164.48 s | 10,747 MiB |
-| **E2_modify_2** | **300** | **80.2540%** | **21.9206** | 157.06 s | 11,016 MiB |
-| E3 screening | 50 | 75.6773% | 36.0624 | 152.66 s | 12,958 MiB |
-| E3 full run | 300 | 80.0049% | 25.5669 | **139.09 s** | 12,958 MiB |
+| E1 | 300 | 80.0488% | 24.6136 | 177.86 s | 15.377 GB |
+| E2 | 300 | 78.6080% | 26.1111 | 164.48 s | 11.269 GB |
+| **E2_modify_2** | **300** | **80.2540%** | **21.9206** | 157.06 s | 11.551 GB |
+| E3 screening | 50 | 75.6773% | 36.0624 | 152.66 s | 13.587 GB |
+| E3 full run | 300 | 80.0049% | 25.5669 | **139.09 s** | 13.587 GB |
 
 E3 did not replace E2_modify_2. Compared with E2_modify_2, E3 lost `0.2491`
 Dice percentage points and worsened HD95 by `3.6464`. It remains a useful

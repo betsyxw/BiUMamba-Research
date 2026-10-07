@@ -16,7 +16,7 @@
 - Isolated-test Mean NSD@1mm: 0.910623
 - Total training and validation time: 4336.890 s (1.205 h)
 - Mean epoch time: 13.776 s
-- Peak allocated GPU memory: 8.947 GiB
+- Peak allocated GPU memory: 9.607 GB
 - Parameters: 27,427,636
 - Inference: 1.866 ms/slice
 - Checkpoint SHA-256: `a0f1cdff672725705762026aaaac1a1965f2095fff2e93ec5ab8e490c900b2c3`

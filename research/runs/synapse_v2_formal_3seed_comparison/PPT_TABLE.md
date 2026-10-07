@@ -3,10 +3,10 @@
 **Research Author and Repository Maintainer:** xuwen  
 **Affiliation:** Japan Advanced Institute of Science and Technology (JAIST)
 
-| Method | Dice (%) ↑ | HD95 (mm) ↓ | NSD@1 mm (%) ↑ | Peak train memory (seed 42, GiB) ↓ |
+| Method | Dice (%) ↑ | HD95 (mm) ↓ | NSD@1 mm (%) ↑ | Peak train memory (seed 42, GB) ↓ |
 |---|---:|---:|---:|---:|
-| E1: Original four-direction VM-UNet | 76.84 ± 1.15 | **32.13 ± 4.95** | **71.59 ± 2.25** | 11.96 |
-| E2_modify_2: Grouped 2D bidirectional scan | 76.66 ± 1.22 | 33.12 ± 5.06 | 71.59 ± 1.73 | **9.04** |
+| E1: Original four-direction VM-UNet | 76.84 ± 1.15 | **32.13 ± 4.95** | **71.59 ± 2.25** | 12.842 |
+| E2_modify_2: Grouped 2D bidirectional scan | 76.66 ± 1.22 | 33.12 ± 5.06 | 71.59 ± 1.73 | **9.707** |
 
 **Decision: Yellow.** E2_modify_2 reduces peak training memory by approximately 24.4%, but the three-seed test accuracy is essentially tied and HD95 is 1.00 mm worse. Under the frozen Synapse_v2 protocol, it should be described as an accuracy–memory trade-off, not as universally more accurate or faster.
 

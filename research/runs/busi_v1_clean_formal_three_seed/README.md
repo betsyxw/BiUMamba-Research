@@ -7,10 +7,10 @@ set.
 
 ## Main result
 
-| Model | Dice (%) | HD95 (px) | NSD @ 2 px (%) | Peak GPU memory (GiB) | Mean epoch (s) | Inference (ms/image) | Approx. GFLOPs |
+| Model | Dice (%) | HD95 (px) | NSD @ 2 px (%) | Peak GPU memory (GB) | Mean epoch (s) | Inference (ms/image) | Approx. GFLOPs |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| E1 (VM-UNet) | 75.46 ± 0.87 | 30.17 ± 3.42 | 56.75 ± 2.81 | 11.91 | 16.10 | 5.39 | 9.95 |
-| E2_modify_2 (BiUMamba) | 72.60 ± 2.50 | 36.65 ± 8.75 | 53.16 ± 4.20 | 8.94 | 14.32 | 7.63 | 8.12 |
+| E1 (VM-UNet) | 75.46 ± 0.87 | 30.17 ± 3.42 | 56.75 ± 2.81 | 12.788 | 16.10 | 5.39 | 9.95 |
+| E2_modify_2 (BiUMamba) | 72.60 ± 2.50 | 36.65 ± 8.75 | 53.16 ± 4.20 | 9.599 | 14.32 | 7.63 | 8.12 |
 
 E2_modify_2 reduced mean epoch time by `11.02%`, peak allocated GPU memory by
 `24.93%`, and approximate FLOPs by `18.36%`. However, Dice decreased by `2.86`

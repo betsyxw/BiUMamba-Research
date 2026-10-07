@@ -44,7 +44,7 @@ The training script selects `best.pth` using **minimum training loss**, not maxi
 | Sum of 300 epoch-training times | 35,373.86 s = **9 h 49 min 34 s** |
 | Mean epoch time | **117.9129 s** |
 | Full wall-clock run, including validation/testing | approximately **10 h 39 min** |
-| Peak GPU memory | **13,534 MiB** |
+| Peak GPU memory | **14.191 GB** |
 | Exit code | **0** |
 
 For reference, the Epoch-300 model before reloading the Epoch-285 minimum-loss checkpoint produced Dice 71.5616% and HD95 34.3401. The archived final test result above is the result of the selected Epoch-285 checkpoint.
@@ -71,7 +71,7 @@ Compared with E2_modify_2:
 | Mean Dice | 80.2540% | 70.9089% | **−9.3451 pt** |
 | Mean HD95 | 21.9206 | 35.3190 | **+13.3985** |
 | Mean epoch time | 157.0617 s | 117.9129 s | −24.93% |
-| Peak memory | 11,016 MiB | 13,534 MiB | +22.86% |
+| Peak memory | 11.551 GB | 14.191 GB | +22.86% |
 
 All eight organs lost Dice relative to E2_modify_2. Only aortic HD95 improved; the remaining seven organ-level HD95 values worsened. Therefore, E4 Version 1 does not satisfy the accuracy or stability requirements for the main model.
 

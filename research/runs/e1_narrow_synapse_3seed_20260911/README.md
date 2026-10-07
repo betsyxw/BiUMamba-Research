@@ -18,9 +18,9 @@ was introduced after observing the results.
 
 | Method | Dice (%) | HD95 | NSD (%) | Peak training allocated | Parameters | Strict latency |
 |---|---:|---:|---:|---:|---:|---:|
-| E1 | 76.84 ± 1.15 | 32.13 ± 4.95 | 71.59 ± 2.25 | 11.96 GiB | 27.43 M | 4.955 ± 0.544 ms |
-| E1-Narrow | 75.04 ± 2.82 | 33.89 ± 3.99 | 69.15 ± 2.34 | 9.47 GiB | 21.36 M | 10.740 ± 0.187 ms |
-| BiUMamba | 76.66 ± 1.22 | 33.12 ± 5.06 | 71.59 ± 1.73 | 9.04 GiB | 27.43 M | 7.043 ± 0.832 ms |
+| E1 | 76.84 ± 1.15 | 32.13 ± 4.95 | 71.59 ± 2.25 | 12.842 GB | 27.43 M | 4.955 ± 0.544 ms |
+| E1-Narrow | 75.04 ± 2.82 | 33.89 ± 3.99 | 69.15 ± 2.34 | 10.168 GB | 21.36 M | 10.740 ± 0.187 ms |
+| BiUMamba | 76.66 ± 1.22 | 33.12 ± 5.06 | 71.59 ± 1.73 | 9.707 GB | 27.43 M | 7.043 ± 0.832 ms |
 
 Patient-level statistics first average each patient across the three seeds.
 BiUMamba minus E1-Narrow was `+1.62` percentage points for Dice and `+2.44`

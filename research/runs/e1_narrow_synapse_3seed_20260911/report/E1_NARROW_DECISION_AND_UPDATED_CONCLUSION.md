@@ -12,9 +12,9 @@ The E1-Narrow width was selected before full training using a short four-candida
 
 | Method | Dice (%) | HD95 | NSD (%) | Peak training allocated | Parameters | Strict latency |
 |---|---:|---:|---:|---:|---:|---:|
-| E1 / VM-UNet | 76.84 ± 1.15 | 32.13 ± 4.95 | 71.59 ± 2.25 | 11.96 GiB | 27.43 M | 4.955 ± 0.544 ms |
-| E1-Narrow | 75.04 ± 2.82 | 33.89 ± 3.99 | 69.15 ± 2.34 | 9.47 GiB | 21.36 M | 10.740 ± 0.187 ms |
-| BiUMamba | 76.66 ± 1.22 | 33.12 ± 5.06 | 71.59 ± 1.73 | 9.04 GiB | 27.43 M | 7.043 ± 0.832 ms |
+| E1 / VM-UNet | 76.84 ± 1.15 | 32.13 ± 4.95 | 71.59 ± 2.25 | 12.842 GB | 27.43 M | 4.955 ± 0.544 ms |
+| E1-Narrow | 75.04 ± 2.82 | 33.89 ± 3.99 | 69.15 ± 2.34 | 10.168 GB | 21.36 M | 10.740 ± 0.187 ms |
+| BiUMamba | 76.66 ± 1.22 | 33.12 ± 5.06 | 71.59 ± 1.73 | 9.707 GB | 27.43 M | 7.043 ± 0.832 ms |
 
 E1-Narrow reduced E1's parameter count by about 22.1% and reduced peak allocated training memory by about 20.8%. However, compared with E1, its paired patient-level Dice decreased by 1.80 percentage points (95% bootstrap CI −2.84 to −0.93; Holm-adjusted p=0.0094) and its NSD decreased by 2.44 percentage points (95% CI −3.50 to −1.43; adjusted p=0.0030). Its HD95 increase was not statistically significant.
 
@@ -24,7 +24,7 @@ BiUMamba also showed lower observed seed-level variability for Dice (1.22 versus
 
 ## Decision
 
-The new control supports retaining BiUMamba as the proposed model. Under the near-matched training-memory setting, simple narrowing saved parameters but reduced Dice and NSD and produced greater observed seed-to-seed variation. BiUMamba used slightly less peak allocated training memory than E1-Narrow (9.04 versus 9.47 GiB) while retaining the original parameter capacity. It also had lower strict inference latency than E1-Narrow (7.04 versus 10.74 ms), although original E1 remained the fastest of the three.
+The new control supports retaining BiUMamba as the proposed model. Under the near-matched training-memory setting, simple narrowing saved parameters but reduced Dice and NSD and produced greater observed seed-to-seed variation. BiUMamba used slightly less peak allocated training memory than E1-Narrow (9.707 versus 10.168 GB) while retaining the original parameter capacity. It also had lower strict inference latency than E1-Narrow (7.04 versus 10.74 ms), although original E1 remained the fastest of the three.
 
 The evidence therefore supports an **accuracy–memory trade-off** claim, not a universal speed or accuracy claim. BiUMamba is more defensible than simple narrowing when the priority is to reduce memory while preserving Synapse segmentation performance. E1-Narrow remains attractive only when reducing parameter count is itself a deployment requirement.
 

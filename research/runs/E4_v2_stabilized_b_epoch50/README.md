@@ -13,7 +13,7 @@ Status: completed, seed 42, 50/50 epochs, exit status 0.
 - Training-only time: `4,890.43 s` (`1.3585 h`)
 - Mean epoch time: `97.81 s`
 - End-to-end time including validation and test: `6,509 s`
-- Peak allocated/reserved memory: `11,499.30 / 12,578 MiB`
+- Peak allocated/reserved memory: `12.058 / 13.189 GB`
 - Training/held-out validation slices: `1,778 / 433`
 - Source commit on RunPod: `814fc52834dde99dd5ae1fd656fdf4908414fd58`
 

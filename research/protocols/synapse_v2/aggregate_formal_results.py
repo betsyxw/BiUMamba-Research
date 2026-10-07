@@ -246,7 +246,7 @@ def main() -> None:
                 "",
                 f"- Total training + validation time: {float(summary['training_total_seconds']) / 3600.0:.2f} h",
                 f"- Mean epoch time: {float(summary['mean_epoch_total_seconds']):.2f} s",
-                f"- Peak training allocated memory: {float(summary['peak_training_gpu_allocated_bytes']) / 2**30:.2f} GiB",
+                f"- Peak training allocated memory: {float(summary['peak_training_gpu_allocated_bytes']) / 1e9:.3f} GB",
                 f"- Parameters: {int(summary['parameter_count']):,}",
                 f"- THOP MACs: {float(summary['thop_macs']) / 1e9:.3f} G (custom selective-scan operations may be undercounted)",
                 f"- Convention-based FLOPs (2 × MACs): {float(summary['thop_flops_two_per_mac']) / 1e9:.3f} G",
@@ -453,7 +453,7 @@ def main() -> None:
             "",
             "## Same-hardware efficiency comparison (seed 42, RTX 4090)",
             "",
-            "| Method | Train time (h) | Mean epoch (s) | Peak train memory (GiB) | Params | Inference (ms/slice) |",
+            "| Method | Train time (h) | Mean epoch (s) | Peak train memory (GB) | Params | Inference (ms/slice) |",
             "|---|---:|---:|---:|---:|---:|",
         ]
     )
@@ -461,7 +461,7 @@ def main() -> None:
         lines.append(
             f"| {item['method']} | {float(item['training_total_hours']):.2f} | "
             f"{float(item['mean_epoch_total_seconds']):.2f} | "
-            f"{float(item['peak_training_allocated_gib']):.2f} | "
+            f"{float(item['peak_training_allocated_gib']) * 2**30 / 1e9:.3f} | "
             f"{int(item['parameter_count']):,} | "
             f"{float(item['inference_ms_per_slice']):.3f} |"
         )

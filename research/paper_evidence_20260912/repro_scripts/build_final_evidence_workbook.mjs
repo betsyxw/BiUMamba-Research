@@ -129,10 +129,10 @@ pareto.getRange("A1:H1").merge();
 pareto.getRange("A1").values = [["Synapse Accuracy–Memory Trade-off"]];
 pareto.getRange("A1").format = { fill: "#16324F", font: { bold: true, color: "#FFFFFF", size: 20 }, rowHeight: 32 };
 pareto.getRange("A3:E6").values = [
-  ["Method", "Peak training allocated (GiB)", "Dice (%)", "NSD (%)", "Evidence"],
-  ["E1", 11.96, 76.84, 71.59, "3 seeds"],
-  ["E1-Narrow", 9.47, 75.04, 69.15, "3 seeds; matched-memory control"],
-  ["BiUMamba", 9.04, 76.66, 71.59, "3 seeds"],
+  ["Method", "Peak training allocated (GB)", "Dice (%)", "NSD (%)", "Evidence"],
+  ["E1", 12.841952, 76.84, 71.59, "3 seeds"],
+  ["E1-Narrow", 10.168335, 75.04, 69.15, "3 seeds; matched-memory control"],
+  ["BiUMamba", 9.706626, 76.66, 71.59, "3 seeds"],
 ];
 pareto.getRange("A3:E3").format = { fill: "#2F75B5", font: { bold: true, color: "#FFFFFF" }, borders: { preset: "all", style: "thin", color: "#B4C7E7" } };
 pareto.getRange("A4:E6").format = { borders: { preset: "all", style: "thin", color: "#D9E2F3" } };
@@ -142,10 +142,10 @@ diceChart.titleText = "Dice vs Peak Training Memory";
 diceChart.hasLegend = false;
 diceChart.setPosition("G3", "N18");
 pareto.getRange("P3:Q6").values = [
-  ["Peak training allocated (GiB)", "NSD (%)"],
-  [11.96, 71.59],
-  [9.47, 69.15],
-  [9.04, 71.59],
+  ["Peak training allocated (GB)", "NSD (%)"],
+  [12.841952, 71.59],
+  [10.168335, 69.15],
+  [9.706626, 71.59],
 ];
 const nsdChart = pareto.charts.add("scatter", pareto.getRange("P3:Q6"));
 nsdChart.titleText = "NSD vs Peak Training Memory";

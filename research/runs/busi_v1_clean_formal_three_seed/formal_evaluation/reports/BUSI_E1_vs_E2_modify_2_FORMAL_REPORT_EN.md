@@ -11,10 +11,10 @@
 
 ## Main results
 
-| Model | Dice (%) | HD95 (px) | NSD (%) | Peak memory (GiB) | Mean epoch (s) | Inference (ms/image) | Approx. GFLOPs |
+| Model | Dice (%) | HD95 (px) | NSD (%) | Peak memory (GB) | Mean epoch (s) | Inference (ms/image) | Approx. GFLOPs |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| E1 | 75.46 ± 0.87 | 30.17 ± 3.42 | 56.75 ± 2.81 | 11.91 | 16.10 | 5.39 | 9.95 |
-| E2_modify_2 | 72.60 ± 2.50 | 36.65 ± 8.75 | 53.16 ± 4.20 | 8.94 | 14.32 | 7.63 | 8.12 |
+| E1 | 75.46 ± 0.87 | 30.17 ± 3.42 | 56.75 ± 2.81 | 12.788 | 16.10 | 5.39 | 9.95 |
+| E2_modify_2 | 72.60 ± 2.50 | 36.65 ± 8.75 | 53.16 ± 4.20 | 9.599 | 14.32 | 7.63 | 8.12 |
 
 ## Interpretation
 

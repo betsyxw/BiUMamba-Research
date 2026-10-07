@@ -24,7 +24,7 @@ memory and trained faster, but it did not preserve baseline accuracy.
 | Wall-clock duration | 56,955 s | 52,211 s | -4,744 s |
 | Summed epoch-training time | 53,358.59 s | 49,345.06 s | -4,013.53 s |
 | Mean epoch-training time | 177.86 s | 164.48 s | -13.38 s |
-| Peak device memory | 14,665 MiB | 10,747 MiB | -3,918 MiB |
+| Peak device memory | 15.377 GB | 11.269 GB | -4.108 GB |
 
 ## Final E2 test metrics
 
@@ -83,9 +83,9 @@ static learnable fusion, and input-adaptive gating.
   `best-epoch299-mean_dice0.7861-mean_hd9526.1111.pth`; the zero-based filename
   corresponds to the completed 300th epoch. The checkpoint itself is excluded
   from GitHub.
-- Peak device memory from five-second `nvidia-smi` sampling: 10,747 MiB.
-- Smoke-test peak allocated memory from PyTorch: 8,695.39 MiB; peak reserved:
-  9,136 MiB.
+- Peak device memory from five-second `nvidia-smi` sampling: 11.269 GB.
+- Smoke-test peak allocated memory from PyTorch: 9.118 GB; peak reserved:
+  9.580 GB.
 
 ## Archived files
 

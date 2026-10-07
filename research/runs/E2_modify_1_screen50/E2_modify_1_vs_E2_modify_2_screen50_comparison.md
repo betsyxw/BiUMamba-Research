@@ -11,7 +11,7 @@ Both variants used the same Synapse split, seed 42, batch size 32, 224x224 input
 | Mean HD95 | **35.579682** | 40.415915 | +4.836232 (worse) |
 | Final loss | 0.1478 | **0.1307** | -0.0171 |
 | Mean epoch time | 213.81 s | **170.71 s** | -43.10 s (-20.16%) |
-| Peak GPU memory | **10,396 MiB** | 11,016 MiB | +620 MiB (+5.96%) |
+| Peak GPU memory | **10.901 GB** | 11.551 GB | 0.650 GB (+5.96%) |
 
 ## Organ-level change from E2_modify_1 to E2_modify_2
 

@@ -22,7 +22,7 @@ the archived E1 or E2 sources.
 - GPU smoke test: PASS
 - Input/output: `[1,1,64,64]` to `[1,9,64,64]`
 - Loss: `2.3616890907`
-- Peak allocated/reserved memory: `267.67 / 276.00 MiB`
+- Peak allocated/reserved memory: `0.281 / 0.289 GB`
 - Gradient audit: every block activated only its expected direction pair; all
   four direction parameter sets received gradients over the complete model
 - Source archive:
@@ -45,7 +45,7 @@ the archived E1 or E2 sources.
 - GPU smoke test: PASS
 - Input/output: `[1,1,64,64]` to `[1,9,64,64]`
 - Loss: `2.3616871834`
-- Peak allocated/reserved memory: `259.53 / 268.00 MiB`
+- Peak allocated/reserved memory: `0.272 / 0.281 GB`
 - Gradient audit: all four intended parameter slices were non-zero in all 15
   blocks; every inactive half-channel slice was exactly zero
 - Source archive:
@@ -62,14 +62,14 @@ weights, archives, SSH keys, tokens, or authentication information.
 
 E2_modify_1 subsequently completed a 50-epoch Synapse screening run with exit
 code 0. It reached mean Dice `0.725396` and mean HD95 `35.579682`, using a
-sampled peak of `10,396 MiB` GPU memory. These are early-screening metrics, not
+sampled peak of `10.901 GB` GPU memory. These are early-screening metrics, not
 a converged comparison with the 300-epoch E1/E2 results. The complete report,
 metrics, manifest, and text logs are stored under
 `experiments/E2_modify_1/results/screen50_seed42/`.
 
 E2_modify_2 subsequently completed the matched 50-epoch screening run with
 exit code 0. It reached mean Dice `0.750737` and mean HD95 `40.415915`, with a
-mean epoch time of `170.71 s` and sampled peak memory of `11,016 MiB`.
+mean epoch time of `170.71 s` and sampled peak memory of `11.551 GB`.
 
 Compared with E2_modify_1, E2_modify_2 improved Dice by 2.5341 percentage
 points and reduced mean epoch time by 20.16%, but worsened HD95 by 4.8362. The

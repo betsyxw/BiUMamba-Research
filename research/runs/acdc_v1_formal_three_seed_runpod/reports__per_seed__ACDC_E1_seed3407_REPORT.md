@@ -7,7 +7,7 @@
 - Mean NSD@1 mm: 0.916558.
 - Training time: 1.1791 h.
 - Mean epoch time: 13.5198 s.
-- Peak GPU memory: 8.9451 GiB.
+- Peak GPU memory: 9.605 GB.
 - Parameters: 27,427,636.
 - Inference time: 1.8113 ms/slice.
 - FLOPs: N/A; selective-scan custom operators are not counted reliably by generic profilers.

@@ -29,7 +29,7 @@ and 36 NIfTI visualization files are present.
 | Wall-clock duration | 56,955 s (15 h 49 min 15 s) |
 | Summed epoch-training time | 53,358.59 s (14 h 49 min 18.59 s) |
 | Mean training time per epoch | 177.86 s |
-| Peak sampled GPU memory | 14,665 MiB |
+| Peak sampled GPU memory | 15.377 GB |
 
 ## Per-organ metrics
 

@@ -12,20 +12,20 @@
 - Training-only time: **4,890.43 s (1.3585 h)**.
 - Mean epoch time: **97.81 s**.
 - End-to-end wall time including five held-out validations and final test: **6,509 s (1.8081 h)**.
-- Peak allocated/reserved GPU memory: **11,499.30 / 12,578 MiB**.
+- Peak allocated/reserved GPU memory: **12.058 / 13.189 GB**.
 - Final training loss: **0.1046**.
 
 ## Overall comparison
 
 | Experiment | Epochs | Protocol | Mean Dice | Mean HD95 | Mean epoch | Peak memory |
 |---|---:|---|---:|---:|---:|---:|
-| E1 | 300 | Full300 | 80.0488% | 24.6136 | 177.86 s | 14665.00 MiB |
-| E2 | 300 | Full300 | 78.6080% | 26.1111 | 164.48 s | 10747.00 MiB |
-| E2_modify_2 | 300 | Full300 | 80.2540% | 21.9206 | 157.06 s | 11016.00 MiB |
-| E3_screen50 | 50 | Screen50 | 75.6773% | 36.0624 | 152.66 s | 12958.00 MiB |
-| E3_full300 | 300 | Full300 | 80.0049% | 25.5669 | 139.09 s | 12958.00 MiB |
-| E4_version_1_full300 | 300 | Full300 | 70.9089% | 35.3190 | 117.91 s | 13534.00 MiB |
-| E4_v2_stabilized_b_epoch50 | 50 | Screen50+held-out | 74.9931% | 37.9087 | 97.81 s | 11499.30 MiB |
+| E1 | 300 | Full300 | 80.0488% | 24.6136 | 177.86 s | 15.377 GB |
+| E2 | 300 | Full300 | 78.6080% | 26.1111 | 164.48 s | 11.269 GB |
+| E2_modify_2 | 300 | Full300 | 80.2540% | 21.9206 | 157.06 s | 11.551 GB |
+| E3_screen50 | 50 | Screen50 | 75.6773% | 36.0624 | 152.66 s | 13.587 GB |
+| E3_full300 | 300 | Full300 | 80.0049% | 25.5669 | 139.09 s | 13.587 GB |
+| E4_version_1_full300 | 300 | Full300 | 70.9089% | 35.3190 | 117.91 s | 14.191 GB |
+| E4_v2_stabilized_b_epoch50 | 50 | Screen50+held-out | 74.9931% | 37.9087 | 97.81 s | 12.058 GB |
 
 ## Per-organ E4_v2-B test result
 

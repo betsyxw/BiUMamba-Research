@@ -12,7 +12,7 @@ All three results use the same Synapse split, seed 42, batch size 32, 224 × 224
 | Mean epoch time | 177.86 s | 164.48 s | **157.06 s** |
 | Training-only time | 14.82 h | 13.71 h | **13.09 h** |
 | Wall time | 15.82 h | 14.50 h | **13.87 h** |
-| Peak sampled GPU memory | 14,665 MiB | **10,747 MiB** | 11,016 MiB |
+| Peak sampled GPU memory | 15.377 GB | **11.269 GB** | 11.551 GB |
 
 ## Main findings
 

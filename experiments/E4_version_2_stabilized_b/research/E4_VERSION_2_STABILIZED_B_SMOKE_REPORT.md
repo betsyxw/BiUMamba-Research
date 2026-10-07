@@ -16,7 +16,7 @@ Status: **PASS**
 - Epoch 15: gate trainable, alpha `0.25`
 - Forward, backward, finite gate gradients, and optimizer step: passed
 - Unclipped global gradient norm: `1.194722`
-- Peak allocated GPU memory during the persistence smoke test: `620.06 MiB`
+- Peak allocated GPU memory during the persistence smoke test: `0.650 GB`
 
 Before the 50-epoch screen, `grouped_gate_alpha` was converted from a transient
 Python attribute to a persistent model buffer. The smoke test now saves a model

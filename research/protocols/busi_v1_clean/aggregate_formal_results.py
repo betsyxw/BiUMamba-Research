@@ -187,7 +187,7 @@ def main() -> None:
             "HD95_std_px": s["hd95_px_std"],
             "NSD_mean_percent": 100 * s["nsd_at_2px_mean"],
             "NSD_std_percent": 100 * s["nsd_at_2px_std"],
-            "Peak_memory_GiB": s["peak_training_gpu_allocated_gib_mean"],
+            "Peak_memory_GB": s["peak_training_gpu_allocated_gib_mean"] * 2**30 / 1e9,
             "Mean_epoch_seconds": s["mean_epoch_seconds_mean"],
             "Inference_ms_per_image": s["inference_mean_ms_batch1_mean"],
             "Approx_GFLOPs": s["approx_flops_g"],
@@ -268,10 +268,10 @@ def main() -> None:
 
 ## Main results
 
-| Model | Dice (%) | HD95 (px) | NSD (%) | Peak memory (GiB) | Mean epoch (s) | Inference (ms/image) | Approx. GFLOPs |
+| Model | Dice (%) | HD95 (px) | NSD (%) | Peak memory (GB) | Mean epoch (s) | Inference (ms/image) | Approx. GFLOPs |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| E1 | {100*e1s['dice_mean']:.2f} ± {100*e1s['dice_std']:.2f} | {e1s['hd95_px_mean']:.2f} ± {e1s['hd95_px_std']:.2f} | {100*e1s['nsd_at_2px_mean']:.2f} ± {100*e1s['nsd_at_2px_std']:.2f} | {e1s['peak_training_gpu_allocated_gib_mean']:.2f} | {e1s['mean_epoch_seconds_mean']:.2f} | {e1s['inference_mean_ms_batch1_mean']:.2f} | {e1s['approx_flops_g']:.2f} |
-| E2_modify_2 | {100*e2s['dice_mean']:.2f} ± {100*e2s['dice_std']:.2f} | {e2s['hd95_px_mean']:.2f} ± {e2s['hd95_px_std']:.2f} | {100*e2s['nsd_at_2px_mean']:.2f} ± {100*e2s['nsd_at_2px_std']:.2f} | {e2s['peak_training_gpu_allocated_gib_mean']:.2f} | {e2s['mean_epoch_seconds_mean']:.2f} | {e2s['inference_mean_ms_batch1_mean']:.2f} | {e2s['approx_flops_g']:.2f} |
+| E1 | {100*e1s['dice_mean']:.2f} ± {100*e1s['dice_std']:.2f} | {e1s['hd95_px_mean']:.2f} ± {e1s['hd95_px_std']:.2f} | {100*e1s['nsd_at_2px_mean']:.2f} ± {100*e1s['nsd_at_2px_std']:.2f} | {e1s['peak_training_gpu_allocated_gib_mean'] * 2**30 / 1e9:.3f} | {e1s['mean_epoch_seconds_mean']:.2f} | {e1s['inference_mean_ms_batch1_mean']:.2f} | {e1s['approx_flops_g']:.2f} |
+| E2_modify_2 | {100*e2s['dice_mean']:.2f} ± {100*e2s['dice_std']:.2f} | {e2s['hd95_px_mean']:.2f} ± {e2s['hd95_px_std']:.2f} | {100*e2s['nsd_at_2px_mean']:.2f} ± {100*e2s['nsd_at_2px_std']:.2f} | {e2s['peak_training_gpu_allocated_gib_mean'] * 2**30 / 1e9:.3f} | {e2s['mean_epoch_seconds_mean']:.2f} | {e2s['inference_mean_ms_batch1_mean']:.2f} | {e2s['approx_flops_g']:.2f} |
 
 ## Interpretation
 
@@ -296,10 +296,10 @@ The FLOPs values are approximate. They combine THOP-supported layers with analyt
 
 ## 主要结果
 
-| 模型 | Dice (%) | HD95 (px) | NSD (%) | 峰值显存 (GiB) | 平均epoch (s) | 推理 (ms/图) | 估算GFLOPs |
+| 模型 | Dice (%) | HD95 (px) | NSD (%) | 峰值显存 (GB) | 平均epoch (s) | 推理 (ms/图) | 估算GFLOPs |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| E1 | {100*e1s['dice_mean']:.2f} ± {100*e1s['dice_std']:.2f} | {e1s['hd95_px_mean']:.2f} ± {e1s['hd95_px_std']:.2f} | {100*e1s['nsd_at_2px_mean']:.2f} ± {100*e1s['nsd_at_2px_std']:.2f} | {e1s['peak_training_gpu_allocated_gib_mean']:.2f} | {e1s['mean_epoch_seconds_mean']:.2f} | {e1s['inference_mean_ms_batch1_mean']:.2f} | {e1s['approx_flops_g']:.2f} |
-| E2_modify_2 | {100*e2s['dice_mean']:.2f} ± {100*e2s['dice_std']:.2f} | {e2s['hd95_px_mean']:.2f} ± {e2s['hd95_px_std']:.2f} | {100*e2s['nsd_at_2px_mean']:.2f} ± {100*e2s['nsd_at_2px_std']:.2f} | {e2s['peak_training_gpu_allocated_gib_mean']:.2f} | {e2s['mean_epoch_seconds_mean']:.2f} | {e2s['inference_mean_ms_batch1_mean']:.2f} | {e2s['approx_flops_g']:.2f} |
+| E1 | {100*e1s['dice_mean']:.2f} ± {100*e1s['dice_std']:.2f} | {e1s['hd95_px_mean']:.2f} ± {e1s['hd95_px_std']:.2f} | {100*e1s['nsd_at_2px_mean']:.2f} ± {100*e1s['nsd_at_2px_std']:.2f} | {e1s['peak_training_gpu_allocated_gib_mean'] * 2**30 / 1e9:.3f} | {e1s['mean_epoch_seconds_mean']:.2f} | {e1s['inference_mean_ms_batch1_mean']:.2f} | {e1s['approx_flops_g']:.2f} |
+| E2_modify_2 | {100*e2s['dice_mean']:.2f} ± {100*e2s['dice_std']:.2f} | {e2s['hd95_px_mean']:.2f} ± {e2s['hd95_px_std']:.2f} | {100*e2s['nsd_at_2px_mean']:.2f} ± {100*e2s['nsd_at_2px_std']:.2f} | {e2s['peak_training_gpu_allocated_gib_mean'] * 2**30 / 1e9:.3f} | {e2s['mean_epoch_seconds_mean']:.2f} | {e2s['inference_mean_ms_batch1_mean']:.2f} | {e2s['approx_flops_g']:.2f} |
 
 ## 结果解释
 

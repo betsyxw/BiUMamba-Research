@@ -19,8 +19,8 @@
 
 | Model | Mean Dice | Mean HD95 (mm) | Mean NSD@1mm | Training time | Mean epoch | Peak memory | Inference |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| E1: original four-direction SS2D | **90.83%** | **2.714** | **91.06%** | 1.205 h | 13.776 s | 8.947 GiB | 1.866 ms/slice |
-| E2_modify_2: grouped 2D bidirectional scan | 90.55% | 2.982 | 90.44% | **0.856 h** | **9.617 s** | **6.716 GiB** | **1.273 ms/slice** |
+| E1: original four-direction SS2D | **90.83%** | **2.714** | **91.06%** | 1.205 h | 13.776 s | 9.607 GB | 1.866 ms/slice |
+| E2_modify_2: grouped 2D bidirectional scan | 90.55% | 2.982 | 90.44% | **0.856 h** | **9.617 s** | **7.211 GB** | **1.273 ms/slice** |
 
 Compared with E1, E2_modify_2:
 

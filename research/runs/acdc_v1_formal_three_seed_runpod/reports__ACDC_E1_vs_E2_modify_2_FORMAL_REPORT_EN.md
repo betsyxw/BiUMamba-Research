@@ -20,10 +20,10 @@ E2_modify_2 changed Dice by -0.046 percentage points, HD95 by +0.116 mm, and NSD
 
 ## Efficiency
 
-| Model | Training (h) | Epoch (s) | Memory (GiB) | Inference (ms/slice) | Parameters |
+| Model | Training (h) | Epoch (s) | Memory (GB) | Inference (ms/slice) | Parameters |
 |---|---:|---:|---:|---:|---:|
-| E1 | 1.181 ± 0.022 | 13.539 ± 0.228 | 8.946 ± 0.001 | 1.833 ± 0.029 | 27,427,636 |
-| E2_modify_2 | 0.824 ± 0.027 | 9.288 ± 0.286 | 6.716 ± 0.000 | 1.199 ± 0.064 | 27,427,636 |
+| E1 | 1.181 ± 0.022 | 13.539 ± 0.228 | 9.606 ± 0.001 | 1.833 ± 0.029 | 27,427,636 |
+| E2_modify_2 | 0.824 ± 0.027 | 9.288 ± 0.286 | 7.211 ± 0.000 | 1.199 ± 0.064 | 27,427,636 |
 
 E2_modify_2 reduced total training time by 30.25%, mean epoch time by 31.40%, peak GPU memory by 24.93%, and inference time by 34.58%. Parameter count was unchanged.
 
