@@ -1,0 +1,16 @@
+# Historical core dependencies, not a lockfile or an installer for CUDA wheels.
+# Install compatible torch/torchvision and compiled selective-scan extensions
+# separately following README.md; local RunPod wheel URLs are not public URLs.
+numpy==1.24.4
+scipy==1.10.1
+einops==0.8.1
+timm==0.4.12
+ml_collections==0.1.1
+MedPy==0.5.2
+h5py==3.11.0
+SimpleITK==2.5.5
+scikit-learn==1.3.2
+matplotlib==3.7.5
+tensorboardX==2.6.2.2
+tqdm
+Pillow

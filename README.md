@@ -1,6 +1,15 @@
 # BiUMamba Research
 
-**Last updated: 20261007**
+**Last updated: 20261015**
+
+**20261015 — Six-model source-completeness repair.** Explicit E1, E2,
+E2_modify_1, E2_modify_2, E3 and E4-v1 source/config selection is now available
+in the [reproduction guide](reproducibility/README.md). Missing E3 and E4-v1
+implementation snapshots were restored from an archived execution-code copy.
+BiUMamba requires `grouped_2d_bidirectional_sum`; `bidirectional_sum` is E2.
+This update repairs public source coverage and adds maintained training and
+evaluation entry points; it does not claim recovery of every original training
+commit or numerical retraining. See the [source audit](reproducibility/SOURCE_RECOVERY_AUDIT.md).
 
 **20261007 — Memory and model-file sizes are now reported in decimal GB
 (`1 GB = 1,000,000,000 bytes`).** Published reports, tables, workbooks and
@@ -61,6 +70,13 @@ See the [updated conclusions and reports](research/hakusan/),
 and [final paper evidence package](research/paper_evidence_20260912/).
 
 ### Update history
+
+- **20261015** — Added explicit source/config directories for all six E1--E4
+  variants, recovered E3 static fusion and E4-v1 adaptive-gate code, local model
+  wrappers, a guarded model registry, common Synapse-v2 training/evaluation
+  commands, source hashes and release checks. Original formal-training commits
+  remain subject to the documented provenance gaps; scientific results and E5
+  status are unchanged. CUDA numerical reproduction was not performed here.
 
 - **20260906** — Updated overall progress to approximately 90%, noted remaining
   work on Hakusan, made this README English-only, and clarified the final
