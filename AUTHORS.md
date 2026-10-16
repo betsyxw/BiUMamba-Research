@@ -34,7 +34,3 @@ not replace or claim authorship of upstream source code.
 本研究の研究設計、BiUMamba実験版、アブレーション計画、実験実行、評価、
 解析および再現性資料の作成者は **xuwen** です。
 
-今後追加する研究固有のソースコードとレポートには、原則として
-`Author: xuwen`および`Project: BiUMamba Research`を記載します。
-VM-UNet/VMamba由来のオリジナルコード、著作権、引用およびライセンス表記は
-原著者に帰属し、本研究による帰属表記で置き換えません。
