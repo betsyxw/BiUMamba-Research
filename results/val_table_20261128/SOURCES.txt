@@ -1,0 +1,245 @@
+SOURCES for Synapse v2 validation table
+Compiled: 2026-11-28 10:15 JST (Asia/Tokyo)
+Every numeric result in RESULTS_TABLE_VAL.md / RESULTS_TABLE_VAL.csv is traced to a source file below.
+SHA-256 is of the source file as read on Hakusan, except where a Mac verification hash is explicitly named.
+No test-set metric was read or copied from these files. Protocol hashes of test_cases.txt (file integrity only) exist inside some training_summary.json objects and were not used as results.
+
+========================================================================
+CHECKPOINT RULE AND PROTOCOL (not a result number, but the selection rule)
+========================================================================
+Synapse v2 CHECKPOINT_POLICY.md
+  Hakusan: /home/s2530007/BiUMamba/imported_E2_modify_2_s3407_s2026_20261019T001712Z/paper_final_results_v2_20260906_data_s2530007_XuWen/synapse/frozen_experiment_protocol/CHECKPOINT_POLICY.md
+  SHA256: 475f719d94ceed65321234088ddabb11cc0f97fed54b9d87498b8159dacb2094
+  Mac copy (identical SHA256): /Users/xuwen/Documents/Codex/2026-08-24/ni-we/outputs/paper_final_results_v2_verified/paper_final_results_v2/synapse/frozen_experiment_protocol/CHECKPOINT_POLICY.md
+  Rule: highest validation macro Dice; if Dice tied within 1e-12, lower validation macro HD95.
+
+Phase 2 FREEZE.md (same text in frozen copy and repo copy; cmp identical)
+  /home/s2530007/BiUMamba/frozen/phase2_scan_budget_20261125/FREEZE.md
+  /home/s2530007/BiUMamba/repos/phase2_scan_budget_frozen_20261125/research/protocols/phase2_scan_budget/FREEZE.md
+  SHA256: 885b1097ab417fcef7f00b3982b6cc9437366d66a2883e3ddbd9bf5f1a880b71
+
+ValidationCheckpointSelector
+  /home/s2530007/BiUMamba/repos/phase2_scan_budget_frozen_20261125/experiments/E1_synapse_v2/checkpointing.py
+  /home/s2530007/BiUMamba/repos/phase2_scan_budget_frozen_20261125/experiments/E2_modify_2_synapse_v2/checkpointing.py
+  Rule string: max_validation_dice_then_min_validation_hd95, dice_tolerance=1e-12.
+  E5/C01 trainers import this same class:
+    repos/BiuCandidate_C01/experiments/BiuCandidate_C01/train_c01_synapse_v2.py
+    plans/E5_seed_confirmation_20261015T005759Z/code_v2/train_e5_synapse_v2_seedconf.py
+
+Shared Synapse v2 protocol hashes (appear in every finished training_summary.json)
+  SEEDS.txt: 0b7c9332262469c3c6186f886765a6f23b948d9a9edb98280955515c378775e7
+  TRAINING_CONFIG.json: 7fcda0102d2ea29697d176a266fa14149d9b848618d2ad64f30c478bf75a05e3
+  frozen_augmentation.py: d7ddcf526f7acf71289ac855c817f29cbc64fc8130318447654bd50f7a6752e4
+  splits/train_cases.txt: feae1ec76b7bbfcd9a64697172ad8da4adb8dc2434cce15ab19c1447321ea584
+  splits/validation_cases.txt: e06d82c762120ff420a4975193cc01456cba19eb1e25e6aace6aa692ecd6d1f1
+
+========================================================================
+E1 (VM-UNet, scan_fusion=original)
+========================================================================
+Seed 42 val macro Dice 0.7912585215717896, HD95 8.251633674359205 voxels, best epoch 242
+  peak allocated 12846290944 bytes, reserved 13748928512 bytes
+  training_summary.json
+    Hakusan: /home/s2530007/BiUMamba/imported_baselines_seed42_runpod/E1_seed42/training_summary.json
+    SHA256: 4825700bd28c26aff12391d87c452d51f3517dc83ed404d58f8ae6cfbb038416
+    Mac (identical SHA256): /Users/xuwen/Documents/Codex/2026-08-24/ni-we/outputs/paper_final_results_v2_verified/paper_final_results_v2/synapse/training_runs/E1_seed42/training_summary.json
+  validation_history.json (300 epochs, 0 NaN/Inf; selector recomputed the same epoch)
+    Hakusan: /home/s2530007/BiUMamba/imported_baselines_seed42_runpod/E1_seed42/validation_history.json
+    SHA256: bd78144a4ff8c336963f319d0d048370040c716f5f1c006f7c80e39e844ceb03
+  GPU evidence: no per-run gpu_info.txt. Import path imported_baselines_seed42_runpod.
+    Mac LAUNCH_MANIFEST.txt: synapse/training_runs/E1_seed42/LAUNCH_MANIFEST.txt (checkpoint rule stated).
+    Mac package environment: manifests/environment/gpu_summary.csv (NVIDIA GeForce RTX 4090).
+  protocol=synapse_v2; test_access_during_training=false; model_reference=E1_original_four_direction_ss2d
+
+Seed 3407 val macro Dice 0.8068118558544674, HD95 7.882156867035078 voxels, best epoch 209
+  peak allocated 12958582272 bytes, reserved 13673431040 bytes
+  job 644012, COMPLETED
+  training_summary.json
+    Hakusan: /home/s2530007/BiUMamba/runs/e1_synapse_v2_full300_seed3407_hakusan_644012/training_summary.json
+    SHA256: 0d5b5286b19b3982eebda3bee90af07f8c8fed5112562c5daeda6a1befae53c6
+    Mac (identical SHA256): /Users/xuwen/Documents/Codex/2026-08-24/ni-we/outputs/paper_final_results_v2_verified/paper_final_results_v2/synapse/hakusan_archive/extracted_verified/runs/e1_synapse_v2_full300_seed3407_hakusan_644012/training_summary.json
+  validation_history.json
+    Hakusan: /home/s2530007/BiUMamba/runs/e1_synapse_v2_full300_seed3407_hakusan_644012/validation_history.json
+    SHA256: b8194abd95de61a8a341a4b34ef4f770d29b6754cef56eed36616272306827f8
+  gpu_info.txt: NVIDIA A100-PCIE-40GB, 40960 MiB
+    /home/s2530007/BiUMamba/runs/e1_synapse_v2_full300_seed3407_hakusan_644012/gpu_info.txt
+  protocol=synapse_v2; test_access_during_training=false
+
+Seed 2026 val macro Dice 0.8003383849526208, HD95 9.009068444571259 voxels, best epoch 263
+  peak allocated 12958582272 bytes, reserved 13673431040 bytes
+  job 644013, COMPLETED
+  training_summary.json
+    Hakusan: /home/s2530007/BiUMamba/runs/e1_synapse_v2_full300_seed2026_hakusan_644013/training_summary.json
+    SHA256: b350aa24c2a92ebbe48b4d721ba65989d6e97a1fefb2ac53da9466adec5a04ab
+    Mac (identical SHA256): /Users/xuwen/Documents/Codex/2026-08-24/ni-we/outputs/paper_final_results_v2_verified/paper_final_results_v2/synapse/hakusan_archive/extracted_verified/runs/e1_synapse_v2_full300_seed2026_hakusan_644013/training_summary.json
+  validation_history.json
+    Hakusan: /home/s2530007/BiUMamba/runs/e1_synapse_v2_full300_seed2026_hakusan_644013/validation_history.json
+    SHA256: d8409eabfe1c841d4a13e2d3aa16acdc3d03d01d6cf8cba7a17922ee1bdb8573
+  gpu_info.txt: NVIDIA A100-PCIE-40GB, 40960 MiB
+    /home/s2530007/BiUMamba/runs/e1_synapse_v2_full300_seed2026_hakusan_644013/gpu_info.txt
+  protocol=synapse_v2; test_access_during_training=false
+
+E1 3-seed Dice mean 0.7994695874596259, sample std 0.007812980138209477
+E1 3-seed HD95 mean 8.380952995321847, sample std 0.5744780596132026
+  Computed with Python statistics.mean / statistics.stdev (ddof=1) from the three training_summary values above.
+
+========================================================================
+BiUMamba (E2_modify_2, grouped_2d_bidirectional_sum)
+========================================================================
+Seed 42 val macro Dice 0.7717883816167008, HD95 12.564736829433427 voxels, best epoch 271
+  peak allocated 9707003904 bytes, reserved 10303307776 bytes
+  training_summary.json
+    Hakusan: /home/s2530007/BiUMamba/imported_baselines_seed42_runpod/E2_modify_2_seed42/training_summary.json
+    SHA256: 32e23a850428635069ba94d9da8359addb75d233b0f143d15a3b8cf222f09ee3
+    Mac (identical SHA256): /Users/xuwen/Documents/Codex/2026-08-24/ni-we/outputs/paper_final_results_v2_verified/paper_final_results_v2/synapse/training_runs/E2_modify_2_seed42/training_summary.json
+  validation_history.json
+    Hakusan: /home/s2530007/BiUMamba/imported_baselines_seed42_runpod/E2_modify_2_seed42/validation_history.json
+    SHA256: f04e5a99eff34d770b1c7d0e23e5ea93d6b7f20b3041551c39ab7508b2befcfc
+  GPU evidence: no per-run gpu_info.txt. Import path imported_baselines_seed42_runpod.
+  protocol=synapse_v2; test_access_during_training=false
+
+Seed 3407 val macro Dice 0.8000417422153361, HD95 11.341922655522376 voxels, best epoch 225
+  peak allocated 9707003904 bytes, reserved 10303307776 bytes
+  training_summary.json
+    Hakusan: /home/s2530007/BiUMamba/imported_E2_modify_2_s3407_s2026_20261019T001712Z/paper_final_results_v2_20260906_data_s2530007_XuWen/synapse/training_runs/E2_modify_2_seed3407/training_summary.json
+    SHA256: 26a71c1679f86dd854e3e2f998a9d66fca04c37b189e1a4c332e762399bbe97f
+    Mac (identical SHA256): /Users/xuwen/Documents/Codex/2026-08-24/ni-we/outputs/paper_final_results_v2_verified/paper_final_results_v2/synapse/training_runs/E2_modify_2_seed3407/training_summary.json
+  validation_history.json
+    Hakusan: /home/s2530007/BiUMamba/imported_E2_modify_2_s3407_s2026_20261019T001712Z/paper_final_results_v2_20260906_data_s2530007_XuWen/synapse/training_runs/E2_modify_2_seed3407/validation_history.json
+    SHA256: d75655e594366619276633d8efbe281b961a295b005d73d1ea17ca4646053b91
+  protocol=synapse_v2; test_access_during_training=false
+
+Seed 2026 val macro Dice 0.7914916207149567, HD95 9.556274322603283 voxels, best epoch 265
+  peak allocated 9707003904 bytes, reserved 10303307776 bytes
+  training_summary.json
+    Hakusan: /home/s2530007/BiUMamba/imported_E2_modify_2_s3407_s2026_20261019T001712Z/paper_final_results_v2_20260906_data_s2530007_XuWen/synapse/training_runs/E2_modify_2_seed2026/training_summary.json
+    SHA256: af8f526d4879c34baa47be0346f723d9b007589e27e458ee00404143b8ee686f
+    Mac (identical SHA256): /Users/xuwen/Documents/Codex/2026-08-24/ni-we/outputs/paper_final_results_v2_verified/paper_final_results_v2/synapse/training_runs/E2_modify_2_seed2026/training_summary.json
+  validation_history.json
+    Hakusan: /home/s2530007/BiUMamba/imported_E2_modify_2_s3407_s2026_20261019T001712Z/paper_final_results_v2_20260906_data_s2530007_XuWen/synapse/training_runs/E2_modify_2_seed2026/validation_history.json
+    SHA256: 4517a3be7b4c4ca38a8e4655b72ec62f56e966fea7bce918044b52d68cd2f256
+  protocol=synapse_v2; test_access_during_training=false
+
+BiUMamba GPU package snapshot (shared environment file, not a per-run gpu_info.txt)
+  Mac: /Users/xuwen/Documents/Codex/2026-08-24/ni-we/outputs/paper_final_results_v2_verified/paper_final_results_v2/manifests/environment/gpu_summary.csv
+  Also Hakusan copy: .../manifests/environment/nvidia_smi_q.txt
+  Product Name: NVIDIA GeForce RTX 4090
+
+BiUMamba 3-seed Dice mean 0.7877739148489978, sample std 0.014488930221326465
+BiUMamba 3-seed HD95 mean 11.154311269186362, sample std 1.5129805643044028
+  Computed with Python statistics.mean / statistics.stdev (ddof=1) from the three training_summary values above.
+
+========================================================================
+E5 candidate (legacy C01, r=0.25)
+========================================================================
+Seed 42 val macro Dice 0.7994008236385708, HD95 11.26314430737364 voxels, best epoch 242
+  peak allocated 11174083072 bytes, reserved 12209618944 bytes
+  job 814143, COMPLETED, label=EXPLORATORY_seed42_only, model_reference=BiuCandidate_C01, scan_ratio=0.25
+  training_summary.json
+    /home/s2530007/BiUMamba/runs/exploratory_C01_synapse_seed42_20261014T011713Z_814143/training_summary.json
+    SHA256: b1c726497df35b13275afdda7ad73205b923719ad21552d6f29cd75b3d78d7aa
+  validation_history.json
+    /home/s2530007/BiUMamba/runs/exploratory_C01_synapse_seed42_20261014T011713Z_814143/validation_history.json
+    SHA256: a65503e1ba615ce81c743bd76d5061e2a067abdb0b54984ade2a7fe2c0c60a12
+  C01_SELECTION_RECORD.txt (same selected epoch/dice/hd95)
+    /home/s2530007/BiUMamba/runs/exploratory_C01_synapse_seed42_20261014T011713Z_814143/C01_SELECTION_RECORD.txt
+  gpu_info.txt: NVIDIA A100-PCIE-40GB, 40960 MiB
+    /home/s2530007/BiUMamba/runs/exploratory_C01_synapse_seed42_20261014T011713Z_814143/gpu_info.txt
+  scan_ratio_channels.json (r=0.25 channel split; identical SHA on all 3 E5 seeds)
+    SHA256: b17920ee8d1c2305ee82d619c454f4509ab69c8e5646bda5dd9f655af67762ea
+  protocol=synapse_v2; test_access_during_training=false
+
+Seed 3407 val macro Dice 0.7907159001917614, HD95 8.5788197486427 voxels, best epoch 257
+  peak allocated 11174083072 bytes, reserved 12209618944 bytes
+  job 822106, COMPLETED, experiment_role=confirmation_replicate
+  training_summary.json
+    /home/s2530007/BiUMamba/runs/exploratory_E5_synapse_seed3407_20261015T152738Z_822106/training_summary.json
+    SHA256: d8d8ec9a8157fdc00e3b7471792540bf1409d4a014613d78ad73cf2c7c0ee61e
+  validation_history.json
+    /home/s2530007/BiUMamba/runs/exploratory_E5_synapse_seed3407_20261015T152738Z_822106/validation_history.json
+    SHA256: e648a5beefd7d27435b695c85f395ebaaf9f9639bd1852d5cd9ae2ec4b7c6e99
+  gpu_info.txt: NVIDIA A100-PCIE-40GB, 40960 MiB
+    /home/s2530007/BiUMamba/runs/exploratory_E5_synapse_seed3407_20261015T152738Z_822106/gpu_info.txt
+  protocol=synapse_v2; test_access_during_training=false; actual_seed=3407
+
+Seed 2026 val macro Dice 0.7922860291931053, HD95 9.9145479376512 voxels, best epoch 246
+  peak allocated 11174083072 bytes, reserved 12209618944 bytes
+  job 822107, COMPLETED, experiment_role=confirmation_replicate
+  training_summary.json
+    /home/s2530007/BiUMamba/runs/exploratory_E5_synapse_seed2026_20261016T181119Z_822107/training_summary.json
+    SHA256: f3a7d9e1e8f34aa6900255c8e03535a0faad4f2445e472651c487c87412ff03a
+  validation_history.json
+    /home/s2530007/BiUMamba/runs/exploratory_E5_synapse_seed2026_20261016T181119Z_822107/validation_history.json
+    SHA256: dfb6597727f3c296dc8901ef58ab31fbd3d8e18c879ae2c4582d74cf0e0fccd2
+  gpu_info.txt: NVIDIA A100-PCIE-40GB, 40960 MiB
+    /home/s2530007/BiUMamba/runs/exploratory_E5_synapse_seed2026_20261016T181119Z_822107/gpu_info.txt
+  protocol=synapse_v2; test_access_during_training=false; actual_seed=2026
+
+E5 3-seed Dice mean 0.7941342510078125, sample std 0.00462805755436387
+E5 3-seed HD95 mean 9.918837331222512, sample std 1.3421674200055753
+  Computed with Python statistics.mean / statistics.stdev (ddof=1) from the three training_summary values above.
+
+========================================================================
+G4-Single (grouped_4_single) — incomplete
+========================================================================
+Seed 42 val macro Dice 0.7955991327808384, HD95 10.917052992677727 voxels, best epoch 242
+  peak allocated 8293828096 bytes, reserved 9170845696 bytes
+  job 1082042, COMPLETED exit 0:0, 2026-11-27 21:34:52 to 2026-11-28 05:26:18 JST
+  training_summary.json
+    /home/s2530007/BiUMamba/runs/phase2_grouped_4_single_synapse_v2_full300_seed42_1082042/training_summary.json
+    SHA256: 265e8ba16a44c50476058baf8ecdc586530a2488b38967f69a50a7ae5fcdf8c1
+  validation_history.json
+    /home/s2530007/BiUMamba/runs/phase2_grouped_4_single_synapse_v2_full300_seed42_1082042/validation_history.json
+    SHA256: 342feeec58f954b21b13647fb46bf747d10b260d5d2b2e31ff9a5b6912a6afbb
+  gpu_info.txt: NVIDIA A100-PCIE-40GB, 40960 MiB
+    /home/s2530007/BiUMamba/runs/phase2_grouped_4_single_synapse_v2_full300_seed42_1082042/gpu_info.txt
+  scan_fusion=grouped_4_single; protocol=synapse_v2; test_access_during_training=false
+
+Seed 3407 val macro Dice 0.7905424972994087, HD95 9.289870156898013 voxels, best epoch 193
+  peak allocated 8293828096 bytes, reserved 9170845696 bytes
+  job 1082043, COMPLETED exit 0:0, 2026-11-27 21:34:52 to 2026-11-28 05:23:49 JST
+  training_summary.json
+    /home/s2530007/BiUMamba/runs/phase2_grouped_4_single_synapse_v2_full300_seed3407_1082043/training_summary.json
+    SHA256: 91953e971c9678843b926be24724d8dc5323667b72902be52e9bd9d9176c06de
+  validation_history.json
+    /home/s2530007/BiUMamba/runs/phase2_grouped_4_single_synapse_v2_full300_seed3407_1082043/validation_history.json
+    SHA256: 7af38c6ad01fd67d7569de5999f3f05cd26c4810d587e33f6bd1c89fad12d7f7
+  gpu_info.txt: NVIDIA A100-PCIE-40GB, 40960 MiB
+    /home/s2530007/BiUMamba/runs/phase2_grouped_4_single_synapse_v2_full300_seed3407_1082043/gpu_info.txt
+  scan_fusion=grouped_4_single; protocol=synapse_v2; test_access_during_training=false
+
+Seed 2026: running (job 1082044). Started 2026-11-28 05:23:54 JST. No training_summary.json at harvest. Marked running. No current-best number was taken from the in-progress validation_history.json.
+
+3-seed mean: missing (only 2/3 seeds finished).
+
+========================================================================
+G4-Paired (grouped_4_paired) — incomplete
+========================================================================
+Seed 42: running (job 1082045). Started 2026-11-28 05:26:26 JST. Marked running. No current-best number was taken.
+Seed 3407: pending (job 1082046), reason QOSMaxJobsPerUserLimit at 2026-11-28 10:07 JST.
+Seed 2026: pending (job 1082047), reason QOSMaxJobsPerUserLimit at 2026-11-28 10:07 JST.
+3-seed mean: missing (0/3 seeds finished).
+Job state source: squeue/sacct on Hakusan at 2026-11-28 10:07:50 JST.
+
+========================================================================
+SCAN BUDGET CODE
+========================================================================
+E1 4HWC: forward_corev0 in
+  /home/s2530007/BiUMamba/repos/E2_modify_2_synapse_v2_exec/models/vmunet/vmamba.py
+  SHA256: 309f4a7a9b2d5df98305957177eab30cc4eb258b307486f8f9712ad31f2db281
+BiUMamba 2HWC: forward_core_grouped_2d in the same file (two groups, each C/2, two routes each).
+E5 2.5HWC: ss2d_ratio.py split_channels and docstring
+  /home/s2530007/BiUMamba/repos/BiuCandidate_C01/experiments/BiuCandidate_C01/ss2d_ratio.py
+  SHA256: c88d2c16c620291953ea53f0ffb69f747f87aa8a48bc27219291f8c2aafe5198
+  (hash also recorded in E5 run_manifest.txt)
+G4 HWC / 2HWC: FREEZE.md and forward_core_grouped_4 in
+  /home/s2530007/BiUMamba/repos/phase2_scan_budget_frozen_20261125/models/vmunet/vmamba.py
+  SHA256: 8df30e72eab091e6f84fd294925da6edabbd3f2cb51f312a09332a6848129213
+
+========================================================================
+SLURM STATE FOR UNFINISHED G4 JOBS
+========================================================================
+Checked read-only at 2026-11-28 10:07:50 JST via squeue and sacct.
+1082044 biu-p2-g4-single-2026 RUNNING on spcc-a100g06, elapsed about 4:43:56
+1082045 biu-p2-g4-paired-42    RUNNING on spcc-a100g01, elapsed about 4:41:24
+1082046 biu-p2-g4-paired-3407  PENDING QOSMaxJobsPerUserLimit
+1082047 biu-p2-g4-paired-2026  PENDING QOSMaxJobsPerUserLimit
