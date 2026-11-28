@@ -1,6 +1,6 @@
 # BiUMamba Research
 
-**Last updated: 20261015**
+**Last updated: 20261128**
 
 **20261015 — Six-model source-completeness repair.** Explicit E1, E2,
 E2_modify_1, E2_modify_2, E3 and E4-v1 source/config selection is now available
@@ -463,3 +463,5 @@ The G4-Single row is incomplete (2 of 3 seeds finished). The G4-Paired row is in
 On the validation set, E1 (VM-UNet) has the best Dice (0.7995 ± 0.0078) and the best HD95. BiUMamba has a lower validation Dice (0.7878 ± 0.0145). BiUMamba uses half the scan budget (2HWC vs 4HWC). On the same RTX 4090, it also uses less training memory (9.71 GB vs 12.85 GB). With only 4 validation cases, these differences may be within noise.
 
 The repository `.gitignore` contains `results/**`. The three files were added with `git add -f`. The `.gitignore` file was not changed.
+
+- We also updated the "Last updated" date at the top of this README to 20261128.
