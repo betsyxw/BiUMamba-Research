@@ -449,3 +449,17 @@ python train_synapse.py  # Train and test VM-UNet on the Synapse dataset.
 ## 6. Acknowledgments
 
 - We thank the authors of [VMamba](https://github.com/MzeroMiko/VMamba) and [Swin-UNet](https://github.com/HuCaoFighting/Swin-Unet) for their open-source codes.
+
+## Update log
+
+### 2026-11-28: Synapse v2 validation results table
+
+We added three files under `results/val_table_20261128/`: `RESULTS_TABLE_VAL.md`, `RESULTS_TABLE_VAL.csv`, and `SOURCES.txt`.
+
+The table reports validation results only. It uses the Synapse v2 protocol, with 4 validation cases. The three seeds (42, 3407, and 2026) were fixed in advance. This table does not include test-set results.
+
+The G4-Single row is incomplete (2 of 3 seeds finished). The G4-Paired row is incomplete (0 of 3 seeds finished).
+
+On the validation set, E1 (VM-UNet) has the best Dice (0.7995 ± 0.0078) and the best HD95. BiUMamba has a lower validation Dice (0.7878 ± 0.0145). BiUMamba uses half the scan budget (2HWC vs 4HWC). On the same RTX 4090, it also uses less training memory (9.71 GB vs 12.85 GB). With only 4 validation cases, these differences may be within noise.
+
+The repository `.gitignore` contains `results/**`. The three files were added with `git add -f`. The `.gitignore` file was not changed.
